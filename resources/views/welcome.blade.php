@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @livewireStyles
 </head>
 <body>
-    <h1 class="text-2xl">Hello World!</h1>
+    <livewire:lp.navbar /> 
 
 
+
+    <!-- Begin::Livewire -->
+    @livewireScripts
+    <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
 </body>
 </html>
