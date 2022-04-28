@@ -35,7 +35,7 @@
             <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
                 <h1 class="font-bold">VISI</h1>
             </div>
-            <div class="bg-black px-3 py-5 rounded-tbl-lg rounded-br-lg">
+            <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg">
                 <h1 class="text-white">Menjadikan pelatih kebugaran menjadi bagian dari profesi kesehatan yang diakui dan setara dgn profesi kesehatan lainnya, melalui pendidikan dan pelatihan yang terstruktur berdasarkan keilmuan dan pengetahuan ilmiah.</h1>
             </div>
         </div>
@@ -71,6 +71,96 @@
         <h1 class="text-white text-justify mt-5">Fitness Plus  Academy di gawangi oleh pengajar2 yang memiliki kompetensi tinggi seperti dr. Tandjung, dr. Phaidon, Dr. Hariadin mahardika, atlit  international Nicholas yang, dan fitnesspreneur Dith satyawan.</h1>
     </div>
     <!-- end::about -->
+
+    <!-- begin:::course -->
+    <div class="bg-zinc-800 p-10">
+        <div>
+            <h1 class="text-white text-2xl font-bold text-center">Course</h1>
+            <h1 class="text-white text-sm text-center mt-5">
+                We serve you with knowledge to help you increase your skill, competencies to give results to your clients and tobhelp you increase your sales and marketing knowledge to increse your income 
+            </h1>
+        </div>
+        <div class="grid grid-rows-1 md:grid-cols-3 gap-3 py-10">
+            <div>
+                <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
+                    <h1 class="font-bold text-center">Level I (Online)</h1>
+                </div>
+                <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg h-40">
+                    <ul class="text-white list-disc ml-5">
+                        <li>Basic Anatomy</li>
+                        <li>Basic Physiology</li> 
+                        <li>Basic Nutrition</li> 
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
+                    <h1 class="font-bold text-center">Level II (Online)</h1>
+                </div>
+                <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg h-40">
+                    <ul class="text-white list-disc ml-5">
+                        <li>Anatomy and Biomechanics</li>
+                        <li>Resistance Training Programs</li> 
+                        <li>Intermediate Nutrition</li> 
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
+                    <h1 class="font-bold text-center">Level III (Ofline)</h1>
+                </div>
+                <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg h-40">
+                    <ul class="text-white list-disc ml-5">
+                        <li>Resistance Training Practice</li>
+                        <li>Nutrition Practice and Medical Fitness Testing</li> 
+                        <li>Personal Training Management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
+                    <h1 class="font-bold text-center">Level IV (Online)</h1>
+                </div>
+                <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg h-40">
+                    <ul class="text-white list-disc ml-5">
+                        <li>Exercise and Endocrine Systems</li>
+                        <li>Exercise Medicine</li> 
+                        <li>Advance Nutrition</li> 
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
+                    <h1 class="font-bold text-center">Level V (Online)</h1>
+                </div>
+                <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg h-40">
+                    <ul class="text-white list-disc ml-5">
+                        <li>Aerobic Training and Cardiorespiratory Endurance</li>
+                        <li>Stretching and Flexibility</li> 
+                        <li>Functional Training</li> 
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
+                    <h1 class="font-bold text-center">Level VI (Online)</h1>
+                </div>
+                <div class="bg-black px-3 py-5 rounded-bl-lg rounded-br-lg h-40">
+                    <ul class="text-white list-disc ml-5">
+                        <li>Basic Life Support and First Aid Training (additional certificate)</li>
+                        <li>Functional Training Practice</li> 
+                        <li>Motivation, Businesses Management and Fitnesspreneur</li> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end:::course -->
 
 
 

@@ -687,6 +687,9 @@ input[type=file]::file-selector-button:hover {
 .mt-5 {
   margin-top: 1.25rem;
 }
+.ml-5 {
+  margin-left: 1.25rem;
+}
 .block {
   display: block;
 }
@@ -695,6 +698,9 @@ input[type=file]::file-selector-button:hover {
 }
 .inline-flex {
   display: inline-flex;
+}
+.grid {
+  display: grid;
 }
 .hidden {
   display: none;
@@ -710,6 +716,12 @@ input[type=file]::file-selector-button:hover {
 }
 .h-96 {
   height: 24rem;
+}
+.h-52 {
+  height: 13rem;
+}
+.h-40 {
+  height: 10rem;
 }
 .w-6 {
   width: 1.5rem;
@@ -744,6 +756,15 @@ input[type=file]::file-selector-button:hover {
 .basis-1\/6 {
   flex-basis: 16.666667%;
 }
+.list-disc {
+  list-style-type: disc;
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-rows-1 {
+  grid-template-rows: repeat(1, minmax(0, 1fr));
+}
 .flex-row {
   flex-direction: row;
 }
@@ -765,6 +786,9 @@ input[type=file]::file-selector-button:hover {
 .justify-between {
   justify-content: space-between;
 }
+.gap-3 {
+  gap: 0.75rem;
+}
 .self-center {
   align-self: center;
 }
@@ -782,6 +806,9 @@ input[type=file]::file-selector-button:hover {
 }
 .rounded-br-lg {
   border-bottom-right-radius: 0.5rem;
+}
+.rounded-bl-lg {
+  border-bottom-left-radius: 0.5rem;
 }
 .border {
   border-width: 1px;
@@ -1077,6 +1104,10 @@ input[type=file]::file-selector-button:hover {
 
   .md\:basis-3\/6 {
     flex-basis: 50%;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:flex-row {
