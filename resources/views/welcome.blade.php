@@ -347,9 +347,6 @@
             </div>
         </div>
     </div>
-    <div>
-
-    </div>
     <!-- end::price -->
 
 
