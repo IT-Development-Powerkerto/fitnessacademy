@@ -349,7 +349,19 @@
     </div>
     <!-- end::price -->
 
+    <!-- begin::coaches -->
+    <div class="bg-zinc-800 p-10">
+        <h1 class="text-white text-2xl font-bold text-center">Coaches</h1>
+        <div class="flex flex-row justify-around mt-10">
+            <img src="assets/img/Choaches1.png" alt="">
+            <img src="assets/img/Choaches2.png" alt="">
+        </div>
+    </div>
+    <!-- end::coaches -->
 
+    <!-- begin::gallery -->
+    
+    <!-- end::gallery -->
 
 
     <!-- Begin::Livewire -->
