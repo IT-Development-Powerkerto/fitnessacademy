@@ -15,7 +15,7 @@
 <body>
     <livewire:lp.navbar /> 
 
-    <div class="">
+    <div>
         <!-- begin::header -->
         <div class="bg-zinc-800 py-10 px-20">
             <div class="flex flex-col-reverse md:flex-row">
