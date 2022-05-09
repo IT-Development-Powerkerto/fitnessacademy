@@ -20,7 +20,7 @@
                 <h1 class="text-4xl text-white font-bold py-2">Congratulation !</h1>
                 <h1 class="text-2xl text-white font-bold pt-1 pb-10">You’ve been registered</h1>
                 <h1 class="text-white text-sm font-light pb-10">Now, you already to login Fitness Plus Academy</h1>
-                <a href="/" class="text-white bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center w-72">Login</a>
+                <a href="/" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center w-72">Login</a>
             </div>
         </div>
     </div>

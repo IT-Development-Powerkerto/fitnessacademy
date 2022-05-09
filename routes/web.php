@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 
+use App\Http\Controllers\user\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,4 @@ Route::get('/', function () {
 
 Route::get('/register', [LoginRegisterController::class, 'index'])->name('register');
 Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess');
+Route::resource('/dashboard', DashboardController::class);

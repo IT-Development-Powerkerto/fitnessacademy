@@ -1,6 +1,6 @@
 <nav class="border-b border-gray-600 px-2 sm:px-4 py-3 bg-zinc-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto px-10">
-        <a href="#" class="flex items-center">
+        <a href="/" class="flex items-center">
         <img src="assets/img/logo.png" class="mr-3 h-6 sm:h-9" alt="Fitness Plus Academy" />
             <span class="self-center text-sm font-semibold">
                 <h1 class="text-white">FITNESS PLUS</h1>
@@ -62,12 +62,12 @@
                         <div class="p-5">
                             <form>
                                 <div class="mb-6">
-                                    <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
+                                    <input type="email" id="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
                                 </div>
                                 <div class="mb-6">
-                                    <input type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required>
+                                    <input type="password" id="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required>
                                 </div>
-                                <button type="submit" class="text-white bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Submit</button>
+                                <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Submit</button>
                             </form>
                         </div>
                         <div class="flex flex-col">
@@ -105,9 +105,9 @@
                         <div class="p-5">
                             <form>
                                 <div class="mb-6">
-                                    <input type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
+                                    <input type="email" id="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
                                 </div>
-                                <button type="submit" class="text-white bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Send Password Reset Link</button>
+                                <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Send Password Reset Link</button>
                             </form>
                         </div>
                         <h1 class="font-light text-sm text-center p-5 text-white">We will send reset link password to your email. Please check your email box.</h1>
