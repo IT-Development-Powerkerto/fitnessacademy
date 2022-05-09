@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
 <body>
     <livewire:lp.navbar /> 
 
-    <div>
+    <div id="home">
         <!-- begin::header -->
         <div class="bg-zinc-800 py-10 px-20">
             <div class="flex flex-col-reverse md:flex-row">
@@ -32,7 +32,7 @@
         <!-- end::header -->
     
         <!-- begin:about -->
-        <div class="bg-zinc-800  py-10 px-20">
+        <div class="bg-zinc-800  py-10 px-20" id="about">
             <h1 class="text-white text-2xl font-bold">About Us</h1>
             <div class="py-5">
                 <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
@@ -76,7 +76,7 @@
         <!-- end::about -->
     
         <!-- begin:::course -->
-        <div class="bg-zinc-800 py-10 px-20">
+        <div class="bg-zinc-800 py-10 px-20" id="course">
             <div>
                 <h1 class="text-white text-2xl font-bold text-center">Course</h1>
                 <h1 class="text-white text-sm text-center mt-5">
@@ -322,7 +322,7 @@
         <!-- end::price -->
     
         <!-- begin::coaches -->
-        <div class="bg-zinc-800 py-10 px-20">
+        <div class="bg-zinc-800 py-10 px-20" id="coaches">
             <h1 class="text-white text-2xl font-bold text-center">Coaches</h1>
             <div class="flex flex-col md:flex-row justify-around mt-10">
                 <img src="assets/img/Choaches/Choaches1.png" alt="">
@@ -332,7 +332,7 @@
         <!-- end::coaches -->
     
         <!-- begin::gallery -->
-        <div class="bg-zinc-800 py-10 px-20">
+        <div class="bg-zinc-800 py-10 px-20" id="gallery">
             <h1 class="text-white text-2xl font-bold text-center">Gallery</h1>
             <div class="mt-10">
                 <div class="flex flex-row gap-7 flex-wrap justify-center">
@@ -354,7 +354,7 @@
         <!-- end::gallery -->
 
         <!-- begin::footer -->
-        <div class="bg-zinc-600 py-10 px-20">
+        <div class="bg-zinc-600 py-10 px-20" id="contact">
             <h1 class="text-white text-2xl font-bold">Contact Us</h1>
             <div class="flex flex-col md:flex-row items-center md:justify-between">
                 <div class="w-2/3">

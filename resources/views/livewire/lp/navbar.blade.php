@@ -18,22 +18,22 @@
         <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-4">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0" aria-current="page">Home</a>
+                    <a href="#home" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">About Us</a>
+                    <a href="#about" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">About Us</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Course</a>
+                    <a href="#course" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Course</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Coaches</a>
+                    <a href="#coaches" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Coaches</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Gallery</a>
+                    <a href="#gallery" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Gallery</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Contact</a>
+                    <a href="#contact" class="block py-2 pr-4 pl-3 text-white border-gray-100 hover:bg-gray-200 md:hover:bg-transparent hover:text-yellow-200 md:p-0">Contact</a>
                 </li>
             </ul>
         </div>
