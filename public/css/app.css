@@ -1003,6 +1003,10 @@ input[type=file]::file-selector-button:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(227 160 8 / var(--tw-bg-opacity));
 }
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
 .bg-opacity-75 {
   --tw-bg-opacity: 0.75;
 }
@@ -1042,6 +1046,9 @@ input[type=file]::file-selector-button:hover {
 }
 .p-1 {
   padding: 0.25rem;
+}
+.p-7 {
+  padding: 1.75rem;
 }
 .py-10 {
   padding-top: 2.5rem;

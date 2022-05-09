@@ -212,89 +212,61 @@
                     </ul>
                     <div id="tab-contents">
                         <div id="academy-one">
-                            <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
+                            <div class="flex flex-row justify-between">
                                 <div>
-                                    <h1 class="text-white font-bold text-xl">Level I</h1>
-                                    <ul class="list-disc text-white p-5 grid grid-cols-1 md:grid-cols-4 gap-5">
-                                        <li>Praktek</li>
-                                        <li>Digital Marketing</li>
-                                        <li>Prepare Competition</li>
-                                        <li>Design Program Latihan</li>
-                                        <li>Biohecanical</li>
-                                        <li>Sales dan Marketing</li>
-                                        <li>Nutrisi</li>
-                                        <li>Anatomi</li>
-                                    </ul>
-                                </div>
-                                <div class="py-5">
-                                    <h1 class="text-white">Narasumber :</h1>
-                                    <ol class="list-decimal text-white px-5 py-2">
-                                        <li>dr Tanjung Subrata, MRepro, ABAARM</li>
-                                        <li>dr. Phaidon Toruan MM</li>
-                                        <li>DR. Hariadin Mahardika S.E, M.M.</li>
-                                        <li>Nicholas yong Lee ( Muscle Mania Word champion)</li>
-                                        <li>Dith satyawan ( fitnesspreneur)</li>
-                                    </ol>
-                                </div>
-                            </div>
-                            <div class="bg-zinc-900 p-10">
-                                <div>
-                                    <h1 class="text-white opacity-25">23 - 25 Juni 2022</h1>
-                                    <h1 class="text-white opacity-25 py-5">OFFLINE MODE / TATAP MUKA</h1>
-                                    <h1 class="text-white opacity-25">Fitness Plus Marlboro : Jl. Mahendrata Selatan no 199</h1>
-                                </div>
-                                <div class="flex flex-row py-5">
-                                    <div class="flex flex-col">
-                                        <h1 class="text-white opacity-25">Early bird price</h1>
-                                        <h1 class="text-yellow-300 text-2xl font-bold">Rp 2.999.000</h1>
+                                    <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
+                                        <h1 class="text-white font-bold text-xl">Anatomi Dasar I</h1>
+                                        <h4 class="text-white font-light text-sm">dr Tanjung Subrata, MRepro, ABAARM</h4>
                                     </div>
-                                    <div class="flex flex-col ml-10">
-                                        <h1 class="text-white opacity-25">Regular price</h1>
-                                        <h1 class="text-yellow-300 text-2xl font-bold">Rp 3.499.000</h1>
+                                    <div class="bg-zinc-900 p-10">
+                                        <div>
+                                            <h1 class="text-white opacity-25 py-2">Mei 2022 Minggu ke-2</h1>
+                                            <h1 class="text-white opacity-25">Workshops Virtual (link akan di informasikan)  ONLINE METODE</h1>
+                                        </div>
+                                        <h1 class="text-yellow-300 text-2xl font-bold py-2">FREE</h1>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
+                                        <h1 class="text-white font-bold text-xl">Nutrisi Dasar I</h1>
+                                        <h4 class="text-white font-light text-sm">dr Phaidon Toruan MM</h4>
+                                    </div>
+                                    <div class="bg-zinc-900 p-10">
+                                        <div>
+                                            <h1 class="text-white opacity-25 py-2">Mei 2022 Minggu ke-3</h1>
+                                            <h1 class="text-white opacity-25">Workshops Virtual (link akan di informasikan)  ONLINE METODE</h1>
+                                        </div>
+                                        <h1 class="text-yellow-300 text-2xl font-bold py-2">FREE</h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div id="academy-two" class="hidden">
-                            <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
+                        <div class="flex flex-row justify-between">
                                 <div>
-                                    <h1 class="text-white font-bold text-xl">Level II</h1>
-                                    <ul class="list-disc text-white p-5 grid grid-cols-1 md:grid-cols-4 gap-5">
-                                        <li>Praktek</li>
-                                        <li>Digital Marketing</li>
-                                        <li>Prepare Competition</li>
-                                        <li>Design Program Latihan</li>
-                                        <li>Biohecanical</li>
-                                        <li>Sales dan Marketing</li>
-                                        <li>Nutrisi</li>
-                                        <li>Anatomi</li>
-                                    </ul>
-                                </div>
-                                <div class="py-5">
-                                    <h1 class="text-white">Narasumber :</h1>
-                                    <ol class="list-decimal text-white px-5 py-2">
-                                        <li>dr Tanjung Subrata, MRepro, ABAARM</li>
-                                        <li>dr. Phaidon Toruan MM</li>
-                                        <li>DR. Hariadin Mahardika S.E, M.M.</li>
-                                        <li>Nicholas yong Lee ( Muscle Mania Word champion)</li>
-                                        <li>Dith satyawan ( fitnesspreneur)</li>
-                                    </ol>
-                                </div>
-                            </div>
-                            <div class="bg-zinc-900 p-10">
-                                <div>
-                                    <h1 class="text-white opacity-25">23 - 25 Juni 2022</h1>
-                                    <h1 class="text-white opacity-25 py-5">OFFLINE MODE / TATAP MUKA</h1>
-                                    <h1 class="text-white opacity-25">Fitness Plus Marlboro : Jl. Mahendrata Selatan no 199</h1>
-                                </div>
-                                <div class="flex flex-row py-5">
-                                    <div class="flex flex-col">
-                                        <h1 class="text-white opacity-25">Early bird price</h1>
-                                        <h1 class="text-yellow-300 text-2xl font-bold">Rp 2.999.000</h1>
+                                    <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
+                                        <h1 class="text-white font-bold text-xl">Anatomi Dasar II</h1>
+                                        <h4 class="text-white font-light text-sm">dr Tanjung Subrata, MRepro, ABAARM</h4>
                                     </div>
-                                    <div class="flex flex-col ml-10">
-                                        <h1 class="text-white opacity-25">Regular price</h1>
-                                        <h1 class="text-yellow-300 text-2xl font-bold">Rp 3.499.000</h1>
+                                    <div class="bg-zinc-900 p-10">
+                                        <div>
+                                            <h1 class="text-white opacity-25 py-2">Mei 2022 Minggu ke-2</h1>
+                                            <h1 class="text-white opacity-25">Workshops Virtual (link akan di informasikan)  ONLINE METODE</h1>
+                                        </div>
+                                        <h1 class="text-yellow-300 text-2xl font-bold py-2">Rp 499.000</h1>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
+                                        <h1 class="text-white font-bold text-xl">Nutrisi Dasar II</h1>
+                                        <h4 class="text-white font-light text-sm">dr Phaidon Toruan MM</h4>
+                                    </div>
+                                    <div class="bg-zinc-900 p-10">
+                                        <div>
+                                            <h1 class="text-white opacity-25 py-2">Mei 2022 Minggu ke-3</h1>
+                                            <h1 class="text-white opacity-25">Workshops Virtual (link akan di informasikan)  ONLINE METODE</h1>
+                                        </div>
+                                        <h1 class="text-yellow-300 text-2xl font-bold py-2">Rp 499.000</h1>
                                     </div>
                                 </div>
                             </div>
