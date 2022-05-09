@@ -432,5 +432,6 @@
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
     <script src="assets/js/tabs.js"></script>
+    <script src="assets/js/register-tabs.js"></script>
 </body>
 </html>

@@ -74,7 +74,7 @@
                             <button type="button" class="text-sm text-center text-white underline p-5 hover:text-blue-500" data-modal-toggle="ForgetPWD">Forget Password?</button>
                             <div class="flex flex-col py-3">
                                 <h1 class="text-sm text-center text-white">Don't have an account yet?</h1>
-                                <a href="#" class="text-sm text-center text-white underline hover:text-blue-500">Register Here</a>
+                                <a href="{{ route('register') }}"  class="text-sm text-center text-white underline hover:text-blue-500">Register Here</a>
                             </div>
                         </div>
                     </div>
@@ -83,6 +83,7 @@
         </div>
     </div>
     <!-- end::modalLogin -->
+
     <!-- begin::modalForgetPWD -->
     <div id="ForgetPWD" tabindex="-1" class="bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-full">
         <div class="relative p-4 w-full max-w-sm md:max-w-4xl h-full md:h-auto">
@@ -116,4 +117,5 @@
         </div>
     </div>
     <!-- end::modalForgetPWD -->
+
 <!-- end::modal -->
