@@ -75,7 +75,52 @@
     </div>
     <!-- end::Schedule -->
     
-    <!-- begin::Schedule -->
+    <!-- begin::Coaches -->
+    <div class="p-10 bg-zinc-800">
+        <div class="bg-yellow-300 rounded-lg p-3">
+            <h1 class="font-semibold">Coaches</h1>
+        </div>
+        <div class="grid grid-cols-2 gap-5 py-5">
+            <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                <div class="flex flex-row gap-3 items-center">
+                    <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
+                    <span class="text-white font-semibold">Dr. Tanjung Subrata, MRepro, ABAARM</span>      
+                </div>
+                <i class="las la-angle-right text-white"></i>
+            </a>
+            <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                <div class="flex flex-row gap-3 items-center">
+                    <img src="assets/img/Choaches/Phaidon.png" class="w-10 rounded" alt="">
+                    <span class="text-white font-semibold">Dr. Phaidon Toruan MM</span>   
+                </div>  
+                <i class="las la-angle-right text-white"></i>
+            </a>
+            <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                <div class="flex flex-row gap-3 items-center">
+                    <img src="assets/img/Choaches/Dith.png" class="w-10 rounded" alt="">
+                    <span class="text-white font-semibold">Dith Satyawan</span> 
+                </div>
+                <i class="las la-angle-right text-white"></i>
+            </a>
+            <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                <div class="flex flex-row gap-3 items-center">
+                    <img src="assets/img/Choaches/Nicholas.png" class="w-10 rounded" alt="">
+                    <span class="text-white font-semibold">Nicholas long Lee</span>       
+                </div>
+                <i class="las la-angle-right text-white"></i>
+            </a>
+            <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                <div class="flex flex-row gap-3 items-center">
+                    <img src="assets/img/Choaches/Harryadin.png" class="w-10 rounded" alt="">
+                    <span class="text-white font-semibold">Dr. Harryadin Mahardika, S.E., M.M.</span>       
+                </div>
+                <i class="las la-angle-right text-white"></i>
+            </a>
+        </div>
+    </div>
+    <!-- end::Coaches -->
+
+    <!-- begin::Score -->
     <div class="p-10 bg-zinc-800">
         <div class="bg-yellow-300 rounded-lg p-3">
             <h1 class="font-semibold">Score</h1>
@@ -85,7 +130,7 @@
             <h1 class="text-white font-semibold">90.5</h1>  
         </div>
     </div>
-    <!-- end::Schedule -->
+    <!-- end::Score -->
 
 
 
