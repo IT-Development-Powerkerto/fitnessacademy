@@ -1887,6 +1887,11 @@ input[type=file]::file-selector-button:hover {
     padding-bottom: 0px;
   }
 
+  .md\:px-20 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
   .md\:pl-44 {
     padding-left: 11rem;
   }

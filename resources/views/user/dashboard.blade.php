@@ -17,7 +17,7 @@
 
     <!-- begin::My Course -->
     <div class="py-10 bg-zinc-800">
-        <div class="mx-auto container">
+        <div class="px-10">
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-lg p-3">
                 <h1 class="font-semibold">My Course</h1>
                 <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
@@ -67,7 +67,7 @@
 
     <!-- begin::Schedule -->
     <div class="py-10 bg-zinc-800">
-        <div class="mx-auto container">
+        <div class="px-10">
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Today Schedule</h1>
             </div>
@@ -81,7 +81,7 @@
     
     <!-- begin::Coaches -->
     <div class="py-10 bg-zinc-800">
-        <div class="mx-auto container">
+        <div class="px-10">
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Coaches</h1>
             </div>
@@ -128,7 +128,7 @@
 
     <!-- begin::Score -->
     <div class="py-10 bg-zinc-800">
-        <div class="mx-auto container">
+        <div class="px-10">
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Score</h1>
             </div>
