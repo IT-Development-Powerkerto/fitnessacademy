@@ -85,7 +85,7 @@
     <!-- end::modalLogin -->
 
     <!-- begin::modalForgetPWD -->
-    <div id="ForgetPWD" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-full">
+    <div id="ForgetPWD" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-full">
         <div class="relative p-4 w-full max-w-sm md:max-w-4xl h-full md:h-auto">
             <!-- Modal content -->
             <div class="relative bg-zinc-800 rounded-xl shadow">
