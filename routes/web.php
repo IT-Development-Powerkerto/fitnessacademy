@@ -8,6 +8,7 @@ use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\addCourseController;
 use App\Http\Controllers\user\detailCourseController;
 use App\Http\Controllers\user\CoachProfileController;
+use App\Http\Controllers\user\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,4 @@ Route::resource('/dashboard', DashboardController::class);
 Route::resource('/addCourse', addCourseController::class);
 Route::resource('/detailCourse', detailCourseController::class);
 Route::resource('/coachProfile', CoachProfileController::class);
+Route::resource('/userProfile', UserProfileController::class);
