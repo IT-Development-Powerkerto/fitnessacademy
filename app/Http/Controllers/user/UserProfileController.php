@@ -17,6 +17,11 @@ class UserProfileController extends Controller
         return view("user.userProfile");
     }
 
+    public function editUser()
+    {
+        return view("user.editUser");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

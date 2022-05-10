@@ -24,7 +24,7 @@
         <div>
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
                 <h1 class="font-semibold">My Profile</h1>
-                <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
+                <a href="/editUser" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
                     <i class="las la-user-edit text-yellow-300"></i>
                     Edit Profile
                 </a>

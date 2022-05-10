@@ -27,8 +27,14 @@ Route::get('/', function () {
 
 Route::get('/register', [LoginRegisterController::class, 'index'])->name('register');
 Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess');
+
 Route::resource('/dashboard', DashboardController::class);
+
 Route::resource('/addCourse', addCourseController::class);
+
 Route::resource('/detailCourse', detailCourseController::class);
+
 Route::resource('/coachProfile', CoachProfileController::class);
+
 Route::resource('/userProfile', UserProfileController::class);
+Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser');
