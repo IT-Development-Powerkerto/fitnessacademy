@@ -86,7 +86,7 @@
                 <h1 class="font-semibold">Coaches</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                <a href="/coachProfile" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
                         <span class="text-white font-semibold">Dr. Tanjung Subrata, MRepro, ABAARM</span>      

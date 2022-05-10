@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\addCourseController;
 use App\Http\Controllers\user\detailCourseController;
+use App\Http\Controllers\user\CoachProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 Route::resource('/dashboard', DashboardController::class);
 Route::resource('/addCourse', addCourseController::class);
 Route::resource('/detailCourse', detailCourseController::class);
+Route::resource('/coachProfile', CoachProfileController::class);
