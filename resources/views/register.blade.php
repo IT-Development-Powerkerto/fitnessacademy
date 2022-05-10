@@ -9,7 +9,7 @@
     <link href="/css/app.css" rel="stylesheet">
 </head>
 <body>
-<div class="flex flex-col md:flex-row">
+    <div class="flex flex-col md:flex-row">
         <div class="md:relative md:w-2/5">
             <div class="md:h-screen shadow-lg md:fixed">
                 <img src="assets/img/login.png" class="m-auto h-full"/>
