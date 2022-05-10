@@ -25,7 +25,7 @@
                     Add Course
                 </a>
             </div>
-            <div class="grid grid-cols-2 gap-5 py-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
                 <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">Nutrisi Dasar I</span>
@@ -85,7 +85,7 @@
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Coaches</h1>
             </div>
-            <div class="grid grid-cols-2 gap-5 py-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
                 <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
