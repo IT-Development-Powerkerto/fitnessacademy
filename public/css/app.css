@@ -840,6 +840,15 @@ input[type=file]::file-selector-button:hover {
 .h-11 {
   height: 2.75rem;
 }
+.h-96 {
+  height: 24rem;
+}
+.h-72 {
+  height: 18rem;
+}
+.h-56 {
+  height: 14rem;
+}
 .w-full {
   width: 100%;
 }
@@ -908,6 +917,9 @@ input[type=file]::file-selector-button:hover {
 }
 .w-11 {
   width: 2.75rem;
+}
+.w-96 {
+  width: 24rem;
 }
 .max-w-sm {
   max-width: 24rem;
