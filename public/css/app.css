@@ -704,6 +704,9 @@ input[type=file]::file-selector-button:hover {
 .col-span-11 {
   grid-column: span 11 / span 11;
 }
+.col-span-8 {
+  grid-column: span 8 / span 8;
+}
 .m-auto {
   margin: auto;
 }
@@ -844,6 +847,24 @@ input[type=file]::file-selector-button:hover {
 }
 .w-3 {
   width: 0.75rem;
+}
+.w-28 {
+  width: 7rem;
+}
+.w-44 {
+  width: 11rem;
+}
+.w-40 {
+  width: 10rem;
+}
+.w-36 {
+  width: 9rem;
+}
+.w-32 {
+  width: 8rem;
+}
+.w-24 {
+  width: 6rem;
 }
 .max-w-sm {
   max-width: 24rem;
@@ -986,6 +1007,12 @@ input[type=file]::file-selector-button:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.text-clip {
+  text-overflow: clip;
+}
+.break-all {
+  word-break: break-all;
 }
 .rounded-lg {
   border-radius: 0.5rem;
@@ -1737,6 +1764,18 @@ input[type=file]::file-selector-button:hover {
     order: 1;
   }
 
+  .md\:col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+
+  .md\:col-span-11 {
+    grid-column: span 11 / span 11;
+  }
+
+  .md\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
   .md\:mb-32 {
     margin-bottom: 8rem;
   }
@@ -1813,6 +1852,10 @@ input[type=file]::file-selector-button:hover {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -1868,6 +1911,11 @@ input[type=file]::file-selector-button:hover {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:font-medium {
