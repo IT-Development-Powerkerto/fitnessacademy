@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginRegisterController;
 
+// User
 use App\Http\Controllers\user\DashboardController;
+use App\Http\Controllers\user\addCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +25,4 @@ Route::get('/', function () {
 Route::get('/register', [LoginRegisterController::class, 'index'])->name('register');
 Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess');
 Route::resource('/dashboard', DashboardController::class);
+Route::resource('/addCourse', addCourseController::class);
