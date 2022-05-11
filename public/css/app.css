@@ -873,6 +873,9 @@ input[type=file]::file-selector-button:hover {
 .w-14 {
   width: 3.5rem;
 }
+.w-screen {
+  width: 100vw;
+}
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1329,6 +1332,14 @@ input[type=file]::file-selector-button:hover {
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
 }
 .font-bold {
   font-weight: 700;

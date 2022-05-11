@@ -10,8 +10,8 @@
         <div class="flex items-center md:order-2">
             <div class="flex flex-row">
                 <div class="flex flex-col px-3">
-                    <h1 class="font-bold text-white text-right">dr Tanjung Subrata</h1>
-                    <h1 class="text-sm font-semibold text-gray-500 text-right">tanjung.subrata@gmail.com</h1>
+                    <h1 class="font-bold text-white text-right">{{ Auth::user()->name }}</h1>
+                    <h1 class="text-sm font-semibold text-gray-500 text-right">{{ Auth::user()->email }}</h1>
                 </div>
                 <button type="button" class="flex mr-3 text-sm rounded md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
                     <img class="w-11 h-11 rounded" src="assets/img/Choaches/Tanjung.png" alt="user photo">

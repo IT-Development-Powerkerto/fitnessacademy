@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 
-class DashboardController extends Controller
+class ErrorPageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        return view('user.dashboard', compact('user'));
+        return view('auth');
     }
 
     /**

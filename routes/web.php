@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginRegisterController;
+use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\LoginRegisterController;
+use App\Http\Controllers\ErrorPageController;
 // User
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\addCourseController;
@@ -25,19 +27,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/error-page', ErrorPageController::class);
+Route::get('/error-page', [ErrorPageController::class, 'index'])->name('error-page');
+
 Route::get('/register', [LoginRegisterController::class, 'index'])->name('register');
 Route::post('/register', [LoginRegisterController::class, 'store'])->name('register.store');
 Route::post('/login', [LoginRegisterController::class, 'login'])->name('login.login');
 Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout.logout');
 Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess');
 
-Route::resource('/dashboard', DashboardController::class);
+Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 
-Route::resource('/addCourse', addCourseController::class);
+Route::resource('/addCourse', addCourseController::class)->middleware('auth');
 
-Route::resource('/detailCourse', detailCourseController::class);
+Route::resource('/detailCourse', detailCourseController::class)->middleware('auth');
 
-Route::resource('/coachProfile', CoachProfileController::class);
+Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 
-Route::resource('/userProfile', UserProfileController::class);
-Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser');
+Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
+Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');

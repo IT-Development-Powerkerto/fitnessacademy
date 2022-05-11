@@ -69,7 +69,7 @@
                         <h1 class="col-span-8 md:col-span-9 text-white">Powerkerto Wahyu Keprabon</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Work </h1>
+                        <h1 class="col-span-3 md:col-span-2 text-white">Last Education </h1>
                         <h1 class="col-span-1 text-white">:</h1>
                         <h1 class="col-span-8 md:col-span-9 text-white">S1 Teknik Informatika, IT Telkom Purwokerto</h1>
                     </div>
