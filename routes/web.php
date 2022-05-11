@@ -26,6 +26,9 @@ Route::get('/', function () {
 });
 
 Route::get('/register', [LoginRegisterController::class, 'index'])->name('register');
+Route::post('/register', [LoginRegisterController::class, 'store'])->name('register.store');
+Route::post('/login', [LoginRegisterController::class, 'login'])->name('login.login');
+Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout.logout');
 Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess');
 
 Route::resource('/dashboard', DashboardController::class);

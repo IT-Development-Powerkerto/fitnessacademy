@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class LoginRegisterController extends Controller
 {
@@ -13,7 +22,9 @@ class LoginRegisterController extends Controller
      */
     public function index()
     {
-        return view('register');
+        $role = Role::all();
+        $user = User::all();
+        return view('register', compact('role', 'user'));
     }
 
     /**
@@ -34,7 +45,49 @@ class LoginRegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'role_id' => 'required',
+            'name' => 'required',
+            'email' => 'required|unique:users|email:rfc,dns',
+            'password' => 'required',
+            'gender' => 'required',
+            'age' => 'required',
+            'phone' => 'required',
+            'nik' => 'required',
+            'education' => 'required',
+            'work' => 'required',
+            'address' => 'required',
+        ]);
+        if($validator->fails()){
+            // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        // if(substr(trim($validated['phone']), 0, 1)=='0'){
+        //     $phone = '62'.substr(trim($validated['phone']), 1);
+        // } else{
+        //     $phone = $validated['phone'];
+        // }
+        $user = new User();
+        $user->role_id = $request->role_id;
+        $user->name = $request->name;
+        $user->email = $validated['email'];
+        $user->password = Hash::make($validated['password']);
+        $user->gender = $validated['gender'];
+        $user->age = $validated['age'];
+        $user->phone = $validated['phone'];
+        $user->nik = $validated['nik'];
+        $user->education = $validated['education'];
+        $user->work = $validated['work'];
+        $user->address = $validated['address'];
+        // $user->remember_token = Str::random(10);
+        $user->created_at = Carbon::now()->toDateTimeString();
+        $user->updated_at = Carbon::now()->toDateTimeString();
+        $user->save();
+
+        return redirect('/registerSuccess')->with('success', 'Register Success!');
     }
 
     /**
@@ -84,5 +137,35 @@ class LoginRegisterController extends Controller
 
     public function registerSuccess(){
         return view("registerSuccess");
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        // $data = $request->input();
+        // // dd($data);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect('/dashboard');
+        }
+
+        return back()->withErrors([
+            'name' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
