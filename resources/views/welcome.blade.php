@@ -9,7 +9,8 @@
     <link rel="icon" href="assets/img/logo.png">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     @livewireStyles
 </head>
 <body>
@@ -18,7 +19,7 @@
     <div id="home">
         <!-- begin::header -->
         <div class="bg-zinc-800 py-10">
-            <div class="md:px-20 px-10">
+            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div class="flex flex-col-reverse md:flex-row">
                     <div class="py-10 text-center md:text-left md:basis-3/6 md:self-center">
                         <h1 class="text-white text-3xl font-bold md:text-4xl">Welcome to Fitness Plus Academy</h1>
@@ -47,7 +48,7 @@
                 </div>
         
                 <div class="flex flex-col-reverse md:flex-row">
-                    <div class="basis-3/6 py-5 md:py-0 md:pr-10">
+                    <div class="basis-3/6 py-5 md:py-0 md:pr-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                         <h1 class="text-white text-justify">
                             Melihat semakin besarnya potensi pasar klub kebugaran sehingga meningkatkan kebutuhan akan klub dan pelatih yang berkualitas. Kenyataannya keberadaan pelatihan sertifikasi masih belum banyak, baik dalam kuantitas dan atau kualitas khususnya yang berhubungan dengan ilmu yang ilmiah tapi mudah dimengerti dan dipraktekkan, serta waktu pelatihan yang terbatas. 
                         </h1>
@@ -56,12 +57,12 @@
                             Fitness plus academy ingin memberikan solusi pada anda yang sangat tertarik untuk masuk dalam industri Fitness, berupa materi baik yang mendasar maupun yang baru,  yang sesuai dengan trend kelinian. Fitness plus academy menganalisa, memilah-milah dan merangkum  kebutuhan - kebutuhan materi yang berkembangan pesat, dan  memformulasikan dalam sebuah kemasan pelatihan kekinian yang berkualitas dan efisien serta akan membantu memberikan hasil kepuasan pelanggan sehingga meningkatkan pendapatan. 
                         </h1>
                     </div>
-                    <div class="basis-3/6">
-                        <img src="assets/img/About/imageOne.png" class="w-full" alt="">
+                    <div class="basis-3/6" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                        <img src="assets/img/About/imageOne.png" class="w-full h-96 rounded" alt="">
                     </div>
                 </div>
                 <div class="flex flex-col-reverse md:flex-row mt-10">
-                    <div class="basis-3/6 py-5 md:py-0 md:pr-10">
+                    <div class="basis-3/6 py-5 md:py-0 md:pr-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                         <h1 class="text-white text-justify">
                             Fitness Plus academy ingin agar masyarakat fitness atau pelatih kebugaran bisa mengikuti  formulasi  tersebut dengan efisien waktu yang tepat, padat berisi, dan anda akan sangat beruntung karena para pengajar yang membagikan ilmu dalam pelatihan ini memiliki kompetensi tinggi serta pengalaman di industri fitness lebih dari 10 tahun. 
                         </h1>
@@ -70,8 +71,8 @@
                         Fitness Plus Academy akan terus mengembangkan dunia pelatihan menjadi lebih luas, lebih terstruktur dan kedepan bisa memiliki pelatihan setara diploma 1 dan seterusnya. Sehingga lulusannya memiliki kemampuan yang lebih dan bersaing  dengan kebutuhan ilmu yang di butuhkan saat ini dan yang akan datang , dan memiliki kemampuan marketing, sales, management yang tidak dimiliki pelatihan lain. Fitness Plus Academy mendesain pelatihan yang berisikan ilmu utama berupa ilmu dasar kedokteran yakni anatomi,  fisiologi dan nutrisi, serta aplikasinya dalam bentuk ilmu biomekanik, hormon, dan suplementasi. Implementasi program Fitness Plus Academy bisa diterapkan untuk pelatihan personal training, program kompetisi, dan pelatihan untuk olahraga lain. 
                         </h1>
                     </div>
-                    <div class="basis-3/6">
-                        <img src="assets/img/About/imageTwo.png" class="w-full" alt="">
+                    <div class="basis-3/6" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+                        <img src="assets/img/About/imageTwo.png" class="w-full h-96 rounded" alt="">
                     </div>
                 </div>
                 <h1 class="text-white text-justify mt-5">Fitness Plus  Academy di gawangi oleh pengajar2 yang memiliki kompetensi tinggi seperti dr. Tandjung, dr. Phaidon, Dr. Hariadin mahardika, atlit  international Nicholas yang, dan fitnesspreneur Dith satyawan.</h1>
@@ -81,7 +82,7 @@
     
         <!-- begin:::course -->
         <div class="bg-zinc-800 py-10" id="course">
-            <div class="md:px-20 px-10">
+            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div>
                     <h1 class="text-white text-2xl font-bold text-center">Course</h1>
                     <h1 class="text-white text-sm text-center mt-5">
@@ -168,12 +169,12 @@
                     </div>
                 </div>
                 <div class="bg-black px-3 py-5 rounded-lg">
-                    <h1 class="text-white list-disc ml-5">
+                    <h1 class="text-white list-disc ml-5" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                         <span><i class="las la-check pr-3"></i></span>
                         We offer you a practical knowledge with solid scientific background, and deliver to you in simple Indonesian language in three (3) days.
                     </h1>
                 </div>
-                <div class="bg-black px-3 py-5 rounded-lg mt-5">
+                <div class="bg-black px-3 py-5 rounded-lg mt-5" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                     <h1 class="text-white list-disc ml-5">
                         <span><i class="las la-check pr-3"></i></span>
                         We are not world's best, but we give you our best knowledge to help you increase competencies in order to help you increase your income up to 10 times.
@@ -186,14 +187,14 @@
         <!-- begin::warning -->
         <div>
             <div class="bg-red-600">
-                <h1 class="text-white text-xl text-center font-semibold py-5">!!! Seats are limited to 30 persons so, stop waiting and start <a href="#" class="underline font-bold">register</a> now !!!</h1>
+                <h1 class="text-white text-xl text-center font-semibold py-5">!!! Seats are limited to 30 persons so, stop waiting and start <a href="/regitser" class="underline font-bold">register</a> now !!!</h1>
             </div>
         </div>
         <!-- end::warning -->
     
         <!-- begin::price -->
         <div class="bg-gradient-to-b from-zinc-800 via-zinc-400 to-zinc-800 py-10">
-            <div class="md:px-20 px-10">
+            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div>
                     <h1 class="text-center text-7xl font-bold text-white">Are You Ready ?</h1>
                     <h1 class="text-center text-lg text-white opacity-40 p-5">FITNESS PLUS INDONESIA will be held through three stages</h1>
@@ -331,7 +332,7 @@
     
         <!-- begin::coaches -->
         <div class="bg-zinc-800 py-10" id="coaches">
-            <div class="md:px-20 px-10">
+            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <h1 class="text-white text-2xl font-bold text-center">Coaches</h1>
                 <div class="flex flex-col md:flex-row justify-around mt-10">
                     <img src="assets/img/Choaches/Choaches1.png" alt="">
@@ -343,7 +344,7 @@
     
         <!-- begin::gallery -->
         <div class="bg-zinc-800 py-10" id="gallery">
-            <div class="md:px-20 px-10">
+            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <h1 class="text-white text-2xl font-bold text-center">Gallery</h1>
                 <div class="mt-10">
                     <div class="flex flex-row gap-7 flex-wrap justify-center">
@@ -366,41 +367,41 @@
         <!-- end::gallery -->
 
         <!-- begin::footer -->
-        <div class="bg-zinc-600 py-10" id="contact">
-            <div class="md:px-20 px-10">
-                <h1 class="text-white text-2xl font-bold">Contact Us</h1>
-                <div class="flex flex-col md:flex-row items-center md:justify-between">
-                    <div class="w-2/3">
+        <div class="bg-black py-5" id="contact">
+            <div class="md:px-20 px-10 mt-5 items-center">
+                <h1 class="text-white text-4xl font-bold">Contact Us</h1>
+                <div class="flex flex-col md:flex-row md:justify-between mt-5 md:h-64">
+                    <div class="md:w-3/5 w-full py-5 md:py-0">
                         <form>
                             <div class="mb-6 flex flex-row gap-4">
-                                <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name">
-                                <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email">
+                                <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Name">
+                                <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Email">
                             </div>
                             <div class="mb-6">
-                            <textarea name="" id="" cols="30" rows="5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Message" ></textarea>
+                                <textarea name="" id="" cols="30" rows="5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Message" ></textarea>
                             </div>
-                            <button type="submit" class="text-white bg-zinc-800 hover:bg-zinc-600 focus:ring-4 focus:outline-none focus:ring-black font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+                            <button type="submit" class="text-white bg-zinc-800 hover:bg-zinc-600 focus:ring-4 focus:outline-none focus:ring-black font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                         </form>
                     </div>
-                    <div class="flex flex-col mt-10 md:mb-32">
+                    <div class="flex flex-col md:mb-32">
                         <div class="md:text-right">
-                            <h1 class="text-white text-xl font-medium">Promo DM or Chat only</h1>
-                            <h1 class="text-white text-xl font-medium">081245690803</h1>
+                            <h1 class="text-white text-lg font-semibold uppercase">Promo DM or Chat only</h1>
+                            <h1 class="text-white text-lg font-semibold">081245690803</h1>
                         </div>
-                        <div class="mt-10">
-                            <h1 class="text-white text-xl font-medium md:text-right">Follow Us</h1>
+                        <div class="md:mt-28">
+                            <h1 class="text-white text-lg font-medium md:text-right mt-10 md:mt-0">Follow Us</h1>
                             <div class="flex flex-row gap-4 mt-3 md:justify-end">
                                 <a href="">
-                                    <img src="assets/img/Ic_SocialMedia/youtube.png" class="w-10" alt="">
+                                    <img src="assets/img/Ic_SocialMedia/youtube.png" class="w-7" alt="">
                                 </a>
                                 <a href="">
-                                    <img src="assets/img/Ic_SocialMedia/facebook.png" class="w-10" alt="">
+                                    <img src="assets/img/Ic_SocialMedia/facebook.png" class="w-7" alt="">
                                 </a>
                                 <a href="">
-                                    <img src="assets/img/Ic_SocialMedia/instagram.png" class="w-10" alt="">
+                                    <img src="assets/img/Ic_SocialMedia/instagram.png" class="w-7" alt="">
                                 </a>
                                 <a href="">
-                                    <img src="assets/img/Ic_SocialMedia/twitter.png" class="w-10" alt="">
+                                    <img src="assets/img/Ic_SocialMedia/twitter.png" class="w-7" alt="">
                                 </a>
                             </div>
                         </div>
@@ -417,7 +418,10 @@
     @livewireScripts
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     <script src="assets/js/tabs.js"></script>
-    <script src="assets/js/register-tabs.js"></script>
 </body>
 </html>
