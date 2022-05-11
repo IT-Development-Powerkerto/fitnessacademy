@@ -27,7 +27,7 @@
                         <a href="#" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">View Course</a>
                     </div>
                     <div class="md:basis-3/6 flex justify-end">
-                        <img src="assets/img/Hero/Academy-Fitness-Plus.png" alt="">
+                        <img src="assets/img/Hero/Academy-Fitness-Plus.png" class="w-5/6" alt="">
                     </div>
                 </div>
             </div>
