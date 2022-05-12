@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class detailCourseController extends Controller
 {
@@ -14,7 +16,13 @@ class detailCourseController extends Controller
      */
     public function index()
     {
-        return view('user.detailCourse');
+        $x = auth()->user();
+        if($x->role_id == 1){
+            return view('user.detailCourse');
+        }
+        else if($x->role_id == 2){
+            return view('trainer.detailCourse');
+        }
     }
 
     /**

@@ -45,7 +45,10 @@
                 </div>
                 <div class="grid grid-cols-6 gap-3 items-center">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">List of Students</h1>
-                    <button type="button" class="text-sm  text-white underline bg-yellow-300 hover:bg-yellow-400 p-2 w-44 md:w-auto rounded-lg" data-modal-toggle="viewStudent">View all students</button>
+                    <button type="button" class="text-sm  text-white underline bg-yellow-300 hover:bg-yellow-400 p-2 w-44 md:w-auto rounded-lg" data-modal-toggle="viewStudent">
+                        <i class="las la-eye"></i>
+                        View all students
+                    </button>
                 </div>
             </div>
             <div class="py-5">
