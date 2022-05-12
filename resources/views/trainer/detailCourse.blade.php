@@ -55,7 +55,7 @@
                     </button>
                 </div>
                 <div class="grid grid-cols-6 gap-3 items-center mt-5">
-                    <button type="button" class="text-sm  text-black bg-yellow-300 hover:bg-yellow-400 p-2 w-44 md:w-auto rounded-lg">
+                    <button type="button" class="text-sm col-span-2 md:col-span-1 text-black bg-yellow-300 hover:bg-yellow-400 p-2 w-32 md:w-auto rounded-lg">
                         <i class="las la-plus"></i>
                         Add Session
                     </button>
