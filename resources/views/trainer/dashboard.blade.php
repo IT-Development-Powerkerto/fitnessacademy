@@ -28,7 +28,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
                 <a href="/detailCourse" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">Nutrisi Dasar I</span>
+                        <span class="text-white font-semibold">Anatomi Dasar I</span>
                         <span class="text-white">Dr. Phaidon Toruan MM</span>                 
                     </div>
                     <i class="las la-angle-right text-white"></i>

@@ -22,7 +22,7 @@
                 <i class="las la-angle-right text-white text-sm px-1"></i>
                 <a href="/detailCourse" class="text-white text-sm hover:text-yellow-300">Detail Course</a> 
             </div>
-            <div class="flex flex-row justify-between gap-4 py-5">
+            <div class="flex flex-row justify-between py-5">
                 <div class="flex flex-row gap-3 items-center">
                     <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
                     <div>
@@ -30,12 +30,12 @@
                         <h1 class="text-white text-sm">Dr. Tanjung Subrata, MRepro, ABAARM</h1>      
                     </div>
                 </div>
-                <div>
-                    <button type="button" class="text-sm hover:text-blue-400 text-red-600 border border-red-600 hover:border-blue-400 p-2 w-44 md:w-auto rounded-lg mr-4">
+                <div class="flex flex-col md:flex-row items-end md:items-center">
+                    <button type="button" class="text-sm hover:text-blue-400 text-red-600 border border-red-600 hover:border-blue-400 p-2 w-32 md:w-auto rounded-lg md:mr-4">
                         <i class="las la-trash-alt"></i>
                         Delete Course
                     </button>
-                    <button type="button" class="text-sm hover:text-blue-400 text-yellow-300 border border-yellow-300 hover:border-blue-400 p-2 w-44 md:w-auto rounded-lg">
+                    <button type="button" class="text-sm hover:text-blue-400 text-yellow-300 border border-yellow-300 hover:border-blue-400 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Course
                     </button>
