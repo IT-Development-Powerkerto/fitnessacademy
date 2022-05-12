@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 
-class detailCourseController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,6 +22,17 @@ class detailCourseController extends Controller
         }
         else if($x->role_id == 2){
             return view('trainer.detailCourse');
+        }
+    }
+
+    public function addCourse()
+    {
+        $x = auth()->user();
+        if($x->role_id == 1){
+            return view('user.addCourse');
+        }
+        else if($x->role_id == 2){
+            return view('trainer.addCourse');
         }
     }
 
