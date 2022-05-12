@@ -124,7 +124,7 @@
                                                         <div>
                                                             <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-teal-100"
                                                                 @click="select(index,$event)">
-                                                                <div x-bind:class="option.selected ? 'border-teal-600' : ''" class="flex w-full items-center border-transparent border-l-2 relative">
+                                                                <div x-bind:class="option.selected ? 'border-teal-600' : ''" class="flex w-full items-center border-transparent border-l-2 px-3 relative">
                                                                     <div class="w-full items-center flex">
                                                                         <div class="leading-6" x-model="option" x-text="option.text"></div>
                                                                     </div>
