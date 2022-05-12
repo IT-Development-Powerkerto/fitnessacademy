@@ -12,14 +12,14 @@
     @livewireStyles
 </head>
 <body>
-    
-    <livewire:user.navbar-user /> 
-    
+
+    <livewire:user.navbar-user />
+
     <div class="bg-zinc-800 p-10">
         <div class="flex flex-row py-5 items-center">
-            <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+            <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
-            <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">My Profile</a> 
+            <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">My Profile</a>
         </div>
         <div>
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
@@ -34,14 +34,14 @@
                     <div class="flex flex-col md:flex-row">
                         <img src="assets/img/Choaches/Tanjung.png" class="w-52 self-center md:justify-items-start" alt="">
                         <div class="flex flex-col py-5 md:py-0 md:px-5">
-                            <h1 class="text-xl text-white font-bold">dr Tanjung Subrata, MRepro, ABAARM</h1>
+                            <h1 class="text-xl text-white font-bold">{{$my->name}}</h1>
                             <h1 class="text-lg text-gray-500 font-semibold flex items-center py-3">
                                 <i class="las la-envelope text-lg pr-2"></i>
-                                tanjung.subrata@gmail.com
+                                {{$my->email}}
                             </h1>
                             <h1 class="text-lg text-gray-500 font-semibold flex items-center">
                                 <i class="las la-phone text-lg pr-2"></i>
-                                08175731999
+                                {{$my->phone}}
                             </h1>
                         </div>
                     </div>
@@ -56,32 +56,32 @@
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Gender</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Male</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->gender}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Age</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">27</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->age}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Work</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Powerkerto Wahyu Keprabon</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->work}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Last Education </h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">S1 Teknik Informatika, IT Telkom Purwokerto</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->education}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Identity Number (NIK)</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">123456789009876654</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->nik}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Address</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Jl. Sana Gang Sini No.007, Purwokerto Tengah, Kabupaten Banyumas, Jawa Tengah, Indonesia</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->address}}</h1>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="flex flex-col">
                         <div class="self-end p-2">
                             <button type="button" class="text-white bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="changePWD">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                             </button>
                         </div>
                         <div class="p-5">
