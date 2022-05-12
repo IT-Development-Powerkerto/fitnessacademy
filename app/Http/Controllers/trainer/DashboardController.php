@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\trainer;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -16,14 +14,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $user = User::all();
-        $x = auth()->user();
-        if($x->role_id == 1){
-            return view('user.dashboard');
-        }
-        else if($x->role_id == 2){
-            return view('trainer.dashboard');
-        }
+        return view("trainer.dashboard");
     }
 
     /**

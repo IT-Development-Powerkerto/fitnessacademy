@@ -110,11 +110,11 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-zinc-900 rounded-b-lg p-3">
                         <h1 class="text-gray-400 text-sm text-center">Discount</h1>
-                        <h1 class="text-yellow-300 text-center font-bold text-2xl">10%</h1>
+                        <h1 class="text-yellow-300 text-center font-bold text-2xl">Rp 2.499.000</h1>
                     </div>
                     <div class="bg-zinc-900 rounded-b-lg p-3">
                         <h1 class="text-gray-400 text-sm text-center">Regular price</h1>
-                        <h1 class="text-yellow-300 text-center font-bold text-2xl">Rp 3.499.000</h1>
+                        <h1 class="text-yellow-300 text-center font-bold text-2xl line-through">Rp 3.499.000</h1>
                     </div>
                 </div>
             </div>

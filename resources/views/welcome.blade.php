@@ -220,7 +220,7 @@
                         </ul>
                         <div id="tab-contents">
                             <div id="academy-one">
-                                <div class="flex flex-row justify-between">
+                                <div class="flex flex-col md:flex-row justify-between">
                                     <div>
                                         <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
                                             <h1 class="text-white font-bold text-xl">Anatomi Dasar I</h1>
@@ -250,7 +250,7 @@
                                 </div>
                             </div>
                             <div id="academy-two" class="hidden">
-                            <div class="flex flex-row justify-between">
+                            <div class="flex flex-col md:flex-row justify-between">
                                     <div>
                                         <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
                                             <h1 class="text-white font-bold text-xl">Anatomi Dasar II</h1>
@@ -347,7 +347,7 @@
             <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <h1 class="text-white text-2xl font-bold text-center">Gallery</h1>
                 <div class="mt-10">
-                    <div class="flex flex-row gap-7 flex-wrap justify-center">
+                    <div class="grid grid-cols-2 md:flex md:flex-row gap-7 flex-wrap justify-center">
                         <img src="assets/img/Gallery/1.png" class="w-60 h-36" alt="">
                         <img src="assets/img/Gallery/2.png" class="w-60 h-36" alt="">
                         <img src="assets/img/Gallery/3.png" class="w-60 h-36" alt="">
