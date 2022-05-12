@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -16,7 +17,13 @@ class DashboardController extends Controller
     public function index()
     {
         $user = User::all();
-        return view('user.dashboard', compact('user'));
+        $x = auth()->user();
+        if($x->role_id == 1){
+            return view('user.dashboard');
+        }
+        else if($x->role_id == 2){
+            return view('trainer.dashboard');
+        }
     }
 
     /**

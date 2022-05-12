@@ -36,6 +36,8 @@ Route::post('/login', [LoginRegisterController::class, 'login'])->name('login.lo
 Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout.logout');
 Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess')->middleware('guest');
 
+// User
+
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 
 Route::resource('/addCourse', addCourseController::class)->middleware('auth');
@@ -46,3 +48,7 @@ Route::resource('/coachProfile', CoachProfileController::class)->middleware('aut
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
+
+
+// Trainer
+
