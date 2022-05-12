@@ -25,16 +25,16 @@ use App\Http\Controllers\user\UserProfileController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('guest');
 
 Route::resource('/error-page', ErrorPageController::class);
 Route::get('/error-page', [ErrorPageController::class, 'index'])->name('error-page');
 
-Route::get('/register', [LoginRegisterController::class, 'index'])->name('register');
+Route::get('/register', [LoginRegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [LoginRegisterController::class, 'store'])->name('register.store');
 Route::post('/login', [LoginRegisterController::class, 'login'])->name('login.login');
 Route::post('/logout', [LoginRegisterController::class, 'logout'])->name('logout.logout');
-Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess');
+Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess'])->name('registerSuccess')->middleware('guest');
 
 // User
 

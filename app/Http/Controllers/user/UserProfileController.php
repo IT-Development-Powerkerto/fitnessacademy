@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserProfileController extends Controller
 {
@@ -14,7 +15,8 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        return view("user.userProfile");
+        $my = User::findOrFail(auth()->user()->id);
+        return view("user.userProfile", compact('my'));
     }
 
     public function editUser()
