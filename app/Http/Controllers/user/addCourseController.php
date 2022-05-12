@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class addCourseController extends Controller
@@ -14,7 +15,13 @@ class addCourseController extends Controller
      */
     public function index()
     {
-        return view('user.addCourse');
+        $x = auth()->user();
+        if($x->role_id == 1){
+            return view('user.addCourse');
+        }
+        else if($x->role_id == 2){
+            return view('trainer.addCourse');
+        }
     }
 
     /**
