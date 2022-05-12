@@ -38,7 +38,7 @@
                         <select id="level" name="level" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Set Level</option>
                             <option value="Level 1">Level 1</option>
-                            <option value="LEvel 2">Level 2</option>
+                            <option value="Level 2">Level 2</option>
                             <option value="Level 3">Level 3</option>
                             <option value="Level 4">Level 4</option>
                             <option value="Level 5">Level 5</option>
