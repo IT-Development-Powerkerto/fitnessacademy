@@ -18,15 +18,15 @@
 </head>
 <body>
 
-    <livewire:trainer.navbar-trainer /> 
+    <livewire:trainer.navbar-trainer />
 
     <!-- begin::AddCourse -->
     <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="flex flex-row items-center pb-10">
-                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/addCourse" class="text-white text-sm hover:text-yellow-300">Create Course</a> 
+                <a href="/addCourse" class="text-white text-sm hover:text-yellow-300">Create Course</a>
             </div>
             <div class="bg-yellow-300 rounded-t-lg p-3">
                 <h1 class="font-semibold">Add Course</h1>
@@ -37,7 +37,7 @@
                         <input type="text" id="course_name" name="course_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Choach/Trainer" required>
+                        <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Choach/Trainer" value="{{auth()->user()->name}}" required>
                     </div>
                     <div class="mb-6">
                         <select id="level" name="level" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -157,9 +157,9 @@
                     <div class="mb-6">
                         <input type="text" id="regular_price" name="regular_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
                     </div>
-                    <div class="mb-6">
+                    {{-- <div class="mb-6">
                         <input type="date" id="period" name="period" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Early Bird Period (dd/mm/yyyy - dd/mm/yyyy)" required>
-                    </div>
+                    </div> --}}
                     <div class="mb-6">
                         <div date-rangepicker class="grid grid-cols-11">
                             <div class="relative col-span-5">
