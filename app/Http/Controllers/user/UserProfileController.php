@@ -5,6 +5,10 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rule;
+use Validator;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class UserProfileController extends Controller
 {
@@ -21,7 +25,8 @@ class UserProfileController extends Controller
 
     public function editUser()
     {
-        return view("user.editUser");
+        $my = User::findOrFail(auth()->user()->id);
+        return view("user.editUser", compact('my'));
     }
 
     /**
@@ -76,7 +81,37 @@ class UserProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($id, 'id')],
+            'gender' => 'required',
+            'age' => 'required',
+            'phone' => 'required',
+            'nik' => 'required',
+            'education' => 'required',
+            'work' => 'required',
+            'address' => 'required',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $user = User::find($id);
+        $user->name = $validated['name'];
+        $user->email = $validated['email'];
+        $user->gender = $validated['gender'];
+        $user->age = $validated['age'];
+        $user->phone = $validated['phone'];
+        $user->nik = $validated['nik'];
+        $user->education = $validated['education'];
+        $user->work = $validated['work'];
+        $user->address = $validated['address'];
+        $user->updated_at = Carbon::now()->toDateTimeString();
+        $user->save();
+
+        return redirect('/userProfile')->with('success', 'Edit Success!');
     }
 
     /**
