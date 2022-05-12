@@ -69,7 +69,7 @@
             <div class=" border-b border-yellow-300 border-2"></div>
 
             <div class="mt-6">
-                <a href="#" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
+                <a href="/detailSession" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
                     <div class="flex flex-col">
                         <span class="font-bold text-black">Session 1 - Pengenalan Anatomi Manusia</span>
                         <span class="text-sm font-semibold text-black">Sunday, 15 May 2022 (09:00 - 12:00)</span>

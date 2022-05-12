@@ -9,6 +9,7 @@ use App\Http\Controllers\ErrorPageController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\addCourseController;
 use App\Http\Controllers\user\detailCourseController;
+use App\Http\Controllers\user\detailSessionController;
 use App\Http\Controllers\user\CoachProfileController;
 use App\Http\Controllers\user\UserProfileController;
 
@@ -44,11 +45,11 @@ Route::resource('/addCourse', addCourseController::class)->middleware('auth');
 
 Route::resource('/detailCourse', detailCourseController::class)->middleware('auth');
 
+Route::resource('/detailSession', detailSessionController::class)->middleware('auth');
+
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
 
-
-// Trainer
 
