@@ -38,11 +38,11 @@
                         <select id="level" name="level" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Set Level</option>
                             <option value="Level 1">Level 1</option>
-                            <option value="LEvel 2">LEvel 2</option>
-                            <option value="LEvel 3">LEvel 3</option>
-                            <option value="LEvel 4">LEvel 4</option>
-                            <option value="LEvel 5">LEvel 5</option>
-                            <option value="LEvel 6">LEvel 6</option>
+                            <option value="LEvel 2">Level 2</option>
+                            <option value="Level 3">Level 3</option>
+                            <option value="Level 4">Level 4</option>
+                            <option value="Level 5">Level 5</option>
+                            <option value="Level 6">Level 6</option>
                         </select>
                     </div>
                     <div class="mb-6">
