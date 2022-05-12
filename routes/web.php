@@ -47,6 +47,7 @@ Route::resource('/detailCourse', CourseController::class)->middleware('auth');
 Route::get('/addCourse', [CourseController::class, 'addCourse'])->name('course.addcourse')->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
+Route::get('/addSession', [SessionController::class, 'addSession'])->name('session.addsession')->middleware('auth');
 
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 
