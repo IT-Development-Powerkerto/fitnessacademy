@@ -116,17 +116,17 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full">
-                                        <div x-show.transition.origin.top="isOpen()" class="absolute shadow top-100 bg-white z-40 w-full lef-0 rounded max-h-select overflow-y-auto svelte-5uyqqj" x-on:click.away="close">
-                                            <div class="flex flex-col w-full">
-                                                <template x-for="(option,index) in options" :key="option">
-                                                    <div>
-                                                        <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-teal-100"
-                                                            @click="select(index,$event)">
-                                                            <div x-bind:class="option.selected ? 'border-teal-600' : ''" class="flex w-full items-center border-transparent border-l-2 relative">
-                                                                <div class="w-full items-center flex">
-                                                                    <div class="leading-6" x-model="option" x-text="option.text"></div>
+                                        <div class="w-full">
+                                            <div x-show.transition.origin.top="isOpen()" class="absolute shadow top-100 bg-white z-40 w-full lef-0 rounded max-h-select overflow-y-auto svelte-5uyqqj" x-on:click.away="close">
+                                                <div class="flex flex-col w-full">
+                                                    <template x-for="(option,index) in options" :key="option">
+                                                        <div>
+                                                            <div class="cursor-pointer w-full border-gray-100 rounded-t border-b hover:bg-teal-100"
+                                                                @click="select(index,$event)">
+                                                                <div x-bind:class="option.selected ? 'border-teal-600' : ''" class="flex w-full items-center border-transparent border-l-2 px-3 relative">
+                                                                    <div class="w-full items-center flex">
+                                                                        <div class="leading-6" x-model="option" x-text="option.text"></div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
