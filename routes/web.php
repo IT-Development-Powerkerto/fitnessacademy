@@ -7,7 +7,6 @@ use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\ErrorPageController;
 // User
 use App\Http\Controllers\user\DashboardController;
-use App\Http\Controllers\user\addCourseController;
 use App\Http\Controllers\user\CourseController;
 use App\Http\Controllers\user\SessionController;
 use App\Http\Controllers\user\CoachProfileController;
@@ -41,10 +40,9 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 
-Route::resource('/addCourse', addCourseController::class)->middleware('auth');
-
-Route::resource('/detailCourse', CourseController::class)->middleware('auth');
+Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
 Route::get('/addCourse', [CourseController::class, 'addCourse'])->name('course.addcourse')->middleware('auth');
+Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
 Route::get('/addSession', [SessionController::class, 'addSession'])->name('session.addsession')->middleware('auth');
