@@ -195,7 +195,8 @@
     @livewireScripts
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
-    <script src="https://unpkg.com/flowbite@1.4.5/dist/datepicker.js"></script>
+    {{-- <script src="https://unpkg.com/flowbite@1.4.5/dist/datepicker.js"></script> --}}
+    <script src="assets/js/flowbite/dist/datepicker.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     <script>
