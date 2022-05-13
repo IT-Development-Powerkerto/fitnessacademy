@@ -89,10 +89,10 @@
             </div>
             <div class="py-5 px-3 bg-black rounded-b-lg">
                 <div class="text-white uppercase font-semibold grid grid-cols-12">
-                    <h1 class="text-left col-span-1">No</h1>
-                    <h1 class="col-span-5">Name</h1>
-                    <h1 class="col-span-4">Course</h1>
-                    <h1 class="text-right col-span-2">Score</h1>
+                    <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
+                    <h1 class="col-span-5 text-sm md:text-md">Name</h1>
+                    <h1 class="col-span-4 text-sm md:text-md">Course</h1>
+                    <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
                 </div>
                 <div class="text-white grid grid-cols-12 pt-5">
                     <h1 class="text-left col-span-1">1</h1>

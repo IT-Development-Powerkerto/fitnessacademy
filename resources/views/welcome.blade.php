@@ -26,7 +26,7 @@
                         <h1 class="text-sm text-gray-300 py-10">We serve you with knowledge to help you increase your skill, competencies to give results to your clients and tobhelp you increase your sales and marketing knowledge to increse your income.</h1>
                         <a href="#" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">View Course</a>
                     </div>
-                    <div class="md:basis-3/6 flex justify-end">
+                    <div class="md:basis-3/6 flex justify-center md:justify-end">
                         <img src="assets/img/Hero/Academy-Fitness-Plus.png" class="w-5/6" alt="">
                     </div>
                 </div>

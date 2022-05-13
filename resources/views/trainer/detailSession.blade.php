@@ -82,9 +82,9 @@
             </div>
             <div class="py-5 px-3 bg-black rounded-b-lg">
                 <div class="text-white uppercase font-semibold grid grid-cols-12">
-                    <h1 class="text-left col-span-1">No</h1>
-                    <h1 class="col-span-9">Name</h1>
-                    <h1 class="text-right col-span-2">Stauts</h1>
+                    <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
+                    <h1 class="col-span-9 text-sm md:text-md">Name</h1>
+                    <h1 class="text-right col-span-2 text-sm md:text-md">Status</h1>
                 </div>
                 <div class="text-white grid grid-cols-12 pt-5">
                     <h1 class="text-left col-span-1">1</h1>
@@ -112,30 +112,40 @@
                     </a>
                 </div>
             </div>
-            <div class="py-5 px-3 bg-black rounded-b-lg">
-                <div class="text-white uppercase font-semibold grid grid-cols-12">
-                    <h1 class="text-left col-span-1">No</h1>
-                    <h1 class="col-span-3">Name</h1>
-                    <h1 class="col-span-2">Component 1</h1>
-                    <h1 class="col-span-2">Component 2</h1>
-                    <h1 class="col-span-2">Component 3</h1>
-                    <h1 class="text-right col-span-2">Final Score</h1>
-                </div>
-                <div class="text-white grid grid-cols-12 pt-5">
-                    <h1 class="text-left col-span-1">1</h1>
-                    <h1 class="col-span-3">Muh Faizal</h1>
-                    <h1 class="col-span-2">100</h1>
-                    <h1 class="col-span-2">100</h1>
-                    <h1 class="col-span-2">100</h1>
-                    <h1 class="text-right col-span-2">100</h1>
-                </div>
-                <div class="text-white grid grid-cols-12 pt-5">
-                    <h1 class="text-left col-span-1">1</h1>
-                    <h1 class="col-span-3">Muh Faizal</h1>
-                    <h1 class="col-span-2">100</h1>
-                    <h1 class="col-span-2">100</h1>
-                    <h1 class="col-span-2">100</h1>
-                    <h1 class="text-right col-span-2">100</h1>
+            <div class="py-5 px-3 bg-black rounded-b-lg overflow-auto">
+                <div class="overflow-x-auto">
+                    <div class="text-white uppercase font-semibold hidden md:grid grid-cols-12 ">
+                        <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
+                        <h1 class="col-span-3 text-sm md:text-md">Name</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Component 1</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Component 2</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Component 3</h1>
+                        <h1 class="text-right col-span-2 text-sm md:text-md">Final Score</h1>
+                    </div>
+                    <div class="text-white uppercase font-semibold grid grid-cols-12 md:hidden">
+                        <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
+                        <h1 class="col-span-3 text-sm md:text-md">Name</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Comp 1</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Comp 2</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Comp 3</h1>
+                        <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
+                    </div>
+                    <div class="text-white grid grid-cols-12 pt-5">
+                        <h1 class="text-left col-span-1">1</h1>
+                        <h1 class="col-span-3">Muh Faizal</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="text-right col-span-2">100</h1>
+                    </div>
+                    <div class="text-white grid grid-cols-12 pt-5">
+                        <h1 class="text-left col-span-1">1</h1>
+                        <h1 class="col-span-3">Muh Faizal</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="text-right col-span-2">100</h1>
+                    </div>
                 </div>
             </div>
         </div>

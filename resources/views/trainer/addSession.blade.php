@@ -129,7 +129,7 @@
                     $(this).slideDown();
                 },
                 hide: function (deleteElement) {
-                    if(confirm('Are you sure you want to delete this element?')) {
+                    if(confirm('Are you sure you want to delete this materi?')) {
                         $(this).slideUp(deleteElement);
                     }
                 },
