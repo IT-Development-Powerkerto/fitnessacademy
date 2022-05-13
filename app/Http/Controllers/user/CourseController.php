@@ -63,8 +63,8 @@ class CourseController extends Controller
             'level'       => 'required',
             'price'       => 'required',
             'bird_price'  => 'required',
-            'start'  => 'required',
-            'end'    => 'required',
+            'start'       => 'required',
+            'end'         => 'required',
         ]);
         if($validator->fails()){
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
