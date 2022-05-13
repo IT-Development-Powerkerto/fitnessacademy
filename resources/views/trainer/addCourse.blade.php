@@ -32,7 +32,8 @@
                 <h1 class="font-semibold">Add Course</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="">
+                <form action="{{route('course.store')}}" method="POST">
+                    @csrf
                     <div class="mb-6">
                         <input type="text" id="course_name" name="course_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>
                     </div>
@@ -50,10 +51,10 @@
                             <option value="Level 6">Level 6</option>
                         </select>
                     </div>
-                    <div class="mb-6">
+                    {{-- <div class="mb-6">
                         <input type="file" id="image" name="image" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Image Trainer" required>
-                    </div>
-                    
+                    </div> --}}
+
                     <select x-cloak id="select">
                         <option value="Senin">Senin</option>
                         <option value="Selasa">Selasa</option>
@@ -65,56 +66,54 @@
                     </select>
                     <div class="mb-6">
                         <div x-data="dropdown()" x-init="loadOptions()" class="w-full flex flex-col items-center mx-auto">
-                            <form>
-                                <input name="values" type="hidden" x-bind:value="selectedValues()">
-                                <div class="inline-block relative w-full">
-                                    <div class="flex flex-col items-center relative">
-                                        <div x-on:click="open" class="w-full  svelte-1l8159u">
-                                            <div class="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
-                                                <div class="flex flex-auto flex-wrap">
-                                                    <template x-for="(option,index) in selected" :key="options[option].value">
-                                                        <div
-                                                            class="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-teal-700 bg-teal-100 border border-teal-300 ">
-                                                            <div class="text-xs font-normal leading-none max-w-full flex-initial x-model= options[option]" x-text="options[option].text"></div>
-                                                                <div class="flex flex-auto flex-row-reverse">
-                                                                <div x-on:click="remove(index,option)">
-                                                                    <svg class="fill-current h-6 w-6 " role="button" viewBox="0 0 20 20">
-                                                                        <path d="M14.348,14.849c-0.469,0.469-1.229,0.469-1.697,0L10,11.819l-2.651,3.029c-0.469,0.469-1.229,0.469-1.697,0
-                                                                            c-0.469-0.469-0.469-1.229,0-1.697l2.758-3.15L5.651,6.849c-0.469-0.469-0.469-1.228,0-1.697s1.228-0.469,1.697,0L10,8.183
-                                                                            l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15
-                                                                            C14.817,13.62,14.817,14.38,14.348,14.849z" 
-                                                                        />
-                                                                    </svg>
-                                                                </div>
+                            <input name="values" type="hidden" x-bind:value="selectedValues()">
+                            <div class="inline-block relative w-full">
+                                <div class="flex flex-col items-center relative">
+                                    <div x-on:click="open" class="w-full  svelte-1l8159u">
+                                        <div class="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
+                                            <div class="flex flex-auto flex-wrap">
+                                                <template x-for="(option,index) in selected" :key="options[option].value">
+                                                    <div
+                                                        class="flex justify-center items-center m-1 font-medium py-1 px-2 rounded-full text-teal-700 bg-teal-100 border border-teal-300 ">
+                                                        <div class="text-xs font-normal leading-none max-w-full flex-initial x-model= options[option]" x-text="options[option].text"></div>
+                                                            <div class="flex flex-auto flex-row-reverse">
+                                                            <div x-on:click="remove(index,option)">
+                                                                <svg class="fill-current h-6 w-6 " role="button" viewBox="0 0 20 20">
+                                                                    <path d="M14.348,14.849c-0.469,0.469-1.229,0.469-1.697,0L10,11.819l-2.651,3.029c-0.469,0.469-1.229,0.469-1.697,0
+                                                                        c-0.469-0.469-0.469-1.229,0-1.697l2.758-3.15L5.651,6.849c-0.469-0.469-0.469-1.228,0-1.697s1.228-0.469,1.697,0L10,8.183
+                                                                        l2.651-3.031c0.469-0.469,1.228-0.469,1.697,0s0.469,1.229,0,1.697l-2.758,3.152l2.758,3.15
+                                                                        C14.817,13.62,14.817,14.38,14.348,14.849z"
+                                                                    />
+                                                                </svg>
                                                             </div>
                                                         </div>
-                                                    </template>
-                                                    <div x-show="selected.length == 0" class="flex-1">
-                                                        <input placeholder="Select a option" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
                                                     </div>
+                                                </template>
+                                                <div x-show="selected.length == 0" class="flex-1">
+                                                    <input placeholder="Select a option" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
                                                 </div>
-                                                <div
-                                                    class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
-                        
-                                                    <button type="button" x-show="isOpen() === true" x-on:click="open"
-                                                        class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
-                                                        <svg version="1.1" class="fill-current h-4 w-4" viewBox="0 0 20 20">
-                                                            <path d="M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0s0.271,0.701,0,0.969l-7.908,7.83
-                                                                c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25
-                                                                L17.418,6.109z" 
-                                                            />
-                                                        </svg>
-                                                    </button>
-                                                    <button type="button" x-show="isOpen() === false" @click="close"
-                                                        class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
-                                                        <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
-                                                            <path d="M2.582,13.891c-0.272,0.268-0.709,0.268-0.979,0s-0.271-0.701,0-0.969l7.908-7.83
-                                                                c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z
-                                                                " 
-                                                            />
-                                                        </svg>
-                                                    </button>
-                                                </div>
+                                            </div>
+                                            <div
+                                                class="text-gray-300 w-8 py-1 pl-2 pr-1 border-l flex items-center border-gray-200 svelte-1l8159u">
+
+                                                <button type="button" x-show="isOpen() === true" x-on:click="open"
+                                                    class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
+                                                    <svg version="1.1" class="fill-current h-4 w-4" viewBox="0 0 20 20">
+                                                        <path d="M17.418,6.109c0.272-0.268,0.709-0.268,0.979,0s0.271,0.701,0,0.969l-7.908,7.83
+                                                            c-0.27,0.268-0.707,0.268-0.979,0l-7.908-7.83c-0.27-0.268-0.27-0.701,0-0.969c0.271-0.268,0.709-0.268,0.979,0L10,13.25
+                                                            L17.418,6.109z"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                                <button type="button" x-show="isOpen() === false" @click="close"
+                                                    class="cursor-pointer w-6 h-6 text-gray-600 outline-none focus:outline-none">
+                                                    <svg class="fill-current h-4 w-4" viewBox="0 0 20 20">
+                                                        <path d="M2.582,13.891c-0.272,0.268-0.709,0.268-0.979,0s-0.271-0.701,0-0.969l7.908-7.83
+                                                            c0.27-0.268,0.707-0.268,0.979,0l7.908,7.83c0.27,0.268,0.27,0.701,0,0.969c-0.271,0.268-0.709,0.268-0.978,0L10,6.75L2.582,13.891z
+                                                            "
+                                                        />
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </div>
                                         <div class="w-full">
@@ -131,13 +130,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </template>
-                                                </div>
+                                                    </div>
+                                                </template>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
@@ -151,11 +150,11 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="regular_price" name="regular_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
+                        <input type="text" id="price" name="price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
                         <h1 class="text-gray-500 text-sm mt-1">Fill in the column if you choose paid</h1>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="regular_price" name="regular_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
+                        <input type="text" id="bird_price" name="bird_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
                     </div>
                     {{-- <div class="mb-6">
                         <input type="date" id="period" name="period" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Early Bird Period (dd/mm/yyyy - dd/mm/yyyy)" required>
@@ -178,10 +177,11 @@
                         </div>
                         <h1 class="text-gray-500 text-sm mt-1">After passing the early bird period, the active price will return to the Regular Price.</h1>
                         <div class="flex flex-row justify-center md:justify-end gap-4 mt-10">
-                            <a href="/userProfile" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
-                            <a href="#" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save Changes</a>
+                            <a href="/dashboard" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
+                            <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save Changes</button>
                         </div>
                     </div>
+                    {{ csrf_field() }}
                 </form>
             </div>
         </div>

@@ -4,8 +4,11 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-
+use Illuminate\Http\Request;use Illuminate\Validation\Rule;
+use Validator;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\Course;
 
 class CourseController extends Controller
 {
@@ -54,7 +57,32 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'course_name' => 'required',
+            'level'       => 'required',
+            'price'       => 'required',
+            'bird_price'  => 'required',
+            'start'  => 'required',
+            'end'    => 'required',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $course = new Course();
+        $course->name       = $validated['course_name'];
+        $course->trainer_id = auth()->user()->id;
+        $course->level      = $validated['level'];
+        $course->schedule   = $request->values;
+        $course->price      = $validated['price'];
+        $course->bird_price = $validated['bird_price'];
+        $course->start_date = $validated['start'];
+        $course->end_date   = $validated['end'];
+        $course->save();
+
+        return redirect('/dashboard')->with('success', 'Create Course Success!');
     }
 
     /**
