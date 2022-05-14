@@ -26,20 +26,24 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                <a href="{{route('course.detail')}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                @foreach ($course1 as $course1)
+                <a href="{{route('course.show', ['course'=>$course1->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">Anatomi Dasar I</span>
-                        <span class="text-white">Dr. Phaidon Toruan MM</span>
+                        <span class="text-white font-semibold">{{$course1->name}} I</span>
+                        <span class="text-white">{{$user->where('id', $course1->trainer_id)->implode('name')}}</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
-                <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                @endforeach
+                @foreach ($course2 as $course2)
+                <a href="{{route('course.show', ['course'=>$course2->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">Nutrisi Dasar II</span>
-                        <span class="text-white">Dr. Phaidon Toruan MM</span>
+                        <span class="text-white font-semibold">{{$course2->name}} II</span>
+                        <span class="text-white">{{$user->where('id', $course2->trainer_id)->implode('name')}}</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
+                @endforeach
             </div>
             <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                 <div class="flex flex-col">

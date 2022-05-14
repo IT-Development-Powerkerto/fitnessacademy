@@ -9,6 +9,7 @@ use Validator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Course;
+use App\Models\User;
 
 class CourseController extends Controller
 {
@@ -93,7 +94,15 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $x = auth()->user();
+        $course = Course::findOrFail($id);
+        $user = User::all();
+        if($x->role_id == 1){
+            return view('user.detailCourse');
+        }
+        else if($x->role_id == 2){
+            return view('trainer.detailCourse', compact('user', 'course'));
+        }
     }
 
     /**

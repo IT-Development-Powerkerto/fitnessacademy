@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Course;
 
 class DashboardController extends Controller
 {
@@ -22,7 +23,9 @@ class DashboardController extends Controller
             return view('user.dashboard');
         }
         else if($x->role_id == 2){
-            return view('trainer.dashboard');
+            $course1 = Course::where('trainer_id', auth()->user()->id)->where('level', 'Level 1')->get();
+            $course2 = Course::where('trainer_id', auth()->user()->id)->where('level', 'Level 2')->get();
+            return view('trainer.dashboard', compact('user', 'course1', 'course2'));
         }
     }
 
