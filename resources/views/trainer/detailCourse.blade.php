@@ -93,11 +93,11 @@
                 <div class="bg-red-500 md:col-span-1 col-span-4 flex items-center justify-center p-5 rounded-l-lg">
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
                 </div>
-                <div class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
+                <a href="/detailExam" class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
                     <h1 class="font-bold text-lg md:text-2xl">Ujian Anatomi Dasar I</h1>
                     <h1 class="font-semibold text-sm py-2">Wednesday, 18 May 2022 (09:00 - 12:00)</h1>
                     <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">https://quizizz.com/admin/quiz/5c67f07b90bd9b001e14c7d6/edmodo</a>
-                </div>
+                </a>
             </div>
 
         </div>

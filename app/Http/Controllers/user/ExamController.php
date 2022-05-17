@@ -21,4 +21,8 @@ class ExamController extends Controller
     {
         return view('trainer.addExam');
     }
+    public function detailExam()
+    {
+        return view('trainer.detailExam');
+    }
 }
