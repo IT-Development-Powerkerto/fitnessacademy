@@ -26,7 +26,7 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                @foreach ($course1 as $course1)
+                @foreach ($course->where('level', 'Level 1') as $course1)
                 <a href="{{route('course.show', ['course'=>$course1->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">{{$course1->name}} I</span>
@@ -35,7 +35,7 @@
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 @endforeach
-                @foreach ($course2 as $course2)
+                @foreach ($course->where('level', 'Level 2') as $course2)
                 <a href="{{route('course.show', ['course'=>$course2->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">{{$course2->name}} II</span>
@@ -62,10 +62,13 @@
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Today Schedule</h1>
             </div>
+            @foreach ($today_course as $today_course)
             <div class="py-5 px-3">
-                <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1>
+                <h1 class="text-white font-semibold">{{$today_course->name}}</h1>
+                <h1 class="text-white">{{ \Carbon\Carbon::parse($today_course->created_at)->format('l, d M Y')}}</h1>
+                {{-- <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1> --}}
             </div>
+            @endforeach
         </div>
     </div>
     <!-- end::Schedule -->

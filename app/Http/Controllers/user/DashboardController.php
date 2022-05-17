@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Course;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -17,15 +18,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $user = User::all();
         $x = auth()->user();
         if($x->role_id == 1){
             return view('user.dashboard');
         }
         else if($x->role_id == 2){
-            $course1 = Course::where('trainer_id', auth()->user()->id)->where('level', 'Level 1')->get();
-            $course2 = Course::where('trainer_id', auth()->user()->id)->where('level', 'Level 2')->get();
-            return view('trainer.dashboard', compact('user', 'course1', 'course2'));
+            $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $today_course = Course::where('trainer_id', auth()->user()->id)->whereDate('created_at', $today)->get();
+            return view('trainer.dashboard', compact('today', 'user', 'course', 'today_course'));
         }
     }
 
