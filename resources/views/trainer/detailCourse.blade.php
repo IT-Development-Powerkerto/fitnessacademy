@@ -59,10 +59,10 @@
                         <i class="las la-plus"></i>
                         Add Session
                     </a>
-                    <button type="button" class="text-sm  text-red-600 bg-white hover:bg-gray-300 p-2 w-44 md:w-auto rounded-lg">
+                    <a href="/addExam" type="button" class="text-sm text-center text-red-600 bg-white hover:bg-gray-300 p-2 w-44 md:w-auto rounded-lg">
                         <i class="las la-plus"></i>
                         Add Exam
-                    </button>
+                    </a>
                 </div>
             </div>
 

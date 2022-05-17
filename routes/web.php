@@ -9,6 +9,7 @@ use App\Http\Controllers\ErrorPageController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\CourseController;
 use App\Http\Controllers\user\SessionController;
+use App\Http\Controllers\user\ExamController;
 use App\Http\Controllers\user\CoachProfileController;
 use App\Http\Controllers\user\UserProfileController;
 
@@ -51,5 +52,7 @@ Route::resource('/coachProfile', CoachProfileController::class)->middleware('aut
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
+
+Route::get('/addExam', [ExamController::class, 'addExam'])->name('Exam.addExam')->middleware('auth');
 
 
