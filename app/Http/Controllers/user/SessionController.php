@@ -21,6 +21,11 @@ class SessionController extends Controller
     {
         return view('trainer.addSession');
     }
+    
+    public function editSession()
+    {
+        return view('trainer.editSession');
+    }
 
     /**
      * Show the form for creating a new resource.

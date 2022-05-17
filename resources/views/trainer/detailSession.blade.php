@@ -33,7 +33,7 @@
                         <i class="las la-trash-alt"></i>
                         Delete Session
                     </a>
-                    <a href="#" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="/editSession" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Session
                     </a>
