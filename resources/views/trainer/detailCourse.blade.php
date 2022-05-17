@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
 
     @livewireStyles
 </head>
+
 <body>
 
     <livewire:trainer.navbar-trainer />
@@ -93,11 +95,13 @@
                 <div class="bg-red-500 md:col-span-1 col-span-4 flex items-center justify-center p-5 rounded-l-lg">
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
                 </div>
-                <a href="/detailExam" class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
-                    <h1 class="font-bold text-lg md:text-2xl">Ujian Anatomi Dasar I</h1>
-                    <h1 class="font-semibold text-sm py-2">Wednesday, 18 May 2022 (09:00 - 12:00)</h1>
-                    <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">https://quizizz.com/admin/quiz/5c67f07b90bd9b001e14c7d6/edmodo</a>
-                </a>
+                <div class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
+                    <a href="/detailExam">
+                        <h1 class="font-bold text-lg md:text-2xl">Ujian Anatomi Dasar I</h1>
+                        <h1 class="font-semibold text-sm py-2">Wednesday, 18 May 2022 (09:00 - 12:00)</h1>
+                        <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">https://quizizz.com/admin/quiz/5c67f07b90bd9b001e14c7d6/edmodo</a>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -115,7 +119,9 @@
                         Anatomi Dasar - Student List
                     </h3>
                     <button type="button" class="text-yellow-300 hover:bg-gray-200 hover:text-gray-900 rounded-full bg-black text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="viewStudent">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
                     </button>
                 </div>
                 <!-- Modal body -->
@@ -154,4 +160,5 @@
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
 </body>
+
 </html>
