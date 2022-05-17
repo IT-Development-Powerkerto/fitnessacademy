@@ -55,6 +55,7 @@ Route::resource('/userProfile', UserProfileController::class)->middleware('auth'
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
 
 Route::get('/addExam', [ExamController::class, 'addExam'])->name('Exam.addExam')->middleware('auth');
+Route::get('/editExam', [ExamController::class, 'editExam'])->name('Exam.editExam')->middleware('auth');
 Route::get('/detailExam', [ExamController::class, 'detailExam'])->name('Exam.detailExam')->middleware('auth');
 
 

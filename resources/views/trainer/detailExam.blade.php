@@ -31,9 +31,9 @@
             <div class="bg-red-500 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold text-white">EXAM - Ujian Anatomi Dasar</h1>
                 <div class="flex md:flex-row flex-col items-end">
-                    <a href="#" class="text-sm text-red-500 bg-white hover:bg-zinc-500 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="/editExam" class="text-sm text-red-500 bg-white hover:bg-zinc-500 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
-                        Edit Session
+                        Edit Exam
                     </a>
                 </div>
             </div>
