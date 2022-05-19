@@ -19,6 +19,7 @@ class DashboardController extends Controller
     public function index()
     {
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
+        $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
         $x = auth()->user();
         if($x->role_id == 1){
@@ -26,8 +27,8 @@ class DashboardController extends Controller
         }
         else if($x->role_id == 2){
             $course = Course::where('trainer_id', auth()->user()->id)->get();
-            $today_course = Course::where('trainer_id', auth()->user()->id)->whereDate('created_at', $today)->get();
-            return view('trainer.dashboard', compact('today', 'user', 'course', 'today_course'));
+            // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
+            return view('trainer.dashboard', compact('today', 'day', 'user', 'course'));
         }
     }
 

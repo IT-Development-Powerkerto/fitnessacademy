@@ -62,12 +62,15 @@
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Today Schedule</h1>
             </div>
-            @foreach ($today_course as $today_course)
+            @foreach ($course as $today_course)
+            {{-- {{dd($day == ".str_replace(',','"||"', $today_course->schedule).")}} --}}
+            @if (($day == ".str_replace(',','"||"', $today_course->schedule).") && ($today >= $today_course->start_date) && ($today <= $today_course->end_date))
             <div class="py-5 px-3">
                 <h1 class="text-white font-semibold">{{$today_course->name}}</h1>
-                <h1 class="text-white">{{ \Carbon\Carbon::parse($today_course->created_at)->format('l, d M Y')}}</h1>
-                {{-- <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1> --}}
+                <h1 class="text-white">{{\Carbon\Carbon::parse($today_course->created_at)->format('l, d M Y')}}</h1>
+                {{-- <h1 class="text-white">{{$day == str_replace(',','"||"', $today_course->schedule)}}</h1> --}}
             </div>
+            @endif
             @endforeach
         </div>
     </div>
