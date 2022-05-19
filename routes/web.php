@@ -9,6 +9,7 @@ use App\Http\Controllers\ErrorPageController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\CourseController;
 use App\Http\Controllers\user\SessionController;
+use App\Http\Controllers\user\ExamController;
 use App\Http\Controllers\user\CoachProfileController;
 use App\Http\Controllers\user\UserProfileController;
 
@@ -46,10 +47,16 @@ Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
 Route::get('/addSession', [SessionController::class, 'addSession'])->name('session.addsession')->middleware('auth');
+Route::get('/editSession', [SessionController::class, 'editSession'])->name('session.editsession')->middleware('auth');
+Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('session.setScoreSession')->middleware('auth');
 
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
+
+Route::get('/addExam', [ExamController::class, 'addExam'])->name('Exam.addExam')->middleware('auth');
+Route::get('/editExam', [ExamController::class, 'editExam'])->name('Exam.editExam')->middleware('auth');
+Route::get('/detailExam', [ExamController::class, 'detailExam'])->name('Exam.detailExam')->middleware('auth');
 
 
