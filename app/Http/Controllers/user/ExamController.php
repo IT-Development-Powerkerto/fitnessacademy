@@ -29,4 +29,8 @@ class ExamController extends Controller
     {
         return view('trainer.detailExam');
     }
+    public function setScore()
+    {
+        return view('trainer.setScoreExam');
+    }
 }
