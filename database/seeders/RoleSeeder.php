@@ -22,6 +22,9 @@ class RoleSeeder extends Seeder
             [
                 'role_name'  => 'Trainer',
             ],
+            [
+                'role_name'  => 'Admin',
+            ],
         ];
 
         DB::table('roles')->insert($role);
