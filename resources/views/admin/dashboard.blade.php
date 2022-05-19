@@ -16,7 +16,7 @@
 
     <livewire:admin.navbar />
 
-    <div class="py-10 bg-zinc-800 h-screen">
+    <div class="py-10 bg-zinc-800">
         <div class="px-10">
 
             {{-- beggin::TrainerApproval --}}
@@ -44,9 +44,9 @@
                                 <td class="px-3 py-4">0813273122123</td>
                                 <td class="px-3 py-4">Male</td>
                                 <td class="px-3 py-4">
-                                    <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                                    <button id="dropdownDefault" data-dropdown-toggle="dropdownTrainerApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                     <!-- Dropdown menu -->
-                                    <div id="dropdownCourseApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+                                    <div id="dropdownTrainerApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
                                         <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
                                             <li>
                                                 <a href="#" class="block px-4 py-2 text-white hover:bg-gray-100">View</a>
@@ -72,7 +72,7 @@
                 <div class="bg-yellow-300 rounded-t-lg p-3">
                     <h1 class="font-semibold">Course Approval</h1>
                 </div>
-                <div class="bg-black rounded-b-lg relative overflow-x-auto">
+                <div class="bg-black rounded-b-lg relative overflow-auto max-h-80">
                     <table class="w-full text-left">
                         <thead class="text-gray-500">
                             <tr class="whitespace-nowrap">
@@ -120,9 +120,9 @@
                                     {{-- end::modal --}}
                                 </td>
                                 <td class="px-3 py-4">
-                                    <button id="dropdownDefault" data-dropdown-toggle="dropdownTrainerApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                                    <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                     <!-- Dropdown menu -->
-                                    <div id="dropdownTrainerApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+                                    <div id="dropdownCourseApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
                                         <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
                                             <li>
                                                 <a href="#" class="block px-4 py-2 text-white hover:bg-gray-100">View</a>
@@ -142,6 +142,85 @@
                 </div>
             </div>
             {{-- end::CourseApproval --}}
+
+            {{-- beggin::Student --}}
+            <div class="py-10">
+                <div class="bg-yellow-300 rounded-t-lg p-3">
+                    <h1 class="font-semibold">Student</h1>
+                </div>
+                <div class="bg-black rounded-b-lg relative overflow-auto max-h-80">
+                    <table class="w-full text-left">
+                        <thead class="text-gray-500">
+                            <tr class="whitespace-nowrap">
+                                <th scope="col" class="px-3 py-3">No</th>
+                                <th scope="col" class="px-3 py-3">Name</th>
+                                <th scope="col" class="px-3 py-3">Email</th>
+                                <th scope="col" class="px-3 py-3">Phone</th>
+                                <th scope="col" class="px-3 py-3">Gender</th>
+                                <th scope="col" class="px-3 py-3">Age</th>
+                                <th scope="col" class="px-3 py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white">
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4">1</td>
+                                <td class="px-3 py-4">James Donin</td>
+                                <td class="px-3 py-4">Donin@gmail.com</td>
+                                <td class="px-3 py-4">0816276122123</td>
+                                <td class="px-3 py-4">Male</td>
+                                <td class="px-3 py-4">28</td>
+                                <td class="px-3 py-4">
+                                    <button id="dropdownDefault" data-dropdown-toggle="dropdownStudent" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                                    <!-- Dropdown menu -->
+                                    <div id="dropdownStudent" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+                                        <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 text-white hover:bg-gray-100">View</a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block px-4 py-2 text-white hover:bg-gray-100">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{-- end::Student --}}
+
+            {{-- beggin::Course --}}
+            <div class="py-10">
+                <div class="bg-yellow-300 rounded-t-lg p-3">
+                    <h1 class="font-semibold">Course</h1>
+                </div>
+                <div class="bg-black rounded-b-lg relative overflow-auto max-h-80">
+                    <table class="w-full text-left">
+                        <thead class="text-gray-500">
+                            <tr class="whitespace-nowrap">
+                                <th scope="col" class="px-3 py-3">Course Name</th>
+                                <th scope="col" class="px-3 py-3">Level</th>
+                                <th scope="col" class="px-3 py-3">Trainer</th>
+                                <th scope="col" class="px-3 py-3">Total Student</th>
+                                <th scope="col" class="px-3 py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white">
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4">Dasar Anatomi I</td>
+                                <td class="px-3 py-4">I</td>
+                                <td class="px-3 py-4">Dr. Tanjung Subrata, Mrepo, ABAARM</td>
+                                <td class="px-3 py-4">30</td>
+                                <td class="px-3 py-4">
+                                    <a href="#" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-gray-400 text-center px-5 py-2">View</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            {{-- end::Course --}}
 
         </div>
     </div>

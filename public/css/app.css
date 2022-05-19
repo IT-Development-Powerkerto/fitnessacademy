@@ -1020,6 +1020,12 @@ input:checked + .toggle-bg {
 .h-64 {
   height: 16rem;
 }
+.h-72 {
+  height: 18rem;
+}
+.max-h-80 {
+  max-height: 20rem;
+}
 .w-64 {
   width: 16rem;
 }
@@ -2407,6 +2413,11 @@ input:checked + .toggle-bg {
   .md\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .md\:font-medium {
