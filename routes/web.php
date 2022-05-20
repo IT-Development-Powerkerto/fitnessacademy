@@ -43,6 +43,7 @@ Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
 Route::get('/addCourse', [CourseController::class, 'addCourse'])->name('course.addcourse')->middleware('auth');
+Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editcourse')->middleware('auth');
 Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
