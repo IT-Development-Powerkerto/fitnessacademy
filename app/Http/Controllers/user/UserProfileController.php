@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
@@ -20,7 +21,16 @@ class UserProfileController extends Controller
     public function index()
     {
         $my = User::findOrFail(auth()->user()->id);
-        return view("user.userProfile", compact('my'));
+        $x = auth()->user();
+        if($x->role_id == 1){
+            return view('user.userProfile', compact('my'));
+        }
+        else if($x->role_id == 2){
+            return view('user.userProfile', compact('my'));
+        }
+        else if($x->role_id == 3) {
+            return view('admin.overviewTrainer', compact('my'));
+        }
     }
 
     public function editUser()
