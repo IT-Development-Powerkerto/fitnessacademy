@@ -33,4 +33,8 @@ class ExamController extends Controller
     {
         return view('trainer.setScoreExam');
     }
+    public function addScore()
+    {
+        return view('trainer.addScoreExam');
+    }
 }

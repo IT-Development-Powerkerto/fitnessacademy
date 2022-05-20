@@ -43,6 +43,7 @@ Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
 Route::get('/addCourse', [CourseController::class, 'addCourse'])->name('course.addcourse')->middleware('auth');
+Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editcourse')->middleware('auth');
 Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
@@ -60,5 +61,6 @@ Route::get('/detailExam', [ExamController::class, 'detailExam'])->name('Exam.det
 Route::get('/addExam', [ExamController::class, 'addExam'])->name('Exam.addExam')->middleware('auth');
 Route::get('/editExam', [ExamController::class, 'editExam'])->name('Exam.editExam')->middleware('auth');
 Route::get('/setScoreExam', [ExamController::class, 'setScore'])->name('Exam.setScoreExam')->middleware('auth');
+Route::get('/addScoreExam', [ExamController::class, 'addScore'])->name('Exam.addScoreExam')->middleware('auth');
 
 
