@@ -34,7 +34,7 @@
                 <h1 class="font-semibold">Edit Course</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="{{route('course.store')}}" method="POST">
+                <form action="#" method="POST">
                     @csrf
                     <div class="mb-6">
                         <input type="text" id="course_name" name="course_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>

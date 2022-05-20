@@ -37,10 +37,10 @@
                         <i class="las la-trash-alt"></i>
                         Delete Course
                     </button>
-                    <button type="button" class="text-sm hover:text-blue-400 text-yellow-300 border border-yellow-300 hover:border-blue-400 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="/editCourse" type="button" class="text-sm hover:text-blue-400 text-yellow-300 border border-yellow-300 hover:border-blue-400 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Course
-                    </button>
+                    </a>
                 </div>
             </div>
             <div class=" border-b border-yellow-300 border-2"></div>
