@@ -24,10 +24,10 @@
                 </div>
                 <ul class="py-1 bg-black" aria-labelledby="dropdown">
                     <li>
-                        <a href="/userProfile" class="block py-2 px-4 text-sm text-white hover:bg-gray-100 text-center">My Profile</a>
+                        <a href="/userProfile" class="block py-2 px-4 text-sm text-white hover:text-gray-100">My Profile</a>
                     </li>
                     <li>
-                        <button type="button" class="block py-2 px-4 text-sm text-white hover:bg-gray-100 w-full" data-modal-toggle="logout">Logout</button>
+                        <button type="button" class="block py-2 px-4 text-sm text-white hover:text-gray-100" data-modal-toggle="logout">Logout</button>
                     </li>
                 </ul>
             </div>
