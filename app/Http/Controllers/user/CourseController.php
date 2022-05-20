@@ -27,6 +27,9 @@ class CourseController extends Controller
         else if($x->role_id == 2){
             return view('trainer.detailCourse');
         }
+        else if($x->role_id == 3){
+            return view('admin.overviewCourse');
+        }
     }
 
     public function addCourse()

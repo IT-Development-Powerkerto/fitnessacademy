@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Overview Trainer</title>
+    <title>Overview Course</title>
     <link rel="icon" href="assets/img/logo.png">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -19,11 +19,11 @@
         <div class="flex flex-row py-5 items-center">
             <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
-            <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">Overview Trainer Approval</a>
+            <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">Overview Course Approval</a>
         </div>
         <div>
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
-                <h1 class="font-semibold">Overview Trainer Approval</h1>
+                <h1 class="font-semibold">Overview Course Approval</h1>
                 <div class="flex justify-end md:block">
                     <button type="button" data-modal-toggle="Reject" class="bg-red-600 text-white items-center rounded-lg p-2 mr-3">
                         <i class="las la-times pr-2"></i>
@@ -43,7 +43,7 @@
                                 <form>
                                     <div class="p-6 text-center">
                                         <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this trainer ?</h3>
+                                        <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this course ?</h3>
                                         <button data-modal-toggle="Approve" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                             Yes, I'm sure
                                         </button>
@@ -64,7 +64,7 @@
                                 <form>
                                     <div class="p-6 text-center">
                                         <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                        <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to reject this trainer ?</h3>
+                                        <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to reject this course ?</h3>
                                         <button data-modal-toggle="Reject" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                             Yes, I'm sure
                                         </button>
@@ -78,58 +78,57 @@
                 </div>
             </div>
             <div class="bg-black">
-                <div class="flex flex-col md:flex-row justify-between p-5">
-                    <div class="flex flex-col md:flex-row">
-                        <img src="assets/img/Choaches/Tanjung.png" class="w-52 self-center md:justify-items-start" alt="">
-                        <div class="flex flex-col py-5 md:py-0 md:px-5">
-                            <h1 class="text-xl text-white font-bold">{{$my->name}}</h1>
-                            <h1 class="text-lg text-gray-500 font-semibold flex items-center py-3">
-                                <i class="las la-envelope text-lg pr-2"></i>
-                                {{$my->email}}
-                            </h1>
-                            <h1 class="text-lg text-gray-500 font-semibold flex items-center">
-                                <i class="las la-phone text-lg pr-2"></i>
-                                {{$my->phone}}
-                            </h1>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex flex-row items-center gap-2">
-                            <i class="las la-user-shield text-gray-500"></i>
-                            <button type="button" data-modal-toggle="changePWD" class="text-gray-500 underline">Change Password</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="p-5">
-                    <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Gender</h1>
-                        <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->gender}}</h1>
+                    <h1 class="text-white text-xl font-semibold mb-6">Detail Transaction</h1>
+                    <div class="grid grid-cols-12 mb-6">
+                        <h1 class="col-span-3 md:col-span-3 text-gray-500">Name</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">Mira Philips</h1>
                     </div>
-                    <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Age</h1>
-                        <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->age}}</h1>
+                    <div class="grid grid-cols-12 mb-6">
+                        <h1 class="col-span-3 md:col-span-3 text-gray-500">Date</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">13/05/2022</h1>
                     </div>
-                    <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Work</h1>
-                        <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->work}}</h1>
+                    <div class="grid grid-cols-12 mb-6">
+                        <h1 class="col-span-3 md:col-span-3 text-gray-500">Course</h1>
+                        <div class="col-span-4 md:col-span-2 text-white">
+                            <ul class="list-disc text-white text-sm md:text-base text-left ml-5 ">
+                                <li>Anatomi I</li>
+                                <li>Anatomi II</li>
+                                <li>Nutrisi I</li>
+                                <li>Nutrisi II</li>
+                                <li>Level III</li>
+                            </ul>
+                        </div>
+                        <div class="col-span-2 md:col-span-1">
+                            <ul class="text-yellow-300 text-sm md:text-base text-right">
+                                <li>Rp</li>
+                                <li>Rp</li>
+                                <li>Rp</li>
+                                <li>Rp</li>
+                                <li>Rp</li>
+                            </ul>
+                        </div>
+                        <div class="col-span-3 md:col-span-1">
+                            <ul class="text-yellow-300 text-sm md:text-base text-right">
+                                <li>0</li>
+                                <li>499.000</li>
+                                <li>0</li>
+                                <li>499.000</li>
+                                <li>2.999.000</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Last Education </h1>
-                        <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->education}}</h1>
+                    <div class="grid grid-cols-12 mb-6">
+                        <h1 class="col-span-3 md:col-span-3 text-gray-500">Total Bill</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">Rp. 3.997.000</h1>
                     </div>
-                    <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Identity Number (NIK)</h1>
-                        <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->nik}}</h1>
+                    <div class="grid grid-cols-12 mb-6">
+                        <h1 class="col-span-3 md:col-span-3 text-gray-500">Status</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">Waiting For Confirmation</h1>
                     </div>
-                    <div class="grid grid-cols-12 mb-2">
-                        <h1 class="col-span-3 md:col-span-2 text-white">Address</h1>
-                        <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->address}}</h1>
+                    <div class="grid grid-cols-12 mb-6">
+                        <h1 class="col-span-3 md:col-span-3 text-gray-500">Evidence of Transfer</h1>
+                        <img src="assets/img/login.png" class="col-span-8 md:col-span-9 rounded-lg w-64 h-64" alt="">
                     </div>
                 </div>
             </div>
