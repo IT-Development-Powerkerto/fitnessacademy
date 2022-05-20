@@ -21,16 +21,7 @@ class UserProfileController extends Controller
     public function index()
     {
         $my = User::findOrFail(auth()->user()->id);
-        $x = auth()->user();
-        if($x->role_id == 1){
-            return view('user.userProfile', compact('my'));
-        }
-        else if($x->role_id == 2){
-            return view('user.userProfile', compact('my'));
-        }
-        else if($x->role_id == 3) {
-            return view('admin.overviewTrainer', compact('my'));
-        }
+        return view('user.userProfile', compact('my'));
     }
 
     public function overviewStudent()
