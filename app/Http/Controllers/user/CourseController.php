@@ -32,6 +32,11 @@ class CourseController extends Controller
         }
     }
 
+    public function detailOvervieweCourse()
+    {
+        return view('admin.detailOverviewCourse');
+    }
+
     public function addCourse()
     {
         $x = auth()->user();

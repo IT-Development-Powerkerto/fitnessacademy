@@ -320,7 +320,7 @@
                                 <td class="px-3 py-4">Dr. Tanjung Subrata, Mrepo, ABAARM</td>
                                 <td class="px-3 py-4">30</td>
                                 <td class="px-3 py-4 flex justify-end">
-                                    <a href="#" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
+                                    <a href="/detailOvervieweCourse" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
                                 </td>
                             </tr>
                         </tbody>
