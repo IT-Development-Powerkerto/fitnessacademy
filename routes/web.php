@@ -56,6 +56,7 @@ Route::resource('/coachProfile', CoachProfileController::class)->middleware('aut
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
+Route::get('/overviewStudent', [UserProfileController::class, 'overviewStudent'])->name('overviewStudent')->middleware('auth');
 
 Route::get('/detailExam', [ExamController::class, 'detailExam'])->name('Exam.detailExam')->middleware('auth');
 Route::get('/addExam', [ExamController::class, 'addExam'])->name('Exam.addExam')->middleware('auth');

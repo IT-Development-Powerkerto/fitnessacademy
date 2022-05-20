@@ -120,7 +120,7 @@
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Total Bill</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Rp. 3.997.000</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-yellow-300">Rp. 3.997.000</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Status</h1>

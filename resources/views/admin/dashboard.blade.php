@@ -261,7 +261,7 @@
                                     <div id="dropdownStudent" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
                                         <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
                                             <li>
-                                                <a href="#" class="block px-4 py-2 text-white">View</a>
+                                                <a href="/overviewStudent" class="block px-4 py-2 text-white">View</a>
                                             </li>
                                             <li>
                                                 <button type="button" data-modal-toggle="DeleteStudent" class="block px-4 py-2 text-white">Delete</button>

@@ -33,6 +33,11 @@ class UserProfileController extends Controller
         }
     }
 
+    public function overviewStudent()
+    {
+        return view('admin.overviewStudent');
+    }
+
     public function editUser()
     {
         $my = User::findOrFail(auth()->user()->id);
