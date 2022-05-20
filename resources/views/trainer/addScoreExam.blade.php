@@ -54,22 +54,22 @@
                             <td class="px-3 py-4">1</td>
                             <td class="px-3 py-4">Craig Culhane</td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" required>
+                                <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" value="0" required>
                             </td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c2" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" required>
+                                <input type="number" id="c2" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" value="0" required>
                             </td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" required>
+                                <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" value="0" required>
                             </td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" readonly>
+                                <input type="number" id="total" name="total" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" readonly>
                             </td>
                             <td class="px-3 py-4">
-                                <div class="bg-slate-200">Graduated</div>
+                                <div id="status" class="bg-slate-200"></div>
                             </td>
                         </tr>
-                        <tr class="whitespace-nowrap">
+                        <!-- <tr class="whitespace-nowrap">
                             <td class="px-3 py-4">2</td>
                             <td class="px-3 py-4">Craig Culhane</td>
                             <td class="px-3 py-4">
@@ -106,7 +106,7 @@
                             <td class="px-3 py-4">
                                 <div class="bg-slate-200">-</div>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
 
@@ -151,6 +151,24 @@
                 },
                 isFirstItemUndeletable: true
             })
+        });
+    </script>
+    <script>
+        $(function() {
+            $('#c1, #c2, #c3, #total').change(function() {
+                var c1 = $('#c1').val();
+                var c2 = $('#c2').val();
+                var c3 = $('#c3').val();
+                var total = (parseInt(c1) + parseInt(c2) + parseInt(c3)) / 3;
+                console.log(total);
+
+                $('#total').val(total);
+                if (total == 0) {
+                    $('#status').text('-');
+                } else {
+                    $('#status').text('Graduated');
+                }
+            });
         });
     </script>
 </body>
