@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
 
     @livewireStyles
 </head>
+
 <body>
 
     <livewire:user.navbar-user />
@@ -32,7 +34,8 @@
                     <form action="{{route('userProfile.update',['userProfile'=>$my->id])}}" method="POST" class="flex flex-col px-10">
                         @csrf
                         @method('PATCH')
-                        <img src="assets/img/Choaches/Tanjung.png" class="w-52 rounded-lg flex self-center py-10" alt="">
+                        <a href="#" class="flex self-center py-10"><img id="coverPreview" src="assets/img/Choaches/Tanjung.png" class="w-52 h-52 rounded-lg" alt=""></a>
+                        <input type="file" id="cover" style="display: none;" />
                         <div class="flex flex-row gap-4">
                             <div class="w-full">
                                 <div class="mb-6">
@@ -86,6 +89,21 @@
     @livewireScripts
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
+    <script>
+        let coverPreview = document.getElementById('coverPreview');
+        let cover = document.getElementById('cover');
 
+        coverPreview.addEventListener('click', _ => cover.click());
+
+        cover.addEventListener("change", _ => {
+            let file = cover.files[0];
+            let reader = new FileReader();
+            reader.onload = function() {
+                coverPreview.src = reader.result;
+            }
+            reader.readAsDataURL(file);
+        });
+    </script>
 </body>
+
 </html>
