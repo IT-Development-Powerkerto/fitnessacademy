@@ -4,6 +4,13 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Course;
+use App\Models\Exam;
+use App\Models\Materi;
+use App\Models\Session;
 
 class SessionController extends Controller
 {
@@ -17,16 +24,18 @@ class SessionController extends Controller
         return view('trainer.detailSession');
     }
 
-    public function addSession()
+    public function addSession($id)
     {
-        return view('trainer.addSession');
+        $course_id = Course::find($id);
+
+        return view('trainer.addSession', compact('course_id'));
     }
-    
+
     public function editSession()
     {
         return view('trainer.editSession');
     }
-    
+
     public function setScore()
     {
         return view('trainer.setScoreSession');
@@ -55,6 +64,49 @@ class SessionController extends Controller
     public function store(Request $request)
     {
         //
+        // dd(Carbon::create($request->date_session)->toDateString());
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'course_id' => '',
+            'name' => 'required',
+            'day' => '',
+            'date_session' => '',
+            'time_session' => '',
+            'group_a'=>'',
+
+            'link_session' => '',
+            'link_assignment' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $session = new Session();
+        $session->course_id = $request->course_id;
+        $session->name = $validated['name'];
+        $session->day = $request->day;
+        $session->date_session = Carbon::create($request->date_session)->toDateString();
+        $session->time_session = $request->time_session;
+
+        $session->link_session  = $request->link_session;
+        $session->link_assignment = $request->link_assignmen;
+
+        $session->save();
+
+        foreach ($request->group_a as $value) {
+            $materi = new Materi();
+            $materi->session_id = $session->id;
+            $materi->file =$value['file'];
+
+            $materi->save();
+        }
+        $materi->save();
+
+        $course_id = $request->course_id;
+        // return $session;
+
+        return redirect()->route('course.show',['course'=>$course_id]);
     }
 
     /**

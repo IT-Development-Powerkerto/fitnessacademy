@@ -104,12 +104,13 @@ class CourseController extends Controller
     {
         $x = auth()->user();
         $course = Course::findOrFail($id);
+        $course_id = $id;
         $user = User::all();
         if($x->role_id == 1){
             return view('user.detailCourse');
         }
         else if($x->role_id == 2){
-            return view('trainer.detailCourse', compact('user', 'course'));
+            return view('trainer.detailCourse', compact('user', 'course', 'course_id'));
         }
     }
 

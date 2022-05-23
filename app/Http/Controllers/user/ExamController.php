@@ -4,7 +4,11 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Course;
+use App\Models\Exam;
 class ExamController extends Controller
 {
     /**
@@ -19,7 +23,7 @@ class ExamController extends Controller
     }
     public function addExam()
     {
-        return view('trainer.addExam');
+        return view('trainer.addExam')->with('success', 'Create Course Success!');
     }
     public function editExam()
     {

@@ -57,7 +57,7 @@
                     </button>
                 </div>
                 <div class="grid grid-cols-6 gap-3 items-center mt-5">
-                    <a href="/addSession" type="button" class="text-sm text-center col-span-2 md:col-span-1 text-black bg-yellow-300 hover:bg-yellow-400 p-2 w-32 md:w-auto rounded-lg">
+                    <a href="{{ route ('addSession.addsession', ['id'=>$course_id]) }}" type="button" class="text-sm text-center col-span-2 md:col-span-1 text-black bg-yellow-300 hover:bg-yellow-400 p-2 w-32 md:w-auto rounded-lg">
                         <i class="las la-plus"></i>
                         Add Session
                     </a>

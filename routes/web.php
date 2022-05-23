@@ -48,10 +48,12 @@ Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editc
 Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
-Route::get('/addSession', [SessionController::class, 'addSession'])->name('session.addsession')->middleware('auth');
+Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
 Route::get('/editSession', [SessionController::class, 'editSession'])->name('session.editsession')->middleware('auth');
 Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('session.setScoreSession')->middleware('auth');
 Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
+
+Route::post('/session', [SessionController::class, 'store'])->name('session.store');
 
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 

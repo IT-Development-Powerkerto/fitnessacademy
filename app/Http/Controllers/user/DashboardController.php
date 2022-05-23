@@ -27,6 +27,7 @@ class DashboardController extends Controller
         }
         else if($x->role_id == 2){
             $course = Course::where('trainer_id', auth()->user()->id)->get();
+            // dd($course);
             // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
             return view('trainer.dashboard', compact('today', 'day', 'user', 'course'));
         }

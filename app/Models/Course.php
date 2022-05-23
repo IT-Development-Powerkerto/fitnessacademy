@@ -21,4 +21,19 @@ class Course extends Model
         'start_date',
         'end_date',
     ];
+
+    /**
+     * Get the user associated with the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function session()
+    {
+        return $this->hasOne(Session::class);
+    }
+
+    public function exam()
+    {
+        return $this->hasMany(Exam::class);
+    }
 }

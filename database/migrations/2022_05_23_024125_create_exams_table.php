@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('exams', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('name');
-            $table->integer('trainer_id');
-            $table->string('level');
-            $table->string('schedule');
-            $table->integer('price')->nullable();
-            $table->integer('bird_price')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('date');
+            $table->time('time');
+            $table->string('condition');
+            $table->string('link');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('exams');
     }
 };

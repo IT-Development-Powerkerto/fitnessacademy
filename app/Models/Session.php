@@ -11,14 +11,32 @@ class Session extends Model
     protected $table = 'sessions';
     // protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'course_id',
-        'name',
-        'day',
-        'date',
-        'start_time',
-        'end_time',
-        'link_session',
-        'link_assignment',
-    ];
+    // protected $fillable = [
+    //     'course_id',
+    //     'name',
+    //     'day',
+    //     'date_session',
+    //     'time_session',
+    //     // 'start_time',
+    //     // 'end_time',
+    //     // 'schedule',
+    //     'image',
+    //     'link_session',
+    //     'link_assignment',
+    // ];
+
+    /**
+     * Get the user that owns the Session
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function materi()
+    {
+        return $this->hasOne(Materi::class);
+    }
 }
