@@ -10,6 +10,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Course;
 use App\Models\User;
+use App\Models\Session;
+use App\Models\Exam;
 
 class CourseController extends Controller
 {
@@ -106,11 +108,13 @@ class CourseController extends Controller
         $course = Course::findOrFail($id);
         $course_id = $id;
         $user = User::all();
+        $sessions = Session::where('course_id', $course->id)->get();
+        $exams = Exam::where('course_id', $course->id)->get();
         if($x->role_id == 1){
             return view('user.detailCourse');
         }
         else if($x->role_id == 2){
-            return view('trainer.detailCourse', compact('user', 'course', 'course_id'));
+            return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams'));
         }
     }
 

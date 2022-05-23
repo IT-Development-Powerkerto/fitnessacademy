@@ -21,9 +21,11 @@ class ExamController extends Controller
     {
         // return view('trainer.addExam');
     }
-    public function addExam()
+    public function addExam($id)
     {
-        return view('trainer.addExam')->with('success', 'Create Course Success!');
+        $course_id = Course::find($id);
+
+        return view('trainer.addExam', compact('course_id'))->with('success', 'Create Course Success!');
     }
     public function editExam()
     {
@@ -40,5 +42,39 @@ class ExamController extends Controller
     public function addScore()
     {
         return view('trainer.addScoreExam');
+    }
+
+    public function store(Request $request)
+    {
+        //
+        // dd(Carbon::create($request->date_session)->toDateString());
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'course_id' => '',
+            'name' => 'required',
+            'date_exam' => '',
+            'start_time'=>'',
+            'finish_time'=>'',
+            'link' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $exam = new Exam();
+        $exam->course_id = $request->course_id;
+        $exam->name = $validated['name'];
+        $exam->date_exam = Carbon::create($request->date_session)->toDateString();
+        $exam->start_time = $request->start_time;
+        $exam->finish_time = $request->finish_time;
+        $exam->link = $request->link;
+
+        $exam->save();
+
+        $course_id = $request->course_id;
+        // return $session;
+
+        return redirect()->route('course.show',['course'=>$course_id]);
     }
 }

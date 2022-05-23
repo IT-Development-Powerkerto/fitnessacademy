@@ -62,9 +62,9 @@ Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editU
 Route::get('/overviewStudent', [UserProfileController::class, 'overviewStudent'])->name('overviewStudent')->middleware('auth');
 
 Route::get('/detailExam', [ExamController::class, 'detailExam'])->name('Exam.detailExam')->middleware('auth');
-Route::get('/addExam', [ExamController::class, 'addExam'])->name('Exam.addExam')->middleware('auth');
+Route::get('/addExam/{id}', [ExamController::class, 'addExam'])->name('addExam.addExam')->middleware('auth');
 Route::get('/editExam', [ExamController::class, 'editExam'])->name('Exam.editExam')->middleware('auth');
 Route::get('/setScoreExam', [ExamController::class, 'setScore'])->name('Exam.setScoreExam')->middleware('auth');
 Route::get('/addScoreExam', [ExamController::class, 'addScore'])->name('Exam.addScoreExam')->middleware('auth');
 
-
+Route::post('/exam', [ExamController::class, 'store'])->name('exam.store')->middleware('auth');

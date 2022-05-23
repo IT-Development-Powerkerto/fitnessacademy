@@ -17,52 +17,56 @@
 </head>
 <body>
 
-    <livewire:trainer.navbar-trainer /> 
+    <livewire:trainer.navbar-trainer />
 
     <!-- begin::AddCourse -->
     <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="flex flex-row items-center pb-10">
-                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/detailCourse" class="text-white text-sm hover:text-yellow-300">Detail Course</a> 
+                <a href="/detailCourse" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/addSession" class="text-white text-sm hover:text-yellow-300">Add Exam</a> 
+                <a href="/addSession" class="text-white text-sm hover:text-yellow-300">Add Exam</a>
             </div>
             <div class="bg-yellow-300 rounded-t-lg p-3">
                 <h1 class="font-semibold">Add Exam</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="">
+                {{-- <form action=""> --}}
+                <form method="POST" action="{{ route('exam.store') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-6">
-                        <input type="text" id="exam_name" name="exam_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Exam Name" required>
+                        <input type="text" id="name" name="name" value="{{old('name')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Exam Name" required>
                     </div>
                     <div class="mb-6">
                         <div class="relative">
-                            <input datepicker type="text" name="date" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Schedule ( DD/MM/YYYY )">
+                            <input datepicker type="text" name="date_exam" id="date_exam" value="{{old('date_exam')}}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Schedule ( DD/MM/YYYY )">
                             <div class="absolute inset-y-0 left-0 flex items-center justify-end w-full pointer-events-none pr-2.5">
                                 <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-6">
-                        <input type="time" id="time" name="time" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Time" required>
+                    <div class="mb-6 flex flex-row justify-between gap-3">
+                        <input type="time" id="start_time" name="start_time"  value="{{old('start_time')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Time" required>
+                        <input type="time" id="finish_time" name="finish_time"  value="{{old('finish_time')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Time" required>
                     </div>
                     <div class="mb-6">
-                        <select id="training" name="training" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <select id="link_yes" name="link_yes" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Will the exam be conducted online? (Yes/No)</option>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="link" name="link" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Link Exam" required>
+                        <input type="text" id="link" name="link" value="{{old('link')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Link Exam" required>
                         <h1 class="text-gray-500 text-sm mt-1">Fill in the following column if the exam will be do online</h1>
                     </div>
+                    <input type="text" value="{{$course_id->id}}" name="course_id" hidden>
 
                     <div class="flex flex-row justify-center md:justify-end gap-4 mt-10">
                         <a href="/userProfile" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
-                        <a href="#" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save Changes</a>
+                        <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -80,7 +84,7 @@
     <script src="https://unpkg.com/flowbite@1.4.5/dist/datepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" integrity="sha512-bZAXvpVfp1+9AUHQzekEZaXclsgSlAeEnMJ6LfFAvjqYUVZfcuVXeQoN5LhD7Uw0Jy4NCY9q3kbdEXbwhZUmUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <script>
         $(document).ready(function () {
             $('.repeater').repeater({
@@ -102,6 +106,22 @@
                 },
                 isFirstItemUndeletable: true
             })
+        });
+    </script>
+
+    <script>
+        $(function() {
+            $('#link').attr('disabled', true);
+            $('#link').val('No');
+            $('#link_yes').change(function() {
+                var pilih = $('#link_yes').val();
+                if (pilih == 'No') {
+                    $('#link').attr('disabled', true);
+                    $('#link').val();
+                } else {
+                    $('#link').attr('disabled', false);
+                }
+            });
         });
     </script>
 </body>

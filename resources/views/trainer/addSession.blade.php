@@ -47,8 +47,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-6">
-                        <input type="time" id="time_session" name="time_session"  value="{{old('time_session')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Time" required>
+                    <div class="mb-6 flex flex-row justify-between gap-3">
+                        <input type="time" id="start_time" name="start_time"  value="{{old('start_time')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Time" required>
+                        <input type="time" id="finish_time" name="finish_time"  value="{{old('finish_time')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Time" required>
                     </div>
                     <div class="mb-6">
                         <select id="link_yes" name="link_yes" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">

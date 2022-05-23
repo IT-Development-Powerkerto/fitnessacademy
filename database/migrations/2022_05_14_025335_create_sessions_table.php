@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('day')->nullable();
             $table->date('date_session')->nullable();
-            $table->time('time_session')->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('finish_time')->nullable();
             $table->string('link_session')->nullable();
             $table->string('link_assignment')->nullable();
             $table->timestamps();

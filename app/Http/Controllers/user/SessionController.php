@@ -71,7 +71,9 @@ class SessionController extends Controller
             'name' => 'required',
             'day' => '',
             'date_session' => '',
-            'time_session' => '',
+            'start_time'=>'',
+            'finish_time'=>'',
+
             'group_a'=>'',
 
             'link_session' => '',
@@ -87,7 +89,9 @@ class SessionController extends Controller
         $session->name = $validated['name'];
         $session->day = $request->day;
         $session->date_session = Carbon::create($request->date_session)->toDateString();
-        $session->time_session = $request->time_session;
+
+        $session->start_time = $request->start_time;
+        $session->finish_time = $request->finish_time;
 
         $session->link_session  = $request->link_session;
         $session->link_assignment = $request->link_assignmen;

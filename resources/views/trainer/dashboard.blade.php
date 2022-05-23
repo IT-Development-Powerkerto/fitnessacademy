@@ -44,14 +44,48 @@
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 @endforeach
+                @foreach ($course->where('level', 'Level 4') as $course4)
+                <a href="{{route('course.show', ['course'=>$course4->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">{{$course4->name}} IV</span>
+                        <span class="text-white">{{$user->where('id', $course4->trainer_id)->implode('name')}}</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a>
+                @endforeach
+                @foreach ($course->where('level', 'Level 5') as $course5)
+                <a href="{{route('course.show', ['course'=>$course5->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">{{$course5->name}} V</span>
+                        <span class="text-white">{{$user->where('id', $course5->trainer_id)->implode('name')}}</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a>
+                @endforeach
             </div>
-            <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
-                <div class="flex flex-col">
-                    <span class="text-white font-semibold">Level III</span>
-                    <span class="text-white">Dr. Phaidon Toruan MM</span>
-                </div>
-                <i class="las la-angle-right text-white"></i>
-            </a>
+
+            @foreach ($course->where('level', 'Level 3') as $course3)
+            <div class="mb-5">
+                <a href="{{route('course.show', ['course'=>$course3->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">{{$course3->name}} III</span>
+                        <span class="text-white">{{$user->where('id', $course3->trainer_id)->implode('name')}}</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a>
+            </div>
+            @endforeach
+            @foreach ($course->where('level', 'Level 6') as $course6)
+            <div class="mb-5">
+                <a href="{{route('course.show', ['course'=>$course6->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">{{$course6->name}} III</span>
+                        <span class="text-white">{{$user->where('id', $course6->trainer_id)->implode('name')}}</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a>
+            </div>
+            @endforeach
         </div>
     </div>
     <!-- end::My Course -->

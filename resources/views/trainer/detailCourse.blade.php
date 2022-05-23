@@ -61,9 +61,10 @@
                         <i class="las la-plus"></i>
                         Add Session
                     </a>
-                    <a href="/addExam" type="button" class="text-sm text-center text-red-600 bg-white hover:bg-gray-300 p-2 w-44 md:w-auto rounded-lg">
+                    <a href="{{ route ('addExam.addExam', ['id'=>$course_id]) }}" type="button" class="text-sm text-center text-red-600 bg-white hover:bg-gray-300 p-2 w-44 md:w-auto rounded-lg">
                         <i class="las la-plus"></i>
                         Add Exam
+
                     </a>
                 </div>
             </div>
@@ -71,38 +72,31 @@
             <div class=" border-b border-yellow-300 border-2"></div>
 
             <div class="mt-6">
+                @foreach ( $sessions as $s )
                 <a href="/detailSession" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
                     <div class="flex flex-col">
-                        <span class="font-bold text-black">Session 1 - Pengenalan Anatomi Manusia</span>
-                        <span class="text-sm font-semibold text-black">Sunday, 15 May 2022 (09:00 - 12:00)</span>
+                        <span class="font-bold text-black">Session {{$loop->iteration}} - {{$s->name}}</span>
+                        <span class="text-sm font-semibold text-black">{{\Illuminate\Support\Carbon::create($s->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</span>
                     </div>
                 </a>
-                <a href="#" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-black">Session 2 - Pengenalan Anatomi Manusia</span>
-                        <span class="text-sm font-semibold text-black">Sunday, 15 May 2022 (09:00 - 12:00)</span>
-                    </div>
-                </a>
-                <a href="#" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-black">Session 3 - Pengenalan Anatomi Manusia</span>
-                        <span class="text-sm font-semibold text-black">Sunday, 15 May 2022 (09:00 - 12:00)</span>
-                    </div>
-                </a>
+                @endforeach
             </div>
 
+
+            @foreach ( $exams as $e )
             <div class="grid grid-cols-12 py-5">
                 <div class="bg-red-500 md:col-span-1 col-span-4 flex items-center justify-center p-5 rounded-l-lg">
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
                 </div>
                 <div class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
                     <a href="/detailExam">
-                        <h1 class="font-bold text-lg md:text-2xl">Ujian Anatomi Dasar I</h1>
-                        <h1 class="font-semibold text-sm py-2">Wednesday, 18 May 2022 (09:00 - 12:00)</h1>
-                        <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">https://quizizz.com/admin/quiz/5c67f07b90bd9b001e14c7d6/edmodo</a>
+                        <h1 class="font-bold text-lg md:text-2xl">{{$e->name}}</h1>
+                        <h1 class="font-semibold text-sm py-2">{{\Illuminate\Support\Carbon::create($e->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</h1>
+                        <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">{{$e->link ?? null}}</a>
                     </a>
                 </div>
             </div>
+            @endforeach
 
         </div>
     </div>

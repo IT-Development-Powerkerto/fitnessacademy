@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
             $table->string('name');
-            $table->date('date');
-            $table->time('time');
-            $table->string('condition');
-            $table->string('link');
+            $table->date('date_exam')->nullable();
+            $table->time('start_time')->nullable();
+            $table->time('finish_time')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

@@ -11,14 +11,14 @@ class Exam extends Model
     protected $table = 'exams';
     // protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'course_id',
-        'name',
-        'date',
-        'time',
-        'condition',
-        'link',
-    ];
+    // protected $fillable = [
+    //     'course_id',
+    //     'name',
+    //     'date',
+    //     'time',
+    //     'condition',
+    //     'link',
+    // ];
 
     public function course()
     {
