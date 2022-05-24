@@ -36,4 +36,14 @@ class Course extends Model
     {
         return $this->hasMany(Exam::class);
     }
+
+    /**
+     * Get the user that owns the Course
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function trainer()
+    {
+        return $this->belongsTo(User::class, 'trainer_id', 'id');
+    }
 }

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <livewire:user.navbar-user /> 
+    <livewire:user.navbar-user />
 
     <!-- begin::My Course -->
     <div class="py-10 bg-zinc-800">
@@ -26,41 +26,77 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-col">
-                        <span class="text-white font-semibold">Nutrisi Dasar I</span>
-                        <span class="text-white">Dr. Phaidon Toruan MM</span>                 
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
+                @foreach ( $courses->where('level', 'Level 1') as $c )
+
                 <a href="/detailCourse" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">Anatomi Dasar I</span>
-                        <span class="text-white">Dr. Tanjung Subrata, MRepro, ABAARM</span>                 
+                        <span class="text-white font-semibold">{{$c->name}}</span>
+                        <span class="text-white">{{$c->trainer->name}}</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
+                @endforeach
+                {{-- <a href="/detailCourse" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">Anatomi Dasar I</span>
+                        <span class="text-white">Dr. Tanjung Subrata, MRepro, ABAARM</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a> --}}
+                @foreach ( $courses->where('level', 'Level 2') as $c )
                 <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">Nutrisi Dasar II</span>
-                        <span class="text-white">Dr. Phaidon Toruan MM</span>                 
+                        <span class="text-white font-semibold">{{$c->name}}</span>
+                        <span class="text-white">{{$c->trainer->name}}</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
+                @endforeach
+
+                @foreach ( $courses->where('level', 'Level 4') as $c )
                 <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">{{$c->name}}</span>
+                        <span class="text-white">{{$c->trainer->name}}</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a>
+                @endforeach
+                @foreach ( $courses->where('level', 'Level 5') as $c )
+                <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                    <div class="flex flex-col">
+                        <span class="text-white font-semibold">{{$c->name}}</span>
+                        <span class="text-white">{{$c->trainer->name}}</span>
+                    </div>
+                    <i class="las la-angle-right text-white"></i>
+                </a>
+                @endforeach
+                {{-- <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">Anatomi Dasar II</span>
-                        <span class="text-white">Dr. Tanjung Subrata, MRepro, ABAARM</span>                 
+                        <span class="text-white">Dr. Tanjung Subrata, MRepro, ABAARM</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
-                </a>
+                </a> --}}
             </div>
+            @foreach ( $courses->where('level', 'Level 3') as $c )
             <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                 <div class="flex flex-col">
-                    <span class="text-white font-semibold">Level III</span>       
+                    <span class="text-white font-semibold">{{$c->name}}</span>
                 </div>
                 <i class="las la-angle-right text-white"></i>
             </a>
+            @endforeach
+            @foreach ( $courses->where('level', 'Level 6') as $c )
+            <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                <div class="flex flex-col">
+                    <span class="text-white font-semibold">{{$c->name}}</span>
+                </div>
+                <i class="las la-angle-right text-white"></i>
+            </a>
+            @endforeach
+
+
         </div>
     </div>
     <!-- end::My Course -->
@@ -73,12 +109,12 @@
             </div>
             <div class="py-5 px-3">
                 <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1>  
+                <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1>
             </div>
         </div>
     </div>
     <!-- end::Schedule -->
-    
+
     <!-- begin::Coaches -->
     <div class="py-10 bg-zinc-800">
         <div class="px-10">
@@ -89,35 +125,35 @@
                 <a href="/coachProfile" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dr. Tanjung Subrata, MRepro, ABAARM</span>      
+                        <span class="text-white font-semibold">Dr. Tanjung Subrata, MRepro, ABAARM</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/Phaidon.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dr. Phaidon Toruan MM</span>   
-                    </div>  
+                        <span class="text-white font-semibold">Dr. Phaidon Toruan MM</span>
+                    </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/Dith.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dith Satyawan</span> 
+                        <span class="text-white font-semibold">Dith Satyawan</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/Nicholas.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Nicholas long Lee</span>       
+                        <span class="text-white font-semibold">Nicholas long Lee</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-row gap-3 items-center">
                         <img src="assets/img/Choaches/Harryadin.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dr. Harryadin Mahardika, S.E., M.M.</span>       
+                        <span class="text-white font-semibold">Dr. Harryadin Mahardika, S.E., M.M.</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
@@ -134,7 +170,7 @@
             </div>
             <div class="py-5 px-3 flex flex-row justify-between">
                 <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white font-semibold">90.5</h1>  
+                <h1 class="text-white font-semibold">90.5</h1>
             </div>
         </div>
     </div>

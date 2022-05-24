@@ -37,12 +37,15 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
+                            @foreach ( $trainer as $t )
+
+
                             <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4">1</td>
-                                <td class="px-3 py-4">Dr. Tanjung Subrata, Mrepo, ABAARM</td>
-                                <td class="px-3 py-4">tanjung.subrata@gmail.com</td>
-                                <td class="px-3 py-4">0813273122123</td>
-                                <td class="px-3 py-4">Male</td>
+                                <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                <td class="px-3 py-4">{{$t->name}}</td>
+                                <td class="px-3 py-4">{{$t->email}}</td>
+                                <td class="px-3 py-4">{{$t->phone}}</td>
+                                <td class="px-3 py-4">{{$t->gender}}</td>
                                 <td class="px-3 py-4 flex justify-end">
                                     <button id="dropdownDefault" data-dropdown-toggle="dropdownTrainerApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                     <!-- Dropdown menu -->
@@ -103,6 +106,7 @@
                                     {{-- end::ModalReject --}}
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -128,10 +132,15 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
+                                @foreach ($courses as $c )
+
+
                                 <tr class="whitespace-nowrap">
-                                    <td class="px-3 py-4">1</td>
-                                    <td class="px-3 py-4">Mira Philips</td>
-                                    <td class="px-3 py-4">Nutrisi Dasar I, Nutrisi Dasar II, Level III</td>
+                                    <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                    <td class="px-3 py-4"></td>
+                                    <td class="px-3 py-4">{{$c->name}}</td>
+
+
                                     <td class="px-3 py-4">Rp 3.000.000</td>
                                     <td class="px-3 py-4">
                                         <button class="flex justify-center gap-2 items-center text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
@@ -150,7 +159,7 @@
                                                             Evidence of Transfer
                                                         </h3>
                                                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="defaultModal">
-                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                         </button>
                                                     </div>
                                                     <!-- Modal body -->
@@ -222,6 +231,7 @@
                                         {{-- end::ModalReject --}}
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -248,13 +258,16 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
+                            @foreach ( $student as $s )
+
+
                             <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4">1</td>
-                                <td class="px-3 py-4">James Donin</td>
-                                <td class="px-3 py-4">Donin@gmail.com</td>
-                                <td class="px-3 py-4">0816276122123</td>
-                                <td class="px-3 py-4">Male</td>
-                                <td class="px-3 py-4">28</td>
+                                <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                <td class="px-3 py-4">{{$s->name}}</td>
+                                <td class="px-3 py-4">{{$s->email}}</td>
+                                <td class="px-3 py-4">{{$s->phone}}</td>
+                                <td class="px-3 py-4">{{$s->gender}}</td>
+                                <td class="px-3 py-4">{{$s->age}}</td>
                                 <td class="px-3 py-4 flex justify-end">
                                     <button id="dropdownDefault" data-dropdown-toggle="dropdownStudent" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                     <!-- Dropdown menu -->
@@ -291,6 +304,7 @@
                                     {{-- end::ModalDelete --}}
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -314,15 +328,32 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
+                            @foreach ($courses as $c )
+
                             <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4">Dasar Anatomi I</td>
+                                <td class="px-3 py-4">{{$c->name}}</td>
+                                @if ($c->level == 'Level 1')
                                 <td class="px-3 py-4">I</td>
+
+                                @elseif ($c->level == 'Level 2')
+                                <td class="px-3 py-4">II</td>
+                                @elseif ($c->level == 'Level 3')
+                                <td class="px-3 py-4">III</td>
+                                @elseif ($c->level == 'Level 4')
+                                <td class="px-3 py-4">IV</td>
+                                @elseif ($c->level == 'Level 5')
+                                <td class="px-3 py-4">V</td>
+                                @elseif ($c->level == 'Level 6')
+                                <td class="px-3 py-4">VI</td>
+
+                                @endif
                                 <td class="px-3 py-4">Dr. Tanjung Subrata, Mrepo, ABAARM</td>
                                 <td class="px-3 py-4">30</td>
                                 <td class="px-3 py-4 flex justify-end">
                                     <a href="/detailOvervieweCourse" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

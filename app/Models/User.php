@@ -57,4 +57,14 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    /**
+     * Get all of the course for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function course()
+    {
+        return $this->hasMany(Course::class, 'trainer_id', 'id');
+    }
+
 }

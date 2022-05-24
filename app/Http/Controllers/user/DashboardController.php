@@ -21,9 +21,15 @@ class DashboardController extends Controller
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
+        $trainer = User::where('role_id', 2)->get();
+        $student = User::where('role_id', 1)->get();
+        $courses = Course::all();
+
+
         $x = auth()->user();
         if($x->role_id == 1){
-            return view('user.dashboard');
+
+            return view('user.dashboard', compact('courses'));
         }
         else if($x->role_id == 2){
             $course = Course::where('trainer_id', auth()->user()->id)->get();
@@ -32,7 +38,7 @@ class DashboardController extends Controller
             return view('trainer.dashboard', compact('today', 'day', 'user', 'course'));
         }
         else if($x->role_id == 3) {
-            return view('admin.dashboard');
+            return view('admin.dashboard', compact('trainer', 'student', 'courses'));
         }
     }
 
