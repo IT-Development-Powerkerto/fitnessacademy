@@ -12,6 +12,7 @@ use App\Models\Course;
 use App\Models\User;
 use App\Models\Session;
 use App\Models\Exam;
+use PHPUnit\Framework\Constraint\Count;
 
 class CourseController extends Controller
 {
@@ -42,8 +43,9 @@ class CourseController extends Controller
     public function addCourse()
     {
         $x = auth()->user();
+        $course = Course::all();
         if($x->role_id == 1){
-            return view('user.addCourse');
+            return view('user.addCourse', compact('course'));
         }
         else if($x->role_id == 2){
             return view('trainer.addCourse');

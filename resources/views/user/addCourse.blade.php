@@ -13,34 +13,44 @@
 </head>
 <body>
 
-    <livewire:user.navbar-user /> 
+    <livewire:user.navbar-user />
 
     <!-- begin::AddCourse -->
     <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="flex flex-row py-2 items-center">
-                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/addCourse" class="text-white text-sm hover:text-yellow-300">Add Course</a> 
+                <a href="/addCourse" class="text-white text-sm hover:text-yellow-300">Add Course</a>
             </div>
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Add Course</h1>
             </div>
-            <h1 class="text-zinc-400 text-sm py-2">Please select the course</h1> 
+            <h1 class="text-zinc-400 text-sm py-2">Please select the course</h1>
             <div class="py-10">
                 <h1 class="text-sm font-bold underline text-white">Academy Level 1</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
+                    @foreach ( $course->where('level', 'Level 1') as $c )
+
                     <div class="bg-black rounded-lg flex flex-row justify-between items-center p-5">
                         <div class="flex flex-row items-center gap-4">
                             <input checked id="yellow-checkbox" type="checkbox" value="" class="w-8 h-8 text-yellow-300 bg-yellow-300 rounded border-gray-300 focus:ring-yellow-500">
                             <div>
-                                <h1 class="text-white font-bold">Anatomi Dasar I</h1>
-                                <h1 class="text-white text-sm">dr Tanjung Subrata, MRepro, ABAARM</h1>
+                                <h1 class="text-white font-bold">{{$c->name}}</h1>
+                                <h1 class="text-white text-sm">{{$c->trainer->name}}</h1>
                             </div>
                         </div>
+                        @if ($c->price == 0)
+
                         <h1 class="text-yellow-300 font-bold">FREE</h1>
+                        @else
+                        <h1 class="text-yellow-300 font-bold">{{'Rp. '.number_format($c->price,0,',','.')}}</h1>
+
+
+                        @endif
                     </div>
-                    <div class="bg-black rounded-lg flex flex-row justify-between items-center p-5">
+                    @endforeach
+                    {{-- <div class="bg-black rounded-lg flex flex-row justify-between items-center p-5">
                         <div class="flex flex-row items-center gap-4">
                             <input checked id="yellow-checkbox" type="checkbox" value="" class="w-8 h-8 text-yellow-300 bg-yellow-300 rounded border-gray-300 focus:ring-yellow-500">
                             <div>
@@ -49,23 +59,31 @@
                             </div>
                         </div>
                         <h1 class="text-yellow-300 font-bold">FREE</h1>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="py-5">
                 <h1 class="text-sm font-bold underline text-white">Academy Level 2</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
+                    @foreach ( $course->where('level', 'Level 2') as $c )
                     <div class="bg-black rounded-lg flex flex-row justify-between items-center p-5">
                         <div class="flex flex-row items-center gap-4">
                             <input checked id="yellow-checkbox" type="checkbox" value="" class="w-8 h-8 text-yellow-300 bg-yellow-300 rounded border-gray-300 focus:ring-yellow-500">
                             <div>
-                                <h1 class="text-white font-bold">Anatomi Dasar II</h1>
-                                <h1 class="text-white text-sm">dr Tanjung Subrata, MRepro, ABAARM</h1>
+                                <h1 class="text-white font-bold">{{$c->name}}</h1>
+                                <h1 class="text-white text-sm">{{$c->trainer->name}}</h1>
                             </div>
                         </div>
-                        <h1 class="text-yellow-300 font-bold">Rp 499.000</h1>
+                        @if ($c->price == 0)
+
+                        <h1 class="text-yellow-300 font-bold">FREE</h1>
+                        @else
+                        <h1 class="text-yellow-300 font-bold">{{'Rp. '.number_format($c->price,0,',','.')}}</h1>
+
+                        @endif
                     </div>
-                    <div class="bg-black rounded-lg flex flex-row justify-between items-center p-5">
+                    @endforeach
+                    {{-- <div class="bg-black rounded-lg flex flex-row justify-between items-center p-5">
                         <div class="flex flex-row items-center gap-4">
                             <input checked id="yellow-checkbox" type="checkbox" value="" class="w-8 h-8 text-yellow-300 bg-yellow-300 rounded border-gray-300 focus:ring-yellow-500">
                             <div>
@@ -74,7 +92,7 @@
                             </div>
                         </div>
                         <h1 class="text-yellow-300 font-bold">Rp 499.000</h1>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="py-5">
