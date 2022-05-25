@@ -36,14 +36,38 @@
                 <div class="w-64 h-64 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <img class="object-cover w-64 h-64 rounded-t-lg  md:rounded-none md:rounded-l-lg" src="assets/img/FPA_IG6 2.png" alt="">
                 </div>
-                <a href="" class="text-dark bg-white hover:bg-white focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
+                <button type="button" data-modal-toggle="imageFull" class="text-dark bg-white hover:bg-white focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                     <div class="mr-2">
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12.5 0L14.8 2.3L11.91 5.17L13.33 6.59L16.2 3.7L18.5 6V0H12.5ZM0.5 6L2.8 3.7L5.67 6.59L7.09 5.17L4.2 2.3L6.5 0H0.5V6ZM6.5 18L4.2 15.7L7.09 12.83L5.67 11.41L2.8 14.3L0.5 12V18H6.5ZM18.5 12L16.2 14.3L13.33 11.41L11.91 12.83L14.8 15.7L12.5 18H18.5V12Z" fill="#23272C"/>
                         </svg>
                     </div>
                     See Full Image
-                </a>
+                </button>
+                <!-- Main modal -->
+                <div id="imageFull" tabindex="-1" aria-hidden="true" class="bg-black bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+                   <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                       <!-- Modal content -->
+                       <div class="relative bg-white rounded-lg shadow">
+                           <!-- Modal header -->
+                           <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                               <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                   Evidence of Transfer
+                               </h3>
+                               <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="imageFull">
+                                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                               </button>
+                           </div>
+                           <!-- Modal body -->
+                           <div class="flex justify-center items-center p-6">
+                               <img src="assets/img/login.png" class="rounded-lg w-64 h-64 text-center" alt="">
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               {{-- end::modal --}}
+
+
                 <div class="mt-10">
                     <h2 class="text-white font-semibold text-base">Or pay the account by bank transfer to :</h2>
                 </div>
