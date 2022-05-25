@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('trainer_id');
+            $table->foreignId('trainer_id')->constrained('users');
             $table->string('level');
             $table->string('schedule');
             $table->integer('price')->nullable();
