@@ -8,6 +8,7 @@
     <link rel="icon" href="assets/img/logo.png">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @livewireStyles
 </head>
@@ -156,5 +157,50 @@
     @livewireScripts
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // const branch_user = {!! auth()->user()->branch_id ?? -1 !!};
+            const branch_user = parseInt('{{ auth()->user()->branch_id ?? -1}}');
+            if(branch_user > -1) {
+                $.ajax({
+                    method : 'GET',
+                    url: `/api/getIn/${branch_user}`,
+                    cache: false,
+                    success: function(result){
+                        // console.log(result);
+                        $('#c_instructure').empty()
+                        $('#c_instructure').append('<option></option>')
+                        result['instructure'].forEach(element => {
+                            element['user'].forEach(element1 => {
+                                $('#c_instructure').append(`<option value="${element1['id']}">${element1['name']}</option>`)
+                            });
+                        });
+                    }
+                });
+            }
+
+            $('#c_branch').on('change', function(){
+                const branch_id = this.value
+                console.log(this.value);
+                $.ajax({
+                    method : 'GET',
+                    url: `/api/course`,
+                    cache: false,
+                    success: function(result){
+                        // console.log(result);
+                        $('#c_instructure').empty()
+                        $('#c_instructure').append('<option></option>')
+                        result['instructure'].forEach(element => {
+                            element['user'].forEach(element1 => {
+                                $('#c_instructure').append(`<option value="${element1['id']}">${element1['name']}</option>`)
+                            });
+                        });
+                    }
+                });
+            });
+
+        })
+    </script>
 </body>
 </html>

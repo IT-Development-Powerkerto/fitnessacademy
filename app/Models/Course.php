@@ -46,4 +46,9 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'trainer_id', 'id');
     }
+
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

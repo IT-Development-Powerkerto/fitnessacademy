@@ -67,4 +67,9 @@ class User extends Authenticatable
         return $this->hasMany(Course::class, 'trainer_id', 'id');
     }
 
+    public function payment()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
 }

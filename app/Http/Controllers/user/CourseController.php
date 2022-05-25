@@ -153,4 +153,10 @@ class CourseController extends Controller
     {
         //
     }
+
+    public function getCourse(){
+        $course = Course::all();
+        return response()->json(['course'=> $course], 201);
+
+    }
 }
