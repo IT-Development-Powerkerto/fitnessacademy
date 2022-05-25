@@ -15,8 +15,8 @@
 
     <livewire:user.navbar-user />
 
-     <!-- begin::Payment -->
-     <div class="py-10 bg-zinc-800">
+    <!-- begin::Payment -->
+    <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold text-xl ml-5">Payment</h1>
@@ -66,7 +66,6 @@
                    </div>
                </div>
                {{-- end::modal --}}
-
 
                 <div class="mt-10">
                     <h2 class="text-white font-semibold text-base">Or pay the account by bank transfer to :</h2>
@@ -126,14 +125,14 @@
     <!-- begin::Order Date -->
 
     <!-- begin::Order History -->
-     <div class="py-10 bg-zinc-800">
+    <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold text-xl ml-5">Order History</h1>
 
             </div>
             <div class="bg-black rounded-b-lg">
-                <div class="relative overflow-auto max-h-80">
+                <div class="relative overflow-auto max-h-80 px-5">
                     <table class="w-full text-left table-auto">
                         <thead class="text-gray-500">
                             <tr class="whitespace-nowrap">
@@ -141,7 +140,8 @@
                                 <th scope="col" class="px-3 py-3">Course</th>
                                 <th scope="col" class="px-3 py-3">Nominal</th>
                                 <th scope="col" class="px-3 py-3">Evidence of Transfer</th>
-                                <th scope="col" class="px-3 py-3 text-right">Action</th>
+                                <th scope="col" class="px-3 py-3">Status</th>
+                                <th scope="col" class="px-3 py-3 text-right">Date</th>
                             </tr>
                         </thead>
                         <tbody class="text-white">
@@ -150,9 +150,11 @@
                                 <td class="px-3 py-4">Nutrisi Dasar I, Nutrisi Dasar II, Level III</td>
                                 <td class="px-3 py-4">Rp 3.000.000</td>
                                 <td class="px-3 py-4">
-                                    <button class="flex justify-center gap-2 items-center text-white bg-gray-400 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
-                                        <i class="lar la-image"></i>
-                                        Image
+                                    <button class="flex justify-center gap-4 w-32 items-center text-gray-800 bg-gray-200 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
+                                        <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.999 0H1.99902C0.896023 0 -0.000976562 0.897 -0.000976562 2V14C-0.000976562 15.103 0.896023 16 1.99902 16H17.999C19.102 16 19.999 15.103 19.999 14V2C19.999 0.897 19.102 0 17.999 0ZM4.49902 3C4.89685 3 5.27838 3.15804 5.55968 3.43934C5.84099 3.72064 5.99902 4.10218 5.99902 4.5C5.99902 4.89782 5.84099 5.27936 5.55968 5.56066C5.27838 5.84196 4.89685 6 4.49902 6C4.1012 6 3.71967 5.84196 3.43836 5.56066C3.15706 5.27936 2.99902 4.89782 2.99902 4.5C2.99902 4.10218 3.15706 3.72064 3.43836 3.43934C3.71967 3.15804 4.1012 3 4.49902 3ZM9.99902 13H2.99902L6.99902 8L8.49902 10L11.499 6L16.999 13H9.99902Z" fill="#5E6278"/>
+                                        </svg>
+                                        File
                                     </button>
                                     {{-- begin::modal --}}
                                     <!-- Main modal -->
@@ -178,65 +180,9 @@
                                     </div>
                                     {{-- end::modal --}}
                                 </td>
-                                <td class="px-3 py-4 flex justify-end">
-                                    <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-                                    <!-- Dropdown menu -->
-                                    <div id="dropdownCourseApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
-                                        <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
-                                            <li>
-                                                <a href="/detailCourse" class="block px-4 py-2 text-white">View</a>
-                                            </li>
-                                            <li>
-                                                <button type="button" data-modal-toggle="ApproveCourse" class="block px-4 py-2 text-white">Approve</button>
-                                            </li>
-                                            <li>
-                                                <button type="button" data-modal-toggle="RejectCourse" class="block px-4 py-2 text-white">Reject</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    {{-- begin::ModalApprove --}}
-                                    <div id="ApproveCourse" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
-                                        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                                            <div class="relative bg-zinc-800 rounded-lg shadow dark:bg-gray-700">
-                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="ApproveCourse">
-                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                </button>
-                                                <form>
-                                                    <div class="p-6 text-center">
-                                                        <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                        <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this course ?</h3>
-                                                        <button data-modal-toggle="ApproveCourse" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                                            Yes, I'm sure
-                                                        </button>
-                                                        <button data-modal-toggle="ApproveCourse"  class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- end::ModalApprove --}}
-                                    {{-- begin::ModalReject --}}
-                                    <div id="RejectCourse" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
-                                        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                                            <div class="relative bg-zinc-800 rounded-lg shadow dark:bg-gray-700">
-                                                <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="RejectCourse">
-                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                                                </button>
-                                                <form>
-                                                    <div class="p-6 text-center">
-                                                        <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                        <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to reject this course ?</h3>
-                                                        <button data-modal-toggle="RejectCourse" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                                            Yes, I'm sure
-                                                        </button>
-                                                        <button data-modal-toggle="RejectCourse"  class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- end::ModalReject --}}
-                                </td>
+                                <td class="px-3 py-4">Successful</td>
+                                <td class="px-3 py-4 flex justify-end">13/05/2021</td>
+
                             </tr>
 
                         </tbody>

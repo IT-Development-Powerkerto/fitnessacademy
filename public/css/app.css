@@ -1663,6 +1663,10 @@ input:checked + .toggle-bg {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .pt-2 {
   padding-top: 0.5rem;
 }
@@ -2122,6 +2126,10 @@ input:checked + .toggle-bg {
 .focus\:ring-white:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity));
+}
+.focus\:ring-gray-700:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
 }
 .dark .dark\:border-gray-600 {
   --tw-border-opacity: 1;
