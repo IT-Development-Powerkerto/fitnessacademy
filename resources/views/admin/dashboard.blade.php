@@ -16,7 +16,7 @@
 
     <livewire:admin.navbar />
 
-    <div class="py-10 bg-zinc-800 h-screen">
+    <div class="py-10 bg-zinc-800 h-full">
         <div class="px-10">
 
             {{-- beggin::TrainerApproval --}}
