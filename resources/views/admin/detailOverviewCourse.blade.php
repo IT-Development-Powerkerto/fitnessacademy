@@ -17,7 +17,7 @@
 
     <livewire:trainer.navbar-trainer />
 
-    <div class="bg-zinc-800 p-10">
+    <div class="bg-zinc-800 p-10 h-screen">
         <div class="">
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
@@ -27,10 +27,10 @@
             <div class="flex flex-row justify-between py-5">
                 <div class="flex flex-col gap-3 justify-center">
                     <div class="flex flex-row gap-4">
-                        <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                        <h1 class="text-white font-semibold">- Level I - </h1>
+                        <h1 class="text-white font-semibold">{{$course->name}}</h1>
+                        <h1 class="text-white font-semibold">- {{$course->level}} - </h1>
                     </div>
-                    <h1 class="text-white text-sm">Dr. Tanjung Subrata, MRepro, ABAARM</h1>
+                    <h1 class="text-white text-sm">{{$course->trainer->name}}</h1>
                 </div>
             </div>
             <div class=" border-b border-yellow-300 border-2"></div>
@@ -51,7 +51,15 @@
             <div class=" border-b border-yellow-300 border-2"></div>
 
             <div class="mt-6">
+                @foreach ( $sessions as $s )
                 <a href="/detailSession" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
+                    <div class="flex flex-col">
+                        <span class="font-bold text-black">Session {{$loop->iteration}} - {{$s->name}}</span>
+                        <span class="text-sm font-semibold text-black">{{\Illuminate\Support\Carbon::create($s->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</span>
+                    </div>
+                </a>
+                @endforeach
+                {{-- <a href="/detailSession" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
                     <div class="flex flex-col">
                         <span class="font-bold text-black">Session 1 - Pengenalan Anatomi Manusia</span>
                         <span class="text-sm font-semibold text-black">Sunday, 15 May 2022 (09:00 - 12:00)</span>
@@ -68,10 +76,25 @@
                         <span class="font-bold text-black">Session 3 - Pengenalan Anatomi Manusia</span>
                         <span class="text-sm font-semibold text-black">Sunday, 15 May 2022 (09:00 - 12:00)</span>
                     </div>
-                </a>
+                </a> --}}
             </div>
 
+            @foreach ( $exams as $e )
             <div class="grid grid-cols-12 py-5">
+                <div class="bg-red-500 md:col-span-1 col-span-4 flex items-center justify-center p-5 rounded-l-lg">
+                    <h1 class="text-white font-bold text-2xl">EXAM</h1>
+                </div>
+                <div class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
+                    <a href="/detailExam">
+                        <h1 class="font-bold text-lg md:text-2xl">{{$e->name}}</h1>
+                        <h1 class="font-semibold text-sm py-2">{{\Illuminate\Support\Carbon::create($e->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</h1>
+                        <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">{{$e->link ?? null}}</a>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+
+            {{-- <div class="grid grid-cols-12 py-5">
                 <div class="bg-red-500 md:col-span-1 col-span-4 flex items-center justify-center p-5 rounded-l-lg">
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
                 </div>
@@ -82,7 +105,7 @@
                         <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">https://quizizz.com/admin/quiz/5c67f07b90bd9b001e14c7d6/edmodo</a>
                     </a>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>

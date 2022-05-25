@@ -21,7 +21,7 @@
     <livewire:trainer.navbar-trainer />
 
     <!-- begin::AddCourse -->
-    <div class="py-10 bg-zinc-800">
+    <div class="py-10 bg-zinc-800 h-screen">
         <div class="px-10">
             <div class="flex flex-row items-center pb-10">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>

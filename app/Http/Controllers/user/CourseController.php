@@ -35,9 +35,12 @@ class CourseController extends Controller
         }
     }
 
-    public function detailOvervieweCourse()
+    public function detailOvervieweCourse($id)
     {
-        return view('admin.detailOverviewCourse');
+        $course = Course::findOrFail($id);
+        $sessions = Session::where('course_id', $course->id)->get();
+        $exams = Exam::where('course_id', $course->id)->get();
+        return view('admin.detailOverviewCourse', compact('course', 'sessions', 'exams'));
     }
 
     public function addCourse()

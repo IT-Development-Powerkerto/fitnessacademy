@@ -12,13 +12,13 @@
     @livewireStyles
 </head>
 <body>
-    
-    <livewire:user.navbar-user /> 
+
+    <livewire:user.navbar-user />
     <div class="bg-zinc-800 p-10">
         <div class="flex flex-row py-2 items-center">
-            <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+            <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
-            <a href="/coachProfile" class="text-white text-sm hover:text-yellow-300">Coach Profile</a> 
+            <a href="/coachProfile" class="text-white text-sm hover:text-yellow-300">Coach Profile</a>
         </div>
         <div class="flex justify-center py-5">
             <img src="assets/img/choaches/Tanjung.png" class="w-80 rounded" alt="">

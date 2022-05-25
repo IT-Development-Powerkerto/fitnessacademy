@@ -16,7 +16,7 @@
 
     <livewire:admin.navbar />
 
-    <div class="py-10 bg-zinc-800">
+    <div class="py-10 bg-zinc-800 h-screen">
         <div class="px-10">
 
             {{-- beggin::TrainerApproval --}}
@@ -347,11 +347,12 @@
                                 <td class="px-3 py-4">VI</td>
 
                                 @endif
-                                <td class="px-3 py-4">Dr. Tanjung Subrata, Mrepo, ABAARM</td>
+                                <td class="px-3 py-4">{{$c->trainer->name}}</td>
                                 <td class="px-3 py-4">30</td>
                                 <td class="px-3 py-4 flex justify-end">
-                                    <a href="/detailOvervieweCourse" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
+                                    <a href="{{ route ('detailOvervieweCourse.detailOvervieweCourse', ['course' => $c->id]) }}" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
                                 </td>
+                                {{-- {{ route ('addSession.addsession', ['id'=>$course_id]) }} --}}
                             </tr>
                             @endforeach
                         </tbody>
