@@ -130,4 +130,11 @@ class UserProfileController extends Controller
     {
         //
     }
+
+    public function view($id)
+    {
+        $trainer = User::findOrFail($id);
+        return view('user.userProfile', compact('trainer'));
+
+    }
 }

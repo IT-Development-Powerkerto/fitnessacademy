@@ -59,6 +59,8 @@ Route::post('/session', [SessionController::class, 'store'])->name('session.stor
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
+Route::get('/view/{id}', [UserProfileController::class, 'view'])->name('view')->middleware('auth');
+
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
 Route::get('/overviewStudent', [UserProfileController::class, 'overviewStudent'])->name('overviewStudent')->middleware('auth');
 
