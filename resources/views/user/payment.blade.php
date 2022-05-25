@@ -19,7 +19,7 @@
      <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
-                <h1 class="font-semibold text-xl">Payment</h1>
+                <h1 class="font-semibold text-xl ml-5">Payment</h1>
                 <a href="" class="text-yellow-300 bg-zinc-800 hover:bg-zinc-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                     <div class="mr-2">
                     <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@
      <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
-                <h1 class="font-semibold text-xl">Order History</h1>
+                <h1 class="font-semibold text-xl ml-5">Order History</h1>
 
             </div>
             <div class="bg-black rounded-b-lg">
