@@ -1111,6 +1111,9 @@ input:checked + .toggle-bg {
 .w-24 {
   width: 6rem;
 }
+.w-56 {
+  width: 14rem;
+}
 .max-w-md {
   max-width: 28rem;
 }

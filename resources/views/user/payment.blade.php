@@ -15,11 +15,11 @@
 
     <livewire:user.navbar-user />
 
-     <!-- begin::Order History -->
+     <!-- begin::Payment -->
      <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
-                <h1 class="font-semibold">Payment</h1>
+                <h1 class="font-semibold text-xl">Payment</h1>
                 <a href="" class="text-yellow-300 bg-zinc-800 hover:bg-zinc-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                     <div class="mr-2">
                     <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,11 +48,11 @@
                     <h2 class="text-white font-semibold text-base">Or pay the account by bank transfer to :</h2>
                 </div>
                 <div class="mt-5 w-96 h-20 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                   <div class="flex flex-row justify-between gap-1 items-center py-4">
-                       <div class="ml-10">
+                   <div class="flex flex-row justify-between gap-1 items-center p-4 px-5">
+                       <div>
                             <img class="object-cover rounded-t-lg  md:rounded-none md:rounded-l-lg" src="assets/img/BCA.png" alt="">
                         </div>
-                        <div class="w-64 ml-8">
+                        <div>
                             <h2 class="font-semibold text-sm">Kreatif Fitnes Cemerlang</h2>
                             <h2 class="font-semibold text-sm">146 835 3333</h2>
 
@@ -66,44 +66,46 @@
 
         </div>
     </div>
+    <!-- end::Payment -->
 
+    <!-- begin::Order Date -->
     <div class="py-1 bg-zinc-800">
         <div class="flex flex-row gap-10">
             <div class="px-10">
-                <h2 class="text-white">Order Date</h2>
-                <h2 class="text-white mt-5">Your Bill is</h2>
-                <h2 class="text-white mt-5">Your Payment Status is </h2>
+                <h2 class="text-white text-xl">Order Date</h2>
+                <h2 class="text-white text-xl mt-5">Your Bill is</h2>
+                <h2 class="text-white text-xl mt-5">Your Payment Status is </h2>
 
             </div>
             <div class="px-10">
-                <h2 class="text-white">13/05/2022</h2>
-                <h2 class="text-yellow-200 font-semibold mt-5">Rp 3.997.000</h2>
+                <h2 class="text-white text-xl">13/05/2022</h2>
+                <h2 class="text-yellow-200 font-semibold mt-5 text-xl">Rp 3.997.000</h2>
                 <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                    <h2 class="text-red-600 font-semibold">Not Yet Paid</h2>
-                    <h2 class="text-white">Please make payment and upload your evidence of payment</h2>
+                    <h2 class="text-red-600 font-semibold text-xl">Not Yet Paid</h2>
+                    <h2 class="text-white text-xl">Please make payment and upload your evidence of payment</h2>
                 </div>
 
                 <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                    <h2 class="text-blue-700 font-semibold">Waiting for Confirmation</h2>
-                    <h2 class="text-white">Please wait for this process, it may take a few minutes</h2>
+                    <h2 class="text-blue-700 font-semibold text-xl">Waiting for Confirmation</h2>
+                    <h2 class="text-white text-xl">Please wait for this process, it may take a few minutes</h2>
                 </div>
 
                 <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                    <h2 class="text-green-400 font-semibold">Successful</h2>
-                    <h2 class="text-white">Your payment has been completed, thank you</h2>
+                    <h2 class="text-green-400 font-semibold text-xl">Successful</h2>
+                    <h2 class="text-white text-xl">Your payment has been completed, thank you</h2>
                 </div>
 
             </div>
         </div>
 
     </div>
-    <!-- end::Order History -->
+    <!-- begin::Order Date -->
 
     <!-- begin::Order History -->
      <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
-                <h1 class="font-semibold">Order History</h1>
+                <h1 class="font-semibold text-xl">Order History</h1>
 
             </div>
             <div class="bg-black rounded-b-lg">
@@ -228,124 +230,6 @@
         </div>
     </div>
     <!-- end::Order History -->
-
-    {{-- <!-- begin::My Course -->
-    <div class="py-10 bg-zinc-800">
-        <div class="px-10">
-            <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-lg p-3">
-                <h1 class="font-semibold">My Course</h1>
-                <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
-                    <i class="las la-plus text-yellow-300"></i>
-                    Add Course
-                </a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-
-                <a href="/detailCourse" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-col">
-                        <span class="text-white font-semibold">Anatomi Dasar I</span>
-                        <span class="text-white">Dr. Tanjung Subrata, MRepro, ABAARM</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-
-                <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-col">
-                        <span class="text-white font-semibold">Anatomi Dasar II</span>
-                        <span class="text-white">Dr. Tanjung Subrata, MRepro, ABAARM</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-            </div>
-            <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
-                <div class="flex flex-col">
-                    <span class="text-white font-semibold">LEVEL III</span>
-                </div>
-                <i class="las la-angle-right text-white"></i>
-            </a>
-
-
-        </div>
-    </div>
-    <!-- end::My Course -->
-
-    <!-- begin::Schedule -->
-    <div class="py-10 bg-zinc-800">
-        <div class="px-10">
-            <div class="bg-yellow-300 rounded-lg p-3">
-                <h1 class="font-semibold">Today Schedule</h1>
-            </div>
-            <div class="py-5 px-3">
-                <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1>
-            </div>
-        </div>
-    </div>
-    <!-- end::Schedule --> --}}
-
-    {{-- <!-- begin::Coaches -->
-    <div class="py-10 bg-zinc-800">
-        <div class="px-10">
-            <div class="bg-yellow-300 rounded-lg p-3">
-                <h1 class="font-semibold">Coaches</h1>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                <a href="/coachProfile" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-row gap-3 items-center">
-                        <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dr. Tanjung Subrata, MRepro, ABAARM</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-                <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-row gap-3 items-center">
-                        <img src="assets/img/Choaches/Phaidon.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dr. Phaidon Toruan MM</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-                <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-row gap-3 items-center">
-                        <img src="assets/img/Choaches/Dith.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dith Satyawan</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-                <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-row gap-3 items-center">
-                        <img src="assets/img/Choaches/Nicholas.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Nicholas long Lee</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-                <a href="#" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
-                    <div class="flex flex-row gap-3 items-center">
-                        <img src="assets/img/Choaches/Harryadin.png" class="w-10 rounded" alt="">
-                        <span class="text-white font-semibold">Dr. Harryadin Mahardika, S.E., M.M.</span>
-                    </div>
-                    <i class="las la-angle-right text-white"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- end::Coaches --> --}}
-
-    {{-- <!-- begin::Score -->
-    <div class="py-10 bg-zinc-800">
-        <div class="px-10">
-            <div class="bg-yellow-300 rounded-lg p-3">
-                <h1 class="font-semibold">Score</h1>
-            </div>
-            <div class="py-5 px-3 flex flex-row justify-between">
-                <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white font-semibold">90.5</h1>
-            </div>
-        </div>
-    </div>
-    <!-- end::Score --> --}}
-
-
-
 
     <!-- Begin::Livewire -->
     @livewireScripts
