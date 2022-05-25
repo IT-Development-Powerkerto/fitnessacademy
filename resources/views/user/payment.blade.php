@@ -134,10 +134,9 @@
             </div>
             <div class="bg-black rounded-b-lg">
                 <div class="relative overflow-auto max-h-80">
-                    <table class="w-full text-left">
+                    <table class="w-full text-left table-auto">
                         <thead class="text-gray-500">
                             <tr class="whitespace-nowrap">
-                                <th scope="col" class="px-3 py-3">No</th>
                                 <th scope="col" class="px-3 py-3">Name</th>
                                 <th scope="col" class="px-3 py-3">Course</th>
                                 <th scope="col" class="px-3 py-3">Nominal</th>
@@ -146,15 +145,9 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-
-
-
                             <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4">1</td>
-                                <td class="px-3 py-4">A</td>
-                                <td class="px-3 py-4">sa</td>
-
-
+                                <td class="px-3 py-4">Josh Doe</td>
+                                <td class="px-3 py-4">Nutrisi Dasar I, Nutrisi Dasar II, Level III</td>
                                 <td class="px-3 py-4">Rp 3.000.000</td>
                                 <td class="px-3 py-4">
                                     <button class="flex justify-center gap-2 items-center text-white bg-gray-400 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
