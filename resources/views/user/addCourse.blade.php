@@ -138,7 +138,7 @@
                 </div>
             </div>
             <div class="py-10">
-                <a href="#" class="bg-emerald-400 p-5 rounded-lg flex flex-row justify-between items-center">
+                <a href="{{ route ('payment.index') }}" class="bg-emerald-400 p-5 rounded-lg flex flex-row justify-between items-center">
                     <h1 class="font-semibold text-xl">Total</h1>
                     <div class="flex flex-row items-center">
                         <h1 class="text-2xl font-bold">Rp 2.999.000</h1>

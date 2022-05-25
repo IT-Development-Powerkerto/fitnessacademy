@@ -12,6 +12,7 @@ use App\Http\Controllers\user\SessionController;
 use App\Http\Controllers\user\ExamController;
 use App\Http\Controllers\user\CoachProfileController;
 use App\Http\Controllers\user\UserProfileController;
+use App\Http\Controllers\user\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,6 @@ Route::get('/setScoreExam', [ExamController::class, 'setScore'])->name('Exam.set
 Route::get('/addScoreExam', [ExamController::class, 'addScore'])->name('Exam.addScoreExam')->middleware('auth');
 
 Route::post('/exam', [ExamController::class, 'store'])->name('exam.store')->middleware('auth');
+
+//payment
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
