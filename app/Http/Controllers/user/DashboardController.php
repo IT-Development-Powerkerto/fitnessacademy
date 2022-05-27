@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\PaymentDetail;
+use App\Models\Payment;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -22,14 +24,26 @@ class DashboardController extends Controller
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
         $trainer = User::where('role_id', 2)->get();
-        $student = User::where('role_id', 1)->get();
-        $courses = Course::all();
+        // $student = User::where('role_id', 1)->get();
+        $student = Payment::where('status', 'success')->get();
+        $courses = Course::withCount(['payment' => function($query) {
+            $query->where('status', 'success');
+        }])
+        ->get();
+
+        $c = Course::with(['payment' => function($query) {
+            $query->where('status', 'success');
+        }])
+        ->get();
+
+        // dd($courses);
+        $p = Payment::where('status', 'pending')->get();
 
 
         $x = auth()->user();
         if($x->role_id == 1){
 
-            return view('user.dashboard', compact('courses'));
+            return view('user.dashboard', compact('c'));
         }
         else if($x->role_id == 2){
             $course = Course::where('trainer_id', auth()->user()->id)->get();
@@ -38,7 +52,7 @@ class DashboardController extends Controller
             return view('trainer.dashboard', compact('today', 'day', 'user', 'course'));
         }
         else if($x->role_id == 3) {
-            return view('admin.dashboard', compact('trainer', 'student', 'courses'));
+            return view('admin.dashboard', compact('trainer', 'student', 'courses', 'p'));
         }
     }
 

@@ -47,14 +47,13 @@ class Course extends Model
         return $this->belongsTo(User::class, 'trainer_id', 'id');
     }
 
-    // public function payment()
-    // {
-    //     return $this->hasMany(Payment::class);
-    // }
-
+    public function payment()
+    {
+        return $this->hasManyThrough(Payment::class, PaymentDetail::class, 'course_id', 'id', 'id', 'id');
+    }
 
     public function payment_detail()
     {
-        return $this->hasMany(PaymentDetail::class);
+        return $this->hasMany(PaymentDetail::class, Payment::class);
     }
 }

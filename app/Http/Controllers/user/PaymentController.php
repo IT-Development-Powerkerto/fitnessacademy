@@ -43,7 +43,7 @@ class PaymentController extends Controller
 
         $courses = Course::find($request->course_id);
 
-        $totalPrice = $courses->sum('bird_price');
+        $totalPrice = $courses->sum('price');
 
         $payment = new Payment();
         $payment->user_id = auth()->user()->id;
@@ -51,6 +51,7 @@ class PaymentController extends Controller
         $payment->order_date = $date;
         $payment->status = 'waiting'; //pending, waiting, success
         $payment->total_price = $totalPrice;
+        $payment->proof = $request->proof;
         $payment->save();
 
         foreach(collect($request->course_id) as $id) {
@@ -64,6 +65,52 @@ class PaymentController extends Controller
         // return redirect()->route('user.payment');
         // return redirect('/payment')->with('success', 'Create Course Success!');
         return redirect()->route('payment.index',['id'=>$payment->id]);
+    }
+
+    public function uploadImage(Request $request, $id)
+    {
+
+        $validator = Validator::make($request->all(), [
+            // 'user_id' =>'',
+            'proof' =>'',
+            // 'payment_id' =>'',
+
+        ]);
+        $payment = Payment::find($id);
+        // $payment->user_id = auth()->user()->id;
+        $payment->status = 'pending'; //pending, waiting, success
+        // $payment->proof = $request->proof;
+        // $file = $request->file('proof');
+        // $name = time() . $file->getClientOriginalName();
+        // $file->move('public/assets/img/transkasi/', $name);
+        // $payment->file = $name;
+        if($request->hasFile('proof'))
+        {
+            $extFile = $request->proof->getClientOriginalExtension();
+            $namaFile = 'class-pos-gym-'.time().".".$extFile;
+            $path = $request->proof->move('public/assets/img/transkasi/',$namaFile);
+            $payment->proof = $path;
+        }
+        $payment->save();
+
+        // return $payment;
+
+
+        return redirect()->back();
+    }
+
+
+    public function aprove(Request $request, $id)
+    {
+
+
+        $payment = Payment::find($id);
+
+        $payment->status = 'success'; //pending, waiting, success
+
+        $payment->save();
+
+        return redirect()->back();
     }
 
 }

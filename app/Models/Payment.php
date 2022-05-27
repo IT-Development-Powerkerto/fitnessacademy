@@ -10,6 +10,8 @@ class Payment extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $with = ['payment_detail'];
+
     /**
      * Get the user that owns the Payment
      *

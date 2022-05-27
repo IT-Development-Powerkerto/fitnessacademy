@@ -75,3 +75,5 @@ Route::post('/exam', [ExamController::class, 'store'])->name('exam.store')->midd
 //payment
 Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.index');
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
+Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
+Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.aprove');

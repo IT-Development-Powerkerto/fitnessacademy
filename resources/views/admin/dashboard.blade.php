@@ -132,16 +132,23 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
-                                @foreach ($courses as $c )
+                                @foreach ($p as $p )
 
 
                                 <tr class="whitespace-nowrap">
                                     <td class="px-3 py-4">{{$loop->iteration}}</td>
-                                    <td class="px-3 py-4"></td>
-                                    <td class="px-3 py-4">{{$c->name}}</td>
+                                    <td class="px-3 py-4">{{$p->user->name}}</td>
+                                    <td class="px-3 py-4">
+                                        <ul>
+                                            @foreach ($p->payment_detail as $pd )
+                                                <li>{{$pd->course->name}}</li>
+
+                                            @endforeach
+                                        </ul>
+                                    </td>
 
 
-                                    <td class="px-3 py-4">Rp 3.000.000</td>
+                                    <td class="px-3 py-4">{{'Rp. '.number_format($p->total_price,0,',','.')}}</td>
                                     <td class="px-3 py-4">
                                         <button class="flex justify-center gap-2 items-center text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
                                             <i class="lar la-image"></i>
@@ -164,7 +171,7 @@
                                                     </div>
                                                     <!-- Modal body -->
                                                     <div class="flex justify-center items-center p-6">
-                                                        <img src="assets/img/login.png" class="rounded-lg w-64 h-64 text-center" alt="">
+                                                        <img src="{{$p->proof}}" class="rounded-lg w-64 h-64 text-center" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -194,7 +201,9 @@
                                                     <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="ApproveCourse">
                                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                     </button>
-                                                    <form>
+                                                    {{-- <form> --}}
+                                                    <form action="{{route('aprove.aprove', ['id'=>$p->id])}}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
                                                         <div class="p-6 text-center">
                                                             <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                             <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this course ?</h3>
@@ -263,11 +272,11 @@
 
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4">{{$loop->iteration}}</td>
-                                <td class="px-3 py-4">{{$s->name}}</td>
-                                <td class="px-3 py-4">{{$s->email}}</td>
-                                <td class="px-3 py-4">{{$s->phone}}</td>
-                                <td class="px-3 py-4">{{$s->gender}}</td>
-                                <td class="px-3 py-4">{{$s->age}}</td>
+                                <td class="px-3 py-4">{{$s->user->name}}</td>
+                                <td class="px-3 py-4">{{$s->user->email}}</td>
+                                <td class="px-3 py-4">{{$s->user->phone}}</td>
+                                <td class="px-3 py-4">{{$s->user->gender}}</td>
+                                <td class="px-3 py-4">{{$s->user->age}}</td>
                                 <td class="px-3 py-4 flex justify-end">
                                     <button id="dropdownDefault" data-dropdown-toggle="dropdownStudent" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                     <!-- Dropdown menu -->
@@ -348,7 +357,7 @@
 
                                 @endif
                                 <td class="px-3 py-4">{{$c->trainer->name}}</td>
-                                <td class="px-3 py-4">30</td>
+                                <td class="px-3 py-4">{{$c->payment_count}}</td>
                                 <td class="px-3 py-4 flex justify-end">
                                     <a href="{{ route ('detailOvervieweCourse.detailOvervieweCourse', ['course' => $c->id]) }}" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
                                 </td>
