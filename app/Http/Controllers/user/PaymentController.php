@@ -17,9 +17,10 @@ class PaymentController extends Controller
     public function index($id)
     {
         $payment = Payment::findOrFail($id);
+        $p = Payment::where('status', 'success')->get();
         // dd($payment);
 
-        return view('user.payment', compact('payment'));
+        return view('user.payment', compact('payment', 'p'));
     }
 
     public function store(Request $request)

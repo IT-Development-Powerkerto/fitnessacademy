@@ -200,10 +200,21 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
+                                @foreach ( $p as $p )
+
+
                                 <tr class="whitespace-nowrap">
-                                    <td class="px-3 py-4">Josh Doe</td>
-                                    <td class="px-3 py-4">Nutrisi Dasar I, Nutrisi Dasar II, Level III</td>
-                                    <td class="px-3 py-4">Rp 3.000.000</td>
+                                    <td class="px-3 py-4">{{$p->user->name}}</td>
+                                    <td class="px-3 py-4">
+                                        <ul>
+                                            @foreach ($p->payment_detail as $pd )
+                                                <li>{{$pd->course->name}}</li>
+
+                                            @endforeach
+                                        </ul>
+
+                                    </td>
+                                    <td class="px-3 py-4">{{'Rp. '.number_format($p->total_price,0,',','.')}}</td>
                                     <td class="px-3 py-4">
                                         <button class="flex justify-center gap-4 w-32 items-center text-gray-800 bg-gray-200 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-gray-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
                                             <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -228,7 +239,7 @@
                                                     </div>
                                                     <!-- Modal body -->
                                                     <div class="flex justify-center items-center p-6">
-                                                        <img src="assets/img/login.png" class="rounded-lg w-64 h-64 text-center" alt="">
+                                                        <img src="{{asset($p->proof)}}" class="rounded-lg w-64 h-64 text-center" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,9 +247,10 @@
                                         {{-- end::modal --}}
                                     </td>
                                     <td class="px-3 py-4">Successful</td>
-                                    <td class="px-3 py-4 flex justify-end">13/05/2021</td>
+                                    <td class="px-3 py-4 flex justify-end">{{date('d/m/Y', strtotime($payment->order_date))}}</td>
 
                                 </tr>
+                                @endforeach
 
                             </tbody>
                         </table>
