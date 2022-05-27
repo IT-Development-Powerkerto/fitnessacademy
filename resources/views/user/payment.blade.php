@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Academy</title>
-    <link rel="icon" href="assets/img/logo.png">
+    <link rel="icon" href="{{asset('assets/img/logo.png')}}">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
@@ -35,7 +35,7 @@
                 <div class="bg-black rounded-b-lg py-10 rounded-b-xl items-center justify-center flex flex-col gap-4">
                     <h2 class="text-white font-semibold text-xl">Payment Accepted Here</h2>
                     <div class="w-64 h-64 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                        <img class="object-cover w-64 h-64 rounded-t-lg  md:rounded-none md:rounded-l-lg" src="assets/img/FPA_IG6 2.png" alt="">
+                        <img class="object-cover w-64 h-64 rounded-t-lg  md:rounded-none md:rounded-l-lg" src="{{asset('assets/img/FPA_IG6 2.png')}}" alt="">
                     </div>
                     <button type="button" data-modal-toggle="imageFull" class="text-dark bg-white hover:bg-white focus:ring-4 focus:outline-none focus:ring-white font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                         <div class="mr-2">
@@ -74,7 +74,7 @@
                     <div class="mt-5 w-96 h-20 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex flex-row justify-between gap-1 items-center p-4 px-5">
                         <div>
-                                <img class="object-cover rounded-t-lg  md:rounded-none md:rounded-l-lg" src="assets/img/BCA.png" alt="">
+                                <img class="object-cover rounded-t-lg  md:rounded-none md:rounded-l-lg" src="{{asset('assets/img/BCA.png')}}" alt="">
                             </div>
                             <div>
                                 <h2 class="font-semibold text-sm">Kreatif Fitnes Cemerlang</h2>
@@ -104,20 +104,28 @@
                 <div class="px-10">
                     <h2 class="text-white text-xl">{{date('d/m/Y', strtotime($payment->order_date))}}</h2>
                     <h2 class="text-yellow-200 font-semibold mt-5 text-xl">{{'Rp. '.number_format($payment->total_price,0,',','.')}}</h2>
-                    <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                        <h2 class="text-red-600 font-semibold text-xl">Not Yet Paid</h2>
-                        <h2 class="text-white text-xl">Please make payment and upload your evidence of payment</h2>
-                    </div>
 
-                    <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                        <h2 class="text-blue-700 font-semibold text-xl">Waiting for Confirmation</h2>
-                        <h2 class="text-white text-xl">Please wait for this process, it may take a few minutes</h2>
-                    </div>
+                   @if ($payment->status == "waiting")
+                   <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
+                       <h2 class="text-red-600 font-semibold text-xl">Not Yet Paid</h2>
+                       <h2 class="text-white text-xl">Please make payment and upload your evidence of payment</h2>
+                   </div>
 
-                    <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                        <h2 class="text-green-400 font-semibold text-xl">Successful</h2>
-                        <h2 class="text-white text-xl">Your payment has been completed, thank you</h2>
-                    </div>
+                   @elseif ($payment->status == "pending")
+                   <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
+                       <h2 class="text-blue-700 font-semibold text-xl">Waiting for Confirmation</h2>
+                       <h2 class="text-white text-xl">Please wait for this process, it may take a few minutes</h2>
+                   </div>
+
+
+                   @else
+                   <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
+                       <h2 class="text-green-400 font-semibold text-xl">Successful</h2>
+                       <h2 class="text-white text-xl">Your payment has been completed, thank you</h2>
+                   </div>
+                   @endif
+
+
 
                 </div>
             </div>
