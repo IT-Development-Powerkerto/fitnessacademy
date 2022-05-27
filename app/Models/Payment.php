@@ -20,9 +20,16 @@ class Payment extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function course()
+
+
+    /**
+     * Get all of the comments for the Payment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function payment_detail()
     {
-        return $this->belongsTo(Course::class, 'course_id', 'id');
+        return $this->hasMany(PaymentDetail::class);
     }
 
 

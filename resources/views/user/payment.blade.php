@@ -102,8 +102,8 @@
 
                 </div>
                 <div class="px-10">
-                    <h2 class="text-white text-xl">13/05/2022</h2>
-                    <h2 class="text-yellow-200 font-semibold mt-5 text-xl">Rp 3.997.000</h2>
+                    <h2 class="text-white text-xl">{{date('d/m/Y', strtotime($payment->order_date))}}</h2>
+                    <h2 class="text-yellow-200 font-semibold mt-5 text-xl">{{'Rp. '.number_format($payment->total_price,0,',','.')}}</h2>
                     <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
                         <h2 class="text-red-600 font-semibold text-xl">Not Yet Paid</h2>
                         <h2 class="text-white text-xl">Please make payment and upload your evidence of payment</h2>

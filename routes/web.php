@@ -73,4 +73,5 @@ Route::get('/addScoreExam', [ExamController::class, 'addScore'])->name('Exam.add
 Route::post('/exam', [ExamController::class, 'store'])->name('exam.store')->middleware('auth');
 
 //payment
-Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
+Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.index');
+Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
