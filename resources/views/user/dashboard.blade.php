@@ -32,20 +32,21 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                @foreach ( $c->where('level', 'Level 1') as $c )
-                <a href="{{route('course.show', ['course'=>$c->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                @foreach ( $c->where('level', 'Level 1') as $level_1 )
+                <a href="{{route('course.show', ['course'=>$level_1->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">{{$c->name}}</span>
-                        <span class="text-white">{{$c->trainer->name}}</span>
+                        <span class="text-white font-semibold">{{$level_1->name}}</span>
+                        <span class="text-white">{{$level_1->trainer->name}}</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 @endforeach
-                @foreach ( $c->where('level', 'Level 2') as $c )
-                <a href="{{route('course.show', ['course'=>$c->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+                {{-- {{ dd($c) }} --}}
+                @foreach ( $c->where('level', 'Level 2') as $level_2 )
+                <a href="{{route('course.show', ['course'=>$level_2->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
-                        <span class="text-white font-semibold">{{$c->name}}</span>
-                        <span class="text-white">{{$c->trainer->name}}</span>
+                        <span class="text-white font-semibold">{{$level_2->name}}</span>
+                        <span class="text-white">{{$level_2->trainer->name}}</span>
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>

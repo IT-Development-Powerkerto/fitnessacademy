@@ -232,7 +232,7 @@
                     <ul class="list-decimal grid grid-rows-5 grid-flow-col gap-4 p-4 text-white">
                         @foreach ( $c as $c )
 
-                        <li>{{$c}}</li>
+                        <li>{{$c->name}}</li>
 
                         @endforeach
                         {{-- <li>Muh Faizal</li>
