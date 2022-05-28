@@ -121,26 +121,11 @@
                 <!-- Modal body -->
                 <div class="p-6 space-y-6 bg-black">
                     <ul class="list-decimal grid grid-rows-5 grid-flow-col gap-4 p-4 text-white">
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
+                        @foreach ( $c as $c )
+
+                        <li>{{$c->name}}</li>
+
+                        @endforeach
                     </ul>
                 </div>
             </div>

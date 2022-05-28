@@ -117,22 +117,18 @@ class CourseController extends Controller
         $sessions = Session::where('course_id', $course->id)->get();
         $exams = Exam::where('course_id', $course->id)->get();
 
-        $successCourse = Payment::where('status', 'success')
-        ->with(['payment_detail'=>function($query) use($id){
+        $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
             $query->where('course_id', $id);
-            // $query->with('course');
-        }])
-        ->get()->pluck('user_id')->flatten();
 
-        $c = User::find($successCourse);
+        }])->get()->pluck('user_id')->flatten();
 
-        // dd($c);
+        $c = User::find($s);
 
         if($x->role_id == 1){
             return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
         }
         else if($x->role_id == 2){
-            return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams'));
+            return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
         }
     }
 
