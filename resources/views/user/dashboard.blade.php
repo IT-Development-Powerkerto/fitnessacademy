@@ -26,7 +26,7 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                @foreach ( $c->where('level', 'Level 1') as $c )
+                @foreach ( $c as $c )
 
                 <a href="/detailCourse" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
@@ -43,7 +43,7 @@
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a> --}}
-                @foreach ( $c->where('level', 'Level 2') as $c )
+                {{-- @foreach ( $c->where('level', 'Level 2') as $c )
                 <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">{{$c->name}}</span>
@@ -70,7 +70,7 @@
                     </div>
                     <i class="las la-angle-right text-white"></i>
                 </a>
-                @endforeach
+                @endforeach --}}
                 {{-- <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">Anatomi Dasar II</span>
