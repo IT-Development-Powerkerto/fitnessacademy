@@ -31,12 +31,26 @@ class DashboardController extends Controller
         }])
         ->get();
 
-        $c = Course::with(['payment' => function($query) {
-            $query->where('status', 'success');
+        // $c = Course::with(['payment' => function($query) {
+        //     $query->where('status', 'success');
+        //     $query->where('user_id', Auth::user()->id);
+        // }])
+        // ->get();
+        $successCourse = Payment::where('user_id', Auth::user()->id)
+        ->where('status', 'success')
+        ->with(['payment_detail'=>function($query){
+            $query->with('course');
         }])
-        ->get();
+        ->get()
+        ->map(function($value) {
+            return $value->payment_detail->pluck('course_id');
+        })->flatten();
 
-        // dd($courses);
+        $c = Course::find($successCourse);
+
+        // $c = Auth::user()->payment->where('status', 'success');
+
+        // dd($c);  
         $p = Payment::where('status', 'pending')->get();
 
 

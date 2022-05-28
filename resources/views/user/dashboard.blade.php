@@ -26,8 +26,7 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
-                @foreach ( $c as $c )
-
+                @foreach ( $c->where('level', 'Level 1') as $c )
                 <a href="/detailCourse" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                     <div class="flex flex-col">
                         <span class="text-white font-semibold">{{$c->name}}</span>
