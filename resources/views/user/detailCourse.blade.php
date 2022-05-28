@@ -12,24 +12,24 @@
     @livewireStyles
 </head>
 <body>
-    
-    <livewire:user.navbar-user /> 
+
+    <livewire:user.navbar-user />
 
     <div class="bg-zinc-800 p-10">
         <div class="">
             <div class="flex flex-row py-2 items-center">
-                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <h1 class="text-white text-sm">My Course</h1> 
+                <h1 class="text-white text-sm">My Course</h1>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/detailCourse" class="text-white text-sm hover:text-yellow-300">Detail Course</a> 
+                <a href="/detailCourse" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
             </div>
             <div class="flex flex-row gap-4 py-5">
                 <div class="flex flex-row gap-3 items-center">
                     <img src="assets/img/Choaches/tanjung.png" class="w-10 rounded" alt="">
                     <div>
-                        <h1 class="text-white font-semibold">Anatomi Dasar I</h1>      
-                        <h1 class="text-white text-sm">Dr. Tanjung Subrata, MRepro, ABAARM</h1>      
+                        <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
+                        <h1 class="text-white text-sm">Dr. Tanjung Subrata, MRepro, ABAARM</h1>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
             <div class="py-5">
                 <div class="grid grid-cols-6 gap-3">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Schedule</h1>
-                    <h1 class="text-sm col-span-4 md:col-span-5 text-white">Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday</h1>
+                    <h1 class="text-sm col-span-4 md:col-span-5 text-white">{{$course->schedule}}</h1>
                 </div>
                 <div class="grid grid-cols-6 gap-3 py-5">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Score (Graduation Status)</h1>
@@ -197,7 +197,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="grid grid-cols-12 py-5">
                 <div class="bg-red-500 md:col-span-1 col-span-4 flex items-center justify-center p-5 rounded-l-lg">
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
@@ -224,12 +224,18 @@
                         Anatomi Dasar - Student List
                     </h3>
                     <button type="button" class="text-yellow-300 hover:bg-gray-200 hover:text-gray-900 rounded-full bg-black text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="viewStudent">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </button>
                 </div>
                 <!-- Modal body -->
                 <div class="p-6 space-y-6 bg-black">
                     <ul class="list-decimal grid grid-rows-5 grid-flow-col gap-4 p-4 text-white">
+                        @foreach ( $c as $c )
+
+                        <li>{{$c}}</li>
+
+                        @endforeach
+                        {{-- <li>Muh Faizal</li>
                         <li>Muh Faizal</li>
                         <li>Muh Faizal</li>
                         <li>Muh Faizal</li>
@@ -248,8 +254,7 @@
                         <li>Muh Faizal</li>
                         <li>Muh Faizal</li>
                         <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
-                        <li>Muh Faizal</li>
+                        <li>Muh Faizal</li> --}}
                     </ul>
                 </div>
             </div>

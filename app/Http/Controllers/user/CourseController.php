@@ -12,6 +12,7 @@ use App\Models\Course;
 use App\Models\User;
 use App\Models\Session;
 use App\Models\Exam;
+use App\Models\Payment;
 use PHPUnit\Framework\Constraint\Count;
 
 class CourseController extends Controller
@@ -115,8 +116,22 @@ class CourseController extends Controller
         $user = User::all();
         $sessions = Session::where('course_id', $course->id)->get();
         $exams = Exam::where('course_id', $course->id)->get();
+
+        $successCourse = Payment::where('user_id', Auth::user()->id)
+        ->where('status', 'success')
+        ->with(['payment_detail'=>function($query){
+            $query->with('course');
+        }])
+        ->get()
+        ->map(function($value) {
+            return $value->payment_detail->pluck('course_id');
+        })->flatten();
+
+        $c = Course::find($successCourse);
+
+
         if($x->role_id == 1){
-            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams'));
+            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
         }
         else if($x->role_id == 2){
             return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams'));
