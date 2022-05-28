@@ -116,7 +116,7 @@ class CourseController extends Controller
         $sessions = Session::where('course_id', $course->id)->get();
         $exams = Exam::where('course_id', $course->id)->get();
         if($x->role_id == 1){
-            return view('user.detailCourse');
+            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams'));
         }
         else if($x->role_id == 2){
             return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams'));
