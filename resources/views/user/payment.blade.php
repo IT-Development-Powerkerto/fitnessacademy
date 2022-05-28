@@ -107,7 +107,7 @@
                                 </div>
                                 <!-- Modal body -->
                                 <div class="flex justify-center items-center p-6">
-                                    <img src="assets/img/login.png" class="rounded-lg w-64 h-64 text-center" alt="">
+                                    <img src="{{asset('assets/img/FPA_IG6 2.png')}}" class="rounded-lg w-64 h-64 text-center" alt="">
                                 </div>
                             </div>
                         </div>
