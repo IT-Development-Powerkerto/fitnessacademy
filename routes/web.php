@@ -77,3 +77,5 @@ Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
 Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
 Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.aprove');
+
+Route::get('/order', [PaymentController::class, 'order'])->name('order.order');

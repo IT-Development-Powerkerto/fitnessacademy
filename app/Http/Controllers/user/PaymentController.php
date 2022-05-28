@@ -114,4 +114,10 @@ class PaymentController extends Controller
         return redirect()->back();
     }
 
+    public function order()
+    {
+        $p = Payment::where('user_id',auth()->user()->id)->get();
+        return view('user.orderHistory', compact('p'));
+    }
+
 }

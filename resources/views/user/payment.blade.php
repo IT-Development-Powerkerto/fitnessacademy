@@ -22,6 +22,9 @@
                     <h1 class="font-semibold text-xl ml-5">Payment</h1>
                     {{-- <form action="{{route('upload.uploadImage', ['id'=>$payment->id])}}" method="POST" enctype="multipart/form-data">
                         @csrf --}}
+                    @if ($payment->status == 'pending' || $payment->status == 'success' )
+
+                    @else
                     <button type="button" data-modal-toggle="trans" class="text-yellow-300 bg-zinc-800 hover:bg-zinc-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">
                         <div class="mr-2">
                         <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,9 +32,10 @@
                         </svg>
                         </div>
                         Upload Evidence of Transfer
-                        {{-- <input type="file" accept="image/*" nama="proof" id="proof" class="hidden"> --}}
 
                     </button>
+
+                    @endif
                     {{-- </form> --}}
 
                     <!-- Main modal -->
@@ -55,12 +59,6 @@
                                 <div class="flex p-6 bg-zinc-800 flex-col h-60 rounded-b-lg">
                                     <form action="{{route('upload.uploadImage', ['id'=>$payment->id])}}" method="POST" enctype="multipart/form-data">
                                         @csrf
-
-                                        @if ($payment->status == 'success')
-                                        <h2 class="text-white text-xl">Your payment has been completed, thank you</h2>
-                                        @elseif ($payment->status == 'pending')
-                                        <h2 class="text-white text-xl">Please wait for this process, it may take a few minutes</h2>
-                                        @else
                                             <div class="mb-20">
                                                 <label class="block mb-2 text-sm font-medium text-white dark:text-gray-300" for="file_input">Upload Evidence of Transfer</label>
                                                 <input name="proof" id="proof" accept="image/*" type="file" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
@@ -69,7 +67,6 @@
                                                 <button type="button" data-modal-toggle="trans" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</button>
                                                 <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Submit</button>
                                             </div>
-                                        @endif
                                     </form>
                                 </div>
                             </div>
@@ -179,7 +176,7 @@
         </div>
         <!-- begin::Order Date -->
 
-        <!-- begin::Order History -->
+        {{-- <!-- begin::Order History -->
         <div class="py-10 bg-zinc-800">
             <div class="px-10">
                 <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
@@ -222,7 +219,7 @@
                                             </svg>
                                             File
                                         </button>
-                                        {{-- begin::modal --}}
+
                                         <!-- Main modal -->
                                         <div id="defaultModal" tabindex="-1" aria-hidden="true" class="backdrop-blur-md bg-black bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
                                             <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
@@ -244,7 +241,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- end::modal --}}
+
                                     </td>
                                     <td class="px-3 py-4">Successful</td>
                                     <td class="px-3 py-4 flex justify-end">{{date('d/m/Y', strtotime($payment->order_date))}}</td>
@@ -259,7 +256,7 @@
 
             </div>
         </div>
-        <!-- end::Order History -->
+        <!-- end::Order History --> --}}
     </div>
 
         <!-- Begin::Livewire -->

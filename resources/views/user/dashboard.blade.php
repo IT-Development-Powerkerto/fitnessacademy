@@ -20,10 +20,16 @@
         <div class="px-10">
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-lg p-3">
                 <h1 class="font-semibold">My Course</h1>
-                <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
-                    <i class="las la-plus text-yellow-300"></i>
-                    Add Course
+                <div class="flex gap-2">
+                    <a href="{{route('order.order')}}" class="bg-yellow-300 text-zinc-800 items-center rounded-lg p-2 border-zinc-800 border-2">
+
+                        Order History
+                    </a>
+                    <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
+                        <i class="las la-plus text-yellow-300"></i>
+                        Add Course
                 </a>
+                </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
                 @foreach ( $c->where('level', 'Level 1') as $c )
