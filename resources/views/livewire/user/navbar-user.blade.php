@@ -14,7 +14,7 @@
                     <h1 class="text-sm font-semibold text-gray-500 text-right">{{ Auth::user()->email }}</h1>
                 </div>
                 <button type="button" class="flex mr-3 text-sm rounded md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
-                    <img class="w-11 h-11 rounded" src="{{asset('assets/img/Choaches/Tanjung.png')}}" alt="user photo">
+                    <img class="w-11 h-11 rounded" src="{{asset(Auth::user()->image ?? 'assets/img/Choaches/Tanjung.png')}}" alt="user photo">
                 </button>
             </div>
             <!-- Dropdown menu -->
