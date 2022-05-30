@@ -50,7 +50,7 @@ class LoginRegisterController extends Controller
             'role_id' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users|email:rfc,dns',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'gender' => 'required',
             'age' => 'required',
             'phone' => 'required',

@@ -107,11 +107,12 @@
                             <h1 class="text-white text-sm font-light">Input your new password</h1>
                         </div>
                         <div class="p-5">
-                            <form>
+                            <form action="{{route('newpassword')}}" method="POST">
+                                @csrf
                                 <div class="mb-6">
                                     <div class="py-2" x-data="{ show: true }">
                                         <div class="relative">
-                                            <input placeholder="Current Password" :type="show ? 'password' : 'text'" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white  focus:border-gray-600 focus:outline-none">
+                                            <input name="current_password" placeholder="Current Password" :type="show ? 'password' : 'text'" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white  focus:border-gray-600 focus:outline-none">
                                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
 
                                                 <svg class="h-6 text-gray-700" fill="none" @click="show = !show" :class="{'hidden': !show, 'block':show }" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512">
@@ -133,7 +134,7 @@
                                 <div class="mb-6">
                                     <div class="py-2" x-data="{ show: true }">
                                         <div class="relative">
-                                            <input placeholder="New Password" :type="show ? 'password' : 'text'" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white  focus:border-gray-600 focus:outline-none">
+                                            <input name="new_password" placeholder="New Password" :type="show ? 'password' : 'text'" class="text-md block px-3 py-2 rounded-lg w-full bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white  focus:border-gray-600 focus:outline-none">
                                             <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
 
                                                 <svg class="h-6 text-gray-700" fill="none" @click="show = !show" :class="{'hidden': !show, 'block':show }" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512">

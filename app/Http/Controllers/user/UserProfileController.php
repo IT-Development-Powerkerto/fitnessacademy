@@ -4,10 +4,11 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
-use Validator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
 
@@ -149,6 +150,27 @@ class UserProfileController extends Controller
     {
         $trainer = User::findOrFail($id);
         return view('admin.overviewTrainer', compact('trainer'));
+
+    }
+
+    public function NewPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+           'current_password' => 'required',
+           'new_password' => 'required',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }else{
+            $user = Auth::user();
+            if(Hash::check($request->current_password, $user->password)){
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+            }
+        }
+
+
+        return redirect()->back();
 
     }
 }

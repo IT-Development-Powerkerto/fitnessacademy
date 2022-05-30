@@ -38,7 +38,7 @@
                         <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
                     </div>
                     <div class="mb-6">
-                        <input type="password" id="password" name="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required>
+                        <input type="password" id="password" name="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required  minlength="8" maxlength="8" pattern="[0-9+-*]{13,13}">
                     </div>
                     <div class="mb-6">
                         <select id="gender" name="gender" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
