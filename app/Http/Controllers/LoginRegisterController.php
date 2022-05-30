@@ -83,7 +83,13 @@ class LoginRegisterController extends Controller
         $user->education = $validated['education'];
         $user->work = $validated['work'];
         $user->address = $validated['address'];
-        $user->status = 'inactive'; //active, inactive, reject
+        if($user->role_id == 3)
+        {
+            $user->status = 'active'; //active, inactive, reject
+        }else
+        {
+            $user->status = 'inactive'; //active, inactive, reject
+        }
 
         // $user->remember_token = Str::random(10);
         $user->created_at = Carbon::now()->toDateTimeString();

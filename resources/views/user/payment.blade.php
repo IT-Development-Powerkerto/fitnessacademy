@@ -140,15 +140,34 @@
 
         <!-- begin::Order Date -->
         <div class="py-10 bg-zinc-800">
+            <div class="flex flex-row gap-24">
+                <div class="px-10">
+                    <h2 class="text-white text-xl">Course Ordered</h2>
+
+
+                </div>
+                <div class="px-10">
+
+                    @foreach ( $payment->payment_detail as $pd )
+                    <div class="text-white text-xl">
+                       <li>{{$pd->course->name}}</li>
+                    </div>
+                    @endforeach
+                </div>
+
+            </div>
             <div class="flex flex-row gap-10">
                 <div class="px-10">
-                    <h2 class="text-white text-xl">Order Date</h2>
+
+                    <h2 class="text-white text-xl mt-5">Order Date</h2>
                     <h2 class="text-white text-xl mt-5">Your Bill is</h2>
                     <h2 class="text-white text-xl mt-5">Your Payment Status is </h2>
 
                 </div>
                 <div class="px-10">
-                    <h2 class="text-white text-xl">{{date('d/m/Y', strtotime($payment->order_date))}}</h2>
+
+
+                    <h2 class="text-white text-xl mt-5">{{date('d/m/Y', strtotime($payment->order_date))}}</h2>
                     <h2 class="text-yellow-200 font-semibold mt-5 text-xl">{{'Rp. '.number_format($payment->total_price,0,',','.')}}</h2>
 
                    @if ($payment->status == "waiting")

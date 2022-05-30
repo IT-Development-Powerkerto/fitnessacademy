@@ -18,6 +18,10 @@ class PaymentController extends Controller
     {
         $payment = Payment::findOrFail($id);
         $p = Payment::where('status', 'success')->get();
+        // $p = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+        //     $query->where('course_id', $id);
+
+        // }])->get()->pluck('user_id')->flatten();
         // dd($payment);
 
         return view('user.payment', compact('payment', 'p'));

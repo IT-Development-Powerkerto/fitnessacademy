@@ -1267,6 +1267,12 @@ input:checked + .toggle-bg {
 .gap-1 {
   gap: 0.25rem;
 }
+.gap-20 {
+  gap: 5rem;
+}
+.gap-24 {
+  gap: 6rem;
+}
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));

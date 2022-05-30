@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
                 'education' => 'S3',
                 'work'      => 'work',
                 'address'      => 'Address',
-                'status'     => 'inactive',
+                'status'     => 'active',
             ],
         ];
 
