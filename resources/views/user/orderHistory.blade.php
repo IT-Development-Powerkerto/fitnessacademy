@@ -109,7 +109,7 @@
 
 
                                 @endif
-                                <td class="px-3 py-4 flex justify-end">{{date('d/m/Y', strtotime($p->order_date))}}</td>
+                                <td class="px-3 py-4 flex justify-end text-center">{{date('d/m/Y', strtotime($p->order_date))}}</td>
 
                             </tr>
                             @endforeach

@@ -59,6 +59,7 @@ class LoginRegisterController extends Controller
             'work' => 'required',
             'address' => 'required',
             'status' => '',
+            'image' => '',
         ]);
         if($validator->fails()){
             // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
@@ -90,6 +91,7 @@ class LoginRegisterController extends Controller
         {
             $user->status = 'inactive'; //active, inactive, reject
         }
+        $user->image = $request->image;
 
         // $user->remember_token = Str::random(10);
         $user->created_at = Carbon::now()->toDateTimeString();

@@ -133,8 +133,15 @@ class UserProfileController extends Controller
 
     public function view($id)
     {
+        // $trainer = User::findOrFail($id) ?? Auth::user()->id;
+        return view('user.userProfile');
+
+    }
+
+    public function trainerMy($id)
+    {
         $trainer = User::findOrFail($id);
-        return view('user.userProfile', compact('trainer'));
+        return view('admin.overviewTrainer', compact('trainer'));
 
     }
 }

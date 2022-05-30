@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
                 'work'      => 'work',
                 'address'      => 'Address',
                 'status'     => 'inactive',
+                'image'     => "assets/img/Gallery/12.png",
             ],
             [
                 'role_id'   => 2,
@@ -46,6 +47,7 @@ class UserSeeder extends Seeder
                 'work'      => 'works',
                 'address'      => 'Addresss',
                 'status'     => 'inactive',
+                'image'     => "assets/img/Choaches/Tanjung.png",
             ],
             [
                 'role_id'   => 3,
@@ -60,6 +62,7 @@ class UserSeeder extends Seeder
                 'work'      => 'work',
                 'address'      => 'Address',
                 'status'     => 'active',
+                'image'     => "assets/img/login.png",
             ],
         ];
 

@@ -25,6 +25,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+
+        Gate::define('is_trainer', fn(\App\Models\User $user) => ($user->role_id == 2));
+
         //
     }
 }

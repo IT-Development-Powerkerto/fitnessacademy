@@ -15,7 +15,7 @@
 
     <livewire:user.navbar-user />
 
-    <div class="bg-zinc-800 p-10">
+    <div class="bg-zinc-800 p-10 h-screen">
         <div class="flex flex-row py-5 items-center">
             <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
@@ -25,22 +25,23 @@
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
                 <h1 class="font-semibold">Overview Trainer Approval</h1>
                 <div class="flex justify-end md:block">
-                    <button type="button" data-modal-toggle="Reject" class="bg-red-600 text-white items-center rounded-lg p-2 mr-3">
+                    <button type="button" data-modal-toggle="Reject{{$trainer->id}}" class="bg-red-600 text-white items-center rounded-lg p-2 mr-3">
                         <i class="las la-times pr-2"></i>
                         Reject
                     </button>
-                    <button type="button" data-modal-toggle="Approve" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
+                    <button type="button" data-modal-toggle="Approve{{$trainer->id}}" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
                         <i class="las la-check pr-2"></i>
                         Approve
                     </button>
                     {{-- begin::ModalApprove --}}
-                    <div id="Approve" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+                    <div id="Approve{{$trainer->id}}" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
                         <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                             <div class="relative bg-zinc-800 rounded-lg shadow dark:bg-gray-700">
                                 <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="Approve">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
-                                <form>
+                                <form action="{{route('aproveUser.aproveUser', ['id'=>$trainer->id])}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="p-6 text-center">
                                         <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this trainer ?</h3>
@@ -55,13 +56,14 @@
                     </div>
                     {{-- end::ModalApprove --}}
                     {{-- begin::ModalReject --}}
-                    <div id="Reject" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+                    <div id="Reject{{$trainer->id}}" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
                         <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                             <div class="relative bg-zinc-800 rounded-lg shadow dark:bg-gray-700">
                                 <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="Reject">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
-                                <form>
+                                <form action="{{route('rejectUser.rejectUser', ['id'=>$trainer->id])}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="p-6 text-center">
                                         <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to reject this trainer ?</h3>
@@ -80,16 +82,16 @@
             <div class="bg-black">
                 <div class="flex flex-col md:flex-row justify-between p-5">
                     <div class="flex flex-col md:flex-row">
-                        <img src="assets/img/Choaches/Tanjung.png" class="w-52 self-center md:justify-items-start" alt="">
+                        <img src="{{asset($trainer->image ?? 'assets/img/Choaches/Tanjung.png')}}" class="w-52 self-center md:justify-items-start" alt="">
                         <div class="flex flex-col py-5 md:py-0 md:px-5">
-                            <h1 class="text-xl text-white font-bold">{{$my->name}}</h1>
+                            <h1 class="text-xl text-white font-bold">{{$trainer->name}}</h1>
                             <h1 class="text-lg text-gray-500 font-semibold flex items-center py-3">
                                 <i class="las la-envelope text-lg pr-2"></i>
-                                {{$my->email}}
+                                {{$trainer->email}}
                             </h1>
                             <h1 class="text-lg text-gray-500 font-semibold flex items-center">
                                 <i class="las la-phone text-lg pr-2"></i>
-                                {{$my->phone}}
+                                {{$trainer->phone}}
                             </h1>
                         </div>
                     </div>
@@ -104,32 +106,32 @@
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Gender</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->gender}}</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$trainer->gender}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Age</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->age}}</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$trainer->age}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Work</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->work}}</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$trainer->work}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Last Education </h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->education}}</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$trainer->education}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Identity Number (NIK)</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->nik}}</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$trainer->nik}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-2">
                         <h1 class="col-span-3 md:col-span-2 text-white">Address</h1>
                         <h1 class="col-span-1 text-white">:</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">{{$my->address}}</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{$trainer->address}}</h1>
                     </div>
                 </div>
             </div>

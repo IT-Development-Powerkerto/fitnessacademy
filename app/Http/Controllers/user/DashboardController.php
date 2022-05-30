@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
-        $trainer = User::whereIn('status', ['inactive', 'active'])->whereIn('role_id', [1,2])->get();
+        $trainer = User::whereIn('status', ['inactive', 'active'])->where('role_id', 2)->get();
         // $student = User::where('role_id', 1)->get();
         $student = Payment::where('status', 'success')->get();
         $courses = Course::withCount(['payment' => function($query) {
