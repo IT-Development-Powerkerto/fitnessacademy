@@ -98,6 +98,7 @@ class UserProfileController extends Controller
             'education' => 'required',
             'work' => 'required',
             'address' => 'required',
+            'image' => '',
         ]);
         if($validator->fails()){
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
@@ -114,6 +115,12 @@ class UserProfileController extends Controller
         $user->education = $validated['education'];
         $user->work = $validated['work'];
         $user->address = $validated['address'];
+        if ($request->hasFile('image')) {
+            $extFile = $request->image->getClientOriginalExtension();
+            $namaFile = 'user-'.time().".".$extFile;
+            $path = $request->image->move('public/assets/img/user/', $namaFile);
+            $user->image = $path;
+        }
         $user->updated_at = Carbon::now()->toDateTimeString();
         $user->save();
 

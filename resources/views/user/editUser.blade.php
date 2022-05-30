@@ -31,11 +31,11 @@
             </div>
             <div class="bg-black">
                 <div class="p-5 ">
-                    <form action="{{route('userProfile.update',['userProfile'=>$my->id])}}" method="POST" class="flex flex-col px-10">
+                    <form action="{{route('userProfile.update',['userProfile'=>$my->id])}}" method="POST" class="flex flex-col px-10" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
-                        <a href="#" class="flex self-center py-10"><img id="coverPreview" src="assets/img/Choaches/Tanjung.png" class="w-52 h-52 rounded-lg" alt=""></a>
-                        <input type="file" id="cover" style="display: none;" />
+                        <a href="#" class="flex self-center py-10"><img id="coverPreview" src="{{asset($my->image  ?? 'assets/img/Choaches/Tanjung.png')}}" class="w-52 h-52 rounded-lg" alt=""></a>
+                        <input type="file" id="image" name="image" style="display: none;" />
                         <div class="flex flex-row gap-4">
                             <div class="w-full">
                                 <div class="mb-6">
@@ -91,12 +91,12 @@
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
     <script>
         let coverPreview = document.getElementById('coverPreview');
-        let cover = document.getElementById('cover');
+        let cover = document.getElementById('image');
 
-        coverPreview.addEventListener('click', _ => cover.click());
+        coverPreview.addEventListener('click', _ => image.click());
 
         cover.addEventListener("change", _ => {
-            let file = cover.files[0];
+            let file = image.files[0];
             let reader = new FileReader();
             reader.onload = function() {
                 coverPreview.src = reader.result;
