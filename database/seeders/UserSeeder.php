@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
                 'education' => 'S1',
                 'work'      => 'work',
                 'address'      => 'Address',
+                'status'     => 'inactive',
             ],
             [
                 'role_id'   => 2,
@@ -44,6 +45,7 @@ class UserSeeder extends Seeder
                 'education' => 'S2',
                 'work'      => 'works',
                 'address'      => 'Addresss',
+                'status'     => 'inactive',
             ],
             [
                 'role_id'   => 3,
@@ -57,6 +59,7 @@ class UserSeeder extends Seeder
                 'education' => 'S3',
                 'work'      => 'work',
                 'address'      => 'Address',
+                'status'     => 'inactive',
             ],
         ];
 

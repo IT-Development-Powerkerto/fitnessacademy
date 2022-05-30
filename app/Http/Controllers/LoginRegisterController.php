@@ -58,6 +58,7 @@ class LoginRegisterController extends Controller
             'education' => 'required',
             'work' => 'required',
             'address' => 'required',
+            'status' => '',
         ]);
         if($validator->fails()){
             // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
@@ -82,6 +83,8 @@ class LoginRegisterController extends Controller
         $user->education = $validated['education'];
         $user->work = $validated['work'];
         $user->address = $validated['address'];
+        $user->status = 'inactive'; //active, inactive, reject
+
         // $user->remember_token = Str::random(10);
         $user->created_at = Carbon::now()->toDateTimeString();
         $user->updated_at = Carbon::now()->toDateTimeString();

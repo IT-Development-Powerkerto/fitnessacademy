@@ -152,22 +152,28 @@
                     <h2 class="text-yellow-200 font-semibold mt-5 text-xl">{{'Rp. '.number_format($payment->total_price,0,',','.')}}</h2>
 
                    @if ($payment->status == "waiting")
-                   <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
-                       <h2 class="text-red-600 font-semibold text-xl">Not Yet Paid</h2>
+                   <div class="border-dashed border-yellow-400 border-2 flex flex-col justify-center p-5 my-5">
+                       <h2 class="text-yellow-400 font-semibold text-xl">Not Yet Paid</h2>
                        <h2 class="text-white text-xl">Please make payment and upload your evidence of payment</h2>
                    </div>
 
                    @elseif ($payment->status == "pending")
-                   <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
+                   <div class="border-dashed border-blue-700 border-2 flex flex-col justify-center p-5 my-5">
                        <h2 class="text-blue-700 font-semibold text-xl">Waiting for Confirmation</h2>
                        <h2 class="text-white text-xl">Please wait for this process, it may take a few minutes</h2>
                    </div>
 
 
-                   @else
-                   <div class="border-dashed border-white border-2 flex flex-col justify-center p-5 my-5">
+                   @elseif ($payment->status == "success")
+                   <div class="border-dashed border-green-400 border-2 flex flex-col justify-center p-5 my-5">
                        <h2 class="text-green-400 font-semibold text-xl">Successful</h2>
                        <h2 class="text-white text-xl">Your payment has been completed, thank you</h2>
+                   </div>
+
+                   @else
+                   <div class="border-dashed border-red-600 border-2 flex flex-col justify-center p-5 my-5">
+                       <h2 class="text-red-600 font-semibold text-xl">Reject</h2>
+                       <h2 class="text-white text-xl">Please reupload your evidence of payment</h2>
                    </div>
                    @endif
 

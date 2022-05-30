@@ -114,6 +114,19 @@ class PaymentController extends Controller
         return redirect()->back();
     }
 
+
+
+    public function reject(Request $request, $id)
+    {
+        $payment = Payment::find($id);
+
+        $payment->status = 'reject'; //pending, waiting, success
+
+        $payment->save();
+
+        return redirect()->back();
+    }
+
     public function order()
     {
         $p = Payment::where('user_id',auth()->user()->id)->get();

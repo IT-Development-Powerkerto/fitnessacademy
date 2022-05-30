@@ -101,8 +101,11 @@
                                 <td class="px-3 py-4">Not Yet Paid</td>
                                 @elseif ($p->status == 'pending')
                                 <td class="px-3 py-4">Waiting for Confirmation</td>
-                                @else
+                                @elseif ($p->status == 'success')
                                 <td class="px-3 py-4">Successful</td>
+                                @else
+                                <td class="px-3 py-4">Reject</td>
+
 
 
                                 @endif

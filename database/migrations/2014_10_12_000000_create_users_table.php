@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('education');
             $table->string('work');
             $table->string('address');
+            $table->string('status');
             $table->timestamps();
         });
     }

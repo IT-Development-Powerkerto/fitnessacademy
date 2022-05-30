@@ -41,6 +41,9 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 // User
 
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+// Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->name('aproveUser.aproveUser');
+Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');
 
 Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
 Route::get('/detailOvervieweCourse/{course}', [CourseController::class, 'detailOvervieweCourse'])->name('detailOvervieweCourse.detailOvervieweCourse')->middleware('auth');
@@ -77,5 +80,8 @@ Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
 Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
 Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.aprove');
+Route::post('/reject/{id}', [PaymentController::class, 'reject'])->name('reject.reject');
+
+
 
 Route::get('/order', [PaymentController::class, 'order'])->name('order.order');

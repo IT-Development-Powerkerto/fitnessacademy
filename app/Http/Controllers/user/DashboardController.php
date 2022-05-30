@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
-        $trainer = User::where('role_id', 2)->get();
+        $trainer = User::whereIn('status', ['inactive', 'active'])->whereIn('role_id', [1,2])->get();
         // $student = User::where('role_id', 1)->get();
         $student = Payment::where('status', 'success')->get();
         $courses = Course::withCount(['payment' => function($query) {
@@ -31,6 +31,14 @@ class DashboardController extends Controller
         }])
         ->get();
 
+
+        // if($trainer->status == 'inactive'){
+        //     $trainer = User::all();
+
+        // }else if($trainer->status == 'active'){
+        //     $trainer = User::where('role', 2)->get();
+
+        // }
         // $c = Course::with(['payment' => function($query) {
         //     $query->where('status', 'success');
         //     $query->where('user_id', Auth::user()->id);
@@ -50,7 +58,7 @@ class DashboardController extends Controller
 
         // $c = Auth::user()->payment->where('status', 'success');
 
-        // dd($c);  
+        // dd($c);
         $p = Payment::where('status', 'pending')->get();
 
 
@@ -134,5 +142,32 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function aproveUser(Request $request, $id)
+    {
+
+
+        $user = User::find($id);
+
+        $user->status = 'active'; //pending, waiting, success
+
+        $user->save();
+
+        return redirect()->back();
+    }
+
+
+
+    public function rejectUser(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $user->status = 'reject'; //pending, waiting, success
+
+        $user->save();
+
+        return redirect()->back();
     }
 }
