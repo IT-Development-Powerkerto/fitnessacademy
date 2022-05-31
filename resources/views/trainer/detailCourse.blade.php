@@ -73,7 +73,7 @@
 
             <div class="mt-6">
                 @foreach ( $sessions as $s )
-                <a href="/detailSession" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
+                <a href="{{route('detailSession.show', ['detailSession'=>$s->id])}}" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
                     <div class="flex flex-col">
                         <span class="font-bold text-black">Session {{$loop->iteration}} - {{$s->name}}</span>
                         <span class="text-sm font-semibold text-black">{{\Illuminate\Support\Carbon::create($s->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</span>

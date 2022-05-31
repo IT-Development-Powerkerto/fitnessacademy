@@ -122,6 +122,9 @@ class SessionController extends Controller
     public function show($id)
     {
         //
+        $session = Session::find($id);
+        return view('trainer.detailSession', compact('session'));
+
     }
 
     /**
