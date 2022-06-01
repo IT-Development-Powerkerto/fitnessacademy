@@ -16,6 +16,7 @@ use App\Models\Session;
 use App\Models\Absen;
 use App\Models\PaymentDetail;
 use App\Models\User;
+use App\Models\Component;
 
 class SessionController extends Controller
 {
@@ -251,11 +252,57 @@ class SessionController extends Controller
 
     }
 
+    public function componnent($id)
+    {
+        //
+        $session = Session::find($id);
+
+
+        $session_id = $id;
+
+
+        return view('trainer.setScoreSession', compact('session','session_id'));
+        // return view('trainer.presence', compact('session','session_id'));
+
+    }
+
     public function getAbsen(){
         $s = Payment::where('status', 'success')->get();
 
         return response()->json(['student'=> $s], 201);
 
+    }
+
+    public function scoreComponent(Request $request)
+    {
+        //
+        // dd(Carbon::create($request->date_session)->toDateString());
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+
+            'session_id' => '',
+            'komp' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        foreach($request->komp as $value){
+            $comp = new Component();
+            $comp->session_id = $request->session_id;
+            $comp->component_name = $value['component_name'];
+            $comp->score = $value['score'];
+
+            $comp->save();
+
+        }
+        $comp->save();
+
+
+        $session_id = $request->session_id;
+        // return $session;
+
+        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
     }
 
 

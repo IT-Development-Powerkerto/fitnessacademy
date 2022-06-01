@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->foreignId('session_id');
-            $table->string('Component');
+            $table->string('component_name')->nullable();
             $table->integer('score')->nullable();
             $table->foreign('session_id')->references('id')->on('sessions');
             $table->softDeletes();

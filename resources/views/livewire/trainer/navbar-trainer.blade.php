@@ -1,7 +1,7 @@
 <nav class="bg-zinc-800 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="/dashboard" class="flex items-center">
-            <img src="../assets/img/logo.png" class="mr-3 h-6 sm:h-9" alt="Fitness Plus Academy" />
+            <img src="{{asset('../assets/img/logo.png')}}" class="mr-3 h-6 sm:h-9" alt="Fitness Plus Academy" />
             <span class="self-center text-sm font-semibold">
                 <h1 class="text-white">FITNESS PLUS</h1>
                 <h1 class="text-white">ACADEMY</h1>
@@ -14,7 +14,7 @@
                     <h1 class="text-sm font-semibold text-gray-500 text-right">{{ Auth::user()->email }}</h1>
                 </div>
                 <button type="button" class="flex mr-3 text-sm rounded md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" type="button" data-dropdown-toggle="dropdown">
-                    <img class="w-11 h-11 rounded" src="../assets/img/Choaches/Tanjung.png" alt="user photo">
+                    <img class="w-11 h-11 rounded" src="{{asset('../assets/img/Choaches/Tanjung.png')}}" alt="user photo">
                 </button>
             </div>
             <!-- Dropdown menu -->

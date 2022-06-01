@@ -111,7 +111,7 @@
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Score</h1>
                 <div class="flex md:flex-row flex-col items-end">
-                    <a href="/setScoreSession" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
+                    <a href="{{route('setScoreSession.componnent', ['id'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
                         <i class="las la-chart-bar"></i>
                         Set Score Component
                     </a>

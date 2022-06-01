@@ -37,11 +37,14 @@
                 <h1 class="font-semibold">Set Score Component</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="">
-                    <div class="mb-6 repeater">
-                        <div data-repeater-list="group-a">
+                {{-- <form action=""> --}}
+                <form action="{{route('component.scoreComponent')}}" method="POST">
+                    @csrf
+                    <div class="mb-6 repeater" id="komp">
+                        <div data-repeater-list="komp">
                             <div data-repeater-item class="flex flex-row gap-4">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Component" required>
+                                <input type="text" value="{{old('component_name')}}" id="component_name" name="component_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Component" required>
+                                <input type="text" value="{{old('score')}}" name="score" hidden>
                                 <button type="button" class="text-white rounded-lg mt-6" data-repeater-delete>
                                     <i class="las la-times"></i>
                                 </button>
@@ -52,10 +55,11 @@
                             add Another Materi
                         </button>
                     </div>
+                    <input type="text" value="{{$session_id}}" name="session_id" hidden>
 
                     <div class="flex flex-row justify-center md:justify-end gap-4 mt-10">
-                        <a href="#" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
-                        <a href="#" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save</a>
+                        <a href="{{route('detailSession.show', ['detailSession'=>$session->id])}}" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
+                        <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save</button>
                     </div>
                 </form>
             </div>

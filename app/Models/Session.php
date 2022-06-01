@@ -44,4 +44,8 @@ class Session extends Model
     {
         return $this->hasMany(Absen::class);
     }
+    public function component()
+    {
+        return $this->hasMany(Component::class);
+    }
 }
