@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Materi;
+use App\Models\Payment;
 use App\Models\Session;
+use App\Models\Absen;
+use App\Models\User;
 
 class SessionController extends Controller
 {
@@ -110,6 +113,7 @@ class SessionController extends Controller
         $course_id = $request->course_id;
         // return $session;
 
+
         return redirect()->route('course.show',['course'=>$course_id]);
     }
 
@@ -123,8 +127,53 @@ class SessionController extends Controller
     {
         //
         $session = Session::find($id);
-        return view('trainer.detailSession', compact('session'));
 
+
+        $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+            $query->where('course_id', $id);
+
+        }])->get()->pluck('user_id')->flatten();
+
+        $s = User::find($a);
+        // $s = Payment::where('status', 'success')->get();
+        $session_id = $id;
+
+        $a = Absen::where('session_id', $session->id)->get();
+
+        return view('trainer.detailSession', compact('session', 's', 'session_id', 'a'));
+
+    }
+
+
+    public function absen(Request $request)
+    {
+        //
+        // dd(Carbon::create($request->date_session)->toDateString());
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'user_id' => '',
+            'session_id' => '',
+            'status' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        foreach($request->user_id as $key=>$value){
+            $absen = new Absen();
+            $absen->session_id = $request->session_id;
+            $absen->user_id = $value;
+            $absen->status = $request->status[$key];
+
+            $absen->save();
+
+        }
+
+
+        $session_id = $request->session_id;
+        // return $session;
+
+        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
     }
 
     /**
@@ -160,4 +209,36 @@ class SessionController extends Controller
     {
         //
     }
+
+    public function presence($id)
+    {
+        //
+        $session = Session::find($id);
+
+
+        // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+        //     $query->where('course_id', $id);
+
+        // }])->get()->pluck('user_id')->flatten();
+
+        // $s = User::find($a);
+        $s = Payment::where('status', 'success')->get();
+        $session_id = $id;
+
+        $a = Absen::where('session_id', $session->id)->get();
+
+        return view('trainer.presence', compact('session', 's', 'session_id', 'a'));
+
+    }
+
+    public function getAbsen(){
+        $s = Payment::where('status', 'success')->get();
+
+        return response()->json(['student'=> $s], 201);
+
+    }
+
+
+
+
 }

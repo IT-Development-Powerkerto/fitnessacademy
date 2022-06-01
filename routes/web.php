@@ -59,6 +59,8 @@ Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('se
 Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
 
 Route::post('/session', [SessionController::class, 'store'])->name('session.store');
+Route::post('/absen', [SessionController::class, 'absen'])->name('absen.absen');
+Route::get('/presence/{id}', [SessionController::class, 'presence'])->name('presence.presence');
 
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 

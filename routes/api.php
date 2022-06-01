@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\user\CourseController;
+use App\Http\Controllers\user\SessionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/course', [CourseController::class, 'getCourse']);
+Route::get('/absen', [SessionController::class, 'getAbsen']);

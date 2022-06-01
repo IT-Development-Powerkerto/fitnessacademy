@@ -39,4 +39,9 @@ class Session extends Model
     {
         return $this->hasOne(Materi::class);
     }
+
+    public function absen()
+    {
+        return $this->hasMany(Absen::class);
+    }
 }
