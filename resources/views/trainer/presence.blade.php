@@ -42,8 +42,8 @@
                     <div class="text-white grid grid-cols-12 pt-5">
                         <h1 class="text-left col-span-1">{{$loop->iteration}}</h1>
                         {{-- <div class="col-span-7">{{$s->name}} --}}
-                        <div class="col-span-7">{{$s->user->name}}
-                            <input type="text" value={{$s->user_id}} name="user_id[]" hidden></div>
+                        <div class="col-span-7">{{$s->payment->user->name}}
+                            <input type="text" value={{$s->payment->user_id}} name="user_id[]" hidden></div>
                         {{-- <div class="text-center col-span-2">
                             <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
                         </div>
@@ -51,10 +51,10 @@
                             <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500">
                         </div> --}}
                         <div class="text-center col-span-2">
-                            <input checked id="default-radio-1" type="radio" value="present" name="status[]{{$s->user_id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input checked id="default-radio-1" type="radio" value="present" name="status[]{{$s->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </div>
                         <div class="text-center col-span-2">
-                            <input checked id="default-radio-2" type="radio" value="absen" name="status[]{{$s->user_id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input checked id="default-radio-2" type="radio" value="absen" name="status[]{{$s->id}}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
 
                         </div>
                         <input type="text" value="{{$session_id}}" name="session_id" hidden>

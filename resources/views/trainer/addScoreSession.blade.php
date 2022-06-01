@@ -53,16 +53,16 @@
                             <td class="px-3 py-4">1</td>
                             <td class="px-3 py-4">Craig Culhane</td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" required>
+                                <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
                             </td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c2" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" required>
+                                <input type="number" id="c2" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
                             </td>
                             <td class="px-3 py-4">
-                                <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" required>
+                                <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
                             </td>
                             <td class="px-3 py-4">
-                                <input type="number" id="total" name="total" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-2.5 p-2.5" placeholder="00" min="0" readonly>
+                                <input type="number" id="total" name="total" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
                             </td>
                         </tr>
                     </tbody>
@@ -111,7 +111,7 @@
             })
         });
     </script>
-    
+
     <script>
         $(function() {
             $('#c1, #c2, #c3, #total').change(function() {

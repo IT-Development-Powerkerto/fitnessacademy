@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
 use App\Models\Exam;
@@ -13,6 +14,7 @@ use App\Models\Materi;
 use App\Models\Payment;
 use App\Models\Session;
 use App\Models\Absen;
+use App\Models\PaymentDetail;
 use App\Models\User;
 
 class SessionController extends Controller
@@ -217,12 +219,30 @@ class SessionController extends Controller
 
 
         // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+        //     // $query->where('course_id', $id);
         //     $query->where('course_id', $id);
 
         // }])->get()->pluck('user_id')->flatten();
 
         // $s = User::find($a);
-        $s = Payment::where('status', 'success')->get();
+
+        $s = PaymentDetail::with(['payment'=> function($query) use($id){
+            $query->where('status', 'success');
+
+        }])->get();
+
+        // $successCourse = Payment::where('user_id', Auth::user()->id)
+        // ->where('status', 'success')
+        // ->with(['payment_detail'=>function($query){
+        //     $query->with('course');
+        // }])
+        // ->get()
+        // ->map(function($value) {
+        //     return $value->payment_detail->pluck('course_id');
+        // })->flatten();
+
+        // $s = Course::find($successCourse);
+        // $s = Payment::where('status', 'success')->get();
         $session_id = $id;
 
         $a = Absen::where('session_id', $session->id)->get();
