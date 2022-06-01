@@ -229,7 +229,7 @@ class SessionController extends Controller
         $s = PaymentDetail::with(['payment'=> function($query) use($id){
             $query->where('status', 'success');
 
-        }])->get();
+        }])->where('course_id', $session->course_id)->get();
 
         // $successCourse = Payment::where('user_id', Auth::user()->id)
         // ->where('status', 'success')
