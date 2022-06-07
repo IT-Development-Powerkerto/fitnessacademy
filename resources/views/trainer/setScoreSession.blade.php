@@ -44,7 +44,7 @@
                         <div data-repeater-list="komp">
                             <div data-repeater-item class="flex flex-row gap-4">
                                 <input type="text" value="{{old('component_name')}}" id="component_name" name="component_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Component" required>
-                                <input type="text" value="{{old('score')}}" name="score" hidden>
+                                {{-- <input type="text" value="{{old('score')}}" name="score" hidden> --}}
                                 <button type="button" class="text-white rounded-lg mt-6" data-repeater-delete>
                                     <i class="las la-times"></i>
                                 </button>

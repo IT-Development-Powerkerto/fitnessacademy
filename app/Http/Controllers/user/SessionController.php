@@ -17,6 +17,7 @@ use App\Models\Absen;
 use App\Models\PaymentDetail;
 use App\Models\User;
 use App\Models\Component;
+use App\Models\ScoreDetail;
 
 class SessionController extends Controller
 {
@@ -156,7 +157,7 @@ class SessionController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => '',
             'session_id' => '',
-            'status' => '',
+            // 'status' => '',
         ]);
         if($validator->fails()){
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
@@ -170,7 +171,10 @@ class SessionController extends Controller
 
             $absen->save();
 
+
+
         }
+
 
 
         $session_id = $request->session_id;
@@ -291,12 +295,19 @@ class SessionController extends Controller
             $comp = new Component();
             $comp->session_id = $request->session_id;
             $comp->component_name = $value['component_name'];
-            $comp->score = $value['score'];
+
 
             $comp->save();
 
+            $score = new ScoreDetail();
+            $score->component_id = $comp->id;
+            $score->score = '0';
+
+            $score->save();
         }
         $comp->save();
+        $score->save();
+
 
 
         $session_id = $request->session_id;

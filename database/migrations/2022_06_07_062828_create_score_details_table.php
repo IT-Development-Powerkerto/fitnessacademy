@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('components', function (Blueprint $table) {
+        Schema::create('score_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('session_id');
-            $table->string('component_name')->nullable();
-            $table->foreign('session_id')->references('id')->on('sessions');
+            $table->foreignId('component_id');
+            $table->bigInteger('score')->nullable();
+            $table->foreign('component_id')->references('id')->on('components');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('components');
+        Schema::dropIfExists('score_details');
     }
 };
