@@ -126,9 +126,16 @@
                     <div class="text-white uppercase font-semibold hidden md:grid grid-cols-12 ">
                         <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
                         <h1 class="col-span-3 text-sm md:text-md">Name</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Component 1</h1>
+                        {{-- <h1 class="col-span-2 text-sm md:text-md">Component 1</h1>
                         <h1 class="col-span-2 text-sm md:text-md">Component 2</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Component 3</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Component 3</h1> --}}
+                        @foreach ($c as $c)
+
+                        <h1 class="col-span-2 text-sm md:text-md">{{$c->component_name}}</h1>
+                        @endforeach
+                        {{-- <h1 class="col-span-2 text-sm md:text-md">Component 2</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">Component 3</h1> --}}
+
                         <h1 class="text-right col-span-2 text-sm md:text-md">Final Score</h1>
                     </div>
                     <div class="text-white uppercase font-semibold grid grid-cols-12 md:hidden">

@@ -143,8 +143,9 @@ class SessionController extends Controller
         $session_id = $id;
 
         $a = Absen::where('session_id', $session->id)->get();
+        $c = Component::where('session_id', $session->id)->get();
 
-        return view('trainer.detailSession', compact('session', 's', 'session_id', 'a'));
+        return view('trainer.detailSession', compact('session', 's', 'session_id', 'a', 'c'));
 
     }
 
