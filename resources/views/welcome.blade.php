@@ -10,6 +10,8 @@
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @livewireStyles
 </head>
@@ -372,16 +374,14 @@
                 <h1 class="text-white text-4xl font-bold">Contact Us</h1>
                 <div class="flex flex-col md:flex-row md:justify-between mt-5 md:h-64">
                     <div class="md:w-3/5 w-full py-5 md:py-0">
-                        <form>
-                            <div class="mb-6 flex flex-row gap-4">
-                                <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Name">
-                                <input type="text" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Email">
-                            </div>
-                            <div class="mb-6">
-                                <textarea name="" id="" cols="30" rows="5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Message" ></textarea>
-                            </div>
-                            <button type="submit" class="text-white bg-zinc-800 hover:bg-zinc-600 focus:ring-4 focus:outline-none focus:ring-black font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
-                        </form>
+                        <div class="mb-6 flex flex-row gap-4">
+                            <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Name">
+                            <input type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Email">
+                        </div>
+                        <div class="mb-6">
+                            <textarea id="message" cols="30" rows="5" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Message" ></textarea>
+                        </div>
+                        <button id="send" class="text-white bg-zinc-800 hover:bg-zinc-600 focus:ring-4 focus:outline-none focus:ring-black font-medium  text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
                     </div>
                     <div class="flex flex-col md:mb-32">
                         <div class="md:text-right">
@@ -397,7 +397,7 @@
                                 <a href="">
                                     <img src="assets/img/Ic_SocialMedia/facebook.png" class="w-7" alt="">
                                 </a>
-                                <a href="">
+                                <a href="https://instagram.com/fitnessplus.academy?igshid=YmMyMTA2M2Y=">
                                     <img src="assets/img/Ic_SocialMedia/instagram.png" class="w-7" alt="">
                                 </a>
                                 <a href="">
@@ -423,5 +423,15 @@
         AOS.init();
     </script>
     <script src="assets/js/tabs.js"></script>
+    <script>
+        $(function(){
+            $('#send').click(function(){
+                var name    = $('#name').val()
+                var email   = $('#email').val()
+                var message = $('#message').val()
+                window.location.href='https://wa.me/081245690803?text=Hello,%20I%20am%20'+ name + '%20and%20I%20wanted%20to%20know%20more%20about%20Fitness%20Academy.%20Would%20You%20mind%20to%20assist%20me.'
+            })
+        })
+    </script>
 </body>
 </html>
