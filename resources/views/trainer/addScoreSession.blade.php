@@ -37,7 +37,7 @@
                 <h1 class="font-semibold">Add Score</h1>
             </div>
             <div class="bg-black rounded-b-lg relative overflow-x-auto">
-                <form action="{{route('absen.absen')}}" method="POST">
+                <form action="{{route('scoreAdd.scoreAdd')}}" method="POST">
                     @csrf
                 <table class="w-full text-left">
                     <thead>
@@ -60,11 +60,12 @@
 
                         <tr class="whitespace-nowrap">
                             <td class="px-3 py-4">{{$loop->iteration}}</td>
-                            <td class="px-3 py-4">{{$u->name}}</td>
+                            <td class="px-3 py-4">{{$u->payment->user->name ?? null}}
+                                <input type="text" value={{$u->payment->user_id ?? null}} name="user_id[]" hidden></td>
 
                             @foreach ( $s as $s )
                             <td class="px-3 py-4">
-                                <input type="number" id="c1{{$s->component->id}}" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
+                                <input type="number" id="score_detail_id" name="score_detail_id[{{$s->id}}]" value="{{$s->score}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
                             </td>
                             @endforeach
                             {{-- <td class="px-3 py-4">
@@ -77,7 +78,7 @@
                                 <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
                             </td> --}}
                             <td class="px-3 py-4">
-                                <input type="number" id="total" name="total" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
+                                <input type="number" id="final_score" name="final_score" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
                             </td>
                         </tr>
                         @endforeach

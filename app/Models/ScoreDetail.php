@@ -10,6 +10,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ScoreDetail extends Model
 {
     use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'score'
+    ];
+
     public function component()
     {
         return $this->belongsTo(Component::class, 'component_id', 'id');

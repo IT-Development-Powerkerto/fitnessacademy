@@ -57,14 +57,19 @@ class SessionController extends Controller
     {
         $session = Session::find($id);
         $c = Component::where('session_id', $session->id)->get();
-        // $s = ScoreDetail::where('component_id', $id)->get();
-        $s = ScoreDetail::all();
-        $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
-            $query->where('course_id', $id);
+        $s = ScoreDetail::with('component')->get();
+        // $s = ScoreDetail::all();
+        // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+        //     $query->where('course_id', $id);
 
-        }])->get()->pluck('user_id')->flatten();
+        // }])->get()->pluck('user_id')->flatten();
 
-        $u = User::find($a);
+        $user = User::all();
+        $u = PaymentDetail::with(['payment'=> function($query) use($id){
+            $query->where('status', 'success');
+
+        }])->where('course_id', $session->course_id)->get();
+
         $session_id = $id;
 
         return view('trainer.addScoreSession',  compact('session', 'c', 's', 'u', 'session_id'));
@@ -338,6 +343,8 @@ class SessionController extends Controller
 
     public function scoreAdd (Request $request)
     {
+
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'user_id' => '',
             'score_detail_id' => '',
@@ -351,13 +358,19 @@ class SessionController extends Controller
             $s = new FinalScore();
             $s->session_id = $request->session_id;
             $s->user_id = $value;
-            $s->final_score = $value['final_score'];
+            // $s->final_score = $value->(final_score);
             $s->score_detail_id = $request->score_detail_id;
 
 
 
-            $s->save();
+            foreach ($request->score_detail_id as $key=>$value) {
+                ScoreDetail::updateOrCreate([
+                    'score' => $value
+                ]);
 
+            }
+
+            $s->save();
 
 
         }
