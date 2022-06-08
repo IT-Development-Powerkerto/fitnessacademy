@@ -37,22 +37,37 @@
                 <h1 class="font-semibold">Add Score</h1>
             </div>
             <div class="bg-black rounded-b-lg relative overflow-x-auto">
+                <form action="{{route('absen.absen')}}" method="POST">
+                    @csrf
                 <table class="w-full text-left">
                     <thead>
                         <tr class="text-gray-500">
                             <th scope="col" class="px-3 py-3">No</th>
                             <th scope="col" class="px-3 py-3">Name</th>
-                            <th scope="col" class="px-3 py-3">COMPONENT 1</th>
+                            @foreach ( $c as $c )
+
+                            <th scope="col" class="px-3 py-3">{{$c->component_name ?? null}}</th>
+                            @endforeach
+                            {{-- <th scope="col" class="px-3 py-3">COMPONENT 1</th>
                             <th scope="col" class="px-3 py-3">COMPONENT 2</th>
-                            <th scope="col" class="px-3 py-3">COMPONENT 3</th>
+                            <th scope="col" class="px-3 py-3">COMPONENT 3</th> --}}
                             <th scope="col" class="px-3 py-3">FINAL SCORE</th>
                         </tr>
                     </thead>
                     <tbody class="text-white">
+                        @foreach ( $u as $u )
+
+
                         <tr class="whitespace-nowrap">
-                            <td class="px-3 py-4">1</td>
-                            <td class="px-3 py-4">Craig Culhane</td>
+                            <td class="px-3 py-4">{{$loop->iteration}}</td>
+                            <td class="px-3 py-4">{{$u->name}}</td>
+
+                            @foreach ( $s as $s )
                             <td class="px-3 py-4">
+                                <input type="number" id="c1{{$s->component->id}}" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
+                            </td>
+                            @endforeach
+                            {{-- <td class="px-3 py-4">
                                 <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
                             </td>
                             <td class="px-3 py-4">
@@ -60,18 +75,21 @@
                             </td>
                             <td class="px-3 py-4">
                                 <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
-                            </td>
+                            </td> --}}
                             <td class="px-3 py-4">
                                 <input type="number" id="total" name="total" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
+                <input type="text" value="{{$session_id}}" name="session_id" hidden>
 
                 <div class="flex flex-row justify-center md:justify-end gap-4 mt-10 p-10">
                     <a href="#" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
-                    <a href="#" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save</a>
+                    <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>

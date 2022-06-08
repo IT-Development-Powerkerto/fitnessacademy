@@ -48,4 +48,8 @@ class Session extends Model
     {
         return $this->hasMany(Component::class);
     }
+    public function final_score()
+    {
+        return $this->hasMany(FinalScore::class);
+    }
 }

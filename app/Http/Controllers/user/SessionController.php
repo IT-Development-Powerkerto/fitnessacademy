@@ -17,8 +17,9 @@ use App\Models\Absen;
 use App\Models\PaymentDetail;
 use App\Models\User;
 use App\Models\Component;
-use App\Models\ScoreDetail;
 
+use App\Models\ScoreDetail;
+use App\Models\FinalScore;
 class SessionController extends Controller
 {
     /**
@@ -47,9 +48,26 @@ class SessionController extends Controller
     {
         return view('trainer.setScoreSession');
     }
-    public function addScore()
+
+    // public function addScore()
+    // {
+    //     return view('trainer.addScoreSession');
+    // }
+    public function addScore($id)
     {
-        return view('trainer.addScoreSession');
+        $session = Session::find($id);
+        $c = Component::where('session_id', $session->id)->get();
+        // $s = ScoreDetail::where('component_id', $id)->get();
+        $s = ScoreDetail::all();
+        $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+            $query->where('course_id', $id);
+
+        }])->get()->pluck('user_id')->flatten();
+
+        $u = User::find($a);
+        $session_id = $id;
+
+        return view('trainer.addScoreSession',  compact('session', 'c', 's', 'u', 'session_id'));
     }
 
     /**
@@ -315,6 +333,40 @@ class SessionController extends Controller
         // return $session;
 
         return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+    }
+
+
+    public function scoreAdd (Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'user_id' => '',
+            'score_detail_id' => '',
+            // 'status' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        foreach($request->user_id as $key=>$value){
+            $s = new FinalScore();
+            $s->session_id = $request->session_id;
+            $s->user_id = $value;
+            $s->final_score = $value['final_score'];
+            $s->score_detail_id = $request->score_detail_id;
+
+
+
+            $s->save();
+
+
+
+        }
+        $s->save();
+        $session_id = $request->session_id;
+        // return $session;
+
+        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+
     }
 
 

@@ -115,7 +115,8 @@
                         <i class="las la-chart-bar"></i>
                         Set Score Component
                     </a>
-                    <a href="/addScoreSession" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
+                    {{-- <a href="/addScoreSession" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0"> --}}
+                    <a href="{{route('score', ['id'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="lar la-plus-square"></i>
                         Add Score
                     </a>
@@ -131,21 +132,21 @@
                         <h1 class="col-span-2 text-sm md:text-md">Component 3</h1> --}}
                         @foreach ($c as $c)
 
-                        <h1 class="col-span-2 text-sm md:text-md">{{$c->component_name}}</h1>
+                        <h1 class="col-span-2 text-sm md:text-md">{{$c->component_name ?? null}}</h1>
                         @endforeach
                         {{-- <h1 class="col-span-2 text-sm md:text-md">Component 2</h1>
                         <h1 class="col-span-2 text-sm md:text-md">Component 3</h1> --}}
 
                         <h1 class="text-right col-span-2 text-sm md:text-md">Final Score</h1>
                     </div>
-                    <div class="text-white uppercase font-semibold grid grid-cols-12 md:hidden">
+                    {{-- <div class="text-white uppercase font-semibold grid grid-cols-12 md:hidden">
                         <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
                         <h1 class="col-span-3 text-sm md:text-md">Name</h1>
                         <h1 class="col-span-2 text-sm md:text-md">Comp 1</h1>
                         <h1 class="col-span-2 text-sm md:text-md">Comp 2</h1>
                         <h1 class="col-span-2 text-sm md:text-md">Comp 3</h1>
                         <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
-                    </div>
+                    </div> --}}
                     <div class="text-white grid grid-cols-12 pt-5">
                         <h1 class="text-left col-span-1">1</h1>
                         <h1 class="col-span-3">Muh Faizal</h1>

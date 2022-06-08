@@ -56,13 +56,16 @@ Route::resource('/detailSession', SessionController::class)->middleware('auth');
 Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
 Route::get('/editSession', [SessionController::class, 'editSession'])->name('session.editsession')->middleware('auth');
 // Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('session.setScoreSession')->middleware('auth');
-Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
+// Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
+Route::get('/addScoreSession/{id}', [SessionController::class, 'addScore'])->name('score')->middleware('auth');
 
 Route::post('/session', [SessionController::class, 'store'])->name('session.store');
 Route::post('/absen', [SessionController::class, 'absen'])->name('absen.absen')->middleware('auth');
 Route::get('/presence/session/{id}', [SessionController::class, 'presence'])->name('presence.presence')->middleware('auth');
 Route::get('/setScoreSession/session/{id}', [SessionController::class, 'componnent'])->name('setScoreSession.componnent')->middleware('auth');
 Route::post('/component', [SessionController::class, 'scoreComponent'])->name('component.scoreComponent')->middleware('auth');
+
+Route::post('/score', [SessionController::class, 'scoreAdd'])->name('score');
 
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 

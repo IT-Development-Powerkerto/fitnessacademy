@@ -14,4 +14,8 @@ class ScoreDetail extends Model
     {
         return $this->belongsTo(Component::class, 'component_id', 'id');
     }
+    public function final_score()
+    {
+        return $this->hasMany(FinalScore::class);
+    }
 }
