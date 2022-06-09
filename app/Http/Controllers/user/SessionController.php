@@ -69,7 +69,9 @@ class SessionController extends Controller
             $query->where('course_id', $id);
 
         }, 'user' => function($query){
-            $query->where('role_id', 1)->doesntHave('score_detail');
+            $query->where('role_id', 1);
+            // $query->where('role_id', 1)->doesntHave('score_detail');
+
         }])->get();
 
         // dd(User::with('payment')->where('payment.status', 'success')->get());
@@ -286,10 +288,19 @@ class SessionController extends Controller
 
         // $s = User::find($a);
 
-        $s = PaymentDetail::with(['payment'=> function($query) use($id){
-            $query->where('status', 'success');
+        // $s = PaymentDetail::with(['payment'=> function($query) use($id){
+        //     $query->where('status', 'success');
 
-        }])->where('course_id', $session->course_id)->get();
+        // }])->where('course_id', $session->course_id)->get();
+
+        $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $session){
+            $query->where('course_id',$session->course_id);
+
+        }, 'user' => function($query){
+            // $query->where('role_id', 1)->doesntHave('absen');
+            $query->where('role_id', 1);
+        }])->get();
+
 
         // $successCourse = Payment::where('user_id', Auth::user()->id)
         // ->where('status', 'success')

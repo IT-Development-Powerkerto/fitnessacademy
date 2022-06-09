@@ -180,11 +180,13 @@
 
                                 @foreach ($sd->where('user_id', $fs->user->id) as $score)
                                 <td class="px-3 py-2">
-                                   {{-- <div> --}}
+
                                        {{$score->score}}
-                                    {{-- </div> --}}
+
                                 </td>
                                 @endforeach
+
+
                                 <td class="px-3 py-4">{{$fs->score_final}}</td>
 
                             </tr>
