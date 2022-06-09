@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('final_scores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('score_detail_id')->nullable();
             $table->foreignId('session_id');
-            $table->integer('score_final')->nullable();
+            $table->Integer('score_final')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('score_detail_id')->references('id')->on('score_details');
             $table->foreign('session_id')->references('id')->on('sessions');
         });
     }

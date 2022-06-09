@@ -61,15 +61,27 @@ class SessionController extends Controller
         // dd($c);
         // $s = ScoreDetail::all();
         // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
-            //     $query->where('course_id', $id);
+        //         $query->where('course_id', $id);
 
-            // }])->get()->pluck('user_id')->flatten();
+        //     }])->get()->pluck('user_id')->flatten();
 
-            // $user = User::where('role_id', 1)->doesntHave('score_detail')->get();
-            $u = PaymentDetail::with(['payment'=> function($query) use($id){
-                $query->where('status', 'success');
+        $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+            $query->where('course_id', $id);
 
-            }])->where('course_id', $session->course_id)->get();
+        }, 'user' => function($query){
+            $query->where('role_id', 1)->doesntHave('score_detail');
+        }])->get();
+
+            // $u = User::where('role_id', 1)->doesntHave('score_detail')->get();
+        // $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+        //     $query->where('course_id', $id);
+
+        // }])->get()->pluck('user_id')->flatten();
+            // $u = PaymentDetail::with(['payment'=> function($query) use($id){
+            //     $query->where('status', 'success');
+
+
+            // }])->where('course_id', $session->course_id)->get();
 
             // $s = ScoreDetail::where('user_id', $u->id)->get();
 
@@ -175,13 +187,15 @@ class SessionController extends Controller
         $a = Absen::where('session_id', $session->id)->get();
         $c = Component::where('session_id', $session->id)->get();
 
-        // $fs = FinalScore::where('session_id', $session->id)->get();
+        $fs = FinalScore::where('session_id', $session->id)->with(['user'=> function($query){
+            $query->where('role_id', 1);
+        }])->get();
         $sd = ScoreDetail::all();
 
 
 
         return view('trainer.detailSession', compact('session', 's', 'session_id', 'a',
-        'c','sd'
+        'c','sd', 'fs'
         ));
 
     }

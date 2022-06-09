@@ -155,7 +155,7 @@
                         <h1 class="col-span-3">{{$fs->user->name}}</h1>
 
                         {{-- @foreach ($c->score_detail->where('user_id', $fs->user->id) as $score) --}}
-                        @foreach ($sd as $score)
+                        @foreach ($sd->where('user_id') as $score)
                         <h1 class="col-span-2">{{$score->score}}</h1>
                         @endforeach
                         {{-- <h1 class="col-span-2">100</h1>
