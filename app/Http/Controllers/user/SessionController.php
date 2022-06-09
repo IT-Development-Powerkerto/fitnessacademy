@@ -72,6 +72,8 @@ class SessionController extends Controller
             $query->where('role_id', 1)->doesntHave('score_detail');
         }])->get();
 
+        // dd(User::with('payment')->where('payment.status', 'success')->get());
+
             // $u = User::where('role_id', 1)->doesntHave('score_detail')->get();
         // $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
         //     $query->where('course_id', $id);
@@ -191,6 +193,7 @@ class SessionController extends Controller
             $query->where('role_id', 1);
         }])->get();
         $sd = ScoreDetail::all();
+
 
 
 

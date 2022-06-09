@@ -48,14 +48,11 @@
 
                             <th scope="col" class="px-3 py-3">{{$c->component_name ?? null}}</th>
                             @endforeach
-                            {{-- <th scope="col" class="px-3 py-3">COMPONENT 1</th>
-                            <th scope="col" class="px-3 py-3">COMPONENT 2</th>
-                            <th scope="col" class="px-3 py-3">COMPONENT 3</th> --}}
-                            {{-- <th scope="col" class="px-3 py-3">FINAL SCORE</th> --}}
+
                         </tr>
                     </thead>
                     <tbody class="text-white">
-                        @foreach ( $u as $u )
+                        @foreach ( $u->where('user.name', '!=', null) as $u )
 
 
                         <tr class="whitespace-nowrap">
@@ -63,19 +60,16 @@
                             <td class="px-3 py-4">{{$u->user->name ?? null}}
                                 <input type="text" value={{$u->user->id ?? null}} name="user_id[]" hidden></td>
 
-                                {{-- {{dd($component)}} --}}
+
                             @foreach ( $component as $c )
 
                             <td class="px-3 py-4">
-                                <input type="number" id="score_detail_id" name="score_detail_id[{{$u->id}}][{{$c->id}}]" value="0" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
+                                <input type="number" id="score_detail_id" name="score_detail_id[{{$u->user->id}}][{{$c->id}}]" value="0" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
                             </td>
 
 
                             @endforeach
 
-                            {{-- <td class="px-3 py-4">
-                                <input type="number" id="final_score" name="final_score" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
-                            </td> --}}
                         </tr>
                         @endforeach
                     </tbody>

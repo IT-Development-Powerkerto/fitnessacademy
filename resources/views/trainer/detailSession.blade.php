@@ -111,10 +111,12 @@
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Score</h1>
                 <div class="flex md:flex-row flex-col items-end">
+                    @if($c->isEmpty())
                     <a href="{{route('setScoreSession.componnent', ['id'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
                         <i class="las la-chart-bar"></i>
                         Set Score Component
                     </a>
+                    @endif
                     {{-- <a href="/addScoreSession" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0"> --}}
                     <a href="{{route('score', ['id'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="lar la-plus-square"></i>
@@ -124,62 +126,72 @@
             </div>
             <div class="py-5 px-3 bg-black rounded-b-lg overflow-auto">
                 <div class="overflow-x-auto">
-                    <div class="text-white uppercase font-semibold hidden md:grid grid-cols-12 ">
+                    {{-- <div class="text-white uppercase font-semibold hidden md:grid grid-cols-12 ">
                         <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
                         <h1 class="col-span-3 text-sm md:text-md">Name</h1>
-                        {{-- <h1 class="col-span-2 text-sm md:text-md">Component 1</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Component 2</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Component 3</h1> --}}
+
                         @foreach ($c as $c)
 
                         <h1 class="col-span-2 text-sm md:text-md">{{$c->component_name ?? null}}</h1>
                         @endforeach
-                        {{-- <h1 class="col-span-2 text-sm md:text-md">Component 2</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Component 3</h1> --}}
+
 
                         <h1 class="text-right col-span-2 text-sm md:text-md">Final Score</h1>
                     </div>
-                    {{-- <div class="text-white uppercase font-semibold grid grid-cols-12 md:hidden">
-                        <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
-                        <h1 class="col-span-3 text-sm md:text-md">Name</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Comp 1</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Comp 2</h1>
-                        <h1 class="col-span-2 text-sm md:text-md">Comp 3</h1>
-                        <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
-                    </div> --}}
 
+
+                    @foreach ( $session->final_score as $fs )
                     <div class="text-white grid grid-cols-12 pt-5">
-                        @foreach ( $session->final_score as $fs )
 
                         <h1 class="text-left col-span-1">1</h1>
                         <h1 class="col-span-3">{{$fs->user->name}}</h1>
 
-                        {{-- @foreach ($c->score_detail->where('user_id', $fs->user->id) as $score) --}}
+
                         @foreach ($sd->where('user_id') as $score)
                         <h1 class="col-span-2">{{$score->score}}</h1>
                         @endforeach
-                        {{-- <h1 class="col-span-2">100</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="col-span-2">100</h1> --}}
+
                         <h1 class="text-right col-span-2">{{$fs->score_final}}</h1>
-                        @endforeach
                     </div>
-                    {{-- <div class="text-white grid grid-cols-12 pt-5">
-                        <h1 class="text-left col-span-1">1</h1>
-                        <h1 class="col-span-3">Muh Faizal</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="text-right col-span-2">100</h1>
-                    </div>
-                    <div class="text-white grid grid-cols-12 pt-5">
-                        <h1 class="text-left col-span-1">1</h1>
-                        <h1 class="col-span-3">Muh Faizal</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="col-span-2">100</h1>
-                        <h1 class="text-right col-span-2">100</h1>
-                    </div> --}}
+                    @endforeach --}}
+
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-gray-500">
+                                <th scope="col" class="px-3 py-3">No</th>
+                                <th scope="col" class="px-3 py-3">Name</th>
+
+                                @foreach ( $c as $c )
+                                <th scope="col" class="px-3 py-3">
+                                    {{$c->component_name ?? null}}</th>
+                                @endforeach
+                                <th scope="col" class="px-3 py-3">Final Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white">
+                            @foreach ( $session->final_score as $fs )
+
+
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                <td class="px-3 py-4">{{$fs->user->name}}</td>
+
+
+
+                                @foreach ($sd->where('user_id', $fs->user->id) as $score)
+                                <td class="px-3 py-2">
+                                   {{-- <div> --}}
+                                       {{$score->score}}
+                                    {{-- </div> --}}
+                                </td>
+                                @endforeach
+                                <td class="px-3 py-4">{{$fs->score_final}}</td>
+
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
