@@ -14,13 +14,21 @@ class ScoreDetail extends Model
     protected $fillable = [
         'score'
     ];
+    // protected $guarded = [
+    //     'id'
+
+    // ];
 
     public function component()
     {
         return $this->belongsTo(Component::class, 'component_id', 'id');
     }
-    public function final_score()
+    // public function final_score()
+    // {
+    //     return $this->hasMany(FinalScore::class);
+    // }
+    public function user()
     {
-        return $this->hasMany(FinalScore::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

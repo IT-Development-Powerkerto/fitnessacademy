@@ -83,4 +83,8 @@ class User extends Authenticatable
         return $this->hasMany(FinalScore::class);
     }
 
+    public function score_detail()
+    {
+        return $this->hasMany(ScoreDetail::class);
+    }
 }

@@ -147,7 +147,24 @@
                         <h1 class="col-span-2 text-sm md:text-md">Comp 3</h1>
                         <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
                     </div> --}}
+
                     <div class="text-white grid grid-cols-12 pt-5">
+                        @foreach ( $session->final_score as $fs )
+
+                        <h1 class="text-left col-span-1">1</h1>
+                        <h1 class="col-span-3">{{$fs->user->name}}</h1>
+
+                        {{-- @foreach ($c->score_detail->where('user_id', $fs->user->id) as $score) --}}
+                        @foreach ($sd as $score)
+                        <h1 class="col-span-2">{{$score->score}}</h1>
+                        @endforeach
+                        {{-- <h1 class="col-span-2">100</h1>
+                        <h1 class="col-span-2">100</h1>
+                        <h1 class="col-span-2">100</h1> --}}
+                        <h1 class="text-right col-span-2">{{$fs->score_final}}</h1>
+                        @endforeach
+                    </div>
+                    {{-- <div class="text-white grid grid-cols-12 pt-5">
                         <h1 class="text-left col-span-1">1</h1>
                         <h1 class="col-span-3">Muh Faizal</h1>
                         <h1 class="col-span-2">100</h1>
@@ -162,7 +179,7 @@
                         <h1 class="col-span-2">100</h1>
                         <h1 class="col-span-2">100</h1>
                         <h1 class="text-right col-span-2">100</h1>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

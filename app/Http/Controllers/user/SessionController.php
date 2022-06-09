@@ -56,23 +56,29 @@ class SessionController extends Controller
     public function addScore($id)
     {
         $session = Session::find($id);
-        $c = Component::where('session_id', $session->id)->get();
+        $component = Component::where('session_id', $session->id)->get();
         $s = ScoreDetail::with('component')->get();
+        // dd($c);
         // $s = ScoreDetail::all();
         // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
-        //     $query->where('course_id', $id);
+            //     $query->where('course_id', $id);
 
-        // }])->get()->pluck('user_id')->flatten();
+            // }])->get()->pluck('user_id')->flatten();
 
-        $user = User::all();
-        $u = PaymentDetail::with(['payment'=> function($query) use($id){
-            $query->where('status', 'success');
+            // $user = User::where('role_id', 1)->doesntHave('score_detail')->get();
+            $u = PaymentDetail::with(['payment'=> function($query) use($id){
+                $query->where('status', 'success');
 
-        }])->where('course_id', $session->course_id)->get();
+            }])->where('course_id', $session->course_id)->get();
+
+            // $s = ScoreDetail::where('user_id', $u->id)->get();
+
+
+
 
         $session_id = $id;
 
-        return view('trainer.addScoreSession',  compact('session', 'c', 's', 'u', 'session_id'));
+        return view('trainer.addScoreSession',  compact('session', 'component', 's', 'u', 'session_id'));
     }
 
     /**
@@ -93,7 +99,7 @@ class SessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         // dd(Carbon::create($request->date_session)->toDateString());
         // dd($request->all());
         $validator = Validator::make($request->all(), [
@@ -165,10 +171,18 @@ class SessionController extends Controller
         // $s = Payment::where('status', 'success')->get();
         $session_id = $id;
 
+
         $a = Absen::where('session_id', $session->id)->get();
         $c = Component::where('session_id', $session->id)->get();
 
-        return view('trainer.detailSession', compact('session', 's', 'session_id', 'a', 'c'));
+        // $fs = FinalScore::where('session_id', $session->id)->get();
+        $sd = ScoreDetail::all();
+
+
+
+        return view('trainer.detailSession', compact('session', 's', 'session_id', 'a',
+        'c','sd'
+        ));
 
     }
 
@@ -354,27 +368,42 @@ class SessionController extends Controller
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
         }
         $validated = $validator->validate();
-        foreach($request->user_id as $key=>$value){
-            $s = new FinalScore();
-            $s->session_id = $request->session_id;
-            $s->user_id = $value;
-            // $s->final_score = $value->(final_score);
-            $s->score_detail_id = $request->score_detail_id;
 
+        $totalComponent = 0;
+        $sumScores = 0;
 
+        foreach ($request->score_detail_id as $user_id=>$user_score) {
+            $totalComponent = collect($user_score)->count();
+            $sumScores = collect($user_score)->sum();
 
-            foreach ($request->score_detail_id as $key=>$value) {
-                ScoreDetail::updateOrCreate([
-                    'score' => $value
+            foreach ($user_score as $comp_id => $score) {
+                ScoreDetail::insert([
+                   'component_id' => $comp_id,
+                   'user_id' => $user_id,
+                   'score' => $score
                 ]);
-
             }
 
-            $s->save();
-
-
+            $finalScore = FinalScore::insert([
+                'session_id'=>$request->session_id,
+                'user_id' => $user_id,
+                'score_final' => $sumScores / $totalComponent
+            ]);
         }
-        $s->save();
+
+        // foreach($request->user_id as $key=>$value){
+            // $s = new FinalScore();
+            // $s->session_id = $request->session_id;
+            // $s->user_id = $value;
+            // $s->final_score = $value->(final_score);
+            // $s->score_detail_id = $request->score_detail_id;
+
+
+            // $s->save();
+
+
+        // }
+        // $s->save();
         $session_id = $request->session_id;
         // return $session;
 

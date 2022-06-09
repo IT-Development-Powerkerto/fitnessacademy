@@ -44,14 +44,14 @@
                         <tr class="text-gray-500">
                             <th scope="col" class="px-3 py-3">No</th>
                             <th scope="col" class="px-3 py-3">Name</th>
-                            @foreach ( $c as $c )
+                            @foreach ( $component as $c )
 
                             <th scope="col" class="px-3 py-3">{{$c->component_name ?? null}}</th>
                             @endforeach
                             {{-- <th scope="col" class="px-3 py-3">COMPONENT 1</th>
                             <th scope="col" class="px-3 py-3">COMPONENT 2</th>
                             <th scope="col" class="px-3 py-3">COMPONENT 3</th> --}}
-                            <th scope="col" class="px-3 py-3">FINAL SCORE</th>
+                            {{-- <th scope="col" class="px-3 py-3">FINAL SCORE</th> --}}
                         </tr>
                     </thead>
                     <tbody class="text-white">
@@ -63,23 +63,16 @@
                             <td class="px-3 py-4">{{$u->payment->user->name ?? null}}
                                 <input type="text" value={{$u->payment->user_id ?? null}} name="user_id[]" hidden></td>
 
-                            @foreach ( $s as $s )
+                                {{-- {{dd($component)}} --}}
+                            @foreach ( $component as $c )
                             <td class="px-3 py-4">
-                                <input type="number" id="score_detail_id" name="score_detail_id[{{$s->id}}]" value="{{$s->score}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
+                                <input type="number" id="score_detail_id" name="score_detail_id[{{$u->id}}][{{$c->id}}]" value="0" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0">
                             </td>
                             @endforeach
+
                             {{-- <td class="px-3 py-4">
-                                <input type="number" id="c1" name="c1" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
-                            </td>
-                            <td class="px-3 py-4">
-                                <input type="number" id="c2" name="c2" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
-                            </td>
-                            <td class="px-3 py-4">
-                                <input type="number" id="c3" name="c3" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" required>
-                            </td> --}}
-                            <td class="px-3 py-4">
                                 <input type="number" id="final_score" name="final_score" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                     </tbody>

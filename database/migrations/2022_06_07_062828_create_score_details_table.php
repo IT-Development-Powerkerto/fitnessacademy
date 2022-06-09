@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('score_details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('component_id');
-            $table->bigInteger('score')->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->integer('score')->nullable();
             $table->foreign('component_id')->references('id')->on('components');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
