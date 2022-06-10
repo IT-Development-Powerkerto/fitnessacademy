@@ -8,6 +8,8 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
+use App\Models\ScoreDetail;
+use App\Models\Component;
 use App\Models\Exam;
 class ExamController extends Controller
 {
@@ -31,9 +33,10 @@ class ExamController extends Controller
     {
         return view('trainer.editExam');
     }
-    public function detailExam()
+    public function detailExam($id)
     {
-        return view('trainer.detailExam');
+        $exam = Exam::find($id);
+        return view('trainer.detailExam', compact('exam'));
     }
     public function setScore()
     {
@@ -76,5 +79,43 @@ class ExamController extends Controller
         // return $session;
 
         return redirect()->route('course.show',['course'=>$course_id]);
+    }
+
+    public function scoreExam(Request $request)
+    {
+        //
+
+        $validator = Validator::make($request->all(), [
+
+            'session_id' => '',
+            'komp' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        foreach($request->komp as $value){
+            $comp = new Component();
+            $comp->exam_id = $request->exam_id;
+            $comp->component_name = $value['component_name'];
+
+
+            $comp->save();
+
+            $score = new ScoreDetail();
+            $score->component_id = $comp->id;
+            $score->score = '0';
+
+            $score->save();
+        }
+        $comp->save();
+        $score->save();
+
+
+
+        $exam_id = $request->exam_id;
+        // return $session;
+
+        return redirect()->route('detailSession.show', ['detailSession'=>$exam_id]);
     }
 }

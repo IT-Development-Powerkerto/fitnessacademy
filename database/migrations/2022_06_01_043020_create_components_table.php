@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('components', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('session_id');
+            $table->foreignId('session_id')->nullable();
+            $table->foreignId('exam_id')->nullable();
             $table->string('component_name')->nullable();
             $table->foreign('session_id')->references('id')->on('sessions');
+            $table->foreign('exam_id')->references('id')->on('exams');
             $table->softDeletes();
             $table->timestamps();
         });

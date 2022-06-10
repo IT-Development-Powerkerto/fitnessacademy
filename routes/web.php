@@ -78,7 +78,7 @@ Route::post('/newpassword', [UserProfileController::class, 'NewPassword'])->name
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
 Route::get('/overviewStudent', [UserProfileController::class, 'overviewStudent'])->name('overviewStudent')->middleware('auth');
 
-Route::get('/detailExam', [ExamController::class, 'detailExam'])->name('Exam.detailExam')->middleware('auth');
+Route::get('/detailExam/{id}', [ExamController::class, 'detailExam'])->name('detailExam.detailExam')->middleware('auth');
 Route::get('/addExam/{id}', [ExamController::class, 'addExam'])->name('addExam.addExam')->middleware('auth');
 Route::get('/editExam', [ExamController::class, 'editExam'])->name('Exam.editExam')->middleware('auth');
 Route::get('/setScoreExam', [ExamController::class, 'setScore'])->name('Exam.setScoreExam')->middleware('auth');

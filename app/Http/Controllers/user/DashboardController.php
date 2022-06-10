@@ -56,6 +56,19 @@ class DashboardController extends Controller
 
         $c = Course::find($successCourse);
 
+        // $s = Payment::where('status', 'success')->with(['payment_detail' => function($query){
+        //     $query->with('course');
+
+        // }])->get()->pluck('user_id')->flatten();
+
+        // $uc = User::find($s);
+
+        $uc = PaymentDetail::whereHas('payment', function($q){
+            $q->where('status', 'success');
+        })->get();
+
+        $score =
+
         // $c = Auth::user()->payment->where('status', 'success');
 
         // dd($c);
@@ -69,9 +82,11 @@ class DashboardController extends Controller
         }
         else if($x->role_id == 2){
             $course = Course::where('trainer_id', auth()->user()->id)->get();
+
+
             // dd($course);
             // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
-            return view('trainer.dashboard', compact('today', 'day', 'user', 'course'));
+            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc'));
         }
         else if($x->role_id == 3) {
             return view('admin.dashboard', compact('trainer', 'student', 'courses', 'p'));

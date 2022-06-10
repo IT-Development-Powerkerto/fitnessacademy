@@ -139,12 +139,15 @@
                         <h1 class="col-span-4 text-sm md:text-md">Course</h1>
                         <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
                     </div>
+                    @foreach ( $uc as $u )
+
                     <div class="text-white grid grid-cols-12 pt-5">
-                        <h1 class="text-left col-span-1">1</h1>
-                        <h1 class="col-span-5">Muh Faizal</h1>
-                        <h1 class="col-span-4">Nutrisi Dasar 1</h1>
-                        <h1 class="text-right col-span-2">100</h1>
+                        <h1 class="text-left col-span-1">{{$loop->iteration}}</h1>
+                        <h1 class="col-span-5">{{$u->payment->user->name}}</h1>
+                        <h1 class="col-span-4">{{$u->course->name}}</h1>
+                        <h1 class="text-right col-span-2"></h1>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
