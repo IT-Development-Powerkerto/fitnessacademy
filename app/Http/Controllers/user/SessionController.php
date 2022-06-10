@@ -194,7 +194,7 @@ class SessionController extends Controller
         $fs = FinalScore::where('session_id', $session->id)->with(['user'=> function($query){
             $query->where('role_id', 1);
         }])->get();
-        $sd = ScoreDetail::all();
+        $sd = ScoreDetail::with('component')->get()->where('component.session_id', $id);
 
 
 
