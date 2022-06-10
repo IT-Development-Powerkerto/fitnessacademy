@@ -27,7 +27,7 @@
                         <h1 class="text-white text-3xl font-bold md:text-4xl">Welcome to Fitness Plus Academy</h1>
                         <h1 class="text-sm text-gray-300 py-10">We support you with the knowledge to improve your skills and abilities, deliver results to your customers, and  help you expand your sales and marketing knowledge to increase your income.</h1>
                         <a href="#" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">View Course</a>
-                        <a href="/register" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">Register</a>
+                        <a href="#contact" class="px-10 py-3 bg-transparent rounded-md hover:bg-yellow-300 text-yellow-300 hover:text-white">Register Now</a>
                     </div>
                     <div class="md:basis-3/6 flex justify-center md:justify-end">
                         <img src="assets/img/Hero/Academy-Fitness-Plus.png" class="w-5/6" alt="">
@@ -190,7 +190,7 @@
         <!-- begin::warning -->
         <div>
             <div class="bg-red-600">
-                <h1 class="text-white text-xl text-center font-semibold py-5">!!! Seats are limited to 30 persons so, stop waiting and start <a href="/regitser" class="underline font-bold">register</a> now !!!</h1>
+                <h1 class="text-white text-xl text-center font-semibold py-5">!!! Seats are limited to 30 persons so, stop waiting and start <a href="/register" class="underline font-bold">register</a> now !!!</h1>
             </div>
         </div>
         <!-- end::warning -->
@@ -430,7 +430,7 @@
                 var name    = $('#name').val()
                 var email   = $('#email').val()
                 var message = $('#message').val()
-                window.location.href='https://wa.me/081245690803?text=Hello,%20I%20am%20'+ name + '%20and%20I%20wanted%20to%20know%20more%20about%20Fitness%20Academy.%20Would%20You%20mind%20to%20assist%20me.'
+                window.location.href='https://wa.me/6282145690803?text=Hello,%20I%20am%20'+ name + '%20and%20I%20wanted%20to%20know%20more%20about%20Fitness%20Academy.%20Would%20You%20mind%20to%20assist%20me.'
             })
         })
     </script>
