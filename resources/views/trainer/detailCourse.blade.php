@@ -17,8 +17,8 @@
 
     <livewire:trainer.navbar-trainer />
 
-    <div class="bg-zinc-800 p-10 h-full">
-        <div class="">
+    <div class="bg-zinc-800 p-10 h-screen">
+        <div class="h-full">
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
@@ -99,7 +99,7 @@
             @endforeach
 
         </div>
-    </div>
+
 
     <!-- begin::Modal -->
     <!-- begin::ModalViewStudent -->
