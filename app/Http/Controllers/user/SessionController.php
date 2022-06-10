@@ -68,8 +68,10 @@ class SessionController extends Controller
         $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
             $query->where('course_id', $id);
 
-        }, 'user' => function($query){
-            $query->where('role_id', 1);
+        }, 'user' => function($query) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('score_detail.component.session', function($q) use($id){
+                $q->where('id', $id);
+            });
             // $query->where('role_id', 1)->doesntHave('score_detail');
 
         }])->get();
@@ -400,6 +402,8 @@ class SessionController extends Controller
         $totalComponent = 0;
         $sumScores = 0;
 
+        // $data = Carbon::now();
+
         foreach ($request->score_detail_id as $user_id=>$user_score) {
             $totalComponent = collect($user_score)->count();
             $sumScores = collect($user_score)->sum();
@@ -415,7 +419,10 @@ class SessionController extends Controller
             $finalScore = FinalScore::insert([
                 'session_id'=>$request->session_id,
                 'user_id' => $user_id,
-                'score_final' => $sumScores / $totalComponent
+                'score_final' => $sumScores / $totalComponent,
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString(),
+
             ]);
         }
 

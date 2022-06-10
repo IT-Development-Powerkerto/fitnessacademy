@@ -54,7 +54,6 @@
                     <tbody class="text-white">
                         @foreach ( $u->where('user.name', '!=', null) as $u )
 
-
                         <tr class="whitespace-nowrap">
                             <td class="px-3 py-4">{{$loop->iteration}}</td>
                             <td class="px-3 py-4">{{$u->user->name ?? null}}
@@ -71,6 +70,7 @@
                             @endforeach
 
                         </tr>
+
                         @endforeach
                     </tbody>
                 </table>

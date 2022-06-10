@@ -10,7 +10,7 @@
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     @livewireStyles
@@ -27,6 +27,7 @@
                         <h1 class="text-white text-3xl font-bold md:text-4xl">Welcome to Fitness Plus Academy</h1>
                         <h1 class="text-sm text-gray-300 py-10">We support you with the knowledge to improve your skills and abilities, deliver results to your customers, and  help you expand your sales and marketing knowledge to increase your income.</h1>
                         <a href="#" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">View Course</a>
+                        <a href="/register" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">Register</a>
                     </div>
                     <div class="md:basis-3/6 flex justify-center md:justify-end">
                         <img src="assets/img/Hero/Academy-Fitness-Plus.png" class="w-5/6" alt="">
