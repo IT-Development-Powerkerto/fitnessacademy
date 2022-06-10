@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\AdminMail;
+use App\Mail\ClientMail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LoginRegisterController extends Controller
 {
@@ -97,6 +100,9 @@ class LoginRegisterController extends Controller
         $user->created_at = Carbon::now()->toDateTimeString();
         $user->updated_at = Carbon::now()->toDateTimeString();
         $user->save();
+        $admin_email = User::where('role_id', 3)->select('email')->first();
+        Mail::to($admin_email)->send(new AdminMail());
+        Mail::to($validated['email'])->send(new ClientMail());
 
         return redirect('/registerSuccess')->with('success', 'Register Success!');
     }
