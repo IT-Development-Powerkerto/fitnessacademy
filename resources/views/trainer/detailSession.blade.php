@@ -15,7 +15,7 @@
 
     <livewire:trainer.navbar-trainer />
 
-    <div class="bg-zinc-800 p-10">
+    <div class="bg-zinc-800 p-10 h-full">
         <div class="">
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
