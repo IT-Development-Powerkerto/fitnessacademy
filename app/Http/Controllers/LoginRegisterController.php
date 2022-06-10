@@ -25,7 +25,7 @@ class LoginRegisterController extends Controller
      */
     public function index()
     {
-        $role = Role::all();
+        $role = Role::where('id', '!=', 3)->get();
         $user = User::all();
         return view('register', compact('role', 'user'));
     }
