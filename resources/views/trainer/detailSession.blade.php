@@ -43,7 +43,7 @@
                 <h1 class="text-sm md:col-span-5 col-span-4 text-white pb-5">{{\Illuminate\Support\Carbon::create($session->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($session->start_time))}} - {{date('H:i', strtotime($session->finish_time))}})</h1>
                 <div class="grid grid-cols-6 gap-3">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Online Learning</h1>
-                    <a href="{{$session->link_session}}" class="text-sm md:col-span-5 col-span-4 text-white underline">{{$session->link_session}}</a>
+                    <a href="{{$session->link_session}}" target="blank" class="text-sm md:col-span-5 col-span-4 text-white underline">{{$session->link_session}}</a>
                 </div>
                 <div class="grid grid-cols-6 gap-3 py-5">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Materi</h1>
@@ -51,7 +51,7 @@
                         <div class="flex flex-col">
                             @foreach ( $m as $m )
 
-                            <a href="{{url($m->file)}}" class="text-sm text-white my-3">
+                            <a href="{{url($m->file)}}" target="blank" class="text-sm text-white my-3">
                                 <i class="las la-file text-sm text-white"></i>
                                {{$m->file}}
                             </a>

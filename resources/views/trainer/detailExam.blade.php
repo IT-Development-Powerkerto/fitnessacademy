@@ -12,17 +12,17 @@
     @livewireStyles
 </head>
 <body>
-    
-    <livewire:trainer.navbar-trainer /> 
+
+    <livewire:trainer.navbar-trainer />
 
     <div class="bg-zinc-800 p-10">
         <div class="">
             <div class="flex flex-row py-2 items-center">
-                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a> 
+                <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="#" class="text-white text-sm hover:text-yellow-300">Detail Course</a> 
+                <a href="#" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="#" class="text-white text-sm hover:text-yellow-300">EXAM</a> 
+                <a href="#" class="text-white text-sm hover:text-yellow-300">EXAM</a>
             </div>
         </div>
         <div class="mt-5">
@@ -36,10 +36,10 @@
                 </div>
             </div>
             <div class="py-5 px-3 bg-white rounded-b-lg">
-                <h1 class="text-sm md:col-span-5 col-span-4 pb-5">Wednesday, 18 May 2022 (09:00 - 12:00)</h1>
+                <h1 class="text-sm md:col-span-5 col-span-4 pb-5">{{\Illuminate\Support\Carbon::create($exam->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($exam->start_time))}} - {{date('H:i', strtotime($exam->finish_time))}})</h1>
                 <div class="grid grid-cols-6 gap-3">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Link Exam</h1>
-                    <a href="#" class="text-sm md:col-span-5 col-span-4 underline">https://quizizz.com/admin/quiz/5c67f07b90bd9b001e14c7d6/edmodo</a>
+                    <a href="{{$exam->link}}" target="blank" class="text-sm md:col-span-5 col-span-4 underline">{{$exam->link}}</a>
                 </div>
             </div>
         </div>
@@ -47,10 +47,14 @@
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Presence</h1>
                 <div class="">
-                    <button type="button" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg" data-modal-toggle="presence">
+                    {{-- <button type="button" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg" data-modal-toggle="presence">
                         <i class="las la-notes-medical"></i>
                         Add Presence
-                    </button>
+                    </button> --}}
+                    <a href="{{route('presenceExam.presenceExam', ['id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg">
+                        <i class="las la-notes-medical"></i>
+                        Add Presence
+                    </a>
                 </div>
             </div>
             <div class="py-5 px-3 bg-black rounded-b-lg">
@@ -59,27 +63,33 @@
                     <h1 class="col-span-9 text-sm md:text-md">Name</h1>
                     <h1 class="text-right col-span-2 text-sm md:text-md">Status</h1>
                 </div>
+                @foreach ( $a as $a )
+
                 <div class="text-white grid grid-cols-12 pt-5">
-                    <h1 class="text-left col-span-1">1</h1>
-                    <h1 class="col-span-9">Muh Faizal</h1>
+                    <h1 class="text-left col-span-1">{{$loop->iteration}}</h1>
+                    <h1 class="col-span-9">{{$a->user->name}}</h1>
+                    @if ($a->status == 'present')
+
                     <h1 class="text-right text-green-500 col-span-2">Present</h1>
-                </div>
-                <div class="text-white grid grid-cols-12 pt-5">
-                    <h1 class="text-left col-span-1">2</h1>
-                    <h1 class="col-span-9">Muh Faizal</h1>
+                    @else
                     <h1 class="text-right text-red-500 col-span-2">Absent</h1>
+
+                    @endif
                 </div>
+                @endforeach
             </div>
         </div>
         <div class="py-10">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Score</h1>
                 <div class="flex md:flex-row flex-col items-end">
-                    <a href="/setScoreExam" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
+                    @if($c->isEmpty())
+                    <a href="{{route('setScoreExam.setScore',['id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
                         <i class="las la-chart-bar"></i>
                         Set Score Component
                     </a>
-                    <a href="/addScoreExam" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
+                    @endif
+                    <a href="{{route('addScoreExam.addScore',['id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="lar la-plus-square"></i>
                         Add Score
                     </a>
@@ -87,7 +97,45 @@
             </div>
             <div class="py-5 px-3 bg-black rounded-b-lg overflow-auto">
                 <div class="overflow-x-auto">
-                    <div class="text-white uppercase font-semibold hidden md:grid grid-cols-12 ">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="text-gray-500">
+                                <th scope="col" class="px-3 py-3">No</th>
+                                <th scope="col" class="px-3 py-3">Name</th>
+
+                                @foreach ( $c as $c )
+                                <th scope="col" class="px-3 py-3">
+                                    {{$c->component_name ?? null}}</th>
+                                @endforeach
+                                <th scope="col" class="px-3 py-3">Final Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white">
+                            @foreach ( $exam->final_score as $fs )
+
+
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                <td class="px-3 py-4">{{$fs->user->name}}</td>
+
+
+
+                                @foreach ($sde->where('user_id', $fs->user->id) as $score)
+                                <td class="px-3 py-2">
+
+                                       {{$score->score}}
+
+                                </td>
+                                @endforeach
+
+
+                                <td class="px-3 py-4">{{$fs->score_final}}</td>
+
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- <div class="text-white uppercase font-semibold hidden md:grid grid-cols-12 ">
                         <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
                         <h1 class="col-span-3 text-sm md:text-md">Name</h1>
                         <h1 class="col-span-2 text-sm md:text-md">Component 1</h1>
@@ -118,7 +166,7 @@
                         <h1 class="col-span-2">100</h1>
                         <h1 class="col-span-2">100</h1>
                         <h1 class="text-right col-span-2">100</h1>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -136,7 +184,7 @@
                         Anatomi Dasar - Student List
                     </h3>
                     <button type="button" class="text-yellow-300 hover:bg-gray-200 hover:text-gray-900 rounded-full bg-black text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="presence">
-                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </button>
                 </div>
                 <!-- Modal body -->

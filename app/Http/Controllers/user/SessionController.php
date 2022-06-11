@@ -272,12 +272,22 @@ class SessionController extends Controller
         //
         $session = Session::find($id);
 
+        // $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $session){
+        //     $query->where('course_id',$session->course_id);
+
+        // }, 'user' => function($query){
+
+        //     $query->where('role_id', 1);
+        // }])->get();
+
         $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $session){
             $query->where('course_id',$session->course_id);
 
-        }, 'user' => function($query){
+        }, 'user' => function($query) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('absen.session', function($q) use($id){
+                $q->where('id', $id);
+            });
 
-            $query->where('role_id', 1);
         }])->get();
 
         $session_id = $id;
