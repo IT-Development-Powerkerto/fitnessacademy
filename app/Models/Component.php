@@ -21,5 +21,12 @@ class Component extends Model
     {
         return $this->hasMany(ScoreDetail::class);
     }
+    public function announcement(){
+        return $this->hasMany(User::class);
+    }
+    public function graduation()
+    {
+        return $this->hasMany(Graduation::class);
+    }
 
 }

@@ -14,6 +14,7 @@ use App\Models\Exam;
 use App\Models\Payment;
 use App\Models\FinalScore;
 use App\Models\Absen;
+use App\Models\Graduation;
 class ExamController extends Controller
 {
     /**
@@ -192,6 +193,15 @@ class ExamController extends Controller
         }
         $compEx->save();
         $score->save();
+
+        $grad = new Graduation();
+        $grad->component_id = $compEx->id;
+        $grad->point_range_min = $request->point_range_min;
+        $grad->point_range_max = $request->point_range_max;
+        $grad->graduation_range_min = $request->graduation_range_min;
+        $grad->graduation_range_max = $request->graduation_range_max;
+
+        $grad->save();
 
 
 

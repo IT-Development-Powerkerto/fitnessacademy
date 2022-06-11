@@ -59,22 +59,22 @@
                         <h3 class="text-white">Set Graduation Status</h3>
                         <div class="grid grid-cols-12 my-3">
                             <div class="col-span-2 text-white">Haven't Passed Yet</div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range">
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="point_range_min" name="point_range_min" value={{old('point_range_min')}}>
                             </div>
                             <div class="text-white text-center"><i class="las la-minus"></i></div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range">
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="point_range_max" name="point_range_max" value={{old('point_range_max')}}>
                             </div>
                         </div>
                         <div class="grid grid-cols-12 my-3">
                             <div class="col-span-2 text-white">Graduated</div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range">
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="graduation_range_min" name="graduation_range_min" value={{old('graduation_range_min')}}>
                             </div>
                             <div class="text-white text-center"><i class="las la-minus"></i></div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range">
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="graduation_range_max" name="graduation_range_max" value={{old('graduation_range_max')}}>
                             </div>
                         </div>
                     </div>
