@@ -24,9 +24,6 @@ class Component extends Model
     public function announcement(){
         return $this->hasMany(User::class);
     }
-    public function graduation()
-    {
-        return $this->hasMany(Graduation::class);
-    }
+
 
 }
