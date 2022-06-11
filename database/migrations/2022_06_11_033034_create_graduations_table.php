@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('graduations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('component_id');
+            $table->foreignId('exam_id')->nullable();
             $table->integer('point_range_min')->nullable();
             $table->integer('point_range_max')->nullable();
             $table->integer('graduation_range_min')->nullable();
             $table->integer('graduation_range_max')->nullable();
-            $table->foreign('component_id')->references('id')->on('components');
+            $table->foreign('exam_id')->references('id')->on('exams');
             $table->softDeletes();
             $table->timestamps();
         });

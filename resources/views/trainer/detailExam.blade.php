@@ -108,6 +108,7 @@
                                     {{$c->component_name ?? null}}</th>
                                 @endforeach
                                 <th scope="col" class="px-3 py-3">Final Score</th>
+                                <th scope="col" class="px-3 py-3">STATUS</th>
                             </tr>
                         </thead>
                         <tbody class="text-white">
@@ -130,6 +131,19 @@
 
 
                                 <td class="px-3 py-4">{{$fs->score_final}}</td>
+
+
+                                @if ($fs->status === 'Graduated')
+                                <td class="px-3 py-4 text-green-500">
+                                    <span class="bg-green-400 text-white text-sm font-medium mr-2 px-3.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Graduated</span>
+                                </td>
+
+                                @else
+                                <td class="px-3 py-4 text-red-600">
+                                    <span class="bg-red-600 text-white text-sm font-medium mr-2 px-3.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Havent Passed Yet</span>
+                                </td>
+
+                                @endif
 
                             </tr>
                             @endforeach

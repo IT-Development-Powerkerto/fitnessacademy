@@ -190,18 +190,20 @@ class ExamController extends Controller
             $score->score = '0';
 
             $score->save();
+
         }
         $compEx->save();
         $score->save();
-
         $grad = new Graduation();
-        $grad->component_id = $compEx->id;
+        $grad->exam_id = $request->exam_id;
         $grad->point_range_min = $request->point_range_min;
         $grad->point_range_max = $request->point_range_max;
         $grad->graduation_range_min = $request->graduation_range_min;
         $grad->graduation_range_max = $request->graduation_range_max;
 
         $grad->save();
+        // $grad->save();
+
 
 
 
@@ -228,6 +230,8 @@ class ExamController extends Controller
         $totalComponent = 0;
         $sumScores = 0;
 
+
+
         // $data = Carbon::now();
 
         foreach ($request->score_detail_id as $user_id=>$user_score) {
@@ -241,13 +245,23 @@ class ExamController extends Controller
                    'score' => $score
                 ]);
             }
+            $graduation = Graduation::where('exam_id', $request->exam_id)->first();
+            $hasil_score =  $sumScores / $totalComponent;
+
+
+            if($hasil_score >= $graduation->graduation_range_min){
+                $status = 'Graduated';
+            }else{
+                $status = 'Havent Passed Yet';
+            }
 
             $finalScore = FinalScore::insert([
                 'exam_id'=>$request->exam_id,
                 'user_id' => $user_id,
-                'score_final' => $sumScores / $totalComponent,
+                'score_final' => $hasil_score,
                 'created_at' => Carbon::now()->toDateTimeString(),
                 'updated_at' => Carbon::now()->toDateTimeString(),
+                'status' => $status,
 
             ]);
         }

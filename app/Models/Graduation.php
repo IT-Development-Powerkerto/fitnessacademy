@@ -13,4 +13,8 @@ class Graduation extends Model
     {
         return $this->belongsTo(Component::class, 'component_id', 'id');
     }
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class, 'exam_id', 'id');
+    }
 }

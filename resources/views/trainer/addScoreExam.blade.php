@@ -51,8 +51,8 @@
                             {{-- <th scope="col" class="px-3 py-3">COMPONENT 1</th>
                             <th scope="col" class="px-3 py-3">COMPONENT 2</th>
                             <th scope="col" class="px-3 py-3">COMPONENT 3</th> --}}
-                            <th scope="col" class="px-3 py-3">FINAL SCORE</th>
-                            <th scope="col" class="px-3 py-3">STATUS</th>
+                            {{-- <th scope="col" class="px-3 py-3">FINAL SCORE</th>
+                            <th scope="col" class="px-3 py-3">STATUS</th> --}}
                         </tr>
                     </thead>
                     <tbody class="text-white">
@@ -67,12 +67,12 @@
                             </td>
                             @endforeach
 
-                            <td class="px-3 py-4">
+                            {{-- <td class="px-3 py-4">
                                 <input type="number" id="total" name="total" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm text-right focus:ring-blue-500 focus:border-blue-500 block w-16 p-2.5" placeholder="00" min="0" readonly>
                             </td>
                             <td class="px-3 py-4">
                                 <div id="status" class="bg-slate-200"></div>
-                            </td>
+                            </td> --}}
                         </tr>
                         @endforeach
                         <!-- <tr class="whitespace-nowrap">

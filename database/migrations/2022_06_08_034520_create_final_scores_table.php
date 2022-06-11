@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('session_id')->nullable();
             $table->foreignId('exam_id')->nullable();
             $table->Integer('score_final')->nullable();
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

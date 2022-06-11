@@ -36,4 +36,8 @@ class Exam extends Model
     {
         return $this->hasMany(FinalScore::class);
     }
+    public function graduation()
+    {
+        return $this->hasMany(Graduation::class);
+    }
 }
