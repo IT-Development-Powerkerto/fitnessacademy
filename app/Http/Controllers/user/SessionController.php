@@ -40,9 +40,11 @@ class SessionController extends Controller
         return view('trainer.addSession', compact('course_id'));
     }
 
-    public function editSession()
+    public function editSession($id)
     {
-        return view('trainer.editSession');
+        $session = Session::find($id);
+        $materi = Materi::where('session_id', $session)->get();
+        return view('trainer.editSession', compact('session', 'materi'));
     }
 
     public function setScore()
@@ -242,6 +244,8 @@ class SessionController extends Controller
     public function edit($id)
     {
         //
+        // $session = Session::find($id);
+        // return view('trainer.editSession', compact('session'));
     }
 
     /**
