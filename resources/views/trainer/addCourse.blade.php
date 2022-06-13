@@ -143,18 +143,18 @@
                     <h1 class="text-white mb-6">Pricing</h1>
 
                     <div class="mb-6">
-                        <select id="payment" name="payment" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <select id="payment_id" name="payment" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Set Regular Price For Free Or Paid</option>
                             <option value="FREE">FREE</option>
                             <option value="PAID">PAID</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="price" name="price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
+                        <input type="text" id="price_id" name="price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
                         <h1 class="text-gray-500 text-sm mt-1">Fill in the column if you choose paid</h1>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="bird_price" name="bird_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
+                        <input type="text" id="bird_price_id" name="bird_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
                     </div>
                     {{-- <div class="mb-6">
                         <input type="date" id="period" name="period" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Early Bird Period (dd/mm/yyyy - dd/mm/yyyy)" required>
@@ -199,6 +199,8 @@
     <script src="assets/js/flowbite/dist/datepicker.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.repeater/1.2.1/jquery.repeater.js" integrity="sha512-bZAXvpVfp1+9AUHQzekEZaXclsgSlAeEnMJ6LfFAvjqYUVZfcuVXeQoN5LhD7Uw0Jy4NCY9q3kbdEXbwhZUmUQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         function dropdown() {
             return {
@@ -246,6 +248,29 @@
                 }
             }
         }
+    </script>
+     <script>
+        $(function() {
+            $('#bird_price_id').attr('disabled', true);
+            $('#price_id').attr('disabled', true);
+            $('#payment_id').val('FREE');
+            $('#payment_id').change(function() {
+                var pilih = $('#payment_id').val();
+                if (pilih == 'FREE') {
+                    $('#bird_price_id').attr('disabled', true);
+                    $('#bird_price_id').val();
+                    $('#price_id').attr('disabled', true);
+                    $('#price_id').val();
+
+                } else {
+                    $('#bird_price_id').attr('disabled', false);
+                    $('#bird_price_id').val();
+                    $('#price_id').attr('disabled', false);
+                    $('#price_id').val();
+
+                }
+            });
+        });
     </script>
 </body>
 </html>

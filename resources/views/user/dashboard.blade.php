@@ -100,22 +100,22 @@
                 </div>
                 <i class="las la-angle-right text-white"></i>
             </a> --}}
-            {{-- @foreach ( $courses->where('level', 'Level 3') as $c )
-            <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+            @foreach ( $c->where('level', 'Level 3') as $c3 )
+            <a href="{{route('course.show', ['course'=>$c3->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                 <div class="flex flex-col">
-                    <span class="text-white font-semibold">{{$c->name}}</span>
+                    <span class="text-white font-semibold">{{$c3->name}}</span>
                 </div>
                 <i class="las la-angle-right text-white"></i>
             </a>
             @endforeach
-            @foreach ( $courses->where('level', 'Level 6') as $c )
-            <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
+            @foreach ( $c->where('level', 'Level 6') as $c6 )
+            <a href="{{route('course.show', ['course'=>$c6->id])}}" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                 <div class="flex flex-col">
-                    <span class="text-white font-semibold">{{$c->name}}</span>
+                    <span class="text-white font-semibold">{{$c6->name}}</span>
                 </div>
                 <i class="las la-angle-right text-white"></i>
             </a>
-            @endforeach --}}
+            @endforeach
 
 
         </div>

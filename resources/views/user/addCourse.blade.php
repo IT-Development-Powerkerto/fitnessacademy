@@ -100,12 +100,13 @@
                     </div>
                 </div>
                 <div class="py-5">
+                    @foreach ( $course->where('level', 'Level 3') as $c )
                     <h1 class="text-sm font-bold underline text-white">Academy Level 3</h1>
                     <div class="bg-black p-5 mt-5 rounded-t-lg flex flex-row gap-4">
-                        <input onchange="addToCart(this)" id="yellow-checkbox" type="checkbox" value="" class="w-8 h-8 text-yellow-300 bg-yellow-300 rounded border-gray-300 focus:ring-yellow-500">
+                        <input onchange="addToCart(this)" id="yellow-checkbox" type="checkbox" name="course_id[]" value="{{$c->id}}" class="w-8 h-8 text-yellow-300 bg-yellow-300 rounded border-gray-300 focus:ring-yellow-500">
                         <div>
                             <div>
-                                <h1 class="text-white font-bold text-xl">Level III</h1>
+                                <h1 class="text-white font-bold text-xl">{{$c->name}}</h1>
                                 <ul class="list-disc text-white p-5 grid grid-cols-1 md:grid-cols-5 gap-10">
                                     <li>Praktek</li>
                                     <li>Digital Marketing</li>
@@ -132,13 +133,14 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-zinc-900 rounded-b-lg p-3">
                             <h1 class="text-gray-400 text-sm text-center">Discount</h1>
-                            <h1 class="text-yellow-300 text-center font-bold text-2xl">Rp 2.499.000</h1>
+                            <h1 class="text-yellow-300 text-center font-bold text-2xl">{{'Rp. '.number_format($c->bird_price,0,',','.')}}</h1>
                         </div>
                         <div class="bg-zinc-900 rounded-b-lg p-3">
                             <h1 class="text-gray-400 text-sm text-center">Regular price</h1>
-                            <h1 class="text-yellow-300 text-center font-bold text-2xl line-through">Rp 3.499.000</h1>
+                            <h1 class="text-yellow-300 text-center font-bold text-2xl line-through">{{'Rp. '.number_format($c->price,0,',','.')}}</h1>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <div class="py-10">
                     <button type="submit" class="bg-emerald-400 p-5 rounded-lg flex flex-row justify-between items-center w-full">
@@ -166,15 +168,54 @@
         var total_price = 0;
         const product = {!! json_encode($course) !!}
         function addToCart(element){
+            // console.log(element);
             var courseId = $(element).val()
             product.forEach(item => {
+                console.log(item);
                 if(item['id'] == courseId) {
                     if($(element).prop("checked") == true) {
-                        total_price += item['price']
-                    }else {
-                        total_price -= item['price']
+                        if(item['level']  == 'Level 3'){
+                            // alert('ok')
+
+                            if(item['bird_price'] != 0){
+                                total_price += item['bird_price']
+
+                            } else {
+
+                                total_price += item['price']
+                            }
+                        }else{
+                            total_price += item['price']
+
+                        }
+
+                    }else{
+                        // // total_price -= item['price']
+                        // if(item['bird_price'] != 0){
+
+                        //     total_price -= item['bird_price']
+                        // } else {
+
+                        //  total_price -= item['price']
+                        // }
+                        if(item['level']  == 'Level 3'){
+
+                            if(item['bird_price'] != 0){
+
+                                total_price -= item['bird_price']
+                            } else {
+
+                                total_price -= item['price']
+                            }
+                        }else{
+                            total_price -= item['price']
+
+
+                        }
                     }
                 }
+
+
             });
 
             updateTotalPrice()

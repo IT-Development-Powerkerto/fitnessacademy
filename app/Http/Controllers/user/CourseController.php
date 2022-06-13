@@ -94,7 +94,7 @@ class CourseController extends Controller
         $course->level      = $validated['level'];
         $course->schedule   = $request->values;
         $course->price      = $validated['price'];
-        $course->bird_price = $validated['bird_price'];
+        $course->bird_price = $validated['bird_price'] ?? 0;
         $course->start_date = $validated['start'];
         $course->end_date   = $validated['end'];
         $course->save();
