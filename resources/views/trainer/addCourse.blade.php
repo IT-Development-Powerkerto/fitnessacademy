@@ -294,13 +294,28 @@
             });
         });
     </script>
-    {{-- <script>
+    <script>
         $(function(){
-            $('#bird_price_id, #price_id').change(function(){
+            function formatMoney(angka, prefix) {
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                    split = number_string.split(','),
+                    sisa = split[0].length % 3,
+                    rupiah = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
+            }
+            $('#bird_price_id, #price_id').on('keyup', function(){
                 // var string_price = $('#price_id').val();
                 // var price_id = string_price.replace(/[^,\d]/g, '');
-                var price_id = formatDuit($('#price_id').val(), 'IDR');
+                var price_id = formatMoney($('#price_id').val(), 'IDR');
                 $('#price_id').val(price_id);
+                var bird = formatMoney($('#bird_price_id').val(), 'IDR');
+                $('#bird_price_id').val(bird);
 
                 // var str_price_id = price_id.replace(/[^,\d]/g, '');
                 // var int_price_id = parseInt(str_price_id);
@@ -311,6 +326,6 @@
 
         });
 
-    </script> --}}
+    </script>
 </body>
 </html>
