@@ -5,9 +5,10 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;use Illuminate\Validation\Rule;
-use Validator;
+// use Validator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
 use App\Models\User;
 use App\Models\Session;
@@ -78,8 +79,8 @@ class CourseController extends Controller
         $validator = Validator::make($request->all(), [
             'course_name' => 'required',
             'level'       => 'required',
-            'price'       => 'required',
-            'bird_price'  => 'required',
+            'price'       => '',
+            'bird_price'  => '',
             'start'       => 'required',
             'end'         => 'required',
         ]);
@@ -93,8 +94,8 @@ class CourseController extends Controller
         $course->trainer_id = auth()->user()->id;
         $course->level      = $validated['level'];
         $course->schedule   = $request->values;
-        $course->price      = $validated['price'];
-        $course->bird_price = $validated['bird_price'] ?? 0;
+        $course->price      = str_replace('.','',$request->price);
+        $course->bird_price = str_replace('.','',$request->bird_price) ?? 0;
         $course->start_date = $validated['start'];
         $course->end_date   = $validated['end'];
         $course->save();
