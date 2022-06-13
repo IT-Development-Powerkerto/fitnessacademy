@@ -20,5 +20,9 @@ class FinalScore extends Model
     {
         return $this->belongsTo(Session::class, 'session_id', 'id');
     }
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class, 'exam_id', 'id');
+    }
 
 }

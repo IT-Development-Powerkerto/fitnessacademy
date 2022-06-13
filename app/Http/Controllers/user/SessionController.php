@@ -20,6 +20,7 @@ use App\Models\Component;
 
 use App\Models\ScoreDetail;
 use App\Models\FinalScore;
+
 class SessionController extends Controller
 {
     /**
@@ -39,9 +40,11 @@ class SessionController extends Controller
         return view('trainer.addSession', compact('course_id'));
     }
 
-    public function editSession()
+    public function editSession($id)
     {
-        return view('trainer.editSession');
+        $session = Session::find($id);
+        $materi = Materi::where('session_id', $session)->get();
+        return view('trainer.editSession', compact('session', 'materi'));
     }
 
     public function setScore()
@@ -58,12 +61,7 @@ class SessionController extends Controller
         $session = Session::find($id);
         $component = Component::where('session_id', $session->id)->get();
         $s = ScoreDetail::with('component')->get();
-        // dd($c);
-        // $s = ScoreDetail::all();
-        // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
-        //         $query->where('course_id', $id);
 
-        //     }])->get()->pluck('user_id')->flatten();
 
         $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
             $query->where('course_id', $id);
@@ -75,23 +73,6 @@ class SessionController extends Controller
             // $query->where('role_id', 1)->doesntHave('score_detail');
 
         }])->get();
-
-        // dd(User::with('payment')->where('payment.status', 'success')->get());
-
-            // $u = User::where('role_id', 1)->doesntHave('score_detail')->get();
-        // $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
-        //     $query->where('course_id', $id);
-
-        // }])->get()->pluck('user_id')->flatten();
-            // $u = PaymentDetail::with(['payment'=> function($query) use($id){
-            //     $query->where('status', 'success');
-
-
-            // }])->where('course_id', $session->course_id)->get();
-
-            // $s = ScoreDetail::where('user_id', $u->id)->get();
-
-
 
 
         $session_id = $id;
@@ -148,22 +129,32 @@ class SessionController extends Controller
         $session->finish_time = $request->finish_time;
 
         $session->link_session  = $request->link_session;
-        $session->link_assignment = $request->link_assignmen;
+        $session->link_assignment = $request->link_assignment;
 
         $session->save();
 
-        foreach ($request->group_a as $value) {
-            $materi = new Materi();
-            $materi->session_id = $session->id;
-            $materi->file =$value['file'];
 
-            $materi->save();
+        foreach ($request->group_a as $value) {
+            foreach ($value as $v) {
+                // $pdf = $v;
+                $originalFileName = $v->getClientOriginalName();
+                $namaFile = 'Materi-'.$originalFileName;
+                $extFile = $v->getClientOriginalExtension();
+                $extension = time().'.'.$extFile;
+                $path = $v->move('public/assets/file/materi', $namaFile);
+
+                $materi = new Materi();
+                $materi->session_id = $session->id;
+                $materi->file = $path;
+                // dd($v);
+
+                // dd($namaFile, $path, $materi);
+                $materi->save();
+            }
         }
-        $materi->save();
+        // $materi->save();
 
         $course_id = $request->course_id;
-        // return $session;
-
 
         return redirect()->route('course.show',['course'=>$course_id]);
     }
@@ -198,11 +189,13 @@ class SessionController extends Controller
         }])->get();
         $sd = ScoreDetail::with('component')->get()->where('component.session_id', $id);
 
+        $m = Materi::where('session_id', $session->id)->get();
+
 
 
 
         return view('trainer.detailSession', compact('session', 's', 'session_id', 'a',
-        'c','sd', 'fs'
+        'c','sd', 'fs', 'm'
         ));
 
     }
@@ -251,6 +244,8 @@ class SessionController extends Controller
     public function edit($id)
     {
         //
+        // $session = Session::find($id);
+        // return view('trainer.editSession', compact('session'));
     }
 
     /**
@@ -281,41 +276,24 @@ class SessionController extends Controller
         //
         $session = Session::find($id);
 
+        // $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $session){
+        //     $query->where('course_id',$session->course_id);
 
-        // $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
-        //     // $query->where('course_id', $id);
-        //     $query->where('course_id', $id);
+        // }, 'user' => function($query){
 
-        // }])->get()->pluck('user_id')->flatten();
-
-        // $s = User::find($a);
-
-        // $s = PaymentDetail::with(['payment'=> function($query) use($id){
-        //     $query->where('status', 'success');
-
-        // }])->where('course_id', $session->course_id)->get();
+        //     $query->where('role_id', 1);
+        // }])->get();
 
         $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $session){
             $query->where('course_id',$session->course_id);
 
-        }, 'user' => function($query){
-            // $query->where('role_id', 1)->doesntHave('absen');
-            $query->where('role_id', 1);
+        }, 'user' => function($query) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('absen.session', function($q) use($id){
+                $q->where('id', $id);
+            });
+
         }])->get();
 
-
-        // $successCourse = Payment::where('user_id', Auth::user()->id)
-        // ->where('status', 'success')
-        // ->with(['payment_detail'=>function($query){
-        //     $query->with('course');
-        // }])
-        // ->get()
-        // ->map(function($value) {
-        //     return $value->payment_detail->pluck('course_id');
-        // })->flatten();
-
-        // $s = Course::find($successCourse);
-        // $s = Payment::where('status', 'success')->get();
         $session_id = $id;
 
         $a = Absen::where('session_id', $session->id)->get();
@@ -334,7 +312,6 @@ class SessionController extends Controller
 
 
         return view('trainer.setScoreSession', compact('session','session_id'));
-        // return view('trainer.presence', compact('session','session_id'));
 
     }
 
@@ -348,8 +325,7 @@ class SessionController extends Controller
     public function scoreComponent(Request $request)
     {
         //
-        // dd(Carbon::create($request->date_session)->toDateString());
-        // dd($request->all());
+
         $validator = Validator::make($request->all(), [
 
             'session_id' => '',
@@ -426,25 +402,17 @@ class SessionController extends Controller
             ]);
         }
 
-        // foreach($request->user_id as $key=>$value){
-            // $s = new FinalScore();
-            // $s->session_id = $request->session_id;
-            // $s->user_id = $value;
-            // $s->final_score = $value->(final_score);
-            // $s->score_detail_id = $request->score_detail_id;
 
-
-            // $s->save();
-
-
-        // }
-        // $s->save();
         $session_id = $request->session_id;
         // return $session;
 
         return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
 
     }
+
+
+
+
 
 
 

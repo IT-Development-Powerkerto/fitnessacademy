@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('components', function (Blueprint $table) {
+        Schema::create('graduations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('session_id')->nullable();
             $table->foreignId('exam_id')->nullable();
-            $table->string('component_name')->nullable();
-            $table->foreign('session_id')->references('id')->on('sessions');
+            $table->integer('point_range_min')->nullable();
+            $table->integer('point_range_max')->nullable();
+            $table->integer('graduation_range_min')->nullable();
+            $table->integer('graduation_range_max')->nullable();
             $table->foreign('exam_id')->references('id')->on('exams');
             $table->softDeletes();
             $table->timestamps();
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('components');
+        Schema::dropIfExists('graduations');
     }
 };

@@ -8,7 +8,13 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
+use App\Models\ScoreDetail;
+use App\Models\Component;
 use App\Models\Exam;
+use App\Models\Payment;
+use App\Models\FinalScore;
+use App\Models\Absen;
+use App\Models\Graduation;
 class ExamController extends Controller
 {
     /**
@@ -21,6 +27,63 @@ class ExamController extends Controller
     {
         // return view('trainer.addExam');
     }
+    public function presenceExam($id)
+    {
+        //
+        $exam = Exam::find($id);
+
+        $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $exam){
+            $query->where('course_id',$exam->course_id);
+
+        }, 'user' => function($query) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('absen.exam', function($q) use($id){
+                $q->where('id', $id);
+            });
+
+        }])->get();
+
+        $exam_id = $id;
+
+        $a = Absen::where('session_id', $exam->id)->get();
+
+        return view('trainer.presenceExam', compact('exam', 's', 'exam_id', 'a'));
+
+    }
+
+    public function absenExam(Request $request)
+    {
+        //
+        // dd(Carbon::create($request->date_session)->toDateString());
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'user_id' => '',
+            'exam_id' => '',
+            // 'status' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        foreach($request->user_id as $key=>$value){
+            $absen = new Absen();
+            $absen->exam_id = $request->exam_id;
+            $absen->user_id = $value;
+            $absen->status = $request->status[$key];
+
+            $absen->save();
+
+
+
+        }
+
+
+
+        $exam_id = $request->exam_id;
+        // return $session;
+
+        return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+    }
+
     public function addExam($id)
     {
         $course_id = Course::find($id);
@@ -31,17 +94,40 @@ class ExamController extends Controller
     {
         return view('trainer.editExam');
     }
-    public function detailExam()
+    public function detailExam($id)
     {
-        return view('trainer.detailExam');
+        $exam = Exam::find($id);
+        $c = Component::where('exam_id', $exam->id)->get();
+
+        $sde = ScoreDetail::with('component')->get()->where('component.exam_id', $id);
+        $a = Absen::where('exam_id', $exam->id)->get();
+        return view('trainer.detailExam', compact('exam', 'c', 'sde', 'a'));
     }
-    public function setScore()
+    public function setScore($id)
     {
-        return view('trainer.setScoreExam');
+        $exam = Exam::find($id);
+        $exam_id = $id;
+
+        return view('trainer.setScoreExam', compact('exam', 'exam_id'));
     }
-    public function addScore()
+    public function addScore($id)
     {
-        return view('trainer.addScoreExam');
+        $exam = Exam::find($id);
+        $co = Component::where('exam_id', $exam->id)->get();
+        $s = ScoreDetail::with('component')->get();
+
+
+        $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
+            $query->where('course_id', $id);
+
+        }, 'user' => function($query) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('score_detail.component.exam', function($q) use($id){
+                $q->where('id', $id);
+            });
+
+        }])->get();
+        $exam_id = $id;
+        return view('trainer.addScoreExam', compact('exam', 'co', 'u', 'exam_id'));
     }
 
     public function store(Request $request)
@@ -76,5 +162,115 @@ class ExamController extends Controller
         // return $session;
 
         return redirect()->route('course.show',['course'=>$course_id]);
+    }
+
+    public function scoreExam(Request $request)
+    {
+        //
+
+        $validator = Validator::make($request->all(), [
+
+            'exam_id' => '',
+            'komp' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        foreach($request->komp as $value){
+            $compEx = new Component();
+            $compEx->exam_id = $request->exam_id;
+            $compEx->component_name = $value['component_name'];
+
+
+            $compEx->save();
+
+            $score = new ScoreDetail();
+            $score->component_id = $compEx->id;
+            $score->score = '0';
+
+            $score->save();
+
+        }
+        $compEx->save();
+        $score->save();
+        $grad = new Graduation();
+        $grad->exam_id = $request->exam_id;
+        $grad->point_range_min = $request->point_range_min;
+        $grad->point_range_max = $request->point_range_max;
+        $grad->graduation_range_min = $request->graduation_range_min;
+        $grad->graduation_range_max = $request->graduation_range_max;
+
+        $grad->save();
+        // $grad->save();
+
+
+
+
+        $exam_id = $request->exam_id;
+        // return $session;
+
+        return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+    }
+
+    public function addScoreExam (Request $request)
+    {
+
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'user_id' => '',
+            'score_detail_id' => '',
+            // 'status' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $totalComponent = 0;
+        $sumScores = 0;
+
+
+
+        // $data = Carbon::now();
+
+        foreach ($request->score_detail_id as $user_id=>$user_score) {
+            $totalComponent = collect($user_score)->count();
+            $sumScores = collect($user_score)->sum();
+
+            foreach ($user_score as $comp_id => $score) {
+                ScoreDetail::insert([
+                   'component_id' => $comp_id,
+                   'user_id' => $user_id,
+                   'score' => $score
+                ]);
+            }
+            $graduation = Graduation::where('exam_id', $request->exam_id)->first();
+            $hasil_score =  $sumScores / $totalComponent;
+
+
+            if($hasil_score >= $graduation->graduation_range_min){
+                $status = 'Graduated';
+            }else{
+                $status = 'Havent Passed Yet';
+            }
+
+            $finalScore = FinalScore::insert([
+                'exam_id'=>$request->exam_id,
+                'user_id' => $user_id,
+                'score_final' => $hasil_score,
+                'created_at' => Carbon::now()->toDateTimeString(),
+                'updated_at' => Carbon::now()->toDateTimeString(),
+                'status' => $status,
+
+            ]);
+        }
+
+
+        $exam_id = $request->exam_id;
+        // return $session;
+
+        return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+
     }
 }

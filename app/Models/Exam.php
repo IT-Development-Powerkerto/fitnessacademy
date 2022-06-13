@@ -24,4 +24,20 @@ class Exam extends Model
     {
         return $this->belongsTo(Course::class);
     }
+    public function absen()
+    {
+        return $this->hasMany(Absen::class);
+    }
+    public function component()
+    {
+        return $this->hasMany(Component::class);
+    }
+    public function final_score()
+    {
+        return $this->hasMany(FinalScore::class);
+    }
+    public function graduation()
+    {
+        return $this->hasMany(Graduation::class);
+    }
 }

@@ -37,11 +37,12 @@
                 <h1 class="font-semibold">Set Exam Score Component</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="">
-                    <div class="mb-6 repeater">
-                        <div data-repeater-list="group-a">
+                <form action="{{route('examComponent.scoreExam')}}" method="POST">
+                    @csrf
+                    <div class="mb-6 repeater" id="komp">
+                        <div data-repeater-list="komp">
                             <div data-repeater-item class="flex flex-row gap-4">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Component" required>
+                                <input type="text" value="{{old('component_name')}}" id="component_name" name="component_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Component" required>
                                 <button type="button" class="text-white rounded-lg mt-6" data-repeater-delete>
                                     <i class="las la-times"></i>
                                 </button>
@@ -52,34 +53,35 @@
                             add Another Materi
                         </button>
                     </div>
+                    <input type="text" value="{{$exam_id}}" name="exam_id" hidden>
 
                     <div>
                         <h3 class="text-white">Set Graduation Status</h3>
                         <div class="grid grid-cols-12 my-3">
                             <div class="col-span-2 text-white">Haven't Passed Yet</div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range" required>
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="point_range_min" name="point_range_min" value={{old('point_range_min')}}>
                             </div>
                             <div class="text-white text-center"><i class="las la-minus"></i></div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range" required>
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="point_range_max" name="point_range_max" value={{old('point_range_max')}}>
                             </div>
                         </div>
                         <div class="grid grid-cols-12 my-3">
                             <div class="col-span-2 text-white">Graduated</div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range" required>
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="graduation_range_min" name="graduation_range_min" value={{old('graduation_range_min')}}>
                             </div>
                             <div class="text-white text-center"><i class="las la-minus"></i></div>
-                            <div class="col-span-2 text-white">
-                                <input type="text" id="component" name="component" class="bg-gray-50 rounded-md border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Score Range" required>
+                            <div class="col-span-2 text-black">
+                                <input type="text" id="graduation_range_max" name="graduation_range_max" value={{old('graduation_range_max')}}>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex flex-row justify-center md:justify-end gap-4 mt-10">
-                        <a href="#" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
-                        <a href="#" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save</a>
+                        <a href="{{route('detailExam.detailExam', ['id'=>$exam->id])}}" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
+                        <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save</button>
                     </div>
                 </form>
             </div>

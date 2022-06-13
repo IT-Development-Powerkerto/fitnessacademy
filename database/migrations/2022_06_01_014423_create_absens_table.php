@@ -16,10 +16,12 @@ return new class extends Migration
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('session_id');
+            $table->foreignId('session_id')->nullable();
+            $table->foreignId('exam_id')->nullable();
             $table->string('status')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('session_id')->references('id')->on('sessions');
+            $table->foreign('exam_id')->references('id')->on('exams');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -33,23 +33,30 @@
                         <i class="las la-trash-alt"></i>
                         Delete Session
                     </a>
-                    <a href="/editSession" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="{{route('editSession.editSession', ['id'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Session
                     </a>
                 </div>
             </div>
             <div class="py-5 px-3 bg-black rounded-b-lg">
-                <h1 class="text-sm md:col-span-5 col-span-4 text-white pb-5">Sunday, 15 May 2022 (09:00 - 12:00)</h1>
+                <h1 class="text-sm md:col-span-5 col-span-4 text-white pb-5">{{\Illuminate\Support\Carbon::create($session->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($session->start_time))}} - {{date('H:i', strtotime($session->finish_time))}})</h1>
                 <div class="grid grid-cols-6 gap-3">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Online Learning</h1>
-                    <a href="#" class="text-sm md:col-span-5 col-span-4 text-white underline">https://meet.google.com/uti-vyzp-vim</a>
+                    <a href="{{$session->link_session}}" target="blank" class="text-sm md:col-span-5 col-span-4 text-white underline">{{$session->link_session}}</a>
                 </div>
                 <div class="grid grid-cols-6 gap-3 py-5">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Materi</h1>
                     <div class="md:col-span-5 col-span-4">
                         <div class="flex flex-col">
-                            <a href="#" class="text-sm text-white my-3">
+                            @foreach ( $m as $m )
+
+                            <a href="{{url($m->file)}}" target="blank" class="text-sm text-white my-3">
+                                <i class="las la-file text-sm text-white"></i>
+                               {{$m->file}}
+                            </a>
+                            @endforeach
+                            {{-- <a href="#" class="text-sm text-white my-3">
                                 <i class="las la-file text-sm text-white"></i>
                                 Pengenalan Anatomi Tubuh Manusia Bagian I.pdf
                             </a>
@@ -60,13 +67,13 @@
                             <a href="#" class="text-sm text-white my-3">
                                 <i class="las la-file text-sm text-white"></i>
                                 Pengenalan Anatomi Tubuh Manusia Bagian III.pdf
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>
                 <div class="grid grid-cols-6 gap-3 pb-3">
                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Assignment</h1>
-                    <a href="#" class="text-sm md:col-span-5 col-span-4 text-white underline">https://meet.google.com/uti-vyzp-vim</a>
+                    <a href="{{$session->link_assignment}}" class="text-sm md:col-span-5 col-span-4 text-white underline">{{$session->link_assignment}}</a>
                 </div>
             </div>
         </div>

@@ -17,8 +17,8 @@
 
     <livewire:trainer.navbar-trainer />
 
-    <div class="bg-zinc-800 p-10 h-full">
-        <div class="">
+    <div class="bg-zinc-800 p-10 h-screen">
+        <div class="h-full">
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
@@ -89,17 +89,17 @@
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
                 </div>
                 <div class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
-                    <a href="/detailExam">
+                    <a href="{{route('detailExam.detailExam', ['id'=>$e->id])}}">
                         <h1 class="font-bold text-lg md:text-2xl">{{$e->name}}</h1>
-                        <h1 class="font-semibold text-sm py-2">{{\Illuminate\Support\Carbon::create($e->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</h1>
-                        <a href="#" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">{{$e->link ?? null}}</a>
+                        <h1 class="font-semibold text-sm py-2">{{\Illuminate\Support\Carbon::create($e->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($e->start_time))}} - {{date('H:i', strtotime($e->finish_time))}})</h1>
+                        <a href="{{$e->link}}" target="blank" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">{{$e->link ?? null}}</a>
                     </a>
                 </div>
             </div>
             @endforeach
 
         </div>
-    </div>
+
 
     <!-- begin::Modal -->
     <!-- begin::ModalViewStudent -->
