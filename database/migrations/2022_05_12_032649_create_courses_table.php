@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('schedule');
             $table->integer('price')->nullable();
             $table->integer('bird_price')->nullable();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamps();
         });
     }

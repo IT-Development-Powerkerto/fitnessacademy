@@ -150,11 +150,11 @@
                         </select>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="price_id" name="price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
+                        <input type="text" id="price_id" name="price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)">
                         <h1 class="text-gray-500 text-sm mt-1">Fill in the column if you choose paid</h1>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="bird_price_id" name="bird_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
+                        <input type="text" id="bird_price_id" name="bird_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)">
                     </div>
                     {{-- <div class="mb-6">
                         <input type="date" id="period" name="period" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Early Bird Period (dd/mm/yyyy - dd/mm/yyyy)" required>
@@ -165,14 +165,14 @@
                                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                       <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                   </div>
-                                  <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                                  <input id="start_id" name="start_date" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
                               </div>
                             <span class="mx-auto text-gray-500 col-span-1 my-auto">to</span>
                             <div class="relative col-span-5">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                   <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                               </div>
-                              <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+                              <input id="end_id" name="end_date" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
                             </div>
                         </div>
                         <h1 class="text-gray-500 text-sm mt-1">After passing the early bird period, the active price will return to the Regular Price.</h1>
@@ -277,6 +277,8 @@
         $(function() {
             $('#bird_price_id').attr('disabled', true);
             $('#price_id').attr('disabled', true);
+            $('#start_id').attr('disabled', true);
+            $('#end_id').attr('disabled', true);
             $('#payment_id').val('FREE');
             $('#payment_id').change(function() {
                 var pilih = $('#payment_id').val();
@@ -285,11 +287,19 @@
                     $('#bird_price_id').val();
                     $('#price_id').attr('disabled', true);
                     $('#price_id').val();
+                    $('#start_id').attr('disabled', true);
+                    $('#start_id').val();
+                    $('#end_id').attr('disabled', true);
+                    $('#end_id').val();
                 } else {
                     $('#bird_price_id').attr('disabled', false);
                     $('#bird_price_id').val();
                     $('#price_id').attr('disabled', false);
                     $('#price_id').val();
+                    $('#start_id').attr('disabled', false);
+                    $('#start_id').val();
+                    $('#end_id').attr('disabled', false);
+                    $('#end_id').val();
                 }
             });
         });

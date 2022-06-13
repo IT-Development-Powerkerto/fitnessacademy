@@ -81,8 +81,8 @@ class CourseController extends Controller
             'level'       => 'required',
             'price'       => '',
             'bird_price'  => '',
-            'start'       => 'required',
-            'end'         => 'required',
+            'start_date'       => '',
+            'end_date'         => '',
         ]);
         if($validator->fails()){
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
@@ -94,10 +94,10 @@ class CourseController extends Controller
         $course->trainer_id = auth()->user()->id;
         $course->level      = $validated['level'];
         $course->schedule   = $request->values;
-        $course->price      = str_replace('.','',$request->price);
-        $course->bird_price = str_replace('.','',$request->bird_price) ?? 0;
-        $course->start_date = $validated['start'];
-        $course->end_date   = $validated['end'];
+        $course->price      = $request->price == null ? 0 : str_replace('.','',$request->price);
+        $course->bird_price = $request->bird_price == null ? 0 : str_replace('.','',$request->bird_price);
+        $course->start_date = $request->start_date ?? null;
+        $course->end_date   = $request->end_date ?? null;
         $course->save();
 
         return redirect('/dashboard')->with('success', 'Create Course Success!');
