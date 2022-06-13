@@ -73,6 +73,7 @@ Route::resource('/userProfile', UserProfileController::class)->middleware('auth'
 Route::get('/view/{id}', [UserProfileController::class, 'view'])->name('view')->middleware('auth');
 
 Route::post('/newpassword', [UserProfileController::class, 'NewPassword'])->name('newpassword');
+Route::post('/forgotpassword', [UserProfileController::class, 'forgotPassword'])->name('forgotPassword');
 
 
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ForgotPasswordMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -10,7 +11,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class UserProfileController extends Controller
 {
@@ -156,8 +159,8 @@ class UserProfileController extends Controller
     public function NewPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
-           'current_password' => 'required',
-           'new_password' => 'required',
+            'current_password' => 'required',
+            'new_password' => 'required',
         ]);
         if($validator->fails()){
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
@@ -172,5 +175,29 @@ class UserProfileController extends Controller
 
         return redirect()->back();
 
+    }
+    public function forgotPassword(Request $request)
+    {
+        $email = $request->email;
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email:rfc,dns,spoof',
+        ]);
+        if ($validator->fails()) {
+            return back()->with('error', $validator->errors());
+        }
+        $user = User::where('email', $email)->first();
+        if($user == null){
+            return back();
+        }else{
+            $new_password = Str::upper(Str::random(8));
+            $user->update([
+                'password' => Hash::make($new_password)
+            ]);
+            $details = [
+                'password' => $new_password,
+            ];
+            Mail::to($email)->send(new ForgotPasswordMail($details));
+            return back()->with('success', 'Email has been send');
+        }
     }
 }
