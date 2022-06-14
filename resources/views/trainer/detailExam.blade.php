@@ -13,7 +13,8 @@
 </head>
 <body>
 
-    <livewire:exam.navbar />
+    {{-- <livewire:exam.navbar /> --}}
+    <livewire:trainer.navbar-trainer />
 
     <div class="bg-zinc-800 p-10">
         <div class="">
@@ -30,7 +31,7 @@
                 <h1 class="font-semibold text-white">EXAM - {{$exam->name}}</h1>
                 <div class="flex md:flex-row flex-col items-end">
 
-                    <a href="{{route('editExam.editExam', ['id'=>$exam->id, 'course'=>$exam->course_id])}}" class="text-sm text-red-500 bg-white hover:bg-zinc-500 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="{{route('editExam.editExam', ['course'=>$exam->course_id,'id'=>$exam->id])}}" class="text-sm text-red-500 bg-white hover:bg-zinc-500 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Exam
                     </a>
@@ -85,7 +86,7 @@
                 <h1 class="font-semibold">Score</h1>
                 <div class="flex md:flex-row flex-col items-end">
                     @if($c->isEmpty())
-                    <a href="{{route('setScoreExam.setScore',['id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
+                    <a href="{{route('setScoreExam.setScore',['course'=>$exam->course_id, 'id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg md:mr-4">
                         <i class="las la-chart-bar"></i>
                         Set Score Component
                     </a>

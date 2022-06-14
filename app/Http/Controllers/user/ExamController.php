@@ -92,25 +92,28 @@ class ExamController extends Controller
     }
     public function editExam($course, $id)
     {
-        $exam = Exam::find($id);
+        $exam = Exam::whereId($id)->first();
         $course_id = $course;
         return view('trainer.editExam', compact('exam', 'course_id'));
     }
-    public function detailExam($id)
+    public function detailExam($course, $id)
     {
+
         $exam = Exam::find($id);
         $c = Component::where('exam_id', $exam->id)->get();
-        $course = Course::findOrFail($id);
+        $course = Course::whereId($course)->first();
         $sde = ScoreDetail::with('component')->get()->where('component.exam_id', $id);
+        // dd($course);
         $a = Absen::where('exam_id', $exam->id)->get();
         return view('trainer.detailExam', compact('exam', 'c', 'sde', 'a', 'course'));
     }
-    public function setScore($id)
+    public function setScore($course, $id)
     {
-        $exam = Exam::find($id);
+        $exam = Exam::whereId($id)->first();
+        $course_id = $course;
         $exam_id = $id;
 
-        return view('trainer.setScoreExam', compact('exam', 'exam_id'));
+        return view('trainer.setScoreExam', compact('exam', 'exam_id', 'course'));
     }
     public function addScore($id)
     {
@@ -195,10 +198,10 @@ class ExamController extends Controller
         $exam->save();
 
         $course_id = $request->course_id;
-        // $exam_id = $request->exam_id;
+        $exam_id = $request->exam_id;
         // return $session;
 
-        return redirect()->route('detailExam.detailExam', ['id'=>$id]);
+        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$id]);
     }
 
     public function scoreExam(Request $request)
@@ -245,9 +248,12 @@ class ExamController extends Controller
 
 
         $exam_id = $request->exam_id;
+        $course_id = Exam::whereId($exam_id)->$value('course_id');
+        // $exam = $id;
         // return $session;
 
-        return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
+        // return redirect(url()->previous());
     }
 
     public function addScoreExam (Request $request)

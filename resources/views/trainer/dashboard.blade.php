@@ -139,13 +139,13 @@
                         <h1 class="col-span-4 text-sm md:text-md">Course</h1>
                         <h1 class="text-right col-span-2 text-sm md:text-md">Score</h1>
                     </div>
-                    @foreach ( $uc as $u )
+                    @foreach ( $fs->where('exam_id') as $s )
 
                     <div class="text-white grid grid-cols-12 pt-5">
                         <h1 class="text-left col-span-1">{{$loop->iteration}}</h1>
-                        <h1 class="col-span-5">{{$u->payment->user->name}}</h1>
-                        <h1 class="col-span-4">{{$u->course->name}}</h1>
-                        <h1 class="text-right col-span-2"></h1>
+                        <h1 class="col-span-5">{{$s->user->name}}</h1>
+                        <h1 class="col-span-4">{{$s->exam->course->name}}</h1>
+                        <h1 class="text-right col-span-2">{{$s->score_final}}</h1>
                     </div>
                     @endforeach
                 </div>

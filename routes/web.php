@@ -54,7 +54,7 @@ Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
 Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
-Route::get('/editSession/{id}/course/{course}', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');
+Route::get('/course/{course}/detailSession/{id}/edit', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');
 // Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('session.setScoreSession')->middleware('auth');
 // Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
 Route::get('/addScoreSession/{id}', [SessionController::class, 'addScore'])->name('score')->middleware('auth');
@@ -82,10 +82,10 @@ Route::post('/forgotpassword', [UserProfileController::class, 'forgotPassword'])
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
 Route::get('/overviewStudent', [UserProfileController::class, 'overviewStudent'])->name('overviewStudent')->middleware('auth');
 
-Route::get('/detailExam/{id}', [ExamController::class, 'detailExam'])->name('detailExam.detailExam')->middleware('auth');
+Route::get('/course/{course}/detailExam/{id}', [ExamController::class, 'detailExam'])->name('detailExam.detailExam')->middleware('auth');
 Route::get('/addExam/{id}', [ExamController::class, 'addExam'])->name('addExam.addExam')->middleware('auth');
-Route::get('/editExam/{id}/course/{course}', [ExamController::class, 'editExam'])->name('editExam.editExam')->middleware('auth');
-Route::get('/setScoreExam/Exam/{id}', [ExamController::class, 'setScore'])->name('setScoreExam.setScore')->middleware('auth');
+Route::get('/course/{course}/detailExam/{id}/edit', [ExamController::class, 'editExam'])->name('editExam.editExam')->middleware('auth');
+Route::get('/course/{course}/detailExam/{id}/setScore', [ExamController::class, 'setScore'])->name('setScoreExam.setScore')->middleware('auth');
 Route::get('/addScoreExam/Exam/{id}', [ExamController::class, 'addScore'])->name('addScoreExam.addScore')->middleware('auth');
 Route::post('/examComponent', [ExamController::class, 'scoreExam'])->name('examComponent.scoreExam')->middleware('auth');
 Route::post('/addScoreExam', [ExamController::class, 'addScoreExam'])->name('addScoreExam.addScoreExam');

@@ -98,7 +98,7 @@
                     <h1 class="text-white font-bold text-2xl">EXAM</h1>
                 </div>
                 <div class="bg-white col-span-8 md:col-span-11 p-5 rounded-r-lg flex flex-col">
-                    <a href="{{route('detailExam.detailExam', ['id'=>$e->id])}}">
+                    <a href="{{route('detailExam.detailExam', ['course'=>$e->course_id ,'id'=>$e->id])}}">
                         <h1 class="font-bold text-lg md:text-2xl">{{$e->name}}</h1>
                         <h1 class="font-semibold text-sm py-2">{{\Illuminate\Support\Carbon::create($e->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($e->start_time))}} - {{date('H:i', strtotime($e->finish_time))}})</h1>
                         <a href="{{$e->link}}" target="blank" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">{{$e->link ?? null}}</a>

@@ -27,7 +27,7 @@
         </div>
         <div class="mt-5">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
-                <h1 class="font-semibold">Session 1 - Pengenalan Anatomi Manusia</h1>
+                <h1 class="font-semibold">Session 1 - {{$session->name}}</h1>
                 <div class="flex md:flex-row flex-col items-end">
                     <form action="{{ route ('detailSession.destroy', ['detailSession'=>$session->id]) }}" method='POST'>
                         @method('DELETE')

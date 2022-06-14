@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\PaymentDetail;
 use App\Models\Payment;
+use App\Models\FinalScore;
+use App\Models\Exam;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -82,11 +84,13 @@ class DashboardController extends Controller
         }
         else if($x->role_id == 2){
             $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $exam = Exam::all();
+            $fs = FinalScore::all();
 
 
             // dd($course);
             // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
-            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc'));
+            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs'));
         }
         else if($x->role_id == 3) {
             return view('admin.dashboard', compact('trainer', 'student', 'courses', 'p'));
