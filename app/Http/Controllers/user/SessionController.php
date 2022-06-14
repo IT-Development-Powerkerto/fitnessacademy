@@ -42,7 +42,7 @@ class SessionController extends Controller
 
     public function editSession($course ,$id)
     {
-        $session = Session::find($id);
+        $session = Session::whereId($id)->first();
         $materi = Materi::all();
         $course_id = $course;
         return view('trainer.editSession', compact('session', 'materi', 'course_id'));
@@ -294,24 +294,50 @@ class SessionController extends Controller
         $session->save();
 
 
-        // Materi::where('session_id', $id)->();
+        if($request->has('grpup_a') != ''){
 
-        foreach ($request->group_a as $value) {
-            foreach ($value as $v) {
-                // $pdf = $v;
-                $originalFileName = $v->getClientOriginalName();
-                $namaFile = 'Materi-'.$originalFileName;
-                $extFile = $v->getClientOriginalExtension();
-                $extension = time().'.'.$extFile;
-                $path = $v->move('public/assets/file/materi', $namaFile);
+            foreach ($request->group_a as $value) {
+                Materi::where('session_id', $id)->delete();
+                foreach ($value as $v) {
+                    // $pdf = $v;
+                    $originalFileName = $v->getClientOriginalName();
+                    $namaFile = 'Materi-'.$originalFileName;
+                    $extFile = $v->getClientOriginalExtension();
+                    $extension = time().'.'.$extFile;
+                    $path = $v->move('public/assets/file/materi', $namaFile);
 
-                $materi = Materi::where('session_id', $id)->update;
-                $materi->session_id = $session->id;
-                $materi->file = $path;
-                // dd($v);
+                    Materi::where('session_id', $id)->create([
 
-                // dd($namaFile, $path, $materi);
-                $materi->save();
+                        'file' => $path,
+                    ]);
+                    // $materi->session_id = $session->id;
+                    // dd($v);
+
+                    // dd($namaFile, $path, $materi);
+                    // $materi->save();
+                }
+            }
+        }else{
+
+            foreach ($request->group_a as $value) {
+                foreach ($value as $v) {
+                    // $pdf = $v;
+                    $originalFileName = $v->getClientOriginalName();
+                    $namaFile = 'Materi-'.$originalFileName;
+                    $extFile = $v->getClientOriginalExtension();
+                    $extension = time().'.'.$extFile;
+                    $path = $v->move('public/assets/file/materi', $namaFile);
+
+                    Materi::where('session_id', $id)->update([
+
+                        'file' => $path,
+                    ]);
+                    // $materi->session_id = $session->id;
+                    // dd($v);
+
+                    // dd($namaFile, $path, $materi);
+                    // $materi->save();
+                }
             }
         }
 
@@ -319,10 +345,10 @@ class SessionController extends Controller
 
 
         // return redirect()->route('course.show',['course'=>$course_id]);
-        $session_id = $request->session_id;
+        // $session_id = $request->session_id;
         // return $session;
-
-        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+        // dd($session_id);
+        return redirect()->route('detailSession.show', ['detailSession'=>$id]);
     }
 
     /**
@@ -334,6 +360,10 @@ class SessionController extends Controller
     public function destroy($id)
     {
         //
+        $session = Session::findOrFail($id);
+        $session->delete();
+        // $course_id = $request->course_id;
+        return redirect()->back();
     }
 
     public function presence($id)

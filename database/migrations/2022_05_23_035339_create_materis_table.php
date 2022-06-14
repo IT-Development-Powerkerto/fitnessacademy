@@ -15,9 +15,8 @@ return new class extends Migration
     {
         Schema::create('materis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('session_id');
+            $table->foreignId('session_id')->nullable();
             $table->string('file')->nullable();
-            $table->foreign('session_id')->references('id')->on('sessions');
             $table->timestamps();
         });
     }

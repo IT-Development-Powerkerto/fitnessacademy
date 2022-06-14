@@ -78,6 +78,15 @@
                         <span class="font-bold text-black">Session {{$loop->iteration}} - {{$s->name}}</span>
                         <span class="text-sm font-semibold text-black">{{\Illuminate\Support\Carbon::create($s->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</span>
                     </div>
+                    <form action="{{ route ('detailSession.destroy', ['detailSession'=>$s->id]) }}" method='POST'>
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" href="#" class="text-sm col-span-2 md:col-span-1 text-red-500 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg md:mr-4">
+                            <i class="las la-trash-alt"></i>
+                            Delete Session
+                        </button>
+                    </form>
+
                 </a>
                 @endforeach
             </div>
@@ -94,6 +103,7 @@
                         <h1 class="font-semibold text-sm py-2">{{\Illuminate\Support\Carbon::create($e->date_exam)->format('l, d F Y')}} ({{date('H:i', strtotime($e->start_time))}} - {{date('H:i', strtotime($e->finish_time))}})</h1>
                         <a href="{{$e->link}}" target="blank" class="font-semibold text-sm break-all underline text-black hover:text-yellow-300">{{$e->link ?? null}}</a>
                     </a>
+
                 </div>
             </div>
             @endforeach

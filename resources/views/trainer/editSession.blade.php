@@ -33,8 +33,8 @@
                 <h1 class="font-semibold">Edit Session</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="">
-                {{-- <form method="POST" action="{{ route ('detailSession.update', ['detailSession'=>$session->id]) }}" enctype="multipart/form-data"> --}}
+                {{-- <form action=""> --}}
+                <form method="POST" action="{{ route ('detailSession.update', ['detailSession'=>$session->id]) }}" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
                     <div class="mb-6">

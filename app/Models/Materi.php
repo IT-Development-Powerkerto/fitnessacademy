@@ -11,10 +11,10 @@ class Materi extends Model
     protected $table = 'materis';
     // protected $primaryKey = 'id';
 
-    protected $fillable = [
-        'session_id',
-        'file',
-    ];
+    // protected $fillable = [
+    //     'session_id',
+    //     'file',
+    // ];
 
     /**
      * Get the user that owns the Session
@@ -23,6 +23,6 @@ class Materi extends Model
      */
     public function session()
     {
-        return $this->belongsTo(Session::class);
+        return $this->belongsTo(Session::class, 'session_id', 'id');
     }
 }

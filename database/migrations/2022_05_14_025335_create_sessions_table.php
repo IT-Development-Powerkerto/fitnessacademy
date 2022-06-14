@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained('courses')->cascadeOnDelete();
+            $table->foreignId('course_id')->constrained('courses');
             $table->string('name');
             $table->string('day')->nullable();
             $table->date('date_session')->nullable();

@@ -29,10 +29,14 @@
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Session 1 - Pengenalan Anatomi Manusia</h1>
                 <div class="flex md:flex-row flex-col items-end">
-                    <a href="#" class="text-sm col-span-2 md:col-span-1 text-red-500 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg md:mr-4">
-                        <i class="las la-trash-alt"></i>
-                        Delete Session
-                    </a>
+                    {{-- <form action="{{ route ('detailSession.destroy', ['detailSession'=>$session->id]) }}" method='POST'>
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" href="#" class="text-sm col-span-2 md:col-span-1 text-red-500 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg md:mr-4">
+                            <i class="las la-trash-alt"></i>
+                            Delete Session
+                        </button>
+                    </form> --}}
                     <a href="{{route('editSession.editSession', ['id'=>$session->id, 'course'=>$session->course_id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Session
