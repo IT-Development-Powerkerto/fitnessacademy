@@ -54,7 +54,7 @@ Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/detailSession', SessionController::class)->middleware('auth');
 Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
-Route::get('/editSession/{id}', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');
+Route::get('/editSession/{id}/course/{course}', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');
 // Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('session.setScoreSession')->middleware('auth');
 // Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
 Route::get('/addScoreSession/{id}', [SessionController::class, 'addScore'])->name('score')->middleware('auth');

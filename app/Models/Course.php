@@ -29,7 +29,7 @@ class Course extends Model
      */
     public function session()
     {
-        return $this->hasOne(Session::class);
+        return $this->hasMany(Session::class);
     }
 
     public function exam()

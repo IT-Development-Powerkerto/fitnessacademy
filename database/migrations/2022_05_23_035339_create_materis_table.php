@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('session_id');
             $table->string('file')->nullable();
+            $table->foreign('session_id')->references('id')->on('sessions');
             $table->timestamps();
         });
     }

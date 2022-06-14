@@ -40,11 +40,12 @@ class SessionController extends Controller
         return view('trainer.addSession', compact('course_id'));
     }
 
-    public function editSession($id)
+    public function editSession($course ,$id)
     {
         $session = Session::find($id);
-        $materi = Materi::where('session_id', $session)->get();
-        return view('trainer.editSession', compact('session', 'materi'));
+        $materi = Materi::all();
+        $course_id = $course;
+        return view('trainer.editSession', compact('session', 'materi', 'course_id'));
     }
 
     public function setScore()
@@ -258,6 +259,70 @@ class SessionController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'course_id' => '',
+            'name' => '',
+            'day' => '',
+            'date_session' => '',
+            'start_time'=>'',
+            'finish_time'=>'',
+
+            'group_a'=>'',
+
+            'link_session' => '',
+            'link_assignment' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $session = Session::find($id);
+        $session->course_id = $request->course_id;
+        $session->name = $request->name;
+        $session->day = $request->day;
+        $session->date_session = Carbon::create($request->date_session)->toDateString();
+
+        $session->start_time = $request->start_time;
+        $session->finish_time = $request->finish_time;
+
+        $session->link_session  = $request->link_session;
+        $session->link_assignment = $request->link_assignment;
+
+        $session->save();
+
+
+        // Materi::where('session_id', $id)->();
+
+        foreach ($request->group_a as $value) {
+            foreach ($value as $v) {
+                // $pdf = $v;
+                $originalFileName = $v->getClientOriginalName();
+                $namaFile = 'Materi-'.$originalFileName;
+                $extFile = $v->getClientOriginalExtension();
+                $extension = time().'.'.$extFile;
+                $path = $v->move('public/assets/file/materi', $namaFile);
+
+                $materi = Materi::where('session_id', $id)->update;
+                $materi->session_id = $session->id;
+                $materi->file = $path;
+                // dd($v);
+
+                // dd($namaFile, $path, $materi);
+                $materi->save();
+            }
+        }
+
+        $course_id = $request->course_id;
+
+
+        // return redirect()->route('course.show',['course'=>$course_id]);
+        $session_id = $request->session_id;
+        // return $session;
+
+        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
     }
 
     /**

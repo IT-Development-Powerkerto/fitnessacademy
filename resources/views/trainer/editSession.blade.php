@@ -34,6 +34,9 @@
             </div>
             <div class="bg-black rouned-b-lg p-10">
                 <form action="">
+                {{-- <form method="POST" action="{{ route ('detailSession.update', ['detailSession'=>$session->id]) }}" enctype="multipart/form-data"> --}}
+                    @method('PATCH')
+                    @csrf
                     <div class="mb-6">
                         <input type="text" id="name" name="name" value="{{old('name') ?? $session->name}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Session Name">
                     </div>
@@ -52,8 +55,8 @@
                     <div class="mb-6">
                         <select id="link_yes_edit" name="link_yes_edit" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Will the training be conducted online? (Yes/No)</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="Yes" {{$session->link_session != 'Yes' ? 'selected' : ''}}>Yes</option>
+                            <option value="No" {{$session->link_session == 'No' ? 'selected' : ''}}>No</option>
                         </select>
                     </div>
                     <div class="mb-6">
@@ -68,12 +71,15 @@
 
                     <div class="mb-6 repeater" id="group_a">
                         <div data-repeater-list="group_a">
+                            @foreach ($materi->where('session_id', $session->id) as $m)
+
                             <div data-repeater-item="" class="flex flex-row gap-4">
-                                <input type="file" id="file" name="file" value="{{old('file')}}" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer">
+                                <input type="file" id="file" name="file" value="{{old('file') ?? (url('').'/'.str_replace('\\','/',$m->file))}}" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer">
                                 <button type="button" class="text-white rounded-lg mt-6" data-repeater-delete>
                                     <i class="las la-times"></i>
                                 </button>
                             </div>
+                            @endforeach
                         </div>
                         <button type="button" class="text-yellow-300 border border-yellow-300 border-dashed rounded-lg p-2 mt-4" data-repeater-create="">
                             <i class="las la-plus"></i>
@@ -86,16 +92,16 @@
                     <div class="mb-6">
                         <select id="link_yes_one_edit" name="link_yes_one" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Will you add a assignment? (Yes;No)</option>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="Yes" {{$session->link_assignment != 'Yes' ? 'selected' : ''}}>Yes</option>
+                            <option value="No" {{$session->link_assignment == 'No' ? 'selected' : ''}}>No</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="link_assignment_edit" name="link_assignment" value="{{old('link_assignment') ?? $session->link_assignment}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Link Assignment" required>
+                        <input type="text" id="link_assignment_edit" name="link_assignment" value="{{old('link_assignment') ?? $session->link_assignment}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Link Assignment">
                     </div>
 
                     {{-- {{dd($course_id)}} --}}
-                    {{-- <input type="text" value="{{$course_id->id}}" name="course_id" hidden> --}}
+                    <input type="text" value="{{$course_id}}" name="course_id" hidden>
 
                     <div class="flex flex-row justify-center md:justify-end gap-4 mt-10">
                         <a href="/userProfile" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>
