@@ -92,7 +92,7 @@
                     <div class="mb-6">
                         <select id="link_yes_one_edit" name="link_yes_one" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Will you add a assignment? (Yes;No)</option>
-                            <option value="Yes" {{$session->link_assignment != 'Yes' ? 'selected' : ''}}>Yes</option>
+                            <option value="Yes" {{$session->link_assignment != 'No' ? 'selected' : ''}}>Yes</option>
                             <option value="No" {{$session->link_assignment == 'No' ? 'selected' : ''}}>No</option>
                         </select>
                     </div>

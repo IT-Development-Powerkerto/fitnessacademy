@@ -13,23 +13,24 @@
 </head>
 <body>
 
-    <livewire:trainer.navbar-trainer />
+    <livewire:exam.navbar />
 
     <div class="bg-zinc-800 p-10">
         <div class="">
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="#" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
+                <a href="{{route('course.show', ['course'=>$course->id])}}" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
                 <a href="#" class="text-white text-sm hover:text-yellow-300">EXAM</a>
             </div>
         </div>
         <div class="mt-5">
             <div class="bg-red-500 rounded-t-lg p-3 flex flex-row justify-between items-center">
-                <h1 class="font-semibold text-white">EXAM - Ujian Anatomi Dasar</h1>
+                <h1 class="font-semibold text-white">EXAM - {{$exam->name}}</h1>
                 <div class="flex md:flex-row flex-col items-end">
-                    <a href="/editExam" class="text-sm text-red-500 bg-white hover:bg-zinc-500 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+
+                    <a href="{{route('editExam.editExam', ['id'=>$exam->id, 'course'=>$exam->course_id])}}" class="text-sm text-red-500 bg-white hover:bg-zinc-500 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Exam
                     </a>

@@ -363,7 +363,8 @@ class SessionController extends Controller
         $session = Session::findOrFail($id);
         $session->delete();
         // $course_id = $request->course_id;
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect()->route('course.show',['course'=>$id]);
     }
 
     public function presence($id)

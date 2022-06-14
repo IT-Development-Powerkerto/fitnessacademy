@@ -90,18 +90,20 @@ class ExamController extends Controller
 
         return view('trainer.addExam', compact('course_id'))->with('success', 'Create Course Success!');
     }
-    public function editExam()
+    public function editExam($course, $id)
     {
-        return view('trainer.editExam');
+        $exam = Exam::find($id);
+        $course_id = $course;
+        return view('trainer.editExam', compact('exam', 'course_id'));
     }
     public function detailExam($id)
     {
         $exam = Exam::find($id);
         $c = Component::where('exam_id', $exam->id)->get();
-
+        $course = Course::findOrFail($id);
         $sde = ScoreDetail::with('component')->get()->where('component.exam_id', $id);
         $a = Absen::where('exam_id', $exam->id)->get();
-        return view('trainer.detailExam', compact('exam', 'c', 'sde', 'a'));
+        return view('trainer.detailExam', compact('exam', 'c', 'sde', 'a', 'course'));
     }
     public function setScore($id)
     {
@@ -162,6 +164,41 @@ class ExamController extends Controller
         // return $session;
 
         return redirect()->route('course.show',['course'=>$course_id]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+
+        // dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'course_id' => '',
+            'name' => '',
+            'date_exam' => '',
+            'start_time'=>'',
+            'finish_time'=>'',
+            'link' => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+
+        $exam = Exam::find($id);
+        $exam->course_id = $request->course_id;
+        $exam->name = $request->name;
+        $exam->date_exam = Carbon::create($request->date_session)->toDateString();
+        $exam->start_time = $request->start_time;
+        $exam->finish_time = $request->finish_time;
+        $exam->link = $request->link;
+
+        $exam->save();
+
+        $course_id = $request->course_id;
+        // $exam_id = $request->exam_id;
+        // return $session;
+
+        return redirect()->route('detailExam.detailExam', ['id'=>$id]);
     }
 
     public function scoreExam(Request $request)
