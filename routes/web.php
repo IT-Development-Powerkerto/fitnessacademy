@@ -42,7 +42,7 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 // Route::get('/dashboard/{course_id}', [DashboardController::class, 'getCourse'])->name('getCourse')->middleware('auth');
-Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
+// Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
 // Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->name('aproveUser.aproveUser');
 Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');

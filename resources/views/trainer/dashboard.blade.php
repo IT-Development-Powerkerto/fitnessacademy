@@ -9,6 +9,91 @@
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <style>
+		/*Overrides for Tailwind CSS */
+		/*Form fields*/
+		.dataTables_wrapper select,
+		.dataTables_wrapper .dataTables_filter input {
+			color: #000;
+			/*text-gray-700*/
+			padding-left: 1rem;
+			/*pl-4*/
+			padding-right: 1rem;
+			/*pl-4*/
+			padding-top: .5rem;
+			/*pl-2*/
+			padding-bottom: .5rem;
+			/*pl-2*/
+			line-height: 1.25;
+			/*leading-tight*/
+			border-width: 2px;
+			/*border-2*/
+			border-radius: .25rem;
+			border-color: #fff;
+			/*border-gray-200*/
+			background-color: #fff;
+			/*bg-gray-200*/
+		}
+
+		/*Row Hover*/
+		table.dataTable.hover tbody tr:hover,
+		table.dataTable.display tbody tr:hover {
+			background-color: #fff;
+			/*bg-indigo-100*/
+		}
+
+		/*Pagination Buttons*/
+		.dataTables_wrapper .dataTables_paginate .paginate_button {
+			font-weight: 700;
+			/*font-bold*/
+			border-radius: .25rem;
+			/*rounded*/
+			border: 1px solid transparent;
+			/*border border-transparent*/
+		}
+
+		/*Pagination Buttons - Current selected */
+		.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+			color: #fff !important;
+			/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+			/*shadow*/
+			font-weight: 700;
+			/*font-bold*/
+			border-radius: .25rem;
+			/*rounded*/
+			background: #F7E03C !important;
+			/*bg-indigo-500*/
+			border: 1px solid transparent;
+			/*border border-transparent*/
+		}
+
+		/*Pagination Buttons - Hover */
+		.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+			color: #fff !important;
+			/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+			/*shadow*/
+			font-weight: 700;
+			/*font-bold*/
+			border-radius: .25rem;
+			/*rounded*/
+			background: #F7E03C !important;
+			/*bg-indigo-500*/
+			border: 1px solid transparent;
+			/*border border-transparent*/
+		}
+
+
+		/*Change colour of responsive icon*/
+		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before,
+		table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+			background-color: #F7E03C;
+            !important;
+			/*bg-indigo-500*/
+		}
+	</style>
+
 
     @livewireStyles
 </head>
@@ -118,8 +203,8 @@
                 <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                     <h1 class="font-semibold">Score</h1>
                     {{-- <form action="/dashboard" method="get">
-                        @csrf --}}
-                    <select id="course_id" name="get_course" class="w-36 p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @csrf
+                    <select id="course_id" name="get_course" onchange="submit()" class="w-36 p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option hidden></option>
                         <option value="0">All</option>
                         @foreach ($course as $co )
@@ -128,7 +213,7 @@
                         @endforeach
 
                     </select>
-                    {{-- </form> --}}
+                    </form> --}}
                     {{-- <button id="dropdownDefault" data-dropdown-toggle="score" class="text-yellow-300 bg-zinc-800 hover:bg-zinc-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">All
                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
@@ -171,7 +256,7 @@
                         <h1 class="text-right col-span-2">{{$s->score_final}}</h1>
                     </div>
                     @endforeach --}}
-                    <table class="w-full text-left" id="course_data" >
+                    <table class="w-full text-left" id="course_id">
                         <thead>
                             <tr class="text-gray-500">
                                 <th scope="col" class="px-1 py-3 text-white">No</th>
@@ -193,7 +278,7 @@
                                 <td class="px-3 py-4">{{$s->score_final}}</td>
 
                             </tr> --}}
-                            @foreach ( $fs->where('exam_id') as $s )
+                            @foreach ( $fs->whereNotNull('exam_id') as $s )
 
 
                             <tr class="whitespace-nowrap">
@@ -226,8 +311,11 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            var table = $('#course_data').DataTable({
-                responsive: true
+            var table = $('#course_id').DataTable({
+                responsive: true,
+                "columnDefs": [
+    { "searchable": false, "targets": 0 }
+  ]
             })
         })
     </script>

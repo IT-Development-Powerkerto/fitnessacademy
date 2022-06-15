@@ -85,14 +85,15 @@ class DashboardController extends Controller
         else if($x->role_id == 2){
             // $course = Course::where('trainer_id', auth()->user()->id)->get();
             // $exam = Exam::all();
-
             if (request()->get_course) {
                 $course = Course::where('trainer_id', auth()->user()->id)->get();
                 $exam = Exam::all();
+                // $id = $exam;
                 $fs = FinalScore::all();
             }else{
                 $course = Course::where('trainer_id', auth()->user()->id)->get();
                 $exam = Exam::all();
+                // $id = $exam;
                 $fs = FinalScore::all();
 
             }
