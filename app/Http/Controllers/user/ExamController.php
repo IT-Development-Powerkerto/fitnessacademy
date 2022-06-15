@@ -207,7 +207,6 @@ class ExamController extends Controller
     public function scoreExam(Request $request)
     {
         //
-
         $validator = Validator::make($request->all(), [
 
             'exam_id' => '',
@@ -248,12 +247,17 @@ class ExamController extends Controller
 
 
         $exam_id = $request->exam_id;
-        $course_id = Exam::whereId($exam_id)->$value('course_id');
+        $id = $request->id;
+        $course_id = $request->course_id;
+        // $exam = Exam::whereId($id)->first();
+        $course_id = Exam::whereId($exam_id)->value('course_id');
         // $exam = $id;
         // return $session;
 
         return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
+        // return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
         // return redirect(url()->previous());
+        // return view('trainer.detailExam', [$course, $exam_id]);
     }
 
     public function addScoreExam (Request $request)
@@ -311,9 +315,11 @@ class ExamController extends Controller
 
 
         $exam_id = $request->exam_id;
+        $course_id = Exam::whereId($exam_id)->value('course_id');
         // return $session;
 
-        return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+        // return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
 
     }
 }

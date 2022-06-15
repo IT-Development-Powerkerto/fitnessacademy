@@ -91,7 +91,7 @@
                         Set Score Component
                     </a>
                     @endif
-                    <a href="{{route('addScoreExam.addScore',['id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="{{route('addScoreExam.addScore',['course'=>$exam->course_id, 'id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="lar la-plus-square"></i>
                         Add Score
                     </a>
