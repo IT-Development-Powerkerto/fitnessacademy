@@ -8,6 +8,7 @@
     <link rel="icon" href="assets/img/logo.png">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
     @livewireStyles
 </head>
@@ -116,13 +117,35 @@
             <div class="px-10">
                 <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                     <h1 class="font-semibold">Score</h1>
-                    <button id="dropdownDefault" data-dropdown-toggle="score" class="text-yellow-300 bg-zinc-800 hover:bg-zinc-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">All <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    {{-- <form action="/dashboard" method="get">
+                        @csrf --}}
+                    <select id="course_id" name="get_course" class="w-36 p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option hidden></option>
+                        <option value="0">All</option>
+                        @foreach ($course as $co )
+
+                        <option   value="{{$co->id}}">{{$co->name}}</option>
+                        @endforeach
+
+                    </select>
+                    {{-- </form> --}}
+                    {{-- <button id="dropdownDefault" data-dropdown-toggle="score" class="text-yellow-300 bg-zinc-800 hover:bg-zinc-700 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">All
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                    </button>
                     <!-- Dropdown menu -->
                     <div id="score" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
-                        <ul class="py-1 text-sm text-black" aria-labelledby="dropdownDefault">
+                        <ul class="py-1 text-sm text-black" aria-labelledby="dropdownDefault" onchange="getScore()">
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Nutrisi Dasar I</a>
+                                <a href="{{route('getCourse',['course_id'=>'all'])}}" class="block px-4 py-2 hover:bg-gray-100 " value="all">All</a>
                             </li>
+                            @foreach ($course as $co)
+                            <li>
+                                <a href="{{route('getCourse',['course_id'=>$co->id])}}" class="block px-4 py-2 hover:bg-gray-100 " value="{{$co->id}}">{{$co->name}}</a>
+                            </li>
+                            @endforeach
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Nutrisi Dasar II</a>
                             </li>
@@ -130,10 +153,10 @@
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100 ">Level III</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="py-5 px-3 bg-black rounded-b-lg">
-                    <div class="text-white uppercase font-semibold grid grid-cols-12">
+                    {{-- <div class="text-white uppercase font-semibold grid grid-cols-12">
                         <h1 class="text-left col-span-1 text-sm md:text-md">No</h1>
                         <h1 class="col-span-5 text-sm md:text-md">Name</h1>
                         <h1 class="col-span-4 text-sm md:text-md">Course</h1>
@@ -147,7 +170,45 @@
                         <h1 class="col-span-4">{{$s->exam->course->name}}</h1>
                         <h1 class="text-right col-span-2">{{$s->score_final}}</h1>
                     </div>
-                    @endforeach
+                    @endforeach --}}
+                    <table class="w-full text-left" id="course_data" >
+                        <thead>
+                            <tr class="text-gray-500">
+                                <th scope="col" class="px-1 py-3 text-white">No</th>
+                                <th scope="col" class="px-3 py-3 text-white">Name</th>
+                                <th scope="col" class="px-5 py-3 text-white">Course</th>
+                                <th scope="col" class="px-1 py-3 text-white">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-white">
+                            {{-- @foreach ( $fs->where('exam_id') as $s )
+
+
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                <td class="px-3 py-4">{{$s->user->name}}</td>
+                                <td class="px-3 py-4">{{$s->exam->course->name}}</td>
+
+
+                                <td class="px-3 py-4">{{$s->score_final}}</td>
+
+                            </tr> --}}
+                            @foreach ( $fs->where('exam_id') as $s )
+
+
+                            <tr class="whitespace-nowrap">
+                                <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                <td class="px-3 py-4">{{$s->user->name}}</td>
+                                <td class="px-3 py-4">{{$s->exam->course->name}}</td>
+
+
+                                <td class="px-3 py-4">{{$s->score_final}}</td>
+
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>
@@ -161,5 +222,14 @@
     @livewireScripts
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#course_data').DataTable({
+                responsive: true
+            })
+        })
+    </script>
 </body>
 </html>

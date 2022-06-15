@@ -27,10 +27,12 @@ class ExamController extends Controller
     {
         // return view('trainer.addExam');
     }
-    public function presenceExam($id)
+    public function presenceExam($course, $id)
     {
         //
-        $exam = Exam::find($id);
+        // return $course;
+        $exam = Exam::whereId($id)->first();
+        $course_id = $course;
 
         $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $exam){
             $query->where('course_id',$exam->course_id);
@@ -41,12 +43,17 @@ class ExamController extends Controller
             });
 
         }])->get();
+    // }, 'user' => function($query) use($id){
+    //     $query->where('role_id', 1)->whereDoesntHave('absen.exam', function($q) use($id){
+    //         $q->where('exam_id', $id);
+    //     });
 
+    // }])->get();
         $exam_id = $id;
 
         $a = Absen::where('session_id', $exam->id)->get();
 
-        return view('trainer.presenceExam', compact('exam', 's', 'exam_id', 'a'));
+        return view('trainer.presenceExam', compact('exam', 's', 'exam_id', 'a', 'course_id'));
 
     }
 
@@ -78,10 +85,15 @@ class ExamController extends Controller
 
 
 
+        // $exam_id = $request->exam_id;
+        // return $session;
         $exam_id = $request->exam_id;
+        $course_id = Exam::whereId($exam_id)->value('course_id');
         // return $session;
 
-        return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+        // return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
+        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
+        // return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
     }
 
     public function addExam($id)
@@ -115,9 +127,10 @@ class ExamController extends Controller
 
         return view('trainer.setScoreExam', compact('exam', 'exam_id', 'course'));
     }
-    public function addScore($id)
+    public function addScore($course ,$id)
     {
         $exam = Exam::find($id);
+        $course_id = $course;
         $co = Component::where('exam_id', $exam->id)->get();
         $s = ScoreDetail::with('component')->get();
 
@@ -132,7 +145,7 @@ class ExamController extends Controller
 
         }])->get();
         $exam_id = $id;
-        return view('trainer.addScoreExam', compact('exam', 'co', 'u', 'exam_id'));
+        return view('trainer.addScoreExam', compact('exam', 'co', 'u', 'exam_id', 'course_id'));
     }
 
     public function store(Request $request)

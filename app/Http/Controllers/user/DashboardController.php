@@ -69,7 +69,7 @@ class DashboardController extends Controller
             $q->where('status', 'success');
         })->get();
 
-        $score =
+        // $score =
 
         // $c = Auth::user()->payment->where('status', 'success');
 
@@ -83,14 +83,24 @@ class DashboardController extends Controller
             return view('user.dashboard', compact('c'));
         }
         else if($x->role_id == 2){
-            $course = Course::where('trainer_id', auth()->user()->id)->get();
-            $exam = Exam::all();
-            $fs = FinalScore::all();
+            // $course = Course::where('trainer_id', auth()->user()->id)->get();
+            // $exam = Exam::all();
+
+            if (request()->get_course) {
+                $course = Course::where('trainer_id', auth()->user()->id)->get();
+                $exam = Exam::all();
+                $fs = FinalScore::all();
+            }else{
+                $course = Course::where('trainer_id', auth()->user()->id)->get();
+                $exam = Exam::all();
+                $fs = FinalScore::all();
+
+            }
 
 
             // dd($course);
             // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
-            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs'));
+            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs', 'exam'));
         }
         else if($x->role_id == 3) {
             return view('admin.dashboard', compact('trainer', 'student', 'courses', 'p'));
@@ -102,6 +112,78 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function ajaxGetCourse($course_id)
+    {
+        // $course = Course::where('trainer_id', auth()->user()->id)->get();
+        //     $exam = Exam::all();
+        //     $fs = FinalScore::all();
+        if($course_id == 'all' )
+        {
+            $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $exam = Exam::all();
+            $fs = FinalScore::all();
+
+        }else{
+            $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $exam = Exam::all();
+            // $fs = FinalScore::with(['exam' => function($query) use($course_id){
+            //     $query->where('course_id', $course_id);
+            // }])->get();
+            $fs = Course::whereId($course_id)->with('exam.final_score')->get();
+
+        }
+
+        return response()->json($fs);
+    }
+    public function getCourse($course_id)
+    {
+        return 'ok';
+
+        $today = Carbon::now()->isoFormat('YYYY-MM-DD');
+        $day = Carbon::now()->isoFormat('dddd');
+        $user = User::all();
+        $trainer = User::whereIn('status', ['inactive', 'active'])->where('role_id', 2)->get();
+        $uc = PaymentDetail::whereHas('payment', function($q){
+            $q->where('status', 'success');
+        })->get();
+        // $course = Course::where('trainer_id', auth()->user()->id)->get();
+        // $exam = Exam::all();
+        // $fs = FinalScore::all();
+        return 'ok';
+        if($course_id == 'all' )
+        {
+            $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $exam = Exam::all();
+            $fs = FinalScore::all();
+
+        }else{
+            $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $exam = Exam::all();
+            $fs = FinalScore::with(['exam' => function($query) use($course_id){
+                $query->where('course_id', $course_id);
+            }])->get();
+
+        }
+        $x = auth()->user();
+        if ($x->role_id == 2) {
+            $course = Course::where('trainer_id', auth()->user()->id)->get();
+            $exam = Exam::all();
+            $fs = FinalScore::all();
+
+
+            // dd($course);
+            // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
+            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs'));
+        }
+
+
+
+        // return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs'));
+
+
+    }
     public function create()
     {
         //

@@ -53,7 +53,7 @@
                         <i class="las la-notes-medical"></i>
                         Add Presence
                     </button> --}}
-                    <a href="{{route('presenceExam.presenceExam', ['id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg">
+                    <a href="{{route('presenceExam.presenceExam', ['course'=>$exam->course_id, 'id'=>$exam->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg">
                         <i class="las la-notes-medical"></i>
                         Add Presence
                     </a>

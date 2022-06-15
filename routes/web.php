@@ -41,6 +41,8 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 // User
 
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+// Route::get('/dashboard/{course_id}', [DashboardController::class, 'getCourse'])->name('getCourse')->middleware('auth');
+Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
 // Route::resource('/dashboard', DashboardController::class)->middleware('auth');
 Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->name('aproveUser.aproveUser');
 Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');
@@ -89,7 +91,7 @@ Route::get('/course/{course}/detailExam/{id}/setScore', [ExamController::class, 
 Route::get('/course/{course}/detailExam/{id}/addScoreExam', [ExamController::class, 'addScore'])->name('addScoreExam.addScore')->middleware('auth');
 Route::post('/examComponent', [ExamController::class, 'scoreExam'])->name('examComponent.scoreExam')->middleware('auth');
 Route::post('/addScoreExam', [ExamController::class, 'addScoreExam'])->name('addScoreExam.addScoreExam');
-Route::get('/presenceExam/Exam/{id}', [ExamController::class, 'presenceExam'])->name('presenceExam.presenceExam')->middleware('auth');
+Route::get('/course/{course}/detailExam/{id}/presenceExam', [ExamController::class, 'presenceExam'])->name('presenceExam.presenceExam')->middleware('auth');
 Route::post('/exam', [ExamController::class, 'store'])->name('exam.store')->middleware('auth');
 Route::patch('/exam/{id}', [ExamController::class, 'update'])->name('exam.update')->middleware('auth');
 
