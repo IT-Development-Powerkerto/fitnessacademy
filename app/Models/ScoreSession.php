@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class ScoreDetail extends Model
+class ScoreSession extends Model
 {
     use HasFactory, SoftDeletes;
-
     protected $fillable = [
         'score'
     ];
@@ -19,9 +17,9 @@ class ScoreDetail extends Model
 
     // ];
 
-    public function component()
+    public function component_session()
     {
-        return $this->belongsTo(Component::class, 'component_id', 'id');
+        return $this->belongsTo(ComponentSession::class, 'component_session_id', 'id');
     }
     // public function final_score()
     // {

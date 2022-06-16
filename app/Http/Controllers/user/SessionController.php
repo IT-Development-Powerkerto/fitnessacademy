@@ -16,10 +16,11 @@ use App\Models\Session;
 use App\Models\Absen;
 use App\Models\PaymentDetail;
 use App\Models\User;
-use App\Models\Component;
 
-use App\Models\ScoreDetail;
-use App\Models\FinalScore;
+
+use App\Models\ComponentSession;
+use App\Models\ScoreSession;
+use App\Models\FinalScoreSession;
 
 class SessionController extends Controller
 {
@@ -60,15 +61,15 @@ class SessionController extends Controller
     public function addScore($id)
     {
         $session = Session::find($id);
-        $component = Component::where('session_id', $session->id)->get();
-        $s = ScoreDetail::with('component')->get();
+        $component = ComponentSession::where('session_id', $session->id)->get();
+        $s = ScoreSession::with('component_session')->get();
 
 
         $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
             $query->where('course_id', $id);
 
         }, 'user' => function($query) use($id){
-            $query->where('role_id', 1)->whereDoesntHave('score_detail.component.session', function($q) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('score_session.component_session.session', function($q) use($id){
                 $q->where('id', $id);
             });
             // $query->where('role_id', 1)->doesntHave('score_detail');
@@ -183,12 +184,12 @@ class SessionController extends Controller
 
 
         $a = Absen::where('session_id', $session->id)->get();
-        $c = Component::where('session_id', $session->id)->get();
+        $c = ComponentSession::where('session_id', $session->id)->get();
 
-        $fs = FinalScore::where('session_id', $session->id)->with(['user'=> function($query){
+        $fs = FinalScoreSession::where('session_id', $session->id)->with(['user'=> function($query){
             $query->where('role_id', 1);
         }])->get();
-        $sd = ScoreDetail::with('component')->get()->where('component.session_id', $id);
+        $sd = ScoreSession::with('component_session')->get()->where('component_session.session_id', $id);
 
         $m = Materi::where('session_id', $session->id)->get();
 
@@ -432,15 +433,15 @@ class SessionController extends Controller
         }
         $validated = $validator->validate();
         foreach($request->komp as $value){
-            $comp = new Component();
+            $comp = new ComponentSession();
             $comp->session_id = $request->session_id;
             $comp->component_name = $value['component_name'];
 
 
             $comp->save();
 
-            $score = new ScoreDetail();
-            $score->component_id = $comp->id;
+            $score = new ScoreSession();
+            $score->component_session_id = $comp->id;
             $score->score = '0';
 
             $score->save();
@@ -481,14 +482,14 @@ class SessionController extends Controller
             $sumScores = collect($user_score)->sum();
 
             foreach ($user_score as $comp_id => $score) {
-                ScoreDetail::insert([
-                   'component_id' => $comp_id,
+                ScoreSession::insert([
+                   'component_session_id' => $comp_id,
                    'user_id' => $user_id,
                    'score' => $score
                 ]);
             }
 
-            $finalScore = FinalScore::insert([
+            $finalScore = FinalScoreSession::insert([
                 'session_id'=>$request->session_id,
                 'user_id' => $user_id,
                 'score_final' => $sumScores / $totalComponent,

@@ -9,8 +9,9 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\PaymentDetail;
 use App\Models\Payment;
-use App\Models\FinalScore;
+
 use App\Models\Exam;
+use App\Models\FinalScoreExam;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -89,12 +90,12 @@ class DashboardController extends Controller
                 $course = Course::where('trainer_id', auth()->user()->id)->get();
                 $exam = Exam::all();
                 // $id = $exam;
-                $fs = FinalScore::all();
+                $fs = FinalScoreExam::all();
             }else{
                 $course = Course::where('trainer_id', auth()->user()->id)->get();
                 $exam = Exam::all();
                 // $id = $exam;
-                $fs = FinalScore::all();
+                $fs = FinalScoreExam::all();
 
             }
 
@@ -124,7 +125,7 @@ class DashboardController extends Controller
         {
             $course = Course::where('trainer_id', auth()->user()->id)->get();
             $exam = Exam::all();
-            $fs = FinalScore::all();
+            // $fs = FinalScore::all();
 
         }else{
             $course = Course::where('trainer_id', auth()->user()->id)->get();
@@ -157,21 +158,21 @@ class DashboardController extends Controller
         {
             $course = Course::where('trainer_id', auth()->user()->id)->get();
             $exam = Exam::all();
-            $fs = FinalScore::all();
+            // $fs = FinalScore::all();
 
         }else{
             $course = Course::where('trainer_id', auth()->user()->id)->get();
             $exam = Exam::all();
-            $fs = FinalScore::with(['exam' => function($query) use($course_id){
-                $query->where('course_id', $course_id);
-            }])->get();
+            // $fs = FinalScore::with(['exam' => function($query) use($course_id){
+            //     $query->where('course_id', $course_id);
+            // }])->get();
 
         }
         $x = auth()->user();
         if ($x->role_id == 2) {
             $course = Course::where('trainer_id', auth()->user()->id)->get();
             $exam = Exam::all();
-            $fs = FinalScore::all();
+            // $fs = FinalScore::all();
 
 
             // dd($course);

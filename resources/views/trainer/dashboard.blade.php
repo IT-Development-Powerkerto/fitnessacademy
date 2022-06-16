@@ -278,7 +278,7 @@
                                 <td class="px-3 py-4">{{$s->score_final}}</td>
 
                             </tr> --}}
-                            @foreach ( $fs->whereNotNull('exam_id') as $s )
+                            @foreach ( $fs as $s )
 
 
                             <tr class="whitespace-nowrap">

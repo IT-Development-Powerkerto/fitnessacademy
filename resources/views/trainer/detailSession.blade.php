@@ -180,7 +180,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $session->final_score as $fs )
+                            @foreach ( $session->final_score_session as $fs )
 
 
                             <tr class="whitespace-nowrap">

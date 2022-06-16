@@ -6,24 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Component extends Model
+class ComponentSession extends Model
 {
     use HasFactory, SoftDeletes;
+
     public function session()
     {
         return $this->belongsTo(Session::class, 'session_id', 'id');
     }
-    public function exam()
+    public function score_session()
     {
-        return $this->belongsTo(Exam::class, 'exam_id', 'id');
-    }
-    public function score_detail()
-    {
-        return $this->hasMany(ScoreDetail::class);
+        return $this->hasMany(ScoreSession::class);
     }
     public function announcement(){
         return $this->hasMany(User::class);
     }
-
-
 }

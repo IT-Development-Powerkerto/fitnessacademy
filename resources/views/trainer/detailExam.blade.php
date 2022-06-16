@@ -114,7 +114,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $exam->final_score as $fs )
+                            @foreach ( $exam->final_score_exam as $fs )
 
 
                             <tr class="whitespace-nowrap">

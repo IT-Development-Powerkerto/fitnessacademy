@@ -28,13 +28,22 @@ class Exam extends Model
     {
         return $this->hasMany(Absen::class);
     }
-    public function component()
+    // public function component()
+    // {
+    //     return $this->hasMany(Component::class);
+    // }
+    // public function final_score()
+    // {
+    //     return $this->hasMany(FinalScore::class);
+    // }
+
+    public function component_exam()
     {
-        return $this->hasMany(Component::class);
+        return $this->hasMany(ComponentExam::class);
     }
-    public function final_score()
+    public function final_score_exam()
     {
-        return $this->hasMany(FinalScore::class);
+        return $this->hasMany(FinalScoreExam::class);
     }
     public function graduation()
     {

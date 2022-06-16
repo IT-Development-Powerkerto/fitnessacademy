@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('components', function (Blueprint $table) {
+        Schema::create('final_score_sessions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->foreignId('session_id')->nullable();
-            $table->foreignId('exam_id')->nullable();
-            $table->string('component_name')->nullable();
-            $table->foreign('session_id')->references('id')->on('sessions');
-            $table->foreign('exam_id')->references('id')->on('exams');
+            $table->Integer('score_final')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('session_id')->references('id')->on('sessions');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('components');
+        Schema::dropIfExists('final_score_sessions');
     }
 };

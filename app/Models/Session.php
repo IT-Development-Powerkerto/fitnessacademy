@@ -44,12 +44,20 @@ class Session extends Model
     {
         return $this->hasMany(Absen::class);
     }
-    public function component()
+    // public function component()
+    // {
+    //     return $this->hasMany(Component::class);
+    // }
+    // public function final_score()
+    // {
+    //     return $this->hasMany(FinalScore::class);
+    // }
+    public function component_session()
     {
-        return $this->hasMany(Component::class);
+        return $this->hasMany(ComponentSession::class);
     }
-    public function final_score()
+    public function final_score_session()
     {
-        return $this->hasMany(FinalScore::class);
+        return $this->hasMany(FinalScoreSession::class);
     }
 }

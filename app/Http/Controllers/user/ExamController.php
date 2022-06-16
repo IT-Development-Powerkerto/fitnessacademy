@@ -8,12 +8,14 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Course;
-use App\Models\ScoreDetail;
-use App\Models\Component;
+
 use App\Models\Exam;
 use App\Models\Payment;
-use App\Models\FinalScore;
 use App\Models\Absen;
+
+use App\Models\ScoreExam;
+use App\Models\ComponentExam;
+use App\Models\FinalScoreExam;
 use App\Models\Graduation;
 class ExamController extends Controller
 {
@@ -112,9 +114,9 @@ class ExamController extends Controller
     {
 
         $exam = Exam::find($id);
-        $c = Component::where('exam_id', $exam->id)->get();
+        $c = ComponentExam::where('exam_id', $exam->id)->get();
         $course = Course::whereId($course)->first();
-        $sde = ScoreDetail::with('component')->get()->where('component.exam_id', $id);
+        $sde = ScoreExam::with('component_exam')->get()->where('component_exam.exam_id', $id);
         // dd($course);
         $a = Absen::where('exam_id', $exam->id)->get();
         return view('trainer.detailExam', compact('exam', 'c', 'sde', 'a', 'course'));
@@ -131,15 +133,15 @@ class ExamController extends Controller
     {
         $exam = Exam::find($id);
         $course_id = $course;
-        $co = Component::where('exam_id', $exam->id)->get();
-        $s = ScoreDetail::with('component')->get();
+        $co = ComponentExam::where('exam_id', $exam->id)->get();
+        $s = ScoreExam::with('component_exam')->get();
 
 
         $u = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
             $query->where('course_id', $id);
 
         }, 'user' => function($query) use($id){
-            $query->where('role_id', 1)->whereDoesntHave('score_detail.component.exam', function($q) use($id){
+            $query->where('role_id', 1)->whereDoesntHave('score_exam.component_exam.exam', function($q) use($id){
                 $q->where('id', $id);
             });
 
@@ -230,15 +232,15 @@ class ExamController extends Controller
         }
         $validated = $validator->validate();
         foreach($request->komp as $value){
-            $compEx = new Component();
+            $compEx = new ComponentExam();
             $compEx->exam_id = $request->exam_id;
             $compEx->component_name = $value['component_name'];
 
 
             $compEx->save();
 
-            $score = new ScoreDetail();
-            $score->component_id = $compEx->id;
+            $score = new ScoreExam();
+            $score->component_exam_id = $compEx->id;
             $score->score = '0';
 
             $score->save();
@@ -299,8 +301,8 @@ class ExamController extends Controller
             $sumScores = collect($user_score)->sum();
 
             foreach ($user_score as $comp_id => $score) {
-                ScoreDetail::insert([
-                   'component_id' => $comp_id,
+                ScoreExam::insert([
+                   'component_exam_id' => $comp_id,
                    'user_id' => $user_id,
                    'score' => $score
                 ]);
@@ -315,7 +317,7 @@ class ExamController extends Controller
                 $status = 'Havent Passed Yet';
             }
 
-            $finalScore = FinalScore::insert([
+            $finalScore = FinalScoreExam::insert([
                 'exam_id'=>$request->exam_id,
                 'user_id' => $user_id,
                 'score_final' => $hasil_score,

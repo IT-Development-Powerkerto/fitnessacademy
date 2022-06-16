@@ -78,13 +78,30 @@ class User extends Authenticatable
     }
 
 
-    public function final_score()
+    // public function final_score()
+    // {
+    //     return $this->hasMany(FinalScore::class);
+    // }
+
+    // public function score_detail()
+    // {
+    //     return $this->hasMany(ScoreDetail::class);
+    // }
+    public function final_score_exam()
     {
-        return $this->hasMany(FinalScore::class);
+        return $this->hasMany(FinalScoreExam::class);
+    }
+    public function final_score_session()
+    {
+        return $this->hasMany(FinalScoreSession::class);
     }
 
-    public function score_detail()
+    public function score_exam()
     {
-        return $this->hasMany(ScoreDetail::class);
+        return $this->hasMany(ScoreExam::class);
+    }
+    public function score_session()
+    {
+        return $this->hasMany(ScoreSession::class);
     }
 }
