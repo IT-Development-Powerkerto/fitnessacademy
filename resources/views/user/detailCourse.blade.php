@@ -112,7 +112,10 @@
                                 </div>
                                 <div class="grid grid-cols-6 gap-3">
                                     <h1 class="text-sm col-span-2 md:col-span-1 text-gray-500">Score</h1>
-                                    <h1 class="text-sm md:col-span-5 col-span-4 text-white underline">100</h1>
+                                    @foreach ($ss->final_score_session as $sf)
+
+                                    <h1 class="text-sm md:col-span-5 col-span-4 text-white underline">{{$sf->score_final}}</h1>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

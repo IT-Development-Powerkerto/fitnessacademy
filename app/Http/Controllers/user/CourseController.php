@@ -115,10 +115,14 @@ class CourseController extends Controller
     public function show($id)
     {
         $x = auth()->user();
-        $course = Course::findOrFail($id);
+        $course = Course::whereId($id)->first();
         $course_id = $id;
         $user = User::all();
-        $sessions = Session::where('course_id', $course->id)->get();
+        // $sessions = Session::where('course_id', $course->id)->get();
+
+        $sessions = Session::where('course_id', $course->id)->with(['final_score_session' => function($query) use($id){
+            $query->where('session_id', $id);
+        }])->get();
         $exams = Exam::where('course_id', $course->id)->get();
 
 
@@ -129,9 +133,9 @@ class CourseController extends Controller
 
         $c = User::find($s);
         $fs = FinalScoreExam::all();
-        $sf = FinalScoreSession::all();
 
         $ses = Session::whereId($id)->first();
+        $sf = FinalScoreSession::all();
 
         $ma = Materi::where('session_id', $ses->id)->get();
 
