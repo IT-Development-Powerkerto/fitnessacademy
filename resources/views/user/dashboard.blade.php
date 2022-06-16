@@ -128,10 +128,12 @@
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Today Schedule</h1>
             </div>
+            @foreach ($c as $c )
             <div class="py-5 px-3">
-                <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white">Monday, 16 May 2022 (09:00 - 12:00)</h1>
+                <h1 class="text-white font-semibold">{{$c->name}}</h1>
+                <h1 class="text-white">{{\Carbon\Carbon::parse($c->created_at)->format('l, d M Y')}} ({{date('H:i', strtotime($c->start_date))}} - {{date('H:i', strtotime($c->finish_date))}})</h1>
             </div>
+            @endforeach
         </div>
     </div>
     <!-- end::Schedule -->
@@ -189,10 +191,13 @@
             <div class="bg-yellow-300 rounded-lg p-3">
                 <h1 class="font-semibold">Score</h1>
             </div>
+            @foreach ( $fs as $f )
+
             <div class="py-5 px-3 flex flex-row justify-between">
-                <h1 class="text-white font-semibold">Anatomi Dasar I</h1>
-                <h1 class="text-white font-semibold">90.5</h1>
+                <h1 class="text-white font-semibold">{{$f->exam->course->name ?? null}}</h1>
+                <h1 class="text-white font-semibold">{{$f->score_final ?? null}}</h1>
             </div>
+            @endforeach
         </div>
     </div>
     <!-- end::Score -->

@@ -80,8 +80,8 @@ class DashboardController extends Controller
 
         $x = auth()->user();
         if($x->role_id == 1){
-
-            return view('user.dashboard', compact('c'));
+            $fs = FinalScoreExam::all();
+            return view('user.dashboard', compact('c', 'fs', 'today', 'day'));
         }
         else if($x->role_id == 2){
             // $course = Course::where('trainer_id', auth()->user()->id)->get();

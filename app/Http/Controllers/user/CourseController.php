@@ -14,6 +14,9 @@ use App\Models\User;
 use App\Models\Session;
 use App\Models\Exam;
 use App\Models\Payment;
+use App\Models\FinalScoreExam;
+use App\Models\FinalScoreSession;
+use App\Models\Materi;
 use PHPUnit\Framework\Constraint\Count;
 
 class CourseController extends Controller
@@ -118,15 +121,23 @@ class CourseController extends Controller
         $sessions = Session::where('course_id', $course->id)->get();
         $exams = Exam::where('course_id', $course->id)->get();
 
+
         $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id){
             $query->where('course_id', $id);
 
         }])->get()->pluck('user_id')->flatten();
 
         $c = User::find($s);
+        $fs = FinalScoreExam::all();
+        $sf = FinalScoreSession::all();
+
+        $ses = Session::whereId($id)->first();
+
+        $ma = Materi::where('session_id', $ses->id)->get();
+
 
         if($x->role_id == 1){
-            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
+            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c', 'fs', 'sf', 'ma'));
         }
         else if($x->role_id == 2){
             return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
