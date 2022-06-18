@@ -76,6 +76,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Absen::class);
     }
+    public function trainer()
+    {
+        return $this->hasOne(Trainer::class);
+    }
 
 
     // public function final_score()
