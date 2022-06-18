@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
             [
                 'role_id'   => 3,
                 'name'      => 'admin',
-                'email'     => 'admin@admin.com',
+                'email'     => 'itdevelopmentpwk@gmail.com',
                 'password'  => Hash::make('12345678'),
                 'gender'    => 'male',
                 'age'       => '22',
