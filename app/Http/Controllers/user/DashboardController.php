@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
-        $trainer = User::whereIn('status', ['inactive', 'active'])->where('role_id', 2)->get();
+        $trainers = User::whereIn('status', ['inactive', 'active'])->where('role_id', 2)->get();
         // $student = User::where('role_id', 1)->get();
         $student = Payment::where('status', 'success')->get();
         $courses = Course::withCount(['payment' => function($query) {
@@ -81,7 +81,7 @@ class DashboardController extends Controller
         $x = auth()->user();
         if($x->role_id == 1){
             $fs = FinalScoreExam::all();
-            return view('user.dashboard', compact('c', 'fs', 'today', 'day'));
+            return view('user.dashboard', compact('c', 'fs', 'today', 'day', 'trainers'));
         }
         else if($x->role_id == 2){
             // $course = Course::where('trainer_id', auth()->user()->id)->get();
@@ -102,10 +102,10 @@ class DashboardController extends Controller
 
             // dd($course);
             // $today_course = Course::where('trainer_id', auth()->user()->id)->whereBetween('start_date', [$today])->get();
-            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs', 'exam'));
+            return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs', 'exam', 'trainers'));
         }
         else if($x->role_id == 3) {
-            return view('admin.dashboard', compact('trainer', 'student', 'courses', 'p'));
+            return view('admin.dashboard', compact('trainers', 'student', 'courses', 'p'));
         }
     }
 
