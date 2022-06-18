@@ -57,13 +57,13 @@
                         </div>
                         <div class="p-5">
                             <h1 class="text-4xl text-white font-bold py-2">Login</h1>
-                            <h1 class="text-white text-sm font-light">Input your email and pasword</h1>
+                            <h1 class="text-white text-sm font-light">Input your email and password</h1>
                         </div>
                         <div class="p-5">
                             <form action="{{ route('login.login') }}" method="POST">
                                 @csrf
                                 <div class="mb-6">
-                                    <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
+                                    <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" required>
                                 </div>
                                 <div class="mb-6">
                                     <input type="password" name="password" id="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required>
@@ -108,7 +108,7 @@
                             <form action="{{ route("forgotPassword") }}" method="POST">
                                 @csrf
                                 <div class="mb-6">
-                                    <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@fitness.com" required>
+                                    <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" required>
                                 </div>
                                 <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Send Password Reset Link</button>
                             </form>

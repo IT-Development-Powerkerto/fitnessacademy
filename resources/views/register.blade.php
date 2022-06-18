@@ -36,10 +36,10 @@
                             <input type="text" id="name" name="name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name" required>
                         </div>
                         <div class="mb-6">
-                            <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@example.com" required>
+                            <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Email" required>
                         </div>
                         <div class="mb-6">
-                            <input type="password" id="password" name="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required  minlength="8" maxlength="8" pattern="[0-9+-*]{13,13}">
+                            <input type="password" id="password" name="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required  minlength="8" maxlength="32" pattern="[0-9+-*]{13,13}">
                         </div>
                         <div class="mb-6">
                             <select id="gender" name="gender" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -49,7 +49,7 @@
                             </select>
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="age" name="age" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" required>
+                            <input type="number" id="age" name="age" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" required>
                         </div>
                         <div class="mb-6">
                             <input type="text" id="phone" name="phone" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Phone Number" required>
@@ -69,7 +69,6 @@
                         <div class="flex">
                             <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Create Account</button>
                         </div>
-                        {{ csrf_field() }}
                     </form>
                 </div>
             </div>
