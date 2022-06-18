@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
 
 class CoachProfileController extends Controller
@@ -46,7 +47,9 @@ class CoachProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $trainer = Trainer::where('user_id', $id)->first();
+        // dd($trainer);
+        return view('user.coachProfile', compact('trainer'));
     }
 
     /**

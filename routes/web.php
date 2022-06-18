@@ -69,9 +69,6 @@ Route::post('/component', [SessionController::class, 'scoreComponent'])->name('c
 
 Route::post('/scoreAdd', [SessionController::class, 'scoreAdd'])->name('scoreAdd.scoreAdd');
 
-
-
-
 Route::resource('/coachProfile', CoachProfileController::class)->middleware('auth');
 
 Route::resource('/userProfile', UserProfileController::class)->middleware('auth');
@@ -79,7 +76,6 @@ Route::get('/view/{id}', [UserProfileController::class, 'view'])->name('view')->
 
 Route::post('/newpassword', [UserProfileController::class, 'NewPassword'])->name('newpassword');
 Route::post('/forgotpassword', [UserProfileController::class, 'forgotPassword'])->name('forgotPassword');
-
 
 Route::get('/editUser', [UserProfileController::class, 'editUser'])->name('editUser')->middleware('auth');
 Route::get('/overviewStudent', [UserProfileController::class, 'overviewStudent'])->name('overviewStudent')->middleware('auth');
@@ -97,15 +93,11 @@ Route::patch('/exam/{id}', [ExamController::class, 'update'])->name('exam.update
 
 Route::post('/absenExam', [ExamController::class, 'absenExam'])->name('absenExam.absenExam')->middleware('auth');
 
-
-
 //payment
 Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.index');
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
 Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
 Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.aprove');
 Route::post('/reject/{id}', [PaymentController::class, 'reject'])->name('reject.reject');
-
-
 
 Route::get('/order', [PaymentController::class, 'order'])->name('order.order');

@@ -142,11 +142,11 @@
     <div class="py-10 bg-zinc-800">
         <div class="px-10">
             <div class="bg-yellow-300 rounded-lg p-3">
-                <h1 class="font-semibold">Coaches</h1>
+                <h1 class="font-semibold">Trainers</h1>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 py-5">
                 @foreach ($trainers as $trainer)
-                    <a href="/coachProfile" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
+                    <a href="{{ route('coachProfile.show', ['coachProfile' => $trainer->id]) }}" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                         <div class="flex flex-row gap-3 items-center">
                             <img src="{{ url($trainer->image ?? 'assets/img/user_default.png') }}" class="w-10 rounded" alt="Coach image">
                             <span class="text-white font-semibold">{{ $trainer->name }}</span>
