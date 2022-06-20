@@ -25,7 +25,7 @@
             <div class="flex flex-row items-center pb-10">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/detailCourse" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
+                <a href="{{ route('course.show', ['course' => $course_id]) }}" class="text-white text-sm hover:text-yellow-300">Detail Course</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
                 <a href="/addSession" class="text-white text-sm hover:text-yellow-300">Add Session</a>
             </div>

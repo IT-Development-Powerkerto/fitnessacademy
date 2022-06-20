@@ -34,20 +34,20 @@ class SessionController extends Controller
         return view('trainer.detailSession');
     }
 
-    public function addSession($id)
-    {
-        $course_id = Course::find($id);
+    // public function addSession($id)
+    // {
+    //     $course_id = Course::find($id);
 
-        return view('trainer.addSession', compact('course_id'));
-    }
+    //     return view('trainer.addSession', compact('course_id'));
+    // }
 
-    public function editSession($course ,$id)
-    {
-        $session = Session::whereId($id)->first();
-        $materi = Materi::all();
-        $course_id = $course;
-        return view('trainer.editSession', compact('session', 'materi', 'course_id'));
-    }
+    // public function editSession($course ,$id)
+    // {
+    //     $session = Session::whereId($id)->first();
+    //     $materi = Materi::all();
+    //     $course_id = $course;
+    //     return view('trainer.editSession', compact('session', 'materi', 'course_id'));
+    // }
 
     public function setScore()
     {
@@ -87,9 +87,11 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($course)
     {
-        //
+        $course_id = Course::find($course);
+
+        return view('trainer.addSession', compact('course_id'));
     }
 
     /**
@@ -243,8 +245,12 @@ class SessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($course, $session)
     {
+        $session = Session::whereId($session)->first();
+        $materi = Materi::all();
+        $course_id = $course;
+        return view('trainer.editSession', compact('session', 'materi', 'course_id'));
         //
         // $session = Session::find($id);
         // return view('trainer.editSession', compact('session'));
