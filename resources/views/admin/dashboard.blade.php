@@ -143,7 +143,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
-                                @foreach ($payments as $p )
+                                @forelse ($payments as $p )
 
 
                                 <tr class="whitespace-nowrap">
@@ -254,8 +254,12 @@
                                         </div>
                                         {{-- end::ModalReject --}}
                                     </td>
+                                @empty
+                                    <td colspan="7" class="px-3 py-4 text-center">
+                                        No Data Available
+                                    </td>
                                 </tr>
-                                @endforeach
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
