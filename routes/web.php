@@ -50,20 +50,20 @@ Route::get('/profile/{id}', [UserProfileController::class, 'trainerMy'])->name('
 
 Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
 Route::get('/detailOvervieweCourse/{course}', [CourseController::class, 'detailOvervieweCourse'])->name('detailOvervieweCourse.detailOvervieweCourse')->middleware('auth');
-Route::get('/addCourse', [CourseController::class, 'addCourse'])->name('course.addcourse')->middleware('auth');
+Route::get('/buy-course', [CourseController::class, 'buyCourse'])->name('course.buyCourse')->middleware('auth');
 Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editcourse')->middleware('auth');
 Route::resource('/course', CourseController::class)->middleware('auth');
 
-Route::resource('/detailSession', SessionController::class)->middleware('auth');
-Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
-Route::get('/course/{course}/detailSession/{id}/edit', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');
+Route::resource('/course/{course}/session', SessionController::class)->middleware('auth');
+Route::get('/course/{course}/session/{session}/presense', [SessionController::class, 'presence'])->name('presence.presence')->middleware('auth');
+// Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
+// Route::get('/course/{course}/detailSession/{id}/edit', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');
 // Route::get('/setScoreSession', [SessionController::class, 'setScore'])->name('session.setScoreSession')->middleware('auth');
 // Route::get('/addScoreSession', [SessionController::class, 'addScore'])->name('session.addScoreSession')->middleware('auth');
 Route::get('/addScoreSession/{id}', [SessionController::class, 'addScore'])->name('score')->middleware('auth');
 
-Route::post('/session', [SessionController::class, 'store'])->name('session.store');
+// Route::post('/session', [SessionController::class, 'store'])->name('session.store');
 Route::post('/absen', [SessionController::class, 'absen'])->name('absen.absen')->middleware('auth');
-Route::get('/presence/session/{id}', [SessionController::class, 'presence'])->name('presence.presence')->middleware('auth');
 Route::get('/setScoreSession/session/{id}', [SessionController::class, 'componnent'])->name('setScoreSession.componnent')->middleware('auth');
 Route::post('/component', [SessionController::class, 'scoreComponent'])->name('component.scoreComponent')->middleware('auth');
 

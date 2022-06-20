@@ -34,7 +34,7 @@
             </div>
             <div class="bg-black rouned-b-lg p-10">
                 {{-- <form action=""> --}}
-                <form method="POST" action="{{ route ('detailSession.update', ['detailSession'=>$session->id]) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route ('session.update', ['course' => $session->course_id, 'session'=>$session->id]) }}" enctype="multipart/form-data">
                     @method('PATCH')
                     @csrf
                     <div class="mb-6">

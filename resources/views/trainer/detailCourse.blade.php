@@ -57,7 +57,7 @@
                     </button>
                 </div>
                 <div class="grid grid-cols-6 gap-3 items-center mt-5">
-                    <a href="{{ route ('addSession.addsession', ['id'=>$course_id]) }}" type="button" class="text-sm text-center col-span-2 md:col-span-1 text-black bg-yellow-300 hover:bg-yellow-400 p-2 w-32 md:w-auto rounded-lg">
+                    <a href="{{ route ('session.create', ['course'=>$course_id]) }}" type="button" class="text-sm text-center col-span-2 md:col-span-1 text-black bg-yellow-300 hover:bg-yellow-400 p-2 w-32 md:w-auto rounded-lg">
                         <i class="las la-plus"></i>
                         Add Session
                     </a>
@@ -73,7 +73,7 @@
 
             <div class="mt-6">
                 @foreach ( $sessions as $s )
-                <a href="{{route('detailSession.show', ['detailSession'=>$s->id])}}" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
+                <a href="{{route('session.show', ['course' => $s->course_id, 'session'=>$s->id])}}" type="button" class="bg-yellow-300 rounded-lg flex justify-between items-center p-5 w-full text-left mb-6">
                     <div class="flex flex-col">
                         <span class="font-bold text-black">Session {{$loop->iteration}} - {{$s->name}}</span>
                         <span class="text-sm font-semibold text-black">{{\Illuminate\Support\Carbon::create($s->date_session)->format('l, d F Y')}} ({{date('H:i', strtotime($s->start_time))}} - {{date('H:i', strtotime($s->finish_time))}})</span>

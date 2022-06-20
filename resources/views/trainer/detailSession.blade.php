@@ -29,7 +29,7 @@
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Session 1 - {{$session->name}}</h1>
                 <div class="flex md:flex-row flex-col items-end">
-                    <form action="{{ route ('detailSession.destroy', ['detailSession'=>$session->id]) }}" method='POST'>
+                    <form action="{{ route ('session.destroy', ['course' => $session->course_id, 'session'=>$session->id]) }}" method='POST'>
                         @method('DELETE')
                         @csrf
                         <button type="submit" href="#" class="text-sm col-span-2 md:col-span-1 text-red-500 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg md:mr-4">
@@ -37,7 +37,7 @@
                             Delete Session
                         </button>
                     </form>
-                    <a href="{{route('editSession.editSession', ['id'=>$session->id, 'course'=>$session->course_id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
+                    <a href="{{route('session.edit', ['session'=>$session->id, 'course'=>$session->course_id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-32 md:w-auto rounded-lg mt-2 md:mt-0">
                         <i class="las la-edit"></i>
                         Edit Session
                     </a>
@@ -85,7 +85,7 @@
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Presence</h1>
                 <div class="">
-                    <a href="{{route('presence.presence', ['id'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg">
+                    <a href="{{route('presence.presence', ['course' => $session->course_id, 'session'=>$session->id])}}" class="text-sm  text-yellow-300 bg-zinc-800 hover:bg-zinc-600 p-2 w-44 md:w-auto rounded-lg">
                         <i class="las la-notes-medical"></i>
                         Add Presence
                     </a>
