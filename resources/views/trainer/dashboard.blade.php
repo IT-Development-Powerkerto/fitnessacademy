@@ -107,7 +107,7 @@
             <div class="px-10">
                 <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-lg p-3">
                     <h1 class="font-semibold">Course</h1>
-                    <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
+                    <a href="{{ route('course.create') }}" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
                         <i class="las la-plus text-yellow-300"></i>
                         Create Course
                     </a>
