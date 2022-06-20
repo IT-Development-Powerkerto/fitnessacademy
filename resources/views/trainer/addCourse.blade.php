@@ -37,9 +37,9 @@
                     <div class="mb-6">
                         <input type="text" id="course_name" name="course_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>
                     </div>
-                    <div class="mb-6">
-                        <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Choach/Trainer" value="{{auth()->user()->name}}" required>
-                    </div>
+                    {{-- <div class="mb-6">
+                        <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Trainer" value="{{auth()->user()->name}}" readonly required>
+                    </div> --}}
                     <div class="mb-6">
                         <select id="level" name="level" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Set Level</option>
@@ -90,7 +90,7 @@
                                                     </div>
                                                 </template>
                                                 <div x-show="selected.length == 0" class="flex-1">
-                                                    <input placeholder="Select a option" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
+                                                    <input placeholder="Select an option" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
                                                 </div>
                                             </div>
                                             <div
@@ -276,7 +276,7 @@
     <script>
         $(function() {
             $('#bird_price_id').attr('disabled', true);
-            $('#price_id').attr('disabled', true);
+            $('#price_id').attr('disabled', true).val(0);
             $('#start_id').attr('disabled', true);
             $('#end_id').attr('disabled', true);
             $('#payment_id').val('FREE');
@@ -286,7 +286,7 @@
                     $('#bird_price_id').attr('disabled', true);
                     $('#bird_price_id').val();
                     $('#price_id').attr('disabled', true);
-                    $('#price_id').val();
+                    $('#price_id').val(0);
                     $('#start_id').attr('disabled', true);
                     $('#start_id').val();
                     $('#end_id').attr('disabled', true);

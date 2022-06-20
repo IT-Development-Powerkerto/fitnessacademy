@@ -137,7 +137,7 @@ class CourseController extends Controller
         $ses = Session::whereId($id)->first();
         $sf = FinalScoreSession::all();
 
-        $ma = Materi::where('session_id', $ses->id)->get();
+        // $ma = Materi::where('session_id', $ses->id)->get();
 
 
         if($x->role_id == 1){
