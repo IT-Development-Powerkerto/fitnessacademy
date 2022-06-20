@@ -120,9 +120,9 @@ class PaymentController extends Controller
 
 
 
-    public function reject(Request $request, $id)
+    public function reject(Request $request, $payment_id)
     {
-        $payment = Payment::find($id);
+        $payment = Payment::find($payment_id);
 
         $payment->status = 'reject'; //pending, waiting, success
 

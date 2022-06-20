@@ -98,7 +98,7 @@ Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
 Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
 Route::post('/approve/{payment_id}', [PaymentController::class, 'approve'])->name('approve');
-Route::post('/reject/{id}', [PaymentController::class, 'reject'])->name('reject.reject');
+Route::post('/reject/{payment_id}', [PaymentController::class, 'reject'])->name('reject');
 
 Route::get('/order', [PaymentController::class, 'order'])->name('order.order');
 
