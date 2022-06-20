@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $trainer as $t )
+                            @foreach ( $trainers as $t )
 
 
                             <tr class="whitespace-nowrap">
@@ -134,6 +134,7 @@
                             <thead class="text-gray-500">
                                 <tr class="whitespace-nowrap">
                                     <th scope="col" class="px-3 py-3">No</th>
+                                    <th scope="col" class="px-3 py-3">Payment ID</th>
                                     <th scope="col" class="px-3 py-3">Name</th>
                                     <th scope="col" class="px-3 py-3">Course</th>
                                     <th scope="col" class="px-3 py-3">Nominal</th>
@@ -142,11 +143,12 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
-                                @foreach ($p as $p )
+                                @foreach ($payments as $p )
 
 
                                 <tr class="whitespace-nowrap">
                                     <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                    <td class="px-3 py-4">{{$p->order_id}}</td>
                                     <td class="px-3 py-4">{{$p->user->name}}</td>
                                     <td class="px-3 py-4">
                                         <ul>
@@ -159,6 +161,7 @@
 
 
                                     <td class="px-3 py-4">{{'Rp. '.number_format($p->total_price,0,',','.')}}</td>
+
                                     <td class="px-3 py-4">
                                         <button class="flex justify-center gap-2 items-center text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
                                             <i class="lar la-image"></i>
@@ -189,12 +192,13 @@
                                         {{-- end::modal --}}
                                     </td>
                                     <td class="px-3 py-4 flex justify-end">
-                                        <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                                        <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval{{ $p->id }}" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                         <!-- Dropdown menu -->
-                                        <div id="dropdownCourseApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+                                        <div id="dropdownCourseApproval{{ $p->id }}" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+
                                             <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
                                                 <li>
-                                                    <a href="/detailCourse" class="block px-4 py-2 text-white">View</a>
+                                                    <a href="{{ route('course.approval', ['payment_id' => $p->id]) }}" class="block px-4 py-2 text-white">View</a>
                                                 </li>
                                                 <li>
                                                     <button type="button" data-modal-toggle="ApproveCourse" class="block px-4 py-2 text-white">Approve</button>

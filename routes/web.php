@@ -48,7 +48,7 @@ Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->nam
 Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');
 Route::get('/profile/{id}', [UserProfileController::class, 'trainerMy'])->name('profile');
 
-Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
+Route::get('/course-approval/{payment_id}', [CourseController::class, 'courseApproval'])->name('course.approval')->middleware('auth');
 Route::get('/detailOvervieweCourse/{course}', [CourseController::class, 'detailOvervieweCourse'])->name('detailOvervieweCourse.detailOvervieweCourse')->middleware('auth');
 Route::get('/buy-course', [CourseController::class, 'buyCourse'])->name('course.buyCourse')->middleware('auth');
 Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editcourse')->middleware('auth');
