@@ -180,7 +180,7 @@ class UserProfileController extends Controller
     {
         $email = $request->email;
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email:rfc,dns,spoof',
+            'email' => 'required|email:rfc,dns',
         ]);
         if ($validator->fails()) {
             return back()->with('error', $validator->errors());
