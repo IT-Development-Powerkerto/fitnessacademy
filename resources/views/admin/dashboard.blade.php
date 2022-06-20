@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $trainers as $t )
+                            @forelse ( $trainers as $t )
 
 
                             <tr class="whitespace-nowrap">
@@ -115,8 +115,12 @@
                                     </div>
                                     {{-- end::ModalReject --}}
                                 </td>
+                            @empty
+                                <td colspan="7" class="px-3 py-4 text-center">
+                                    No Data Available
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -286,7 +290,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $student as $s )
+                            @forelse ( $student as $s )
 
 
                             <tr class="whitespace-nowrap">
@@ -331,8 +335,12 @@
                                     </div>
                                     {{-- end::ModalDelete --}}
                                 </td>
+                            @empty
+                                <td colspan="7" class="px-3 py-4 text-center">
+                                    No Data Available
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -356,7 +364,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ($courses as $c )
+                            @forelse ($courses as $c )
 
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4">{{$c->name}}</td>
@@ -381,8 +389,12 @@
                                     <a href="{{ route ('detailOvervieweCourse.detailOvervieweCourse', ['course' => $c->id]) }}" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
                                 </td>
                                 {{-- {{ route ('addSession.addsession', ['id'=>$course_id]) }} --}}
+                            @empty
+                                <td colspan="5" class="px-3 py-4 text-center">
+                                    No Data Available
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
