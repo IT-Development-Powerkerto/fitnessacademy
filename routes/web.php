@@ -97,7 +97,7 @@ Route::post('/absenExam', [ExamController::class, 'absenExam'])->name('absenExam
 Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.index');
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
 Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
-Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.aprove');
+Route::post('/approve/{payment_id}', [PaymentController::class, 'approve'])->name('approve');
 Route::post('/reject/{id}', [PaymentController::class, 'reject'])->name('reject.reject');
 
 Route::get('/order', [PaymentController::class, 'order'])->name('order.order');

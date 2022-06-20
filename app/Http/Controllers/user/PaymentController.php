@@ -105,11 +105,11 @@ class PaymentController extends Controller
     }
 
 
-    public function aprove(Request $request, $id)
+    public function approve(Request $request, $payment_id)
     {
 
 
-        $payment = Payment::find($id);
+        $payment = Payment::find($payment_id);
 
         $payment->status = 'success'; //pending, waiting, success
 
