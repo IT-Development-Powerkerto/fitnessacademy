@@ -48,16 +48,21 @@ class CourseController extends Controller
         return view('admin.detailOverviewCourse', compact('course', 'sessions', 'exams'));
     }
 
-    public function addCourse()
+    public function buyCourse()
     {
         $x = auth()->user();
         $course = Course::all();
         if($x->role_id == 1){
             return view('user.addCourse', compact('course'));
         }
-        else if($x->role_id == 2){
-            return view('trainer.addCourse');
-        }
+        // else if($x->role_id == 2){
+        //     return view('trainer.addCourse');
+        // }
+    }
+    public function addCourse()
+    {
+        return view('trainer.addCourse');
+
     }
 
     /**

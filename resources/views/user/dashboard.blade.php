@@ -25,9 +25,9 @@
 
                         Order History
                     </a>
-                    <a href="/addCourse" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
+                    <a href="{{ route('course.buyCourse') }}" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
                         <i class="las la-plus text-yellow-300"></i>
-                        Add Course
+                        Buy Course
                 </a>
                 </div>
             </div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Course</title>
+    <title>Buy Course</title>
     <link rel="icon" href="assets/img/logo.png">
     <link href="/css/app.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -22,10 +22,10 @@
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/addCourse" class="text-white text-sm hover:text-yellow-300">Add Course</a>
+                <a href="{{ route('course.buyCourse') }}" class="text-white text-sm hover:text-yellow-300">Buy Course</a>
             </div>
             <div class="bg-yellow-300 rounded-lg p-3">
-                <h1 class="font-semibold">Add Course</h1>
+                <h1 class="font-semibold">Buy Course</h1>
             </div>
             <h1 class="text-zinc-400 text-sm py-2">Please select the course</h1>
             <form action="{{route('addpayment.store')}}" method="POST">
