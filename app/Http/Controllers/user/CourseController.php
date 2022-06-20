@@ -41,8 +41,9 @@ class CourseController extends Controller
     }
     public function courseApproval($payment_id)
     {
-        $payment = Payment::whereId($payment_id)->with(['payment_detail', 'user'])->first();
-        return $payment;
+        $payment = Payment::whereId($payment_id)->with([
+            'payment_detail.course', 'user'])->first();
+        // return $payment;
         return view('admin.overviewCourse', compact('payment'));
     }
 

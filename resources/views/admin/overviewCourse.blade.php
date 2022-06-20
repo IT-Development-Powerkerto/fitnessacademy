@@ -82,53 +82,53 @@
                     <h1 class="text-white text-xl font-semibold mb-6">Detail Transaction</h1>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Name</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Mira Philips</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{ $payment->user->name }}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Date</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">13/05/2022</h1>
+                        {{-- <h1 class="col-span-8 md:col-span-9 text-white">13/05/2022</h1> --}}
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{ date('d/m/Y', strtotime($payment->order_date)) }}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Course</h1>
                         <div class="col-span-4 md:col-span-2 text-white">
                             <ul class="list-disc text-white text-sm md:text-base text-left ml-5 ">
-                                <li>Anatomi I</li>
-                                <li>Anatomi II</li>
+                                @foreach ($payment->payment_detail as $pd)
+                                    <li>{{ $pd->course->name }}</li>
+
+                                @endforeach
+                                {{-- <li>Anatomi II</li>
                                 <li>Nutrisi I</li>
                                 <li>Nutrisi II</li>
-                                <li>Level III</li>
+                                <li>Level III</li> --}}
                             </ul>
                         </div>
                         <div class="col-span-2 md:col-span-1">
                             <ul class="text-yellow-300 text-sm md:text-base text-right">
-                                <li>Rp</li>
-                                <li>Rp</li>
-                                <li>Rp</li>
-                                <li>Rp</li>
-                                <li>Rp</li>
+                                @foreach ($payment->payment_detail as $pd)
+                                    <li>Rp</li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="col-span-3 md:col-span-1">
                             <ul class="text-yellow-300 text-sm md:text-base text-right">
-                                <li>0</li>
-                                <li>499.000</li>
-                                <li>0</li>
-                                <li>499.000</li>
-                                <li>2.999.000</li>
+                                @foreach ($payment->payment_detail as $pd)
+                                    <li>{{ $pd->course->price }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Total Bill</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-yellow-300">Rp. 3.997.000</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-yellow-300">Rp. {{number_format($payment->total_price,0,',','.')}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Status</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Waiting For Confirmation</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{ ($payment->status == "waiting" ? "Not Yet Paid" : ($payment->status == "pending" ? "Waiting for Confirmation" : ($payment->status == "success" ? "Successful" : "Reject")))}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Evidence of Transfer</h1>
-                        <img src="assets/img/login.png" class="col-span-8 md:col-span-9 rounded-lg w-64 h-64" alt="">
+                        <img src="{{ url($payment->proof ?? '#') }}" class="col-span-8 md:col-span-9 rounded-lg w-64 h-64" alt="image payment proof">
                     </div>
                 </div>
             </div>
