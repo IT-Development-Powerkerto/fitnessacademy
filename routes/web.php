@@ -101,3 +101,8 @@ Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.
 Route::post('/reject/{id}', [PaymentController::class, 'reject'])->name('reject.reject');
 
 Route::get('/order', [PaymentController::class, 'order'])->name('order.order');
+
+
+Route::get('/registerMail', function () {
+    return view('registerMail');
+});

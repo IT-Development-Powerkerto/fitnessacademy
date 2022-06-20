@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New Member</title>
+    <title>Register</title>
+    <link rel="icon" href="assets/img/logo.png">
+    <link href="/css/app.css" rel="stylesheet">
 </head>
 
 <body>
-    <!-- <p>Congratulations, you have registered</p> -->
     <div class="flex flex-col gap-10">
         <div style="background-color: #000000; display: flex; align-items: center; padding: 10px 0;">
             <img src="http://fitnessacademy.id/assets/img/Logo_lands.png" style="display: block; margin-left: auto; margin-right: auto; width: 200px;" />
