@@ -54,8 +54,8 @@ class PaymentController extends Controller
         $payment->user_id = auth()->user()->id;
         $payment->order_id = "FA/ORD/".$date->timestamp;
         $payment->order_date = $date;
-        $payment->status = 'waiting'; //pending, waiting, success
-        $payment->total_price = $totalPrice;
+        $totalPrice == 0 ? ($payment->status = 'pending') : ($payment->status = 'waiting'); //pending, waiting, success
+        $payment->total_price  = $totalPrice;
         $payment->proof = $request->proof;
         $payment->save();
 
