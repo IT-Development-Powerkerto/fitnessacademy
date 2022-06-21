@@ -153,7 +153,7 @@ class CourseController extends Controller
 
 
         if($x->role_id == 1){
-            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c', 'fs', 'sf', 'ma'));
+            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c', 'fs', 'sf'));
         }
         else if($x->role_id == 2){
             return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
