@@ -7,6 +7,7 @@ use App\Mail\ClientMail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Trainer;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -87,22 +88,31 @@ class LoginRegisterController extends Controller
         $user->education = $validated['education'];
         $user->work = $validated['work'];
         $user->address = $validated['address'];
+        // $user->image = $request->image;
         if($user->role_id == 3)
         {
             $user->status = 'active'; //active, inactive, reject
+            $user->save();
         }else
         {
             $user->status = 'inactive'; //active, inactive, reject
+            $user->save();
+            Trainer::create(['user_id' => $user->id]);
+            // $user->trainer()->associate();
         }
-        $user->image = $request->image;
+
 
         // $user->remember_token = Str::random(10);
-        $user->created_at = Carbon::now()->toDateTimeString();
-        $user->updated_at = Carbon::now()->toDateTimeString();
-        $user->save();
-        $admin_email = User::where('role_id', 3)->select('email')->first();
-        Mail::to($admin_email)->send(new AdminMail());
-        Mail::to($validated['email'])->send(new ClientMail());
+        // $user->created_at = Carbon::now()->toDateTimeString();
+        // $user->updated_at = Carbon::now()->toDateTimeString();
+
+
+        // $user->trainer->create([
+        //     'user_id' => $this->id
+        // ]);
+        // $admin_email = User::where('role_id', 3)->select('email')->first();
+        // Mail::to($admin_email)->send(new AdminMail());
+        // Mail::to($validated['email'])->send(new ClientMail());
 
         return redirect('/registerSuccess')->with('success', 'Register Success!');
     }

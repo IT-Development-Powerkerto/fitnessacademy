@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('trainers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->string('sinta_id');
-            $table->string('scopus_id');
-            $table->longText('description');
+            $table->string('sinta_id')->nullable();
+            $table->string('scopus_id')->nullable();
+            $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
