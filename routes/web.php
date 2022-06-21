@@ -106,3 +106,6 @@ Route::get('/order', [PaymentController::class, 'order'])->name('order.order');
 Route::get('/registerMail', function () {
     return view('registerMail');
 });
+Route::get('/newPassword', function () {
+    return view('newPassword');
+});
