@@ -169,6 +169,14 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $schedule = explode(',',$course->schedule);
+        $s = collect();
+        $day = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+        foreach($schedule as $sc){
+            $s->push(array_search($sc, $day));
+        }
+        $course->schedule = $s;
+        // return $course;
         return view('trainer.editCourse', compact('course'));
     }
 
