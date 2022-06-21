@@ -110,9 +110,9 @@ class LoginRegisterController extends Controller
         // $user->trainer->create([
         //     'user_id' => $this->id
         // ]);
-        // $admin_email = User::where('role_id', 3)->select('email')->first();
-        // Mail::to($admin_email)->send(new AdminMail());
-        // Mail::to($validated['email'])->send(new ClientMail());
+        $admin_email = User::where('role_id', 3)->select('email')->first();
+        Mail::to($admin_email)->send(new AdminMail());
+        Mail::to($validated['email'])->send(new ClientMail());
 
         return redirect('/registerSuccess')->with('success', 'Register Success!');
     }
