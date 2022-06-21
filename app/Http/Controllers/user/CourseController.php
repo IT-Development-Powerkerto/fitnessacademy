@@ -35,9 +35,16 @@ class CourseController extends Controller
         else if($x->role_id == 2){
             return view('trainer.detailCourse');
         }
-        else if($x->role_id == 3){
-            return view('admin.overviewCourse');
-        }
+        // else if($x->role_id == 3){
+        //     return view('admin.overviewCourse');
+        // }
+    }
+    public function courseApproval($payment_id)
+    {
+        $payment = Payment::whereId($payment_id)->with([
+            'payment_detail.course', 'user'])->first();
+        // return $payment;
+        return view('admin.overviewCourse', compact('payment'));
     }
 
     public function detailOvervieweCourse($id)
@@ -59,11 +66,11 @@ class CourseController extends Controller
         //     return view('trainer.addCourse');
         // }
     }
-    public function addCourse()
-    {
-        return view('trainer.addCourse');
+    // public function addCourse()
+    // {
+    //     return view('trainer.addCourse');
 
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -72,7 +79,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('trainer.addCourse');
     }
 
     /**
@@ -146,7 +153,7 @@ class CourseController extends Controller
 
 
         if($x->role_id == 1){
-            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c', 'fs', 'sf', 'ma'));
+            return view('user.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c', 'fs', 'sf'));
         }
         else if($x->role_id == 2){
             return view('trainer.detailCourse', compact('user', 'course', 'course_id', 'sessions', 'exams', 'c'));
@@ -192,4 +199,5 @@ class CourseController extends Controller
         return response()->json(['course'=> $course], 201);
 
     }
+
 }

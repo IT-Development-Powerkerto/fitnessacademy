@@ -17,7 +17,7 @@
     <livewire:trainer.navbar-trainer />
 
     <div class="bg-zinc-800 p-10">
-        <div class="">
+        <div class="container mx-auto">
             <div class="flex flex-row py-2 items-center">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
@@ -26,7 +26,7 @@
                 <a href="#" class="text-white text-sm hover:text-yellow-300">EXAM</a>
             </div>
         </div>
-        <div class="mt-5">
+        <div class="mt-5 container mx-auto">
             <div class="bg-red-500 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold text-white">EXAM - {{$exam->name}}</h1>
                 <div class="flex md:flex-row flex-col items-end">
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="py-10">
+        <div class="py-10 container mx-auto">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Presence</h1>
                 <div class="">
@@ -81,7 +81,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="py-10">
+        <div class="py-10 container mx-auto">
             <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                 <h1 class="font-semibold">Score</h1>
                 <div class="flex md:flex-row flex-col items-end">

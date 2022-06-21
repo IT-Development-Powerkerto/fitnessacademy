@@ -16,12 +16,12 @@
     <livewire:user.navbar-user />
 
     <div class="bg-zinc-800 p-10">
-        <div class="flex flex-row py-5 items-center">
+        <div class="flex flex-row py-5 items-center container mx-auto">
             <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
             <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">Overview Course Approval</a>
         </div>
-        <div>
+        <div class="container mx-auto">
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
                 <h1 class="font-semibold">Overview Course Approval</h1>
                 <div class="flex justify-end md:block">
@@ -40,14 +40,15 @@
                                 <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="Approve">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
-                                <form>
+                                <form action="{{ route('approve', ['payment_id' => $payment->id]) }}" method="POST">
+                                    @csrf
                                     <div class="p-6 text-center">
                                         <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this course ?</h3>
                                         <button data-modal-toggle="Approve" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                             Yes, I'm sure
                                         </button>
-                                        <button data-modal-toggle="Approve"  class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
+                                        <button data-modal-toggle="Approve" type="button" class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
                                     </div>
                                 </form>
                             </div>
@@ -61,7 +62,8 @@
                                 <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="Reject">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                 </button>
-                                <form>
+                                <form action="{{ route('reject', ['payment_id' => $payment->id]) }}" method="POST">
+                                    @csrf
                                     <div class="p-6 text-center">
                                         <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                         <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to reject this course ?</h3>
@@ -82,53 +84,53 @@
                     <h1 class="text-white text-xl font-semibold mb-6">Detail Transaction</h1>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Name</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Mira Philips</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{ $payment->user->name }}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Date</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">13/05/2022</h1>
+                        {{-- <h1 class="col-span-8 md:col-span-9 text-white">13/05/2022</h1> --}}
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{ date('d/m/Y', strtotime($payment->order_date)) }}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Course</h1>
                         <div class="col-span-4 md:col-span-2 text-white">
                             <ul class="list-disc text-white text-sm md:text-base text-left ml-5 ">
-                                <li>Anatomi I</li>
-                                <li>Anatomi II</li>
+                                @foreach ($payment->payment_detail as $pd)
+                                    <li>{{ $pd->course->name }}</li>
+
+                                @endforeach
+                                {{-- <li>Anatomi II</li>
                                 <li>Nutrisi I</li>
                                 <li>Nutrisi II</li>
-                                <li>Level III</li>
+                                <li>Level III</li> --}}
                             </ul>
                         </div>
                         <div class="col-span-2 md:col-span-1">
                             <ul class="text-yellow-300 text-sm md:text-base text-right">
-                                <li>Rp</li>
-                                <li>Rp</li>
-                                <li>Rp</li>
-                                <li>Rp</li>
-                                <li>Rp</li>
+                                @foreach ($payment->payment_detail as $pd)
+                                    <li>Rp</li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="col-span-3 md:col-span-1">
                             <ul class="text-yellow-300 text-sm md:text-base text-right">
-                                <li>0</li>
-                                <li>499.000</li>
-                                <li>0</li>
-                                <li>499.000</li>
-                                <li>2.999.000</li>
+                                @foreach ($payment->payment_detail as $pd)
+                                    <li>{{ $pd->course->price }}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Total Bill</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-yellow-300">Rp. 3.997.000</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-yellow-300">Rp. {{number_format($payment->total_price,0,',','.')}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Status</h1>
-                        <h1 class="col-span-8 md:col-span-9 text-white">Waiting For Confirmation</h1>
+                        <h1 class="col-span-8 md:col-span-9 text-white">{{ ($payment->status == "waiting" ? "Not Yet Paid" : ($payment->status == "pending" ? "Waiting for Confirmation" : ($payment->status == "success" ? "Successful" : "Reject")))}}</h1>
                     </div>
                     <div class="grid grid-cols-12 mb-6">
                         <h1 class="col-span-3 md:col-span-3 text-gray-500">Evidence of Transfer</h1>
-                        <img src="assets/img/login.png" class="col-span-8 md:col-span-9 rounded-lg w-64 h-64" alt="">
+                        <img src="{{ url($payment->proof ?? '#') }}" class="col-span-8 md:col-span-9 rounded-lg w-64 h-64" alt="image payment proof">
                     </div>
                 </div>
             </div>

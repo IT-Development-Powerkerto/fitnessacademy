@@ -17,12 +17,16 @@
     <livewire:admin.navbar />
 
     <div class="py-10 bg-zinc-800 h-full">
-        <div class="px-10">
+        <div class="container mx-auto">
 
             {{-- beggin::TrainerApproval --}}
             <div class="py-10">
-                <div class="bg-yellow-300 rounded-t-lg p-3">
+                <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between">
                     <h1 class="font-semibold">Trainer Approval</h1>
+                    <div class="flex flex-row items-center gap-2">
+                        <i class="las la-history text-xl mt-1"></i>
+                        <a href="{{route('trainerApprovalHistory')}}" class="font-bold text-black underline underline-offset-4">History Approval</a>
+                    </div>
                 </div>
                 <div class="bg-black rounded-b-lg relative overflow-x-auto">
                     <table class="w-full text-left">
@@ -38,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $trainer as $t )
+                            @forelse ( $trainers as $t )
 
 
                             <tr class="whitespace-nowrap">
@@ -115,8 +119,12 @@
                                     </div>
                                     {{-- end::ModalReject --}}
                                 </td>
+                            @empty
+                                <td colspan="7" class="px-3 py-4 text-center">
+                                    No Data Available
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -125,8 +133,12 @@
 
             {{-- beggin::CourseApproval --}}
             <div class="py-10">
-                <div class="bg-yellow-300 rounded-t-lg p-3">
+                <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between">
                     <h1 class="font-semibold">Course Approval</h1>
+                    <div class="flex flex-row items-center gap-2">
+                        <i class="las la-history text-xl mt-1"></i>
+                        <a href="{{ route('courseApprovalHistory')}}" class="font-bold text-black underline underline-offset-4">History Approval</a>
+                    </div>
                 </div>
                 <div class="bg-black rounded-b-lg">
                     <div class="relative overflow-auto max-h-80">
@@ -134,6 +146,7 @@
                             <thead class="text-gray-500">
                                 <tr class="whitespace-nowrap">
                                     <th scope="col" class="px-3 py-3">No</th>
+                                    <th scope="col" class="px-3 py-3">Payment ID</th>
                                     <th scope="col" class="px-3 py-3">Name</th>
                                     <th scope="col" class="px-3 py-3">Course</th>
                                     <th scope="col" class="px-3 py-3">Nominal</th>
@@ -142,11 +155,12 @@
                                 </tr>
                             </thead>
                             <tbody class="text-white">
-                                @foreach ($p as $p )
+                                @forelse ($payments as $p )
 
 
                                 <tr class="whitespace-nowrap">
                                     <td class="px-3 py-4">{{$loop->iteration}}</td>
+                                    <td class="px-3 py-4">{{$p->order_id}}</td>
                                     <td class="px-3 py-4">{{$p->user->name}}</td>
                                     <td class="px-3 py-4">
                                         <ul>
@@ -159,6 +173,7 @@
 
 
                                     <td class="px-3 py-4">{{'Rp. '.number_format($p->total_price,0,',','.')}}</td>
+
                                     <td class="px-3 py-4">
                                         <button class="flex justify-center gap-2 items-center text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
                                             <i class="lar la-image"></i>
@@ -189,38 +204,39 @@
                                         {{-- end::modal --}}
                                     </td>
                                     <td class="px-3 py-4 flex justify-end">
-                                        <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                                        <button id="dropdownDefault" data-dropdown-toggle="dropdownCourseApproval{{ $p->id }}" class="text-white col-span-3 bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button">Action <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                                         <!-- Dropdown menu -->
-                                        <div id="dropdownCourseApproval" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+                                        <div id="dropdownCourseApproval{{ $p->id }}" class="z-10 hidden bg-yellow-300 divide-y divide-gray-100 rounded shadow w-44">
+
                                             <ul class="py-1 text-sm text-gray-700" aria-labelledby="dropdownDefault">
                                                 <li>
-                                                    <a href="/detailCourse" class="block px-4 py-2 text-white">View</a>
+                                                    <a href="{{ route('course.approval', ['payment_id' => $p->id]) }}" class="block px-4 py-2 text-white">View</a>
                                                 </li>
                                                 <li>
-                                                    <button type="button" data-modal-toggle="ApproveCourse" class="block px-4 py-2 text-white">Approve</button>
+                                                    <button type="button" data-modal-toggle="ApproveCourse{{ $p->id }}" class="block px-4 py-2 text-white">Approve</button>
                                                 </li>
                                                 <li>
-                                                    <button type="button" data-modal-toggle="RejectCourse" class="block px-4 py-2 text-white">Reject</button>
+                                                    <button type="button" data-modal-toggle="RejectCourse{{ $p->id }}" class="block px-4 py-2 text-white">Reject</button>
                                                 </li>
                                             </ul>
                                         </div>
                                         {{-- begin::ModalApprove --}}
-                                        <div id="ApproveCourse" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+                                        <div id="ApproveCourse{{ $p->id }}" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
                                             <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                                                 <div class="relative bg-zinc-800 rounded-lg shadow dark:bg-gray-700">
-                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="ApproveCourse">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="ApproveCourse{{ $p->id }}">
                                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                     </button>
                                                     {{-- <form> --}}
-                                                    <form action="{{route('aprove.aprove', ['id'=>$p->id])}}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{route('approve', ['payment_id'=>$p->id])}}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="p-6 text-center">
                                                             <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                             <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to approve this course ?</h3>
-                                                            <button data-modal-toggle="ApproveCourse" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                            <button data-modal-toggle="ApproveCourse{{ $p->id }}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                                 Yes, I'm sure
                                                             </button>
-                                                            <button data-modal-toggle="ApproveCourse"  class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
+                                                            <button data-modal-toggle="ApproveCourse{{ $p->id }}" type="button" class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -228,21 +244,21 @@
                                         </div>
                                         {{-- end::ModalApprove --}}
                                         {{-- begin::ModalReject --}}
-                                        <div id="RejectCourse" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+                                        <div id="RejectCourse{{ $p->id }}" tabindex="-1" class="bg-gray-500 bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
                                             <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                                                 <div class="relative bg-zinc-800 rounded-lg shadow dark:bg-gray-700">
-                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="RejectCourse">
+                                                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="RejectCourse{{ $p->id }}">
                                                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                     </button>
-                                                    <form action="{{route('reject.reject', ['id'=>$p->id])}}" method="POST" enctype="multipart/form-data">
+                                                    <form action="{{route('reject', ['payment_id'=>$p->id])}}" method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="p-6 text-center">
                                                             <svg class="mx-auto mb-4 w-14 h-14 text-white dark:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                                             <h3 class="mb-5 text-lg font-normal text-white dark:text-gray-400">Are you sure want to reject this course ?</h3>
-                                                            <button data-modal-toggle="RejectCourse" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                            <button data-modal-toggle="RejectCourse{{ $p->id }}" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                                 Yes, I'm sure
                                                             </button>
-                                                            <button data-modal-toggle="RejectCourse"  class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
+                                                            <button data-modal-toggle="RejectCourse{{ $p->id }}" type="button"  class="text-white bg-gray-500 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -250,8 +266,12 @@
                                         </div>
                                         {{-- end::ModalReject --}}
                                     </td>
+                                @empty
+                                    <td colspan="7" class="px-3 py-4 text-center">
+                                        No Data Available
+                                    </td>
                                 </tr>
-                                @endforeach
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -278,7 +298,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ( $student as $s )
+                            @forelse ( $student as $s )
 
 
                             <tr class="whitespace-nowrap">
@@ -323,8 +343,12 @@
                                     </div>
                                     {{-- end::ModalDelete --}}
                                 </td>
+                            @empty
+                                <td colspan="7" class="px-3 py-4 text-center">
+                                    No Data Available
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -348,7 +372,7 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            @foreach ($courses as $c )
+                            @forelse ($courses as $c )
 
                             <tr class="whitespace-nowrap">
                                 <td class="px-3 py-4">{{$c->name}}</td>
@@ -373,8 +397,12 @@
                                     <a href="{{ route ('detailOvervieweCourse.detailOvervieweCourse', ['course' => $c->id]) }}" class="bg-yellow-300 hover:bg-yellow-400 rounded-lg text-white text-center px-5 py-2">View</a>
                                 </td>
                                 {{-- {{ route ('addSession.addsession', ['id'=>$course_id]) }} --}}
+                            @empty
+                                <td colspan="5" class="px-3 py-4 text-center">
+                                    No Data Available
+                                </td>
                             </tr>
-                            @endforeach
+                            @endforelse
                         </tbody>
                     </table>
                 </div>

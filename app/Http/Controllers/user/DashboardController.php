@@ -75,7 +75,7 @@ class DashboardController extends Controller
         // $c = Auth::user()->payment->where('status', 'success');
 
         // dd($c);
-        $p = Payment::where('status', 'pending')->get();
+        $payments = Payment::where('status', 'pending')->get();
 
 
         $x = auth()->user();
@@ -105,7 +105,7 @@ class DashboardController extends Controller
             return view('trainer.dashboard', compact('today', 'day', 'user', 'course', 'uc', 'fs', 'exam', 'trainers'));
         }
         else if($x->role_id == 3) {
-            return view('admin.dashboard', compact('trainers', 'student', 'courses', 'p'));
+            return view('admin.dashboard', compact('trainers', 'student', 'courses', 'payments'));
         }
     }
 
@@ -273,4 +273,13 @@ class DashboardController extends Controller
 
         return redirect()->back();
     }
+
+    public function courseApprovalHistory() {
+        return view('admin.courseApproval');
+    }
+
+    public function trainerApprovalHistory() {
+        return view('admin.trainerApproval');
+    }
+
 }

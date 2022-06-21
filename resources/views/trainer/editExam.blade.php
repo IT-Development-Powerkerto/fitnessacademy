@@ -23,7 +23,7 @@
 
     <!-- begin::AddCourse -->
     <div class="p-10 bg-zinc-800">
-        <div class="">
+        <div class="container mx-auto">
             <div class="flex flex-row items-center py-2">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>

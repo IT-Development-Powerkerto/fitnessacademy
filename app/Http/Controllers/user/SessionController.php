@@ -89,7 +89,7 @@ class SessionController extends Controller
      */
     public function create($course)
     {
-        $course_id = Course::find($course);
+        $course_id = $course;
 
         return view('trainer.addSession', compact('course_id'));
     }
@@ -100,23 +100,13 @@ class SessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $course)
     {
 
         // dd(Carbon::create($request->date_session)->toDateString());
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'course_id' => '',
             'name' => 'required',
-            'day' => '',
-            'date_session' => '',
-            'start_time'=>'',
-            'finish_time'=>'',
-
-            'group_a'=>'',
-
-            'link_session' => '',
-            'link_assignment' => '',
         ]);
         if($validator->fails()){
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);

@@ -21,7 +21,7 @@
 
     <!-- begin::AddCourse -->
     <div class="py-10 bg-zinc-800">
-        <div class="px-10">
+        <div class="container mx-auto">
             <div class="flex flex-row items-center pb-10">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
@@ -34,7 +34,7 @@
             </div>
             <div class="bg-black rouned-b-lg p-10">
                 {{-- <form action=""> --}}
-                <form method="POST" action="{{ route('session.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('session.store', ['course' => $course_id]) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-6">
                         <input type="text" id="name" name="name" value="{{old('name')}}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Session Name" required>
@@ -97,7 +97,7 @@
                     </div>
 
                     {{-- {{dd($course_id)}} --}}
-                    <input type="text" value="{{$course_id->id}}" name="course_id" hidden>
+                    <input type="text" value="{{$course_id}}" name="course_id" hidden>
 
                     <div class="flex flex-row justify-center md:justify-end gap-4 mt-10">
                         <a href="/userProfile" class="text-white rounded-lg bg-transparent hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Cancel</a>

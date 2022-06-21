@@ -40,7 +40,10 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 
 // User
 
+
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::get('/courseApprovalHistory', [DashboardController::class, 'courseApprovalHistory'])->name('courseApprovalHistory');
+Route::get('/trainerApprovalHistory', [DashboardController::class, 'trainerApprovalHistory'])->name('trainerApprovalHistory');
 // Route::get('/dashboard/{course_id}', [DashboardController::class, 'getCourse'])->name('getCourse')->middleware('auth');
 // Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
 // Route::resource('/dashboard', DashboardController::class)->middleware('auth');
@@ -48,7 +51,7 @@ Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->nam
 Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');
 Route::get('/profile/{id}', [UserProfileController::class, 'trainerMy'])->name('profile');
 
-Route::get('/detailCourse', [CourseController::class, 'index'])->name('course.detail')->middleware('auth');
+Route::get('/course-approval/{payment_id}', [CourseController::class, 'courseApproval'])->name('course.approval')->middleware('auth');
 Route::get('/detailOvervieweCourse/{course}', [CourseController::class, 'detailOvervieweCourse'])->name('detailOvervieweCourse.detailOvervieweCourse')->middleware('auth');
 Route::get('/buy-course', [CourseController::class, 'buyCourse'])->name('course.buyCourse')->middleware('auth');
 Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editcourse')->middleware('auth');
@@ -97,8 +100,8 @@ Route::post('/absenExam', [ExamController::class, 'absenExam'])->name('absenExam
 Route::get('/payment/{id}', [PaymentController::class, 'index'])->name('payment.index');
 Route::post('/addpayment', [PaymentController::class, 'store'])->name('addpayment.store');
 Route::post('/upload/{id}', [PaymentController::class, 'uploadImage'])->name('upload.uploadImage');
-Route::post('/aprove/{id}', [PaymentController::class, 'aprove'])->name('aprove.aprove');
-Route::post('/reject/{id}', [PaymentController::class, 'reject'])->name('reject.reject');
+Route::post('/approve/{payment_id}', [PaymentController::class, 'approve'])->name('approve');
+Route::post('/reject/{payment_id}', [PaymentController::class, 'reject'])->name('reject');
 
 Route::get('/order', [PaymentController::class, 'order'])->name('order.order');
 
