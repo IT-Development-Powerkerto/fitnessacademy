@@ -94,6 +94,7 @@ class CourseController extends Controller
         $validator = Validator::make($request->all(), [
             'course_name' => 'required',
             'level'       => 'required',
+            'schedule'  => 'required',
             'price'       => '',
             'bird_price'  => '',
             'start_date'       => '',
