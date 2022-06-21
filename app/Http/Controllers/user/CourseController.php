@@ -167,9 +167,9 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Course $course)
     {
-        return view('trainer.editCourse');
+        return view('trainer.editCourse', compact('course'));
     }
 
     /**
@@ -190,9 +190,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect('/dashboard');
     }
 
     public function getCourse(){
