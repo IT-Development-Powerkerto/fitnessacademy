@@ -47,7 +47,7 @@ Route::get('/trainerApprovalHistory', [DashboardController::class, 'trainerAppro
 // Route::get('/dashboard/{course_id}', [DashboardController::class, 'getCourse'])->name('getCourse')->middleware('auth');
 // Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
 // Route::resource('/dashboard', DashboardController::class)->middleware('auth');
-Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->name('aproveUser.aproveUser');
+Route::post('/approve-trainer/{trainer_id}', [DashboardController::class, 'approveTrainer'])->name('approveTrainer');
 Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');
 Route::get('/profile/{id}', [UserProfileController::class, 'trainerMy'])->name('profile');
 
