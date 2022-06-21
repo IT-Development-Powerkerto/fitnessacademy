@@ -268,13 +268,16 @@ class DashboardController extends Controller
 
 
 
-    public function rejectUser(Request $request, $id)
+    public function rejectTrainer(Request $request, $trainer_id)
     {
-        $user = User::find($id);
+        // $user = User::find($id);
 
-        $user->status = 'reject'; //pending, waiting, success
+        // $user->status = 'reject'; //pending, waiting, success
 
-        $user->save();
+        // $user->save();
+        Trainer::whereId($trainer_id)->update([
+            'status' => 'REJECTED'
+        ]);
 
         return redirect()->back();
     }
