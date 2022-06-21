@@ -17,12 +17,16 @@
     <livewire:admin.navbar />
 
     <div class="py-10 bg-zinc-800 h-full">
-        <div class="px-10">
+        <div class="container mx-auto">
 
             {{-- beggin::TrainerApproval --}}
             <div class="py-10">
-                <div class="bg-yellow-300 rounded-t-lg p-3">
+                <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between">
                     <h1 class="font-semibold">Trainer Approval</h1>
+                    <div class="flex flex-row items-center gap-2">
+                        <i class="las la-history text-xl mt-1"></i>
+                        <a href="{{route('trainerApprovalHistory')}}" class="font-bold text-black underline underline-offset-4">History Approval</a>
+                    </div>
                 </div>
                 <div class="bg-black rounded-b-lg relative overflow-x-auto">
                     <table class="w-full text-left">
@@ -129,8 +133,12 @@
 
             {{-- beggin::CourseApproval --}}
             <div class="py-10">
-                <div class="bg-yellow-300 rounded-t-lg p-3">
+                <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between">
                     <h1 class="font-semibold">Course Approval</h1>
+                    <div class="flex flex-row items-center gap-2">
+                        <i class="las la-history text-xl mt-1"></i>
+                        <a href="{{ route('courseApprovalHistory')}}" class="font-bold text-black underline underline-offset-4">History Approval</a>
+                    </div>
                 </div>
                 <div class="bg-black rounded-b-lg">
                     <div class="relative overflow-auto max-h-80">

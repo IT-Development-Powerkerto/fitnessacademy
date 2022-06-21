@@ -21,12 +21,12 @@
     <div id="home">
         <!-- begin::header -->
         <div class="bg-zinc-800 py-10">
-            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div class="container mx-auto" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div class="flex flex-col-reverse md:flex-row">
                     <div class="py-10 text-center md:text-left md:basis-3/6 md:self-center">
                         <h1 class="text-white text-3xl font-bold md:text-4xl">Welcome to Fitness Plus Academy</h1>
                         <h1 class="text-sm text-gray-300 py-10">We support you with the knowledge to improve your skills and abilities, deliver results to your customers, and  help you expand your sales and marketing knowledge to increase your income.</h1>
-                        <a href="#" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">View Course</a>
+                        <a href="#course" class="bg-yellow-300 px-10 py-3 rounded-md hover:bg-yellow-400 hover:text-white">View Course</a>
                         <a href="#contact" class="px-10 py-3 bg-transparent rounded-md hover:bg-yellow-300 text-yellow-300 hover:text-white">Register Now</a>
                     </div>
                     <div class="md:basis-3/6 flex justify-center md:justify-end">
@@ -39,7 +39,7 @@
 
         <!-- begin:about -->
         <div class="bg-zinc-800 py-10" id="about">
-            <div class="md:px-20 px-10">
+            <div class="container mx-auto">
                 <h1 class="text-white text-2xl font-bold">About Us</h1>
                 <div class="py-5">
                     <div class="bg-yellow-300 p-3 rounded-tl-lg rounded-tr-lg">
@@ -85,7 +85,7 @@
 
         <!-- begin:::course -->
         <div class="bg-zinc-800 py-10" id="course">
-            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div class="container mx-auto" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div>
                     <h1 class="text-white text-2xl font-bold text-center">Course</h1>
                     <h1 class="text-white text-sm text-center mt-5">
@@ -197,7 +197,7 @@
 
         <!-- begin::price -->
         <div class="bg-gradient-to-b from-zinc-800 via-zinc-400 to-zinc-800 py-10">
-            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div class="container mx-auto" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <div>
                     <h1 class="text-center text-7xl font-bold text-white">Are You Ready ?</h1>
                     <h1 class="text-center text-lg text-white opacity-40 p-5">FITNESS PLUS INDONESIA will be held through three stages</h1>
@@ -335,7 +335,7 @@
 
         <!-- begin::coaches -->
         <div class="bg-zinc-800 py-10" id="coaches">
-            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div class="container mx-auto" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <h1 class="text-white text-2xl font-bold text-center">Coaches</h1>
                 <div class="flex flex-col md:flex-row justify-around mt-10">
                     <img src="assets/img/Choaches/Choaches1.png" alt="">
@@ -347,7 +347,7 @@
 
         <!-- begin::gallery -->
         <div class="bg-zinc-800 py-10" id="gallery">
-            <div class="md:px-20 px-10" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
+            <div class="container mx-auto" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
                 <h1 class="text-white text-2xl font-bold text-center">Gallery</h1>
                 <div class="mt-10">
                     <div class="grid grid-cols-2 md:flex md:flex-row gap-7 flex-wrap justify-center">
@@ -371,7 +371,7 @@
 
         <!-- begin::footer -->
         <div class="bg-black py-5" id="contact">
-            <div class="md:px-20 px-10 mt-5 items-center">
+            <div class="container mx-auto mt-5 items-center">
                 <h1 class="text-white text-4xl font-bold">Contact Us</h1>
                 <div class="flex flex-col md:flex-row md:justify-between mt-5 md:h-64">
                     <div class="md:w-3/5 w-full py-5 md:py-0">

@@ -17,7 +17,7 @@
     <div class="py-10 bg-zinc-800 h-screen">
         <!-- begin::Payment -->
         <div class="bg-zinc-800">
-            <div class="px-10">
+            <div class="mx-auto container">
                 <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                     <h1 class="font-semibold text-xl ml-5">Payment</h1>
                     {{-- <form action="{{route('upload.uploadImage', ['id'=>$payment->id])}}" method="POST" enctype="multipart/form-data">
@@ -141,12 +141,12 @@
         <!-- begin::Order Date -->
         <div class="py-10 bg-zinc-800">
             <div class="flex flex-row gap-24">
-                <div class="px-10">
+                <div class="mx-auto container">
                     <h2 class="text-white text-xl">Course Ordered</h2>
 
 
                 </div>
-                <div class="px-10">
+                <div class="mx-auto container">
 
                     @foreach ( $payment->payment_detail as $pd )
                     <div class="text-white text-xl">
@@ -157,14 +157,14 @@
 
             </div>
             <div class="flex flex-row gap-10">
-                <div class="px-10">
+                <div class="mx-auto container">
 
                     <h2 class="text-white text-xl mt-5">Order Date</h2>
                     <h2 class="text-white text-xl mt-5">Your Bill is</h2>
                     <h2 class="text-white text-xl mt-5">Your Payment Status is </h2>
 
                 </div>
-                <div class="px-10">
+                <div class="mx-auto container">
 
 
                     <h2 class="text-white text-xl mt-5">{{date('d/m/Y', strtotime($payment->order_date))}}</h2>
@@ -206,7 +206,7 @@
 
         {{-- <!-- begin::Order History -->
         <div class="py-10 bg-zinc-800">
-            <div class="px-10">
+            <div class="mx-auto container">
                 <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                     <h1 class="font-semibold text-xl ml-5">Order History</h1>
 

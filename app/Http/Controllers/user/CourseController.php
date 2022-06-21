@@ -199,4 +199,5 @@ class CourseController extends Controller
         return response()->json(['course'=> $course], 201);
 
     }
+
 }

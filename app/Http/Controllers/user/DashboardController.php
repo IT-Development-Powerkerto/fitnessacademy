@@ -273,4 +273,13 @@ class DashboardController extends Controller
 
         return redirect()->back();
     }
+
+    public function courseApprovalHistory() {
+        return view('admin.courseApproval');
+    }
+
+    public function trainerApprovalHistory() {
+        return view('admin.trainerApproval');
+    }
+
 }

@@ -16,7 +16,7 @@
     <livewire:trainer.navbar-trainer />
 
     <div class="bg-zinc-800 p-10 h-screen">
-        <div class="relative p-4 w-full h-full md:h-auto">
+        <div class="relative p-4 w-full h-full md:h-auto container mx-auto">
             <!-- Modal content -->
             <div class="relative rounded-lg shadow ">
                 <!-- Modal header -->

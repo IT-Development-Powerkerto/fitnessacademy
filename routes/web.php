@@ -40,7 +40,10 @@ Route::get('/registerSuccess', [LoginRegisterController::class, 'registerSuccess
 
 // User
 
+
 Route::resource('/dashboard', DashboardController::class)->middleware('auth');
+Route::get('/courseApprovalHistory', [DashboardController::class, 'courseApprovalHistory'])->name('courseApprovalHistory');
+Route::get('/trainerApprovalHistory', [DashboardController::class, 'trainerApprovalHistory'])->name('trainerApprovalHistory');
 // Route::get('/dashboard/{course_id}', [DashboardController::class, 'getCourse'])->name('getCourse')->middleware('auth');
 // Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
 // Route::resource('/dashboard', DashboardController::class)->middleware('auth');
