@@ -18,6 +18,7 @@ class TrainerSeeder extends Seeder
     {
         $trainer = [
             'user_id' => 2,
+            'status' => 'IN WAITING',
             'sinta_id' => Str::random(8),
             'scopus_id' => Str::random(8),
             'description' => Str::random(300)

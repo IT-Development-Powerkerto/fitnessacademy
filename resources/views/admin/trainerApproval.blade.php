@@ -35,7 +35,7 @@
                                 <th scope="col" class="px-3 py-3">Email</th>
                                 <th scope="col" class="px-3 py-3">Phone</th>
                                 <th scope="col" class="px-3 py-3">Gender</th>
-                                <th scope="col" class="px-3 py-3 text-right">Action</th>
+                                <th scope="col" class="px-3 py-3 text-right">Status</th>
                             </tr>
                         </thead>
                         <tbody class="text-white">
@@ -56,7 +56,7 @@
                                     <h1 class="text-white">Male</h1>
                                 </td>
                                 <td class="px-3 py-4">
-                                    <h1 class="text-green-600">Approved</h1>
+                                    <h1 class="text-green-600 text-right">Approved</h1>
                                 </td>
                             </tr>
                         </tbody>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('sinta_id')->nullable();
             $table->string('scopus_id')->nullable();
+            $table->enum('status', ['IN WAITING', 'APPROVED', 'REJECTED']);
             $table->longText('description')->nullable();
             $table->softDeletes();
             $table->timestamps();

@@ -31,7 +31,6 @@ class UserSeeder extends Seeder
                 'education' => 'S1',
                 'work'      => 'work',
                 'address'      => 'Address',
-                'status'     => 'inactive',
                 'image'     => "assets/img/Gallery/12.png",
             ],
             [
@@ -46,7 +45,6 @@ class UserSeeder extends Seeder
                 'education' => 'S2',
                 'work'      => 'works',
                 'address'      => 'Addresss',
-                'status'     => 'inactive',
                 'image'     => "assets/img/Choaches/Tanjung.png",
             ],
             [
@@ -61,7 +59,6 @@ class UserSeeder extends Seeder
                 'education' => 'S3',
                 'work'      => 'work',
                 'address'      => 'Address',
-                'status'     => 'active',
                 'image'     => "assets/img/login.png",
             ],
             [
@@ -76,7 +73,6 @@ class UserSeeder extends Seeder
                 'education' => 'S1',
                 'work'      => 'work',
                 'address'      => 'Address',
-                'status'     => 'inactive',
                 'image'     => "assets/img/Gallery/12.png",
             ],
             [
@@ -91,7 +87,6 @@ class UserSeeder extends Seeder
                 'education' => 'S1',
                 'work'      => 'work',
                 'address'      => 'Address',
-                'status'     => 'inactive',
                 'image'     => "assets/img/Gallery/12.png",
             ],
         ];
