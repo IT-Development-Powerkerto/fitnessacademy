@@ -40,24 +40,32 @@
                         </thead>
                         <tbody class="text-white">
                             <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">1</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">Zall</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">Zall@zall.com</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">081245527645</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">Male</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-green-600 text-right">Approved</h1>
-                                </td>
+                                @forelse ($trainers as $trainer)
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $loop->iteration }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $trainer->user->name }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $trainer->user->email }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $trainer->user->phone }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $trainer->user->gender }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        @if ($trainer->status == 'APPROVED')
+                                            <h1 class="text-green-600 text-right">{{ $trainer->status }}</h1>
+                                        @else
+                                            <h1 class="text-red-600 text-right">{{ $trainer->status }}</h1>
+                                        @endif
+                                    </td>
+                                @empty
+                                    <td colspan="6" class="text-white text-center px-3 py-4">No Data Available</td>
+                                @endforelse
                             </tr>
                         </tbody>
                     </table>

@@ -288,7 +288,7 @@ class DashboardController extends Controller
 
     public function trainerApprovalHistory() {
         $trainers = Trainer::whereNotIn('status', ['IN WAITING'])->with('user')->get();
-        return view('admin.trainerApproval', compact('trainers'));
+        return view('admin.trainerApprovalHistory', compact('trainers'));
     }
 
 }
