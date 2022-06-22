@@ -47,7 +47,7 @@ class CoachProfileController extends Controller
      */
     public function show($id)
     {
-        $trainer = Trainer::where('user_id', $id)->first();
+        $trainer = Trainer::whereId($id)->first();
         // dd($trainer);
         return view('user.coachProfile', compact('trainer'));
     }

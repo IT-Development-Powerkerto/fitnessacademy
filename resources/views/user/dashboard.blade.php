@@ -23,7 +23,7 @@
                     <h1 class="font-semibold">My Course</h1>
                     <div class="flex gap-2">
                         <a href="{{route('order.order')}}" class="bg-yellow-300 text-zinc-800 items-center rounded-lg p-2 border-zinc-800 border-2">
-    
+
                             Order History
                         </a>
                         <a href="{{ route('course.buyCourse') }}" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
@@ -68,7 +68,7 @@
                         <i class="las la-angle-right text-white"></i>
                     </a>
                     @endforeach
-    
+
                     @foreach ( $c->where('level', 'Level 4') as $c )
                     <a href="#" class="bg-black p-3 flex flex-row justify-between items-center rounded-lg">
                         <div class="flex flex-col">
@@ -117,12 +117,12 @@
                     <i class="las la-angle-right text-white"></i>
                 </a>
                 @endforeach
-    
-    
+
+
             </div>
         </div>
         <!-- end::My Course -->
-    
+
         <!-- begin::Schedule -->
         <div class="py-10 bg-zinc-800">
             <div class="container mx-auto px-10 md:px-10">
@@ -138,7 +138,7 @@
             </div>
         </div>
         <!-- end::Schedule -->
-    
+
         <!-- begin::Coaches -->
         <div class="py-10 bg-zinc-800">
             <div class="container mx-auto px-10 md:px-10">
@@ -149,8 +149,8 @@
                     @foreach ($trainers as $trainer)
                         <a href="{{ route('coachProfile.show', ['coachProfile' => $trainer->id]) }}" class="bg-black p-5 flex flex-row justify-between items-center rounded-lg">
                             <div class="flex flex-row gap-3 items-center">
-                                <img src="{{ url($trainer->image ?? 'assets/img/user_default.png') }}" class="w-10 rounded" alt="Coach image">
-                                <span class="text-white font-semibold">{{ $trainer->name }}</span>
+                                <img src="{{ url($trainer->user->image ?? 'assets/img/user_default.png') }}" class="w-10 rounded" alt="Coach image">
+                                <span class="text-white font-semibold">{{ $trainer->user->name }}</span>
                             </div>
                             <i class="las la-angle-right text-white"></i>
                         </a>
@@ -187,7 +187,7 @@
             </div>
         </div>
         <!-- end::Coaches -->
-    
+
         <!-- begin::Score -->
         <div class="py-10 bg-zinc-800">
             <div class="container mx-auto px-10 md:px-10">
@@ -195,7 +195,7 @@
                     <h1 class="font-semibold">Score</h1>
                 </div>
                 @foreach ( $fs as $f )
-    
+
                 <div class="py-5 px-3 flex flex-row justify-between">
                     <h1 class="text-white font-semibold">{{$f->exam->course->name ?? null}}</h1>
                     <h1 class="text-white font-semibold">{{$f->score_final ?? null}}</h1>
