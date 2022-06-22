@@ -341,8 +341,6 @@
                 // var str_price_id = price_id.replace(/[^,\d]/g, '');
                 // var int_price_id = parseInt(str_price_id);
 
-
-
             });
 
         });
