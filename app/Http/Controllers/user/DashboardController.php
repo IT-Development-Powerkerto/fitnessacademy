@@ -281,7 +281,8 @@ class DashboardController extends Controller
     }
 
     public function courseApprovalHistory() {
-        return view('admin.courseApproval');
+        $payments = Payment::whereNotIn('status', ['pending'])->with('user', 'payment_detail.course')->get();
+        return view('admin.courseApproval', compact('payments'));
     }
 
     public function trainerApprovalHistory() {
