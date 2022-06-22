@@ -47,8 +47,8 @@ Route::get('/trainerApprovalHistory', [DashboardController::class, 'trainerAppro
 // Route::get('/dashboard/{course_id}', [DashboardController::class, 'getCourse'])->name('getCourse')->middleware('auth');
 // Route::get('ajaxGetCourse/{course_id}', [DashboardController::class, 'ajaxGetCourse'])->name('ajaxGetCourse');
 // Route::resource('/dashboard', DashboardController::class)->middleware('auth');
-Route::post('/aproveUser/{id}', [DashboardController::class, 'aproveUser'])->name('aproveUser.aproveUser');
-Route::post('/rejectUser/{id}', [DashboardController::class, 'rejectUser'])->name('rejectUser.rejectUser');
+Route::post('/approve-trainer/{trainer_id}', [DashboardController::class, 'approveTrainer'])->name('approveTrainer');
+Route::post('/reject-trainer/{trainer_id}', [DashboardController::class, 'rejectTrainer'])->name('rejectTrainer');
 Route::get('/profile/{id}', [UserProfileController::class, 'trainerMy'])->name('profile');
 
 Route::get('/course-approval/{payment_id}', [CourseController::class, 'courseApproval'])->name('course.approval')->middleware('auth');
@@ -108,4 +108,7 @@ Route::get('/order', [PaymentController::class, 'order'])->name('order.order');
 
 Route::get('/registerMail', function () {
     return view('registerMail');
+});
+Route::get('/newPassword', function () {
+    return view('newPassword');
 });

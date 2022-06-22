@@ -354,14 +354,14 @@ class SessionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($course, $session)
     {
         //
-        $session = Session::findOrFail($id);
+        $session = Session::findOrFail($session);
         $session->delete();
         // $course_id = $request->course_id;
         // return redirect()->back();
-        return redirect()->route('course.show',['course'=>$id]);
+        return redirect()->route('course.show',['course'=>$course]);
     }
 
     public function presence($course, $session)

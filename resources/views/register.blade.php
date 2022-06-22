@@ -22,7 +22,7 @@
                         <h1 class="text-4xl text-white font-bold py-2">Create New Account</h1>
                         <h1 class="text-white text-sm font-light">Complete data bellow to create your account</h1>
                     </div>
-                    <form action="{{ route('register.store') }}" method="POST">
+                    <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-6">
                             <select id="role_id" name="role_id" class="bg-gray-50 border rounded-lg border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
@@ -32,6 +32,11 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="mb-6">
+                            <input type="file" id="pdf_id" name="resume" value="" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6">
+                        </div>
+
                         <div class="mb-6">
                             <input type="text" id="name" name="name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name" required>
                         </div>
@@ -55,7 +60,7 @@
                             <input type="text" id="phone" name="phone" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Phone Number" required>
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="nik" name="nik" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Identity Number (NIK)" required>
+                            <input type="text" id="nik" name="nik" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Identity Number (NIK)" maxlength="16" minlength="16" pattern="[0-9]{16,16}"  required>
                         </div>
                         <div class="mb-6">
                             <input type="text" id="education" name="education" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Last Education" required>
@@ -75,5 +80,19 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function() {
+            $('#pdf_id').hide();
+            $('#role_id').change(function() {
+                var pilih = $('#role_id').val();
+                if (pilih == '2') {
+                    $('#pdf_id').show()
+                }else{
+                    $('#pdf_id').hide()
+                }
+            });
+        });
+    </script>
 </body>
 </html>

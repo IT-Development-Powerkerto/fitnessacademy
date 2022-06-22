@@ -12,6 +12,7 @@ use App\Models\Payment;
 
 use App\Models\Exam;
 use App\Models\FinalScoreExam;
+use App\Models\Trainer;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
@@ -26,7 +27,8 @@ class DashboardController extends Controller
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
-        $trainers = User::whereIn('status', ['inactive', 'active'])->where('role_id', 2)->get();
+        // $trainers = User::whereIn('status', ['inactive', 'active'])->where('role_id', 2)->get();
+        $trainers = Trainer::whereIn('status', ['IN WAITING'])->with('user')->get();
         // $student = User::where('role_id', 1)->get();
         $student = Payment::where('status', 'success')->get();
         $courses = Course::withCount(['payment' => function($query) {
@@ -248,28 +250,34 @@ class DashboardController extends Controller
     }
 
 
-    public function aproveUser(Request $request, $id)
+    public function approveTrainer(Request $request, $trainer_id)
     {
 
 
-        $user = User::find($id);
+        // $user = User::find($id);
 
-        $user->status = 'active'; //pending, waiting, success
+        // $user->status = 'active'; //pending, waiting, success
 
-        $user->save();
+        // $user->save();
+        Trainer::whereId($trainer_id)->update([
+            'status' => 'APPROVED'
+        ]);
 
         return redirect()->back();
     }
 
 
 
-    public function rejectUser(Request $request, $id)
+    public function rejectTrainer(Request $request, $trainer_id)
     {
-        $user = User::find($id);
+        // $user = User::find($id);
 
-        $user->status = 'reject'; //pending, waiting, success
+        // $user->status = 'reject'; //pending, waiting, success
 
-        $user->save();
+        // $user->save();
+        Trainer::whereId($trainer_id)->update([
+            'status' => 'REJECTED'
+        ]);
 
         return redirect()->back();
     }
@@ -279,7 +287,8 @@ class DashboardController extends Controller
     }
 
     public function trainerApprovalHistory() {
-        return view('admin.trainerApproval');
+        $trainers = Trainer::whereNotIn('status', ['IN WAITING'])->with('user')->get();
+        return view('admin.trainerApprovalHistory', compact('trainers'));
     }
 
 }

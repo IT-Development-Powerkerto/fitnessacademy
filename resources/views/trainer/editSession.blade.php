@@ -74,7 +74,7 @@
                             @foreach ($materi->where('session_id', $session->id) as $m)
 
                             <div data-repeater-item="" class="flex flex-row gap-4">
-                                <input type="file" id="file" name="file" value="{{old('file') ?? (url('').'/'.str_replace('\\','/',$m->file))}}" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer">
+                                <input type="file" id="file" name="file" value="{{old('file') ?? (url('').'/'.str_replace('\\','/',$m->file))}}" accept="image/*,.pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer">
                                 <button type="button" class="text-white rounded-lg mt-6" data-repeater-delete>
                                     <i class="las la-times"></i>
                                 </button>

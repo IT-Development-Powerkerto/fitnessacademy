@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('education');
             $table->string('work');
             $table->string('address');
-            $table->string('status')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

@@ -35,14 +35,18 @@
                 <form action="{{route('course.store')}}" method="POST">
                     @csrf
                     <div class="mb-6">
-                        <input type="text" id="course_name" name="course_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>
+                        <input type="text" id="course_name" name="course_name" value="{{ old('course_name') }}" class="bg-gray-50 rounded-lg border  text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 @error('course_name') border-red-500 @else border-gray-300 @enderror block w-full p-2.5 peer" placeholder="Course Name">
+                        @error('course_name')
+
+                        <span class="text-s text-red-700">{{ $message }}</span>
+                        @enderror
                     </div>
                     {{-- <div class="mb-6">
                         <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Trainer" value="{{auth()->user()->name}}" readonly required>
                     </div> --}}
                     <div class="mb-6">
-                        <select id="level" name="level" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                            <option selected hidden>Set Level</option>
+                        <select id="level" name="level" class="bg-gray-50 rounded-lg border @error('level') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <option value="" hidden>Set Level</option>
                             <option value="Level 1">Level 1</option>
                             <option value="Level 2">Level 2</option>
                             <option value="Level 3">Level 3</option>
@@ -50,12 +54,16 @@
                             <option value="Level 5">Level 5</option>
                             <option value="Level 6">Level 6</option>
                         </select>
+                        @error('level')
+
+                        <span class="text-s text-red-700">{{ $message }}</span>
+                        @enderror
                     </div>
                     {{-- <div class="mb-6">
                         <input type="file" id="image" name="image" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Image Trainer" required>
                     </div> --}}
 
-                    <select x-cloak id="select">
+                    <select x-cloak id="select" >
                         <option value="Senin">Senin</option>
                         <option value="Selasa">Selasa</option>
                         <option value="Rabu">Rabu</option>
@@ -66,11 +74,11 @@
                     </select>
                     <div class="mb-6">
                         <div x-data="dropdown()" x-init="loadOptions()" class="w-full flex flex-col items-center mx-auto">
-                            <input name="values" type="hidden" x-bind:value="selectedValues()">
+                            <input name="schedule" type="hidden" x-bind:value="selectedValues()" required>
                             <div class="inline-block relative w-full">
                                 <div class="flex flex-col items-center relative">
                                     <div x-on:click="open" class="w-full  svelte-1l8159u">
-                                        <div class="my-2 p-1 flex border border-gray-200 bg-white rounded svelte-1l8159u">
+                                        <div class="my-2 p-1 flex border @error('schedule') border-red-500 @else border-gray-300 @enderror bg-white rounded-lg svelte-1l8159u">
                                             <div class="flex flex-auto flex-wrap">
                                                 <template x-for="(option,index) in selected" :key="options[option].value">
                                                     <div
@@ -90,7 +98,7 @@
                                                     </div>
                                                 </template>
                                                 <div x-show="selected.length == 0" class="flex-1">
-                                                    <input placeholder="Select an option" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
+                                                    <input placeholder="Select a schedule" class="bg-transparent p-1 px-2 appearance-none outline-none h-full w-full text-gray-800" x-bind:value="selectedValues()">
                                                 </div>
                                             </div>
                                             <div
@@ -135,6 +143,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @error('schedule')
+
+                                    <span class="text-s text-red-700">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -181,7 +193,6 @@
                             <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save Changes</button>
                         </div>
                     </div>
-                    {{ csrf_field() }}
                 </form>
             </div>
         </div>
@@ -329,8 +340,6 @@
 
                 // var str_price_id = price_id.replace(/[^,\d]/g, '');
                 // var int_price_id = parseInt(str_price_id);
-
-
 
             });
 

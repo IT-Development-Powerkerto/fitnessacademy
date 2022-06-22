@@ -94,6 +94,7 @@ class CourseController extends Controller
         $validator = Validator::make($request->all(), [
             'course_name' => 'required',
             'level'       => 'required',
+            'schedule'  => 'required',
             'price'       => '',
             'bird_price'  => '',
             'start_date'       => '',
@@ -108,7 +109,7 @@ class CourseController extends Controller
         $course->name       = $validated['course_name'];
         $course->trainer_id = auth()->user()->id;
         $course->level      = $validated['level'];
-        $course->schedule   = $request->values;
+        $course->schedule   = $request->schedule;
         $course->price      = $request->price == null ? 0 : str_replace('.','',$request->price);
         $course->bird_price = $request->bird_price == null ? 0 : str_replace('.','',$request->bird_price);
         $course->start_date = $request->start_date ?? null;
@@ -166,9 +167,17 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Course $course)
     {
-        return view('trainer.editCourse');
+        $schedule = explode(',',$course->schedule);
+        $s = collect();
+        $day = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+        foreach($schedule as $sc){
+            $s->push(array_search($sc, $day));
+        }
+        $course->schedule = $s;
+        // return $course;
+        return view('trainer.editCourse', compact('course'));
     }
 
     /**
@@ -178,9 +187,43 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Course $course)
     {
-        //
+        // return $request->all();
+        $validator = Validator::make($request->all(), [
+            'course_name' => 'required',
+            'level'       => 'required',
+            'schedule'  => 'required',
+            'price'       => '',
+            'bird_price'  => '',
+            'start_date'       => '',
+            'end_date'         => '',
+        ]);
+        if($validator->fails()){
+            return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
+        }
+        $validated = $validator->validate();
+        $course->update([
+            'name' => $validated['course_name'],
+            'trainer_id' => auth()->user()->id,
+            'schedule' => $validated['schedule'],
+            'price' => $request->price == null ? 0 : str_replace('.','',$request->price),
+            'bird_price' => $request->bird_price == null ? 0 : str_replace('.','',$request->bird_price),
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date
+        ]);
+        // $course = new Course();
+        // $course->name       = $validated['course_name'];
+        // $course->trainer_id = auth()->user()->id;
+        // $course->level      = $validated['level'];
+        // $course->schedule   = $request->schedule;
+        // $course->price      = $request->price == null ? 0 : str_replace('.','',$request->price);
+        // $course->bird_price = $request->bird_price == null ? 0 : str_replace('.','',$request->bird_price);
+        // $course->start_date = $request->start_date ?? null;
+        // $course->end_date   = $request->end_date ?? null;
+        // $course->save();
+
+        return redirect('/dashboard')->with('success', 'Update Course Success!');
     }
 
     /**
@@ -189,9 +232,10 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        $course->delete();
+        return redirect('/dashboard');
     }
 
     public function getCourse(){

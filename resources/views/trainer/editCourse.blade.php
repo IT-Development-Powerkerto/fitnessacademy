@@ -26,18 +26,19 @@
             <div class="flex flex-row items-center pb-10">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="#" class="text-white text-sm hover:text-yellow-300">Course</a>
+                <a href="{{ route('course.show', ['course' => $course->id]) }}" class="text-white text-sm hover:text-yellow-300">Course</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/editCourse" class="text-white text-sm hover:text-yellow-300">Edit Course</a>
+                <a href="{{ route('course.edit', ['course' => $course->id]) }}" class="text-white text-sm hover:text-yellow-300">Edit Course</a>
             </div>
             <div class="bg-yellow-300 rounded-t-lg p-3">
                 <h1 class="font-semibold">Edit Course</h1>
             </div>
             <div class="bg-black rouned-b-lg p-10">
-                <form action="#" method="POST">
+                <form action="{{ route('course.update', ['course' => $course->id]) }}" method="POST">
+                    @method('PATCH')
                     @csrf
                     <div class="mb-6">
-                        <input type="text" id="course_name" name="course_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>
+                        <input type="text" id="course_name" name="course_name" value="{{ $course->name }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Course Name" required>
                     </div>
                     <div class="mb-6">
                         <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Choach/Trainer" value="{{auth()->user()->name}}" required>
@@ -45,12 +46,12 @@
                     <div class="mb-6">
                         <select id="level" name="level" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Set Level</option>
-                            <option value="Level 1">Level 1</option>
-                            <option value="Level 2">Level 2</option>
-                            <option value="Level 3">Level 3</option>
-                            <option value="Level 4">Level 4</option>
-                            <option value="Level 5">Level 5</option>
-                            <option value="Level 6">Level 6</option>
+                            <option value="Level 1" @selected($course->level == 'Level 1')>Level 1</option>
+                            <option value="Level 2" @selected($course->level == 'Level 2')>Level 2</option>
+                            <option value="Level 3" @selected($course->level == 'Level 3')>Level 3</option>
+                            <option value="Level 4" @selected($course->level == 'Level 4')>Level 4</option>
+                            <option value="Level 5" @selected($course->level == 'Level 5')>Level 5</option>
+                            <option value="Level 6" @selected($course->level == 'Level 6')>Level 6</option>
                         </select>
                     </div>
                     {{-- <div class="mb-6">
@@ -68,7 +69,7 @@
                     </select>
                     <div class="mb-6">
                         <div x-data="dropdown()" x-init="loadOptions()" class="w-full flex flex-col items-center mx-auto">
-                            <input name="values" type="hidden" x-bind:value="selectedValues()">
+                            <input name="schedule" type="hidden" x-bind:value="selectedValues()" value="{{ $course->schedule }}">
                             <div class="inline-block relative w-full">
                                 <div class="flex flex-col items-center relative">
                                     <div x-on:click="open" class="w-full  svelte-1l8159u">
@@ -147,16 +148,16 @@
                     <div class="mb-6">
                         <select id="payment" name="payment" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected hidden>Set Regular Price For Free Or Paid</option>
-                            <option value="FREE">FREE</option>
-                            <option value="PAID">PAID</option>
+                            <option value="FREE" @selected($course->price == 0)>FREE</option>
+                            <option value="PAID" @selected($course->price != 0)>PAID</option>
                         </select>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="price" name="price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
+                        <input type="text" id="price_id" name="price" value="{{ $course->price }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Regular Price (Rp)" required>
                         <h1 class="text-gray-500 text-sm mt-1">Fill in the column if you choose paid</h1>
                     </div>
                     <div class="mb-6">
-                        <input type="text" id="bird_price" name="bird_price" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
+                        <input type="text" id="bird_price_id" name="bird_price" value="{{ $course->bird_price }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Set Early Bird Price (optional)" required>
                     </div>
                     {{-- <div class="mb-6">
                         <input type="date" id="period" name="period" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Early Bird Period (dd/mm/yyyy - dd/mm/yyyy)" required>
@@ -167,14 +168,14 @@
                                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                       <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                                   </div>
-                                  <input name="start" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                                  <input name="start_date" type="text" value="{{ $course->start_date }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
                               </div>
                             <span class="mx-auto text-gray-500 col-span-1 my-auto">to</span>
                             <div class="relative col-span-5">
                               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                   <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
                               </div>
-                              <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+                                <input name="end_date" type="text" value="{{ $course->end_date }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
                             </div>
                         </div>
                         <h1 class="text-gray-500 text-sm mt-1">After passing the early bird period, the active price will return to the Regular Price.</h1>
@@ -183,7 +184,6 @@
                             <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center">Save Changes</button>
                         </div>
                     </div>
-                    {{ csrf_field() }}
                 </form>
             </div>
         </div>
@@ -198,14 +198,15 @@
     <!-- End::Livewire -->
     <script src="https://unpkg.com/flowbite@1.4.2/dist/flowbite.js"></script>
     {{-- <script src="https://unpkg.com/flowbite@1.4.5/dist/datepicker.js"></script> --}}
-    <script src="assets/js/flowbite/dist/datepicker.js"></script>
+    <script src="{{ asset('assets/js/flowbite/dist/datepicker.js') }}"></script>
     <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         function dropdown() {
             return {
                 options: [],
-                selected: [],
+                selected: {{ $course->schedule }},
                 show: false,
                 open() { this.show = true },
                 close() { this.show = false },
@@ -248,6 +249,91 @@
                 }
             }
         }
+    </script>
+    <script>
+        $(function() {
+            var pilih = $('#payment').val();
+            console.log(pilih)
+                if (pilih == 'FREE') {
+                    // alert('free');
+                    $('#bird_price_id').attr('disabled', true);
+                    $('#bird_price_id').val();
+                    $('#price_id').attr('disabled', true);
+                    $('#price_id').val(0);
+                    $('#start_id').attr('disabled', true);
+                    $('#start_id').val();
+                    $('#end_id').attr('disabled', true);
+                    $('#end_id').val();
+                } else {
+                    $('#bird_price_id').attr('disabled', false);
+                    $('#bird_price_id').val();
+                    $('#price_id').attr('disabled', false);
+                    $('#price_id').val();
+                    $('#start_id').attr('disabled', false);
+                    $('#start_id').val();
+                    $('#end_id').attr('disabled', false);
+                    $('#end_id').val();
+                }
+            // if($('#price_id').prop("checked") == true)
+            // $('#price_id').attr('disabled', true).val(0);
+            // $('#bird_price_id').attr('disabled', true);
+            // $('#start_id').attr('disabled', true);
+            // $('#end_id').attr('disabled', true);
+            // $('#payment_id').val('FREE');
+            // $('#payment_id').change(function() {
+            //     var pilih = $('#payment_id').val();
+            //     if (pilih == 'FREE') {
+            //         $('#bird_price_id').attr('disabled', true);
+            //         $('#bird_price_id').val();
+            //         $('#price_id').attr('disabled', true);
+            //         $('#price_id').val(0);
+            //         $('#start_id').attr('disabled', true);
+            //         $('#start_id').val();
+            //         $('#end_id').attr('disabled', true);
+            //         $('#end_id').val();
+            //     } else {
+            //         $('#bird_price_id').attr('disabled', false);
+            //         $('#bird_price_id').val();
+            //         $('#price_id').attr('disabled', false);
+            //         $('#price_id').val();
+            //         $('#start_id').attr('disabled', false);
+            //         $('#start_id').val();
+            //         $('#end_id').attr('disabled', false);
+            //         $('#end_id').val();
+            //     }
+            // });
+        });
+    </script>
+    <script>
+        $(function(){
+            function formatMoney(angka, prefix) {
+                var number_string = angka.replace(/[^,\d]/g, '').toString(),
+                    split = number_string.split(','),
+                    sisa = split[0].length % 3,
+                    rupiah = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+                if (ribuan) {
+                    separator = sisa ? '.' : '';
+                    rupiah += separator + ribuan.join('.');
+                }
+                rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+                return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
+            }
+            $('#bird_price_id, #price_id').on('keyup', function(){
+                // var string_price = $('#price_id').val();
+                // var price_id = string_price.replace(/[^,\d]/g, '');
+                var price_id = formatMoney($('#price_id').val(), 'IDR');
+                $('#price_id').val(price_id);
+                var bird = formatMoney($('#bird_price_id').val(), 'IDR');
+                $('#bird_price_id').val(bird);
+
+                // var str_price_id = price_id.replace(/[^,\d]/g, '');
+                // var int_price_id = parseInt(str_price_id);
+
+            });
+
+        });
+
     </script>
 </body>
 </html>
