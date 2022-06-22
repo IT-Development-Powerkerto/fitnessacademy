@@ -71,7 +71,7 @@
                     <div class="mb-6 repeater" id="group_a">
                         <div data-repeater-list="group_a">
                             <div data-repeater-item="" class="flex flex-row gap-4">
-                                <input type="file" id="file" name="file" value="{{old('file')}}" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer" required>
+                                <input type="file" id="file" name="file" value="{{old('file')}}" accept="image/*,.pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer" required>
                                 <button type="button" class="text-white rounded-lg mt-6" data-repeater-delete>
                                     <i class="las la-times"></i>
                                 </button>
