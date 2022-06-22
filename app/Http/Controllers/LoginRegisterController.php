@@ -65,7 +65,6 @@ class LoginRegisterController extends Controller
             'image' => '',
         ]);
         if($validator->fails()){
-            return 'ok';
             // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
         }
@@ -90,11 +89,11 @@ class LoginRegisterController extends Controller
         $user->address = $validated['address'];
         // $user->image = $request->image;
 
-        if($user->role_id == 3)
+        if($request->role_id == 1)
         {
             // $user->status = 'active'; //active, inactive, reject
             $user->save();
-        }else
+        }elseif ($request->role_id == 2)
         {
             // $user->status = 'inactive'; //active, inactive, reject
             if ($request->hasFile('resume')) {
@@ -102,15 +101,8 @@ class LoginRegisterController extends Controller
                 $namaFile = 'resume-'.time().".".$extFile;
                 $path = $request->resume->move('public/assets/file/resume',$namaFile);
                 // File::delete($pt->user->image);
+                // return 'ok'
             }
-            // if($request->has('resume')){
-            //     $originalFileName = $request->resume->getClientOriginalName();
-            //     $namaFile = 'Resume-'.$originalFileName;
-            //     $extFile = $request->resume->getClientOriginalExtension();
-            //     $extension = time().'.'.$extFile;
-            //     $path = $request->resume->move('public/assets/file/resume', $namaFile);
-            //     return $path;
-            // }
             $user->save();
             Trainer::create([
                 'user_id' => $user->id,

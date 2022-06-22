@@ -31,6 +31,7 @@
                         <thead>
                             <tr class="text-gray-500">
                                 <th scope="col" class="px-3 py-3">No</th>
+                                <th scope="col" class="px-3 py-3">Payment ID</th>
                                 <th scope="col" class="px-3 py-3">Name</th>
                                 <th scope="col" class="px-3 py-3">Course</th>
                                 <th scope="col" class="px-3 py-3">Nominal</th>
@@ -39,30 +40,78 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            <tr class="whitespace-nowrap">
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">1</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">Zall</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">Zall@zall.com</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <h1 class="text-white">Rp. 3.000.000</h1>
-                                </td>
-                                <td class="px-3 py-4">
-                                    <!-- Modal toggle -->
-                                    <button class="flex flex-row items-center gap-2 bg-gray-300 text-gray-400 px-5 py-1 rounded-lg" type="button" data-modal-toggle="viewFile">
-                                        <i class="las la-file-image text-xl"></i>
-                                        <span>File</span>
-                                    </button>
-                                </td>
-                                <td class="px-3 py-4 text-right">
-                                    <h1 class="text-red-600">Rejected</h1>
-                                </td>
-                            </tr>
+                            @forelse ($payments as $payment)
+                                <tr class="whitespace-nowrap">
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $loop->iteration }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $payment->order_id}}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{ $payment->user->name }}</h1>
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <ul>
+                                            @foreach ($payment->payment_detail as $pd )
+                                                <li>{{$pd->course->name}}</li>
+                                            @endforeach
+                                        </ul>
+                                        {{-- <h1 class="text-white">{{ $ }}</h1> --}}
+                                    </td>
+                                    <td class="px-3 py-4">
+                                        <h1 class="text-white">{{'Rp. '.number_format($payment->total_price,0,',','.')}}</h1>
+                                    </td>
+                                    {{-- <td class="px-3 py-4">
+                                        <!-- Modal toggle -->
+                                        <button class="flex flex-row items-center gap-2 bg-gray-300 text-gray-400 px-5 py-1 rounded-lg" type="button" data-modal-toggle="viewFile">
+                                            <i class="las la-file-image text-xl"></i>
+                                            <span>File</span>
+                                        </button>
+                                    </td> --}}
+                                    <td class="px-3 py-4">
+                                        <button class="flex justify-center gap-2 items-center text-white bg-yellow-300 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button" data-modal-toggle="defaultModal">
+                                            <i class="lar la-image"></i>
+                                            Image
+                                        </button>
+                                        {{-- begin::modal --}}
+                                        <!-- Main modal -->
+                                        <div id="defaultModal" tabindex="-1" aria-hidden="true" class="bg-black bg-opacity-75 hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+                                            <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                                                <!-- Modal content -->
+                                                <div class="relative bg-white rounded-lg shadow">
+                                                    <!-- Modal header -->
+                                                    <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                            Evidence of Transfer
+                                                        </h3>
+                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="defaultModal">
+                                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                        </button>
+                                                    </div>
+                                                    <!-- Modal body -->
+                                                    <div class="flex justify-center items-center p-6">
+                                                        <img src="{{$payment->proof}}" class="rounded-lg w-64 h-64 text-center" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- end::modal --}}
+                                    </td>
+                                    <td class="px-3 py-4 text-right">
+                                        @if ($payment->status == 'success')
+                                            <h1 class="text-green-600">Approved</h1>
+                                        @else
+                                            <h1 class="text-red-600">Rejected</h1>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                            <td colspan="7" class="px-3 py-4 text-center">
+                                No Data Available
+                            </td>
+                            @endforelse
+
                         </tbody>
                     </table>
                 </div>

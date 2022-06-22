@@ -83,6 +83,7 @@ class DashboardController extends Controller
         $x = auth()->user();
         if($x->role_id == 1){
             $fs = FinalScoreExam::all();
+            $trainers = Trainer::whereNotIn('status', ['IN WAITING'])->with('user')->get();
             return view('user.dashboard', compact('c', 'fs', 'today', 'day', 'trainers'));
         }
         else if($x->role_id == 2){
@@ -143,8 +144,6 @@ class DashboardController extends Controller
     }
     public function getCourse($course_id)
     {
-        return 'ok';
-
         $today = Carbon::now()->isoFormat('YYYY-MM-DD');
         $day = Carbon::now()->isoFormat('dddd');
         $user = User::all();
@@ -155,7 +154,6 @@ class DashboardController extends Controller
         // $course = Course::where('trainer_id', auth()->user()->id)->get();
         // $exam = Exam::all();
         // $fs = FinalScore::all();
-        return 'ok';
         if($course_id == 'all' )
         {
             $course = Course::where('trainer_id', auth()->user()->id)->get();
@@ -283,7 +281,8 @@ class DashboardController extends Controller
     }
 
     public function courseApprovalHistory() {
-        return view('admin.courseApproval');
+        $payments = Payment::whereNotIn('status', ['pending'])->with('user', 'payment_detail.course')->get();
+        return view('admin.courseApproval', compact('payments'));
     }
 
     public function trainerApprovalHistory() {
