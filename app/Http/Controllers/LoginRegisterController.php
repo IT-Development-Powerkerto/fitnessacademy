@@ -51,7 +51,7 @@ class LoginRegisterController extends Controller
     {
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            'role_id' => 'required',
+            // 'role_id' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users|email:rfc,dns',
             'password' => 'required|min:8',
@@ -62,10 +62,10 @@ class LoginRegisterController extends Controller
             'education' => 'required',
             'work' => 'required',
             'address' => 'required',
-            'status' => '',
             'image' => '',
         ]);
         if($validator->fails()){
+            return 'ok';
             // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
             return Redirect::back()->with('error_code', 5)->withInput()->withErrors($validator);
         }
@@ -89,15 +89,33 @@ class LoginRegisterController extends Controller
         $user->work = $validated['work'];
         $user->address = $validated['address'];
         // $user->image = $request->image;
+
         if($user->role_id == 3)
         {
-            $user->status = 'active'; //active, inactive, reject
+            // $user->status = 'active'; //active, inactive, reject
             $user->save();
         }else
         {
-            $user->status = 'inactive'; //active, inactive, reject
+            // $user->status = 'inactive'; //active, inactive, reject
+            if ($request->hasFile('resume')) {
+                $extFile = $request->resume->getClientOriginalExtension();
+                $namaFile = 'resume-'.time().".".$extFile;
+                $path = $request->resume->move('public/assets/file/resume',$namaFile);
+                // File::delete($pt->user->image);
+            }
+            // if($request->has('resume')){
+            //     $originalFileName = $request->resume->getClientOriginalName();
+            //     $namaFile = 'Resume-'.$originalFileName;
+            //     $extFile = $request->resume->getClientOriginalExtension();
+            //     $extension = time().'.'.$extFile;
+            //     $path = $request->resume->move('public/assets/file/resume', $namaFile);
+            //     return $path;
+            // }
             $user->save();
-            Trainer::create(['user_id' => $user->id]);
+            Trainer::create([
+                'user_id' => $user->id,
+                'resume' => $path
+            ]);
             // $user->trainer()->associate();
         }
 

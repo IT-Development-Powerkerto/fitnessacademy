@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('scopus_id')->nullable();
             $table->enum('status', ['IN WAITING', 'APPROVED', 'REJECTED']);
             $table->longText('description')->nullable();
+            $table->string('resume')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
