@@ -104,7 +104,7 @@
     <!-- begin::My Course -->
     <div class="h-screen py-10 bg-zinc-800">
         <div class="bg-zinc-800">
-            <div class="container mx-auto">
+            <div class="container mx-auto px-10 md:px-10">
                 <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-lg p-3">
                     <h1 class="font-semibold">Course</h1>
                     <a href="{{ route('course.create') }}" class="bg-zinc-800 text-yellow-300 items-center rounded-lg p-2">
@@ -179,7 +179,7 @@
 
         <!-- begin::Schedule -->
         <div class="py-10 bg-zinc-800">
-            <div class="container mx-auto">
+            <div class="container mx-auto px-10 md:px-10">
                 <div class="bg-yellow-300 rounded-lg p-3">
                     <h1 class="font-semibold">Today Schedule</h1>
                 </div>
@@ -199,7 +199,7 @@
 
         <!-- begin::Score -->
         <div class="py-10 bg-zinc-800">
-            <div class="container mx-auto">
+            <div class="container mx-auto px-10 md:px-10">
                 <div class="bg-yellow-300 rounded-t-lg p-3 flex flex-row justify-between items-center">
                     <h1 class="font-semibold">Score</h1>
                     {{-- <form action="/dashboard" method="get">

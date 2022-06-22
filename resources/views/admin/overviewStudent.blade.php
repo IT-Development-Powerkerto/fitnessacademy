@@ -16,14 +16,14 @@
     <livewire:user.navbar-user />
 
     <div class="bg-zinc-800 p-10">
-        <div class="flex flex-row py-5 items-center container mx-auto">
+        <div class="flex flex-row py-5 items-center container mx-auto px-10 md:px-10">
             <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
             <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">Overview Student</a>
             <i class="las la-angle-right text-white text-sm px-1"></i>
             <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">James Donin</a>
         </div>
-        <div class="py-10 container mx-auto">
+        <div class="py-10 container mx-auto px-10 md:px-10">
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
                 <h1 class="font-semibold">Overview Trainer Approval</h1>
             </div>
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-        <div class="py-10 container mx-auto">
+        <div class="py-10 container mx-auto px-10 md:px-10">
             <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-lg p-3 mb-5">
                 <h1 class="font-semibold">Course</h1>
             </div>

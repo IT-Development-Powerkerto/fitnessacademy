@@ -16,9 +16,9 @@
     <livewire:user.navbar-user />
 
     <div class="bg-zinc-800 py-10 h-screen">
-        <div class="container mx-auto">
+        <div class="container mx-auto px-10 md:px-10">
             <div class="py-5">
-                <div class="flex flex-row py-5 items-center container mx-auto">
+                <div class="flex flex-row py-5 items-center container mx-auto px-10 md:px-10">
                     <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                     <i class="las la-angle-right text-white text-sm px-1"></i>
                     <a href="/trainerApprovalHistory" class="text-white text-sm hover:text-yellow-300">Trainer Approval History</a>

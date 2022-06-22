@@ -1,5 +1,5 @@
 <nav class="border-b border-gray-600 px-2 sm:px-4 py-3 bg-zinc-800">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <div class="container flex flex-wrap justify-between items-center mx-auto px-10 md:px-0">
         <a href="/" class="flex items-center">
         <img src="assets/img/logo.png" class="mr-3 h-6 sm:h-9" alt="Fitness Plus Academy" />
             <span class="self-center text-sm font-semibold">
