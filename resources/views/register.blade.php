@@ -32,6 +32,11 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="mb-6">
+                            <input type="file" id="pdf_id" name="file" value="" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6" placeholder="Image Trainer" required>
+                        </div>
+
                         <div class="mb-6">
                             <input type="text" id="name" name="name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name" required>
                         </div>
@@ -75,5 +80,19 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function() {
+            $('#pdf_id');
+            $('#role_id').change(function() {
+                var pilih = $('#role_id').val();
+                if (pilih == '2') {
+                    $('#pdf_id').show()
+                }else{
+                    $('#pdf_id').hide()
+                }
+            });
+        });
+    </script>
 </body>
 </html>
