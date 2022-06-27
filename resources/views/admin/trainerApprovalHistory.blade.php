@@ -39,8 +39,8 @@
                             </tr>
                         </thead>
                         <tbody class="text-white">
-                            <tr class="whitespace-nowrap">
-                                @forelse ($trainers as $trainer)
+                            @forelse ($trainers as $trainer)
+                                <tr class="whitespace-nowrap">
                                     <td class="px-3 py-4">
                                         <h1 class="text-white">{{ $loop->iteration }}</h1>
                                     </td>
@@ -63,10 +63,12 @@
                                             <h1 class="text-red-600 text-right">{{ $trainer->status }}</h1>
                                         @endif
                                     </td>
-                                @empty
+                                </tr>
+                            @empty
+                                <tr>
                                     <td colspan="6" class="text-white text-center px-3 py-4">No Data Available</td>
-                                @endforelse
-                            </tr>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
