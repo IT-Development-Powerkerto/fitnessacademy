@@ -29,16 +29,16 @@
                 <div class="bg-black">
                     <div class="flex flex-col md:flex-row justify-between p-5">
                         <div class="flex flex-col md:flex-row">
-                            <img src="{{ $trainer->user->image }}" class="w-52 self-center md:justify-items-start" alt="">
+                            <img src="{{ $trainer->user->image ?? null }}" class="w-52 self-center md:justify-items-start" alt="">
                             <div class="flex flex-col py-5 md:py-0 md:px-5">
-                                <h1 class="text-xl text-white font-bold">{{ $trainer->user->name }}</h1>
+                                <h1 class="text-xl text-white font-bold">{{ $trainer->user->name ?? null }}</h1>
                                 <h1 class="text-lg text-gray-500 font-semibold flex items-center py-3">
                                     <i class="las la-envelope text-lg pr-2"></i>
-                                    {{ $trainer->user->email }}
+                                    {{ $trainer->user->email ?? null }}
                                 </h1>
                                 <h1 class="text-lg text-gray-500 font-semibold flex items-center">
                                     <i class="las la-phone text-lg pr-2"></i>
-                                    {{ $trainer->user->phone }}
+                                    {{ $trainer->user->phone ?? null }}
                                 </h1>
                             </div>
                         </div>
@@ -48,37 +48,37 @@
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Gender</h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->gender }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->gender ?? null }}</h1>
                         </div>
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Age</h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->age }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->age ?? null }}</h1>
                         </div>
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Work</h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->work }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->work ?? null }}</h1>
                         </div>
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Last Education </h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->education }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->education ?? null }}</h1>
                         </div>
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Identity Number (NIK)</h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->nik }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->nik ?? null }}</h1>
                         </div>
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Address</h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->address }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->user->address ?? null }}</h1>
                         </div>
                         <div class="grid grid-cols-12 mb-2">
                             <h1 class="col-span-3 md:col-span-2 text-white">Resume</h1>
                             <h1 class="col-span-1 text-white">:</h1>
-                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->resume }}</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white">{{ $trainer->resume ?? null }}</h1>
                         </div>
 
                     </div>
