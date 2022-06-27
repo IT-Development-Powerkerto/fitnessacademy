@@ -59,7 +59,7 @@
                         </h1>
                         <br>
                         <h1 class="text-white text-justify">
-                            Fitness plus Academy bertujuan untuk memberikan solusi bagi siapa saja yang ingin memasuki industri kebugaran, baik dalam  materi dasar maupun baru yang sejalan dengan tren saat ini. Fitness plus Academy menganalisis, mengkategorikan, dan merangkum kebutuhan  materi yang berkembang pesat ke dalam paket pelatihan kualitatif dan efisien terbaru untuk mencapai hasil kepuasan pelanggan dan meningkatkan penjualan.
+                            Fitness Plus Academy bertujuan untuk memberikan solusi bagi siapa saja yang ingin memasuki industri kebugaran, baik dalam  materi dasar maupun baru yang sejalan dengan tren saat ini. Fitness Plus Academy menganalisis, mengkategorikan, dan merangkum kebutuhan  materi yang berkembang pesat ke dalam paket pelatihan kualitatif dan efisien terbaru untuk mencapai hasil kepuasan pelanggan dan meningkatkan penjualan.
                         </h1>
                     </div>
                     <div class="basis-3/6" data-aos="fade-zoom-in" data-aos-offset="300" data-aos-easing="ease-in-sine">
@@ -80,7 +80,7 @@
                         <img src="assets/img/About/imageTwo.png" class="w-full h-96 rounded" alt="">
                     </div>
                 </div>
-                <h1 class="text-white text-justify mt-5">Fitness Plus Academy dinaungi oleh pengajar-pengajar yang memiliki kompetensi tinggi seperti Dr. Tandjung, Dr. Phaidon, Dr. Harryadin Mahardika, atlet internasional Nicholas Long, dan Fitnesspreneur Dith Satyawan.</h1>
+                <h1 class="text-white text-justify mt-5">Fitness Plus Academy dinaungi oleh pengajar-pengajar yang memiliki kompetensi tinggi seperti dr. Tanjung Subrata, M. Repro, ABAARM., dr. Phaidon L. Toruan, M.M., Dr. Harryadin Mahardika, S.E., M.M., atlet internasional Nicolas Iong Lee, dan Fitnesspreneur Dith Satyawan.</h1>
             </div>
         </div>
         <!-- end::about -->
@@ -229,7 +229,7 @@
                                     <div>
                                         <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
                                             <h1 class="text-white font-bold text-xl">Anatomi Dasar I</h1>
-                                            <h4 class="text-white font-light text-sm">dr Tanjung Subrata, MRepro, ABAARM</h4>
+                                            <h4 class="text-white font-light text-sm">dr. Tanjung Subrata, M. Repro, ABAARM.</h4>
                                         </div>
                                         <div class="bg-zinc-900 p-10">
                                             <div>
@@ -242,7 +242,7 @@
                                     <div>
                                         <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
                                             <h1 class="text-white font-bold text-xl">Nutrisi Dasar I</h1>
-                                            <h4 class="text-white font-light text-sm">dr Phaidon Toruan MM</h4>
+                                            <h4 class="text-white font-light text-sm">dr. Phaidon L. Toruan, M.M.</h4>
                                         </div>
                                         <div class="bg-zinc-900 p-10">
                                             <div>
@@ -259,7 +259,7 @@
                                     <div>
                                         <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
                                             <h1 class="text-white font-bold text-xl">Anatomi Dasar II</h1>
-                                            <h4 class="text-white font-light text-sm">dr Tanjung Subrata, MRepro, ABAARM</h4>
+                                            <h4 class="text-white font-light text-sm">dr. Tanjung Subrata, M. Repro, ABAARM.</h4>
                                         </div>
                                         <div class="bg-zinc-900 p-10">
                                             <div>
@@ -272,7 +272,7 @@
                                     <div>
                                         <div class="bg-black p-10 mt-5 rounded-tr-xl rounded-tl-xl">
                                             <h1 class="text-white font-bold text-xl">Nutrisi Dasar II</h1>
-                                            <h4 class="text-white font-light text-sm">dr Phaidon Toruan MM</h4>
+                                            <h4 class="text-white font-light text-sm">dr. Phaidon L. Toruan, M.M.</h4>
                                         </div>
                                         <div class="bg-zinc-900 p-10">
                                             <div>
@@ -302,10 +302,10 @@
                                     <div class="py-5">
                                         <h1 class="text-white">Narasumber :</h1>
                                         <ol class="list-decimal text-white px-5 py-2">
-                                            <li>dr Tanjung Subrata, MRepro, ABAARM</li>
-                                            <li>dr. Phaidon Toruan MM</li>
-                                            <li>DR. Hariadin Mahardika S.E, M.M.</li>
-                                            <li>Nicholas Long ( Muscle Mania Word champion)</li>
+                                            <li>dr. Tanjung Subrata, M. Repro, ABAARM.</li>
+                                            <li>dr. Phaidon L. Toruan, M.M.</li>
+                                            <li>Dr. Harryadin Mahardika, S.E., M.M.</li>
+                                            <li>Nicolas Iong Lee ( Muscle Mania Word champion)</li>
                                             <li>Dith Satyawan ( Fitnesspreneur)</li>
                                         </ol>
                                     </div>
@@ -438,3 +438,4 @@
     </script>
 </body>
 </html>
+    
