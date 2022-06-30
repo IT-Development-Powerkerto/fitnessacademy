@@ -15,13 +15,77 @@
 
     <livewire:user.navbar-user />
     <div class="bg-zinc-800 py-10 h-screen">
-        <div class="container mx-auto px-10 md:px-10">
-            <div class="flex flex-row py-2 items-center">
+        <div class="container mx-auto px-10 md:px-10 py-5">
+            <div class="flex flex-row py-5 items-center container mx-auto px-10 md:px-10">
                 <a href="/dashboard" class="text-white text-sm hover:text-yellow-300">Dashboard</a>
                 <i class="las la-angle-right text-white text-sm px-1"></i>
-                <a href="/coachProfile" class="text-white text-sm hover:text-yellow-300">Coach Profile</a>
+                <a href="/userProfile" class="text-white text-sm hover:text-yellow-300">Coach Profile</a>
             </div>
-            <div class="flex justify-center py-5">
+
+            <div class="container mx-auto px-5 md:px-10">
+                <div class="flex flex-row bg-yellow-300 justify-between items-center rounded-t-lg p-3">
+                    <h1 class="font-semibold">Coach Profile</h1>
+                </div>
+                <div class="bg-black">
+                    <div class="flex flex-col md:flex-row justify-between p-5">
+                        <div class="flex flex-col md:flex-row">
+                            <img src="{{ $trainer->user->image ?? null }}" class="w-52 self-center md:justify-items-start" alt="">
+                            <div class="flex flex-col py-5 md:py-0 md:px-5">
+                                <h1 class="text-xl text-white font-bold">{{ $trainer->user->name ?? null }}</h1>
+                                <h1 class="break-words text-sm md:text-lg text-gray-500 font-semibold flex items-center py-3">
+                                    <i class="las la-envelope text-lg pr-2"></i>
+                                    {{ $trainer->user->email ?? null }}
+                                </h1>
+                                <h1 class="break-words text-sm md:text-lg text-gray-500 font-semibold flex items-center">
+                                    <i class="las la-phone text-lg pr-2"></i>
+                                    {{ $trainer->user->phone ?? null }}
+                                </h1>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="p-5">
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Gender</h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->user->gender ?? null }}</h1>
+                        </div>
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Age</h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->user->age ?? null }}</h1>
+                        </div>
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Work</h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->user->work ?? null }}</h1>
+                        </div>
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Last Education </h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->user->education ?? null }}</h1>
+                        </div>
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Identity Number (NIK)</h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->user->nik ?? null }}</h1>
+                        </div>
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Address</h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->user->address ?? null }}</h1>
+                        </div>
+                        <div class="grid grid-cols-12 mb-2">
+                            <h1 class="col-span-3 md:col-span-2 text-white">Resume</h1>
+                            <h1 class="col-span-1 text-white">:</h1>
+                            <h1 class="col-span-8 md:col-span-9 text-white text-sm md:text-base break-words">{{ $trainer->resume ?? null }}</h1>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+              {{-- <div class="flex justify-center py-5">
                 <img src="assets/img/choaches/Tanjung.png" class="w-80 rounded" alt="">
             </div>
             <div class="py-10">
@@ -62,7 +126,8 @@
                 <div class="w-full">
                     <h1 class="text-white text-sm text-justify py-2 px-2 break-words">{{ $trainer->description}}</h1>
                 </div>
-            </div>
+            </div> --}}
+
         </div>
     </div>
 
