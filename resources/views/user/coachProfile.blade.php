@@ -29,7 +29,7 @@
                 <div class="bg-black">
                     <div class="flex flex-col md:flex-row justify-between p-5">
                         <div class="flex flex-col md:flex-row">
-                            <img src="{{ $trainer->user->image ?? null }}" class="w-52 self-center md:justify-items-start" alt="">
+                            <img src="{{ $trainer->user->image ?? 'assets/img/user_default.png' }}" class="w-52 self-center md:justify-items-start" alt="">
                             <div class="flex flex-col py-5 md:py-0 md:px-5">
                                 <h1 class="text-xl text-white font-bold">{{ $trainer->user->name ?? null }}</h1>
                                 <h1 class="break-words text-sm md:text-lg text-gray-500 font-semibold flex items-center py-3">

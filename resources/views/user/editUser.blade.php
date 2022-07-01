@@ -35,7 +35,7 @@
                         <form action="{{route('userProfile.update',['userProfile'=>$my->id])}}" method="POST" class="flex flex-col px-10" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
-                            <a href="#" class="flex self-center py-10"><img id="coverPreview" src="{{asset($my->image  ?? 'assets/img/Choaches/Tanjung.png')}}" class="w-52 h-52 rounded-lg" alt=""></a>
+                            <a href="#" class="flex self-center py-10"><img id="coverPreview" src="{{asset($my->image  ?? 'assets/img/user_default.png')}}" class="w-52 h-52 rounded-lg" alt=""></a>
                             <input type="file" id="image" name="image" style="display: none;" />
                             <div class="flex flex-row gap-4">
                                 <div class="w-full">
@@ -56,7 +56,7 @@
                                         <input type="text" name="age" id="age" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" value="{{$my->age}}" required>
                                     </div>
                                 </div>
-    
+
                                 <div class="w-full">
                                     <div class="mb-6">
                                         <input type="text" name="phone" id="phone" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Phone Number" value="{{$my->phone}}" required>
@@ -72,7 +72,7 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="mb-6">
                                 <textarea type="text" name="address" id="address" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Address" required>{{$my->address}}</textarea>
                             </div>
