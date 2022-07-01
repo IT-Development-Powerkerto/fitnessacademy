@@ -234,8 +234,13 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
+        // $course->delete();
+        // return redirect('/dashboard');
+        $course = Course::findOrFail($course);
         $course->delete();
-        return redirect('/dashboard');
+        // $course_id = $request->course_id;
+        // return redirect()->back();
+        return redirect()->route('trainer.dashboard');
     }
 
     public function getCourse(){
