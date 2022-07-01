@@ -26,7 +26,7 @@
                         @csrf
                         <div class="mb-6">
                             <select id="role_id" name="role_id" class="bg-gray-50 border rounded-lg border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <option selected hidden>Select Role</option>
+                                <option selected disabled>Select Role</option>
                                 @foreach ($role as $role)
                                     <option value="{{$role->id}}">{{$role->role_name}}</option>
                                 @endforeach
@@ -48,13 +48,13 @@
                         </div>
                         <div class="mb-6">
                             <select id="gender" name="gender" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                <option selected hidden>Select Gender</option>
+                                <option selected disabled>Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="age" name="age" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" required>
+                            <input type="number" id="age" name="age" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" required>
                         </div>
                         <div class="mb-6">
                             <input type="text" id="phone" name="phone" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Phone Number" required>
@@ -74,7 +74,6 @@
                         <div class="flex">
                             <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Create Account</button>
                         </div>
-                        {{ csrf_field() }}
                     </form>
                 </div>
             </div>
