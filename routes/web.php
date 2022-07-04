@@ -58,6 +58,7 @@ Route::get('/editCourse', [CourseController::class, 'edit'])->name('course.editc
 Route::resource('/course', CourseController::class)->middleware('auth');
 
 Route::resource('/course/{course}/session', SessionController::class)->middleware('auth');
+Route::get('/course/{course}/session/{id}', [ExamController::class, 'detailSesion'])->name('detailSesion.detailSesion')->middleware('auth');
 Route::get('/course/{course}/session/{session}/presense', [SessionController::class, 'presence'])->name('presence.presence')->middleware('auth');
 // Route::get('/addSession/{id}', [SessionController::class, 'addSession'])->name('addSession.addsession')->middleware('auth');
 // Route::get('/course/{course}/detailSession/{id}/edit', [SessionController::class, 'editSession'])->name('editSession.editSession')->middleware('auth');

@@ -139,8 +139,8 @@
         <!-- end::Payment -->
 
         <!-- begin::Order Date -->
-        <div class="py-10 bg-zinc-800">
-            <div class="flex flex-row gap-24">
+        <div class="py-10 bg-zinc-800 px-20">
+            <div class="flex flex-row gap-10">
                 <div class="mx-auto container">
                     <h2 class="text-white text-xl">Course Ordered</h2>
 

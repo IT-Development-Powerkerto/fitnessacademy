@@ -194,6 +194,41 @@ class SessionController extends Controller
 
     }
 
+    public function detailSesion($course, $id)
+    {
+        // $session_id = $session;
+        $session = Session::find($id);
+
+
+        $a = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($course){
+            $query->where('course_id', $course);
+
+        }])->get()->pluck('user_id')->flatten();
+
+        $s = User::find($a);
+        // $s = Payment::where('status', 'success')->get();
+        // $session_id = $id;
+
+
+        $a = Absen::where('session_id', $session->id)->get();
+        $c = ComponentSession::where('session_id', $session->id)->get();
+
+        $fs = FinalScoreSession::where('session_id', $session->id)->with(['user'=> function($query){
+            $query->where('role_id', 1);
+        }])->get();
+        $sd = ScoreSession::with('component_session')->get()->where('component_session.session_id', $session->id);
+
+        $m = Materi::where('session_id', $session->id)->get();
+
+
+
+
+        return view('trainer.detailSession', compact('session', 's', 'session_id', 'a',
+        'c','sd', 'fs', 'm'
+        ));
+
+    }
+
 
     public function absen(Request $request)
     {
@@ -225,8 +260,11 @@ class SessionController extends Controller
 
         $session_id = $request->session_id;
         // return $session;
+        $exam_id = $request->exam_id;
+        $course_id = Session::whereId($exam_id)->value('course_id');
 
-        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+        // return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+        return redirect()->route('detailSesion.detailSesion', ['course'=>$course_id, 'id'=>$session_id]);
     }
 
     /**
@@ -364,10 +402,10 @@ class SessionController extends Controller
         return redirect()->route('course.show',['course'=>$course])->with('delete', 'Delete Session Success!');
     }
 
-    public function presence($course, $session)
+    public function presence($course, $id)
     {
         //
-        $session = Session::find($session);
+        $session = Session::whereId($id)->first();
 
         // $s = Payment::where('status', 'success')->with(['payment_detail' => function($query) use($id, $session){
         //     $query->where('course_id',$session->course_id);
@@ -452,10 +490,10 @@ class SessionController extends Controller
         $id = $request->id;
         $course_id = $request->course_id;
         // $exam = Exam::whereId($id)->first();
-        $course_id = Exam::whereId($session_id)->value('course_id');
+        $course_id = Session::whereId($session_id)->value('course_id');
         // return $session;
 
-        return redirect()->route('detailSession.show', ['course'=>$course_id, 'id'=>$session_id])->with('success', 'Created Component Success!');
+        return redirect()->route('detailSesion.detailSesion', ['course'=>$course_id, 'id'=>$session_id])->with('success', 'Created Component Success!');
     }
 
 
@@ -506,9 +544,9 @@ class SessionController extends Controller
         $id = $request->id;
         $course_id = $request->course_id;
         // $exam = Exam::whereId($id)->first();
-        $course_id = Exam::whereId($session_id)->value('course_id');
+        $course_id = Session::whereId($session_id)->value('course_id');
 
-        return redirect()->route('detailSession.show', ['course'=>$course_id, 'id'=>$session_id])->with('success', 'Score Add Success');
+        return redirect()->route('detailSesion.detailSesion', ['course'=>$course_id, 'id'=>$session_id])->with('success', 'Score Add Success');
 
     }
 
