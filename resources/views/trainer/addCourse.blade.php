@@ -35,7 +35,7 @@
                 <form action="{{route('course.store')}}" method="POST">
                     @csrf
                     <div class="mb-6">
-                        <input type="text" id="course_name" name="course_name" value="{{ old('course_name') }}" class="bg-gray-50 rounded-lg border  text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 @error('course_name') border-red-500 @else border-gray-300 @enderror block w-full p-2.5 peer" placeholder="Course Name">
+                        <input type="text" id="course_name" name="course_name" value="{{ old('course_name') }}" class="bg-gray-50 rounded-lg border  text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 @error('course_name') border-red-500 @else border-gray-300 @enderror block w-full p-2.5 peer" placeholder="Course Name" required>
                         @error('course_name')
 
                         <span class="text-s text-red-700">{{ $message }}</span>
@@ -45,7 +45,7 @@
                         <input type="text" id="triner_name" name="triner_name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Trainer" value="{{auth()->user()->name}}" readonly required>
                     </div> --}}
                     <div class="mb-6">
-                        <select id="level" name="level" class="bg-gray-50 rounded-lg border @error('level') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <select id="level" name="level" class="bg-gray-50 rounded-lg border @error('level') border-red-500 @else border-gray-300 @enderror text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                             <option value="" hidden>Set Level</option>
                             <option value="Level 1">Level 1</option>
                             <option value="Level 2">Level 2</option>
@@ -63,7 +63,7 @@
                         <input type="file" id="image" name="image" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full" placeholder="Image Trainer" required>
                     </div> --}}
 
-                    <select x-cloak id="select" >
+                    <select x-cloak id="select" required >
                         <option value="Senin">Senin</option>
                         <option value="Selasa">Selasa</option>
                         <option value="Rabu">Rabu</option>

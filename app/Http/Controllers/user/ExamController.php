@@ -181,7 +181,7 @@ class ExamController extends Controller
         $course_id = $request->course_id;
         // return $session;
 
-        return redirect()->route('course.show',['course'=>$course_id]);
+        return redirect()->route('course.show',['course'=>$course_id])->with('success', 'Create Exam Success!');
     }
 
     public function update(Request $request, $id)
@@ -269,7 +269,7 @@ class ExamController extends Controller
         // $exam = $id;
         // return $session;
 
-        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
+        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id])->with('success', 'Created Component Success!');
         // return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
         // return redirect(url()->previous());
         // return view('trainer.detailExam', [$course, $exam_id]);
@@ -334,7 +334,7 @@ class ExamController extends Controller
         // return $session;
 
         // return redirect()->route('detailExam.detailExam', ['id'=>$exam_id]);
-        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id]);
+        return redirect()->route('detailExam.detailExam', ['course'=>$course_id, 'id'=>$exam_id])->with('success', 'Score Add Success');
 
     }
 }

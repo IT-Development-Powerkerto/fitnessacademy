@@ -240,7 +240,8 @@ class CourseController extends Controller
         $course->delete();
         // $course_id = $request->course_id;
         // return redirect()->back();
-        return redirect()->route('trainer.dashboard');
+        // return redirect()->route('trainer.dashboard');
+        return redirect('/dashboard')->with('success', 'Delete Course Success!');
     }
 
     public function getCourse(){

@@ -150,7 +150,7 @@ class SessionController extends Controller
 
         $course_id = $request->course_id;
 
-        return redirect()->route('course.show',['course'=>$course_id]);
+        return redirect()->route('course.show',['course'=>$course_id])->with('success', 'Create Session Success!');
     }
 
     /**
@@ -345,7 +345,7 @@ class SessionController extends Controller
         // $session_id = $request->session_id;
         // return $session;
         // dd($session_id);
-        return redirect()->route('session.show', ['course' => $course, 'session'=>$session]);
+        return redirect()->route('session.show', ['course' => $course, 'session'=>$session])->with('success', 'Edit Session Success!');
     }
 
     /**
@@ -361,7 +361,7 @@ class SessionController extends Controller
         $session->delete();
         // $course_id = $request->course_id;
         // return redirect()->back();
-        return redirect()->route('course.show',['course'=>$course]);
+        return redirect()->route('course.show',['course'=>$course])->with('delete', 'Delete Session Success!');
     }
 
     public function presence($course, $session)
@@ -448,9 +448,14 @@ class SessionController extends Controller
 
 
         $session_id = $request->session_id;
+        // $exam_id = $request->exam_id;
+        $id = $request->id;
+        $course_id = $request->course_id;
+        // $exam = Exam::whereId($id)->first();
+        $course_id = Exam::whereId($session_id)->value('course_id');
         // return $session;
 
-        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+        return redirect()->route('detailSession.show', ['course'=>$course_id, 'id'=>$session_id])->with('success', 'Created Component Success!');
     }
 
 
@@ -497,9 +502,13 @@ class SessionController extends Controller
 
 
         $session_id = $request->session_id;
-        // return $session;
+        // $exam_id = $request->exam_id;
+        $id = $request->id;
+        $course_id = $request->course_id;
+        // $exam = Exam::whereId($id)->first();
+        $course_id = Exam::whereId($session_id)->value('course_id');
 
-        return redirect()->route('detailSession.show', ['detailSession'=>$session_id]);
+        return redirect()->route('detailSession.show', ['course'=>$course_id, 'id'=>$session_id])->with('success', 'Score Add Success');
 
     }
 

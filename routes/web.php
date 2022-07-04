@@ -67,7 +67,7 @@ Route::get('/addScoreSession/{id}', [SessionController::class, 'addScore'])->nam
 
 // Route::post('/session', [SessionController::class, 'store'])->name('session.store');
 Route::post('/absen', [SessionController::class, 'absen'])->name('absen.absen')->middleware('auth');
-Route::get('/setScoreSession/session/{id}', [SessionController::class, 'componnent'])->name('setScoreSession.componnent')->middleware('auth');
+Route::get('/course/{course}/session/{session}/setScoreSession', [SessionController::class, 'componnent'])->name('setScoreSession.componnent')->middleware('auth');
 Route::post('/component', [SessionController::class, 'scoreComponent'])->name('component.scoreComponent')->middleware('auth');
 
 Route::post('/scoreAdd', [SessionController::class, 'scoreAdd'])->name('scoreAdd.scoreAdd');
