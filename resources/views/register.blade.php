@@ -38,20 +38,20 @@
                     <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-6">
-                            <select id="role_id" name="role_id" class="bg-gray-50 border rounded-lg border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                            <select id="role_id" name="role_id" class="bg-gray-50 border rounded-lg border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                                 <option selected disabled>Select Role</option>
                                 @foreach ($role as $role)
-                                    <option value="{{$role->id}}">{{$role->role_name}}</option>
+                                    <option value="{{$role->id}}" {{ old('role_id') == $role->id ? 'selected':'' }} >{{$role->role_name}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="mb-6">
-                            <input type="file" id="pdf_id" name="resume" value="" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6">
+                            <input type="file" id="pdf_id" name="resume" value="{{ old('resume') }}" accept=".pdf" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full mt-6">
                         </div>
 
                         <div class="mb-6">
-                            <input type="text" id="name" name="name" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name" required>
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Name" required>
                             {{-- @error('name')
 
                             <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
@@ -63,7 +63,7 @@
                             @enderror --}}
                         </div>
                         <div class="mb-6">
-                            <input type="email" id="email" name="email" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@example.com" required>
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="email@example.com" required>
                             {{-- @error('email')
 
                             <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
@@ -75,7 +75,7 @@
                             @enderror --}}
                         </div>
                         <div class="mb-6">
-                            <input type="password" id="password" name="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required  minlength="8" maxlength="8" pattern="[0-9+-*]{13,13}">
+                            <input type="password" id="password" name="password" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required  minlength="8" pattern="[0-9+-*]{13,13}">
                             {{-- @error('password')
 
                             <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
@@ -89,15 +89,15 @@
                         <div class="mb-6">
                             <select id="gender" name="gender" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                 <option selected disabled>Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="Male" @selected(old('gender') == 'Male')>Male</option>
+                                <option value="Female" @selected(old('gender') == 'Female')>Female</option>
                             </select>
                         </div>
                         <div class="mb-6">
-                            <input type="number" id="age" name="age" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" required>
+                            <input type="number" id="age" name="age" value="{{ old('age') }}"  class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Age" required>
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="phone" name="phone" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Phone Number" required>
+                            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Phone Number" required>
                             {{-- @error('phone')
 
                             <div class="flex p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
@@ -109,16 +109,16 @@
                             @enderror --}}
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="nik" name="nik" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Identity Number (NIK)" maxlength="16" minlength="16" pattern="[0-9]{16,16}"  required>
+                            <input type="text" id="nik" name="nik" value="{{ old('nik') }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Identity Number (NIK)" maxlength="16" minlength="16" pattern="[0-9]{16,16}"  required>
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="education" name="education" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Last Education" required>
+                            <input type="text" id="education" name="education" value="{{ old('education') }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Last Education" required>
                         </div>
                         <div class="mb-6">
-                            <input type="text" id="work" name="work" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Work" required>
+                            <input type="text" id="work" name="work" value="{{ old('work') }}" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Work" required>
                         </div>
                         <div class="mb-6">
-                            <textarea type="text" name="address" id="address" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Address" required></textarea>
+                            <textarea type="text" name="address" id="address" class="bg-gray-50 rounded-lg border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Address" required>{{ old('address') }}</textarea>
                         </div>
                         <div class="flex">
                             <button type="submit" class="text-white rounded-lg bg-yellow-400 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm w-full px-5 py-2.5 text-center">Create Account</button>

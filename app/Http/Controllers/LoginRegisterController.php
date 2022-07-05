@@ -51,7 +51,7 @@ class LoginRegisterController extends Controller
     {
         // dd($request->all());
         $validator = Validator::make($request->all(), [
-            // 'role_id' => 'required',
+            'role_id' => 'required',
             'name' => 'required',
             'email' => 'required|unique:users|email:rfc,dns',
             'password' => 'required|min:8',
@@ -63,6 +63,9 @@ class LoginRegisterController extends Controller
             'work' => 'required',
             'address' => 'required',
             'image' => '',
+        ],[
+            'role_id.required' => 'Role must be chosen',
+            'gender.required' => 'Gender must be chosen'
         ]);
         if($validator->fails()){
             // return back()->with('error','Error! User not been Added')->withInput()->withErrors($validator);
