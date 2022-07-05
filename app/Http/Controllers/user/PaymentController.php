@@ -69,7 +69,7 @@ class PaymentController extends Controller
 
         // return redirect()->route('user.payment');
         // return redirect('/payment')->with('success', 'Create Course Success!');
-        return redirect()->route('payment.index',['id'=>$payment->id]);
+        return redirect()->route('payment.index',['id'=>$payment->id])->with('success', 'Payment Success!');
     }
 
     public function uploadImage(Request $request, $id)
@@ -101,7 +101,7 @@ class PaymentController extends Controller
         // return $payment;
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successful Transaction Upload');
     }
 
 
@@ -115,7 +115,7 @@ class PaymentController extends Controller
 
         $payment->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Success Approve');
     }
 
 
@@ -128,7 +128,7 @@ class PaymentController extends Controller
 
         $payment->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Success Reject');
     }
 
     public function order()
