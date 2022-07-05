@@ -189,7 +189,7 @@ class LoginRegisterController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('/dashboard');
+            return redirect('/dashboard')->with('success', 'Login Success!');
         }
 
         return back()->withErrors([
@@ -203,6 +203,6 @@ class LoginRegisterController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Logout Success!');
     }
 }
